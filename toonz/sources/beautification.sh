@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 pushd ../../
-find . | egrep \\.\(c\|cpp\|h\|hpp\)$ | xargs clang-format -style=file -i
+git diff master --name-only | grep -v thirdparty | egrep \\.\(c\|cpp\|h\|hpp\)$ | xargs clang-format -style=file -i
 popd
