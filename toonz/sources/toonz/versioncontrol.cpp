@@ -613,7 +613,7 @@ bool VersionControl::testSetup() {
       QString firstLine = list.first();
       firstLine         = firstLine.remove(
                   "svn, version 1.");  // ignore the 1. since SVN decimal versions are
-                               // not zero padded
+                                       // not zero padded
 
       double version = firstLine.left(3).toDouble();
       if (version < 5) {  // only check decimal version 1.xx

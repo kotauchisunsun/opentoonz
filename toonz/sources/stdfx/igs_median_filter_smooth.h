@@ -28,7 +28,7 @@ IGS_MEDIAN_FILTER_SMOOTH_EXPORT void convert(
     const double radius /* =1.7	0... */
     ,
     const int out_side_type /* =0	0(Spread),1(Flip),2(bk),3(Repeat) */
-    /* 2013-11-11現在0(Spread)のみ使用 */
+                            /* 2013-11-11現在0(Spread)のみ使用 */
 );
 /*
         2013-11-13 igs::median_filter::convert(-)に比べて11倍遅い

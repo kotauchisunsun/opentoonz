@@ -70,8 +70,8 @@ int TUSBScannerIO::receive(unsigned char *buffer, int size) {
 
     OVERLAPPED overlapped;
     memset(&overlapped, 0, sizeof(OVERLAPPED));
-    overlapped.hEvent = CreateEvent(NULL,  // pointertosecurityattributes,
-                                           // WIN95ignoresthisparameter
+    overlapped.hEvent = CreateEvent(NULL,   // pointertosecurityattributes,
+                                            // WIN95ignoresthisparameter
                                     FALSE,  // automaticreset
                                     FALSE,  // initializetonotsignaled
                                     NULL);  // pointertotheevent-objectname

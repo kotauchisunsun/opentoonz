@@ -69,8 +69,7 @@ private:
             bool enableBlendColorize,   // 2 variants
             bool enableSummary>  // 1 variants (false)  Total: 48 copies of
                                  // function
-                                 bool drawDabCustom(const Dab &dab,
-                                                    float *colorSummary) {
+  bool drawDabCustom(const Dab &dab, float *colorSummary) {
     const float antialiasing = 0.66f;  // equals to drawDab::minRadiusX
     const float lr           = 0.30f;
     const float lg           = 0.59f;
