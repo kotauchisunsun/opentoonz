@@ -9,9 +9,9 @@ void hv_op(T *__restrict ptr, const T *__restrict src, int w, int h,
            std::function<T(T &&, T &&, T &&)> &&f) {
   for (int i = 0; i < h; i++) {
     for (int j = 0; j < w; j++) {
-      T c0 = src[j * component];
-      T c1 = src[j * component + 1];
-      T c2 = src[j * component + 2];
+      T c0   = src[j * component];
+      T c1   = src[j * component + 1];
+      T c2   = src[j * component + 2];
       ptr[j] = f(std::move(c0), std::move(c1), std::move(c2));
     }
     src += src_stride;
@@ -38,7 +38,7 @@ void hv_op(T *__restrict ptr, const T *__restrict src, int w, int h, int stride,
            std::function<T(T &&, int x, int y)> &&f) {
   for (int i = 0; i < h; i++) {
     for (int j = 0; j < w; j++) {
-      T c0 = src[j];
+      T c0   = src[j];
       ptr[j] = f(std::move(c0), j, i);
     }
     src += stride;
@@ -67,8 +67,7 @@ void hv_kernel(
     for (int j = 0; j < w * components; j += components) {
       T channels[components];
       f(channels, src + j, sstride, j, i);
-      for (int k = 0; k < components; k++)
-        ptr[j + k] = channels[k];
+      for (int k = 0; k < components; k++) ptr[j + k] = channels[k];
     }
     src += sstride;
     ptr += dstride;

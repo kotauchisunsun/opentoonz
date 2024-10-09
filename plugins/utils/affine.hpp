@@ -17,11 +17,19 @@ public:
               double a23)
       : a11(a11), a12(a12), a13(a13), a21(a21), a22(a22), a23(a23) {}
   ToonzAffine(const toonz_affine_t &affine)
-      : a11(affine.a11), a12(affine.a12), a13(affine.a13), a21(affine.a21),
-        a22(affine.a22), a23(affine.a23) {}
+      : a11(affine.a11)
+      , a12(affine.a12)
+      , a13(affine.a13)
+      , a21(affine.a21)
+      , a22(affine.a22)
+      , a23(affine.a23) {}
   ToonzAffine(const ToonzAffine &toonzAffine)
-      : a11(toonzAffine.a11), a12(toonzAffine.a12), a13(toonzAffine.a13),
-        a21(toonzAffine.a21), a22(toonzAffine.a22), a23(toonzAffine.a23) {}
+      : a11(toonzAffine.a11)
+      , a12(toonzAffine.a12)
+      , a13(toonzAffine.a13)
+      , a21(toonzAffine.a21)
+      , a22(toonzAffine.a22)
+      , a23(toonzAffine.a23) {}
 
   static bool equals(double a, double b, double err = 1e-9) {
     return std::abs(a - b) < err;

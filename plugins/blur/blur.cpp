@@ -48,7 +48,8 @@ toonz::rect_t conv2rect(const ToonzRect &r) {
   return toonz::rect_t{r.x0, r.y0, r.x1, r.y1};
 }
 
-template <typename T> void dump_value(const T &v) {
+template <typename T>
+void dump_value(const T &v) {
   printf("value: type:%s {%d}\n", typeid(T).name(), v);
 }
 
@@ -101,20 +102,20 @@ template <typename T>
 bool get_and_check(toonz::node_handle_t node, const char *nm, double frame,
                    double opt = 0) {
   auto nodeif = grab_interf<toonz::node_interface_t>(TOONZ_UUID_NODE);
-  auto pif = grab_interf<toonz::param_interface_t>(TOONZ_UUID_PARAM);
+  auto pif    = grab_interf<toonz::param_interface_t>(TOONZ_UUID_PARAM);
   toonz_param_handle_t p1;
   int ret;
   ret = nodeif->get_param(node, nm, &p1);
   printf("get_param(%s): ret:%d\n", nm, ret);
 
   int type = 0;
-  int cnt = 0;
+  int cnt  = 0;
   pif->get_type(p1, frame, &type, &cnt);
-  printf("parameter(ret:%d): name:%s (type:%d count:%d) expect:(type:%d) "
-         "typesize:%ld\n",
-         ret, nm, type, cnt, T::E, sizeof(typename T::iovaluetype));
-  if (type != T::E)
-    return false;
+  printf(
+      "parameter(ret:%d): name:%s (type:%d count:%d) expect:(type:%d) "
+      "typesize:%ld\n",
+      ret, nm, type, cnt, T::E, sizeof(typename T::iovaluetype));
+  if (type != T::E) return false;
 
   typename T::iovaluetype v;
   ret = pif->get_value(p1, frame, &cnt, &v);
@@ -128,20 +129,20 @@ bool get_and_check<toonz_param_traits_string_t>(toonz::node_handle_t node,
                                                 const char *nm, double frame,
                                                 double opt) {
   auto nodeif = grab_interf<toonz::node_interface_t>(TOONZ_UUID_NODE);
-  auto pif = grab_interf<toonz::param_interface_t>(TOONZ_UUID_PARAM);
+  auto pif    = grab_interf<toonz::param_interface_t>(TOONZ_UUID_PARAM);
   toonz_param_handle_t p1;
   int ret;
   ret = nodeif->get_param(node, nm, &p1);
   printf("get_param(%s): ret:%d\n", nm, ret);
 
   int type = 0;
-  int cnt = 0;
-  ret = pif->get_type(p1, frame, &type, &cnt);
-  printf("parameter(ret:%d): name:%s (type:%d count:%d) expect:(type:%d) "
-         "typesize:-\n",
-         ret, nm, type, cnt, toonz_param_traits_string_t::E);
-  if (type != toonz_param_traits_string_t::E)
-    return false;
+  int cnt  = 0;
+  ret      = pif->get_type(p1, frame, &type, &cnt);
+  printf(
+      "parameter(ret:%d): name:%s (type:%d count:%d) expect:(type:%d) "
+      "typesize:-\n",
+      ret, nm, type, cnt, toonz_param_traits_string_t::E);
+  if (type != toonz_param_traits_string_t::E) return false;
 
   std::vector<toonz_param_traits_string_t::iovaluetype> v(cnt);
   ret = pif->get_value(p1, frame, &cnt, v.data());
@@ -157,19 +158,19 @@ bool get_and_check<toonz_param_traits_spectrum_t>(toonz::node_handle_t node,
                                                   const char *nm, double frame,
                                                   double opt) {
   auto nodeif = grab_interf<toonz::node_interface_t>(TOONZ_UUID_NODE);
-  auto pif = grab_interf<toonz::param_interface_t>(TOONZ_UUID_PARAM);
+  auto pif    = grab_interf<toonz::param_interface_t>(TOONZ_UUID_PARAM);
   toonz_param_handle_t p1;
   int ret;
   ret = nodeif->get_param(node, nm, &p1);
   printf("get_param(%s): ret:%d\n", nm, ret);
   int type = 0;
-  int cnt = 0;
-  ret = pif->get_type(p1, frame, &type, &cnt);
-  printf("parameter(ret:%d): name:%s (type:%d count:%d) expect:(type:%d) "
-         "typesize:-\n",
-         ret, nm, type, cnt, toonz_param_traits_spectrum_t::E);
-  if (type != toonz_param_traits_spectrum_t::E)
-    return false;
+  int cnt  = 0;
+  ret      = pif->get_type(p1, frame, &type, &cnt);
+  printf(
+      "parameter(ret:%d): name:%s (type:%d count:%d) expect:(type:%d) "
+      "typesize:-\n",
+      ret, nm, type, cnt, toonz_param_traits_spectrum_t::E);
+  if (type != toonz_param_traits_spectrum_t::E) return false;
 
   toonz_param_traits_spectrum_t::iovaluetype v;
   v.w = opt;
@@ -184,20 +185,19 @@ bool get_and_check<toonz_param_traits_tonecurve_t>(toonz::node_handle_t node,
                                                    const char *nm, double frame,
                                                    double opt) {
   auto nodeif = grab_interf<toonz::node_interface_t>(TOONZ_UUID_NODE);
-  auto pif = grab_interf<toonz::param_interface_t>(TOONZ_UUID_PARAM);
+  auto pif    = grab_interf<toonz::param_interface_t>(TOONZ_UUID_PARAM);
   toonz_param_handle_t p1;
   int ret;
   ret = nodeif->get_param(node, nm, &p1);
   printf("get_param(%s): ret:%d\n", nm, ret);
 
   int type = 0;
-  int cnt = 0;
-  ret = pif->get_type(p1, frame, &type, &cnt);
+  int cnt  = 0;
+  ret      = pif->get_type(p1, frame, &type, &cnt);
   printf(
       "parameter)(ret:%d): name:%s (type:%d count:%d) expect:(type:%d) sz:-\n",
       ret, nm, type, cnt, toonz_param_traits_tonecurve_t::E);
-  if (type != toonz_param_traits_tonecurve_t::E)
-    return false;
+  if (type != toonz_param_traits_tonecurve_t::E) return false;
 
   std::vector<toonz_param_traits_tonecurve_t::iovaluetype> v(cnt);
   ret = pif->get_value(p1, frame, &cnt, v.data());
@@ -217,8 +217,7 @@ void do_compute(toonz::node_handle_t node, const toonz::rendering_setting_t *rs,
     auto nodeif = grab_interf<toonz::node_interface_t>(TOONZ_UUID_NODE);
     if (nodeif) {
       int ret = nodeif->get_input_port(node, "IPort", &port);
-      if (ret)
-        printf("do_compute(): get_input_port: ret:%d\n", ret);
+      if (ret) printf("do_compute(): get_input_port: ret:%d\n", ret);
 
       // test
       get_and_check<toonz_param_traits_double_t>(node, "first", frame);
@@ -252,9 +251,9 @@ void do_compute(toonz::node_handle_t node, const toonz::rendering_setting_t *rs,
                shortage_buf.data(), sz, ret);
 
         ret = pif->get_string_value(notstr, &sz, l / 2 + 1,
-                                    shortage_buf.data()); // must be error
+                                    shortage_buf.data());  // must be error
         printf("get_string_value(not string): sz:%d ret:%d\n", sz,
-               ret); // size must be not changed
+               ret);  // size must be not changed
 
         pif->get_type(spec, frame, &t, &l);
         toonz_param_spectrum_t spc;
@@ -262,7 +261,7 @@ void do_compute(toonz::node_handle_t node, const toonz::rendering_setting_t *rs,
         printf("get_spectrum_value(spec): ret:%d\n", ret);
         dump_value(spc);
         ret = pif->get_spectrum_value(str, frame, 0, &spc);
-        printf("get_spectrum_value(str): ret:%d\n", ret); // must be error
+        printf("get_spectrum_value(str): ret:%d\n", ret);  // must be error
       }
     }
   }
@@ -286,8 +285,8 @@ void do_compute(toonz::node_handle_t node, const toonz::rendering_setting_t *rs,
       fxif->compute_to_tile(fx, rs, frame, &inRect, tile, result);
 
       /* evaluate the fx */
-      int x = rect.x0;
-      int y = rect.y0;
+      int x  = rect.x0;
+      int y  = rect.y0;
       int lx = rect.x1 - rect.x0;
       int ly = rect.y1 - rect.y0;
 
@@ -414,14 +413,14 @@ int do_get_bbox(toonz::node_handle_t node, const toonz::rendering_setting_t *rs,
 
         /* 画素単位の値を現在の座標系に合わせる */
         toonz::affine_t a = rs->affine;
-        double det = a.a11 * a.a22 - a.a12 * a.a21;
-        double scale = sqrt(fabs(det));
-        double blur = 1.0 / scale;
+        double det        = a.a11 * a.a22 - a.a12 * a.a21;
+        double scale      = sqrt(fabs(det));
+        double blur       = 1.0 / scale;
 
         ToonzRect r = conv2rect(*rect);
-        r = r.enlarge(blur, blur);
-        *rect = conv2rect(std::move(r));
-        modified = true;
+        r           = r.enlarge(blur, blur);
+        *rect       = conv2rect(std::move(r));
+        modified    = true;
       }
     }
   }
@@ -486,9 +485,9 @@ int node_setup(toonz::node_handle_t node) {
   if (setup) {
     int errcode = 0;
     void *entry = NULL;
-    int ret = setup->set_parameter_pages_with_error(
-        node, sizeof(pages_) / sizeof(toonz_param_page_t), pages_, &errcode,
-        &entry);
+    int ret     = setup->set_parameter_pages_with_error(
+            node, sizeof(pages_) / sizeof(toonz_param_page_t), pages_, &errcode,
+            &entry);
     if (ret) {
       printf("setup error:0x%x reason:0x%x entry:%p\n", ret, errcode, entry);
     }
@@ -531,15 +530,15 @@ void on_end_frame(toonz_node_handle_t node, const toonz_rendering_setting_t *rs,
 }
 
 toonz_nodal_rasterfx_handler_t_ toonz_plugin_node_handler = {
-    {1, 0},                 //	ver
-    do_compute,             //	do_compute
-    do_get_bbox,            //	do_get_bbox
-    can_handle,             //	can_handle
-    get_memory_requirement, //	get_memory_requirement
-    on_new_frame,           //	on_new_frame
-    on_end_frame,           //	on_end_frame
-    node_create,            //	create
-    node_destroy,           //	destroy
+    {1, 0},                  //	ver
+    do_compute,              //	do_compute
+    do_get_bbox,             //	do_get_bbox
+    can_handle,              //	can_handle
+    get_memory_requirement,  //	get_memory_requirement
+    on_new_frame,            //	on_new_frame
+    on_end_frame,            //	on_end_frame
+    node_create,             //	create
+    node_destroy,            //	destroy
     node_setup};
 
 extern "C" {

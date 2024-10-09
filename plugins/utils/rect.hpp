@@ -14,8 +14,10 @@ public:
   ToonzRect(double x0, double y0, double x1, double y1)
       : x0(x0), y0(y0), x1(x1), y1(y1) {}
   ToonzRect(const ToonzRect &toonzRect)
-      : x0(toonzRect.x0), y0(toonzRect.y0), x1(toonzRect.x1), y1(toonzRect.y1) {
-  }
+      : x0(toonzRect.x0)
+      , y0(toonzRect.y0)
+      , x1(toonzRect.x1)
+      , y1(toonzRect.y1) {}
 
   bool equals(double a, double b, double err = DBL_EPSILON) const {
     return fabs(a - b) < err;

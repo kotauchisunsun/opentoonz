@@ -8,19 +8,20 @@
 /* helper-types to define toonz_param_*_t's table */
 struct param_desc_t : public toonz_param_desc_t {
   param_desc_t(const char *k, const char *l, int ttag, const char *nt = "") {
-    base = {{1, 0} /* type version */, TOONZ_PARAM_DESC_TYPE_PARAM, l};
-    key = k;
-    note = nt;
-    reserved_[0] = NULL; // must be zero
+    base         = {{1, 0} /* type version */, TOONZ_PARAM_DESC_TYPE_PARAM, l};
+    key          = k;
+    note         = nt;
+    reserved_[0] = NULL;  // must be zero
     reserved_[1] = NULL;
-    traits_tag = ttag;
+    traits_tag   = ttag;
   }
 };
 
 template <typename T>
 void init_param_traits_union(toonz_param_desc_t &t, const T &p){};
 
-template <typename T> struct param_desc_holder_t {
+template <typename T>
+struct param_desc_holder_t {
   typedef T realtype;
   param_desc_t t;
   param_desc_holder_t(const char *key, const char *label, const T &p,

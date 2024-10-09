@@ -48,7 +48,7 @@ void do_compute(toonz::node_handle_t node, const toonz::rendering_setting_t *rs,
 
     ToonzAffine mat(rs->affine);
     ToonzAffine invmat = mat.inv();
-    ToonzPoint p = invmat * ToonzPoint(rect.x0, rect.y0);
+    ToonzPoint p       = invmat * ToonzPoint(rect.x0, rect.y0);
 
     int dstride = 0;
     tileif->get_raw_stride(tile, &dstride);
@@ -74,9 +74,8 @@ void do_compute(toonz::node_handle_t node, const toonz::rendering_setting_t *rs,
       for (int j = 0; j < lx; j++) {
         double r = std::sqrt(rx * rx + ry * ry);
         double k = 0;
-        if (r < 64)
-          k = 1;
-        uint8_t c = (uint8_t)(k * 255);
+        if (r < 64) k = 1;
+        uint8_t c  = (uint8_t)(k * 255);
         *(ptr + j) = 0xff000000 | (c << 16) | (c << 8) | c;
         /* hor advance */
         rx += invmat.a11;
@@ -114,14 +113,14 @@ int do_get_bbox(toonz::node_handle_t node, const toonz::rendering_setting_t *rs,
   /* more reasonable than above */
   ToonzRect r(-64, -64, 64, 64);
   ToonzRect bbox = ToonzAffine(rs->affine) * r;
-  rect->x0 = bbox.x0;
-  rect->y0 = bbox.y0;
-  rect->x1 = bbox.x1;
-  rect->y1 = bbox.y1;
+  rect->x0       = bbox.x0;
+  rect->y0       = bbox.y0;
+  rect->x1       = bbox.x1;
+  rect->y1       = bbox.y1;
   return modified;
 }
 
-const char *strtbl[] = {"tokyo", "osaka", "kobe"};
+const char *strtbl[]    = {"tokyo", "osaka", "kobe"};
 param_desc_t params0_[] = {
     param_desc_ctor<traits_int_t>(
         "p1st", "integer", {2 /* default */, -10 /* min */, 10 /* max */},
@@ -166,7 +165,7 @@ int node_setup_a(toonz::node_handle_t node) {
   printf("plugin A: setup(): node:%p\n", node);
   auto setup = grab_interf<toonz::setup_interface_t>(TOONZ_UUID_SETUP);
   if (setup) {
-    int errcode = 0;
+    int errcode    = 0;
     void *position = NULL;
     int err = setup->set_parameter_pages_with_error(node, 1, pages0_, &errcode,
                                                     &position);
@@ -181,7 +180,7 @@ int node_setup_b(toonz::node_handle_t node) {
   printf("plugin B: setup(): node:%p\n", node);
   auto setup = grab_interf<toonz::setup_interface_t>(TOONZ_UUID_SETUP);
   if (setup) {
-    int errcode = 0;
+    int errcode    = 0;
     void *position = NULL;
     int err = setup->set_parameter_pages_with_error(node, 1, pages1_, &errcode,
                                                     &position);
@@ -230,27 +229,27 @@ void on_end_frame(toonz_node_handle_t node, const toonz_rendering_setting_t *rs,
 }
 
 toonz_nodal_rasterfx_handler_t_ toonz_plugin_node_handler0 = {
-    TOONZ_IF_VER(1, 0),     //	type ver
-    do_compute,             //	do_compute
-    do_get_bbox,            //	do_get_bbox
-    can_handle,             //	can_handle
-    get_memory_requirement, //	get_memory_requirement
-    on_new_frame,           //	on_new_frame
-    on_end_frame,           //	on_end_frame
-    node_create,            //	create
-    node_destroy,           //	destroy
+    TOONZ_IF_VER(1, 0),      //	type ver
+    do_compute,              //	do_compute
+    do_get_bbox,             //	do_get_bbox
+    can_handle,              //	can_handle
+    get_memory_requirement,  //	get_memory_requirement
+    on_new_frame,            //	on_new_frame
+    on_end_frame,            //	on_end_frame
+    node_create,             //	create
+    node_destroy,            //	destroy
     node_setup_a};
 
 toonz_nodal_rasterfx_handler_t_ toonz_plugin_node_handler1 = {
-    TOONZ_IF_VER(1, 0),     //	type ver
-    do_compute,             //	do_compute
-    do_get_bbox,            //	do_get_bbox
-    can_handle,             //	can_handle
-    get_memory_requirement, //	get_memory_requirement
-    on_new_frame,           //	on_new_frame
-    on_end_frame,           //	on_end_frame
-    node_create,            //	create
-    node_destroy,           //	destroy
+    TOONZ_IF_VER(1, 0),      //	type ver
+    do_compute,              //	do_compute
+    do_get_bbox,             //	do_get_bbox
+    can_handle,              //	can_handle
+    get_memory_requirement,  //	get_memory_requirement
+    on_new_frame,            //	on_new_frame
+    on_end_frame,            //	on_end_frame
+    node_create,             //	create
+    node_destroy,            //	destroy
     node_setup_b};
 
 /**

@@ -38,7 +38,7 @@ void do_compute(toonz::node_handle_t node, const toonz::rendering_setting_t *rs,
   auto nodeif = grab_interf<toonz::node_interface_t>(TOONZ_UUID_NODE);
   if (nodeif) {
     void *param = NULL;
-    int r = nodeif->get_param(node, "p3rd", &param);
+    int r       = nodeif->get_param(node, "p3rd", &param);
     if (r == TOONZ_OK) {
       printf("do_compute: get param: p:%p\n", param);
       auto pif = grab_interf<toonz::param_interface_t>(TOONZ_UUID_PARAM);
@@ -67,7 +67,7 @@ void do_compute(toonz::node_handle_t node, const toonz::rendering_setting_t *rs,
 
     ToonzAffine mat(rs->affine);
     ToonzAffine invmat = mat.inv();
-    ToonzPoint p = invmat * ToonzPoint(rect.x0, rect.y0);
+    ToonzPoint p       = invmat * ToonzPoint(rect.x0, rect.y0);
 
     int dstride = 0;
     tileif->get_raw_stride(tile, &dstride);
@@ -93,9 +93,8 @@ void do_compute(toonz::node_handle_t node, const toonz::rendering_setting_t *rs,
       for (int j = 0; j < lx; j++) {
         double r = std::sqrt(rx * rx + ry * ry);
         double k = 0;
-        if (r < 64)
-          k = 1;
-        uint8_t c = (uint8_t)(k * 255);
+        if (r < 64) k = 1;
+        uint8_t c  = (uint8_t)(k * 255);
         *(ptr + j) = 0xff000000 | (c << 16) | (c << 8) | c;
         /* hor advance */
         rx += invmat.a11;
@@ -133,10 +132,10 @@ int do_get_bbox(toonz::node_handle_t node, const toonz::rendering_setting_t *rs,
   /* more reasonable than above */
   ToonzRect r(-64, -64, 64, 64);
   ToonzRect bbox = ToonzAffine(rs->affine) * r;
-  rect->x0 = bbox.x0;
-  rect->y0 = bbox.y0;
-  rect->x1 = bbox.x1;
-  rect->y1 = bbox.y1;
+  rect->x0       = bbox.x0;
+  rect->y0       = bbox.y0;
+  rect->x1       = bbox.x1;
+  rect->y1       = bbox.y1;
   return modified;
 }
 
@@ -243,15 +242,15 @@ void on_end_frame(toonz_node_handle_t node, const toonz_rendering_setting_t *rs,
 }
 
 toonz_nodal_rasterfx_handler_t_ toonz_plugin_node_handler = {
-    {1, 0},                 //	ver
-    do_compute,             //	do_compute
-    do_get_bbox,            //	do_get_bbox
-    can_handle,             //	can_handle
-    get_memory_requirement, //	get_memory_requirement
-    on_new_frame,           //	on_new_frame
-    on_end_frame,           //	on_end_frame
-    node_create,            //	create
-    node_destroy,           //	destroy
+    {1, 0},                  //	ver
+    do_compute,              //	do_compute
+    do_get_bbox,             //	do_get_bbox
+    can_handle,              //	can_handle
+    get_memory_requirement,  //	get_memory_requirement
+    on_new_frame,            //	on_new_frame
+    on_end_frame,            //	on_end_frame
+    node_create,             //	create
+    node_destroy,            //	destroy
     node_setup};
 
 extern "C" {
