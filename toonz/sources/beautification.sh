@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 pushd ../../
-git diff master --name-only | egrep \\.\(c\|cpp\|h\|hpp\)$ | xargs clang-format -style=file -i
+find . | egrep \\.\(c\|cpp\|h\|hpp\)$ | xargs clang-format -style=file -i
 popd
