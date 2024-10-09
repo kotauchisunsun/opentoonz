@@ -28,10 +28,10 @@ static const toonz_UUID toonz_uuid_tile__ = {0x882BD525, 0x937E, 0x427C, 0x9D68,
                                              0x4ECA651F6562};
 static const toonz_UUID toonz_uuid_fx_node__ = {0x26F9FC53, 0x632B, 0x422F,
                                                 0x87A0, 0x8A4547F55474};
-static const toonz_UUID toonz_uuid_param__ = {0x2E3E4A55, 0x8539, 0x4520,
-                                              0xA266, 0x15D32189EC4D};
-static const toonz_UUID toonz_uuid_setup__ = {0xcfde9107, 0xc59d, 0x414c,
-                                              0xae4a, 0x3d115ba97933};
+static const toonz_UUID toonz_uuid_param__   = {0x2E3E4A55, 0x8539, 0x4520,
+                                                0xA266, 0x15D32189EC4D};
+static const toonz_UUID toonz_uuid_setup__   = {0xcfde9107, 0xc59d, 0x414c,
+                                                0xae4a, 0x3d115ba97933};
 
 #define TOONZ_UUID_NODE (&toonz_uuid_node__)
 #define TOONZ_UUID_PORT (&toonz_uuid_port__)
@@ -291,7 +291,7 @@ typedef toonz_port_interface_t port_interface_t;
 typedef toonz_nodal_rasterfx_handler_t nodal_rasterfx_handler_t;
 typedef toonz_fxnode_interface_t fxnode_interface_t;
 typedef toonz_setup_interface_t setup_interface_t;
-}
+}  // namespace toonz
 #endif
 
 #endif

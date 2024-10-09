@@ -115,11 +115,11 @@ DoubleValueField::DoubleValueField(QWidget *parent,
   //----signal/slot connections
   bool ret = true;
   ret      = ret && connect(m_lineEdit, SIGNAL(valueChanged()),
-                       SLOT(onLineEditValueChanged()));
+                            SLOT(onLineEditValueChanged()));
   ret      = ret && connect(m_roller, SIGNAL(valueChanged(bool)),
-                       SLOT(onRollerValueChanged(bool)));
+                            SLOT(onRollerValueChanged(bool)));
   ret      = ret && connect(m_slider, SIGNAL(valueChanged(int)),
-                       SLOT(onSliderChanged(int)));
+                            SLOT(onSliderChanged(int)));
   ret      = ret &&
         connect(m_slider, SIGNAL(sliderReleased()), SLOT(onSliderReleased()));
   ret = ret && connect(m_lineEdit, SIGNAL(editingFinished()), this,
@@ -133,7 +133,7 @@ DoubleValueField::DoubleValueField(QWidget *parent,
   layout->addWidget(m_spaceWidget, 1, Qt::AlignLeft);
 
   setRange(-100.0, 100.0);
-  
+
   double value = getValue();
   m_roller->setValue(value);
   m_slider->setValue(value2pos(value));

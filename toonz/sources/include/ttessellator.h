@@ -31,7 +31,7 @@ public:
   virtual ~TTessellator() {}
 
   virtual void tessellate(const TColorFunction *cf, const bool antiAliasing,
-                          TRegionOutline &outline, TPixel32 color) = 0;
+                          TRegionOutline &outline, TPixel32 color)     = 0;
   virtual void tessellate(const TColorFunction *cf, const bool antiAliasing,
                           TRegionOutline &outline, TRaster32P texture) = 0;
 };

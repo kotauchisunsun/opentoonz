@@ -209,15 +209,15 @@ void RulerTool::updateToolOption() {
           if (ti) {
             TDimension size = ti->getSize();
             pix1            = TPoint(tround(0.5 * size.lx + p1.x),
-                          tround(0.5 * size.ly + p1.y));
-            pix2 = TPoint(tround(0.5 * size.lx + p2.x),
-                          tround(0.5 * size.ly + p2.y));
+                                     tround(0.5 * size.ly + p1.y));
+            pix2            = TPoint(tround(0.5 * size.lx + p2.x),
+                                     tround(0.5 * size.ly + p2.y));
           } else if (ri) {
             TDimension size = ri->getRaster()->getSize();
             pix1            = TPoint(tround(0.5 * size.lx + p1.x),
-                          tround(0.5 * size.ly + p1.y));
-            pix2 = TPoint(tround(0.5 * size.lx + p2.x),
-                          tround(0.5 * size.ly + p2.y));
+                                     tround(0.5 * size.ly + p1.y));
+            pix2            = TPoint(tround(0.5 * size.lx + p2.x),
+                                     tround(0.5 * size.ly + p2.y));
           }
           int xPix, yPix, wPix, hPix;
           TPointD dpi = sl->getDpi(getCurrentFid());
@@ -258,7 +258,7 @@ void RulerTool::updateToolOption() {
 
 //----------------------------------------------------------------------------------------------
 /*! 現在のマウス位置がRulerに十分近ければTrueを返す
-*/
+ */
 bool RulerTool::isNearRuler() {
   double a, b, c;
 

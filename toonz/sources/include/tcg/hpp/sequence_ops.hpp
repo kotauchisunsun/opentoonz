@@ -107,7 +107,7 @@ bool minimalPath(ranit_type begin, ranit_type end, edge_eval &eval,
 
   return true;
 }
-}
-}  // namespace tcg::sequence_ops
+}  // namespace sequence_ops
+}  // namespace tcg
 
 #endif  // TCG_SEQUENCE_OPS_HPP

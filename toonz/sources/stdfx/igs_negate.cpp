@@ -22,7 +22,7 @@ void change_multiplied_rgb(T *ima, T *alp, const int pix_size,
 template <class T>
 void change_template_(T *ima, const int hh, const int ww, const int ch,
                       const bool *sw /* each channels switch */
-                      ) {
+) {
   const int sz = hh * ww;
 
   if (igs::image::rgba::siz == ch) {
@@ -56,17 +56,17 @@ void change_template_(T *ima, const int hh, const int ww, const int ch,
     }
   }
 }
-}
+}  // namespace
 //------------------------------------------------------------
 #include <limits>
 #include "igs_negate.h"
 void igs::negate::change(unsigned char *image_array, const int height,
                          const int width, const int channels, const int bits,
                          const bool *sw_array /* each channel switch  */
-                         ) {
+) {
   if ((igs::image::rgba::siz != channels) &&
       (igs::image::rgb::siz != channels) && (1 != channels) /* bit(monoBW) */
-      ) {
+  ) {
     throw std::domain_error("Bad channels,Not rgba/rgb/grayscale");
   }
   if (std::numeric_limits<unsigned char>::digits == bits) {

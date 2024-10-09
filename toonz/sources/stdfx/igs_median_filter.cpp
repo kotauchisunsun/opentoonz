@@ -26,8 +26,8 @@ private:
   pixrender();
   igs::median_filter::out_of_image type_;
 };
-}
-}
+}  // namespace median_filter
+}  // namespace igs
 //------------------------------------------------------------
 igs::median_filter::pixrender::pixrender(
     const double radius, const igs::median_filter::out_of_image type)
@@ -174,7 +174,7 @@ T median_filter_(igs::median_filter::pixrender &pixr, const T *image,
   */
   return static_cast<T>(pixr.around.at(pixr.around.size() / 2));
 }
-}
+}  // namespace
 //------------------------------------------------------------
 namespace {
 double refchk_(const int src, const int tgt, const double refv) {
@@ -243,7 +243,7 @@ void convert_each_to_each_channel_template_(
   }
   pixr.clear();
 }
-}
+}  // namespace
 //------------------------------------------------------------
 #include "igs_median_filter.h"
 #include "igs_ifx_common.h" /* igs::image::rgba */
@@ -266,7 +266,7 @@ void igs::median_filter::convert(
     const double radius  // 0...
     ,
     const int out_side_type  // 0(Spread),1(Flip),2(bk),3(Repeat)
-    ) {
+) {
   /*--- 指定(zz)から、実際に処理すべき色チャンネル(z2)を得る ---*/
   int z2 = zz;
   if (igs::image::rgba::siz == channels) {

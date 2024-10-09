@@ -122,7 +122,7 @@ void doColorEmboss(TRasterPT<PIXEL> ras, TRasterPT<PIXEL> srcraster,
       else if ((NdotL = Nx * Lx + Ny * Ly + Nz * Lz) < 0)
         emboss = 0;
       else
-        emboss    = NdotL / sqrt(Nx * Nx + Ny * Ny + Nz2);
+        emboss = NdotL / sqrt(Nx * Nx + Ny * Ny + Nz2);
       val         = emboss * pix->r / PIXEL::maxChannelValue;
       (pixout)->r = (val < PIXEL::maxChannelValue)
                         ? (val > 0 ? (CHANNEL_TYPE)val : 0)

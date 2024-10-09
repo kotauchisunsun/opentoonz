@@ -79,14 +79,14 @@ void drawCross(const TPointD &p, double size) {
 //---------------------------------------------------------------------------
 
 /**
-   * Try to verify if it is possible to call
-   * some method of this stroke.
-   */
+ * Try to verify if it is possible to call
+ * some method of this stroke.
+ */
 bool isValid(const TStroke *s) {
   if (!s) return false;
   const int cpCount = s->getControlPointCount();
   int i;
-  for (i               = 0; i < cpCount; ++i) s->getControlPoint(i);
+  for (i = 0; i < cpCount; ++i) s->getControlPoint(i);
   const int chunkCount = s->getChunkCount();
   for (i = 0; i < chunkCount; ++i) s->getChunk(i);
   return true;
@@ -188,7 +188,7 @@ void showCorners(const TStroke *s, int cornerSize, double pixelSize) {
     extglDrawText(TPointD(pnt.x, pnt.y) - offset, oss.str());
   }
 }
-}
+}  // namespace
 
 //-----------------------------------------------------------------------------
 

@@ -77,10 +77,10 @@ typedef struct {
 
   uint8_t image_descriptor;
 /* bits 0,1,2,3 - attribute bits per pixel
-     * bit  4       - set if image is stored right-to-left
-     * bit  5       - set if image is stored top-to-bottom
-     * bits 6,7     - unused (must be set to zero)
-     */
+ * bit  4       - set if image is stored right-to-left
+ * bit  5       - set if image is stored top-to-bottom
+ * bits 6,7     - unused (must be set to zero)
+ */
 #define TGA_ATTRIB_BITS (uint8_t)(BIT(0) | BIT(1) | BIT(2) | BIT(3))
 #define TGA_R_TO_L_BIT (uint8_t) BIT(4)
 #define TGA_T_TO_B_BIT (uint8_t) BIT(5)
@@ -89,21 +89,21 @@ typedef struct {
 
   uint8_t *image_id;
   /* The length of this field is given in image_id_length, it's read raw
-*from the file so it's not not guaranteed to be zero-terminated.  If
-*it's not NULL, it needs to be deallocated.  see: tga_free_buffers()
-*/
+   *from the file so it's not not guaranteed to be zero-terminated.  If
+   *it's not NULL, it needs to be deallocated.  see: tga_free_buffers()
+   */
 
   uint8_t *color_map_data;
   /* See the "color map specification" fields above.  If not NULL, this
-*field needs to be deallocated.  see: tga_free_buffers()
-*/
+   *field needs to be deallocated.  see: tga_free_buffers()
+   */
 
   uint8_t *image_data;
   /* Follows image specification fields (see above) */
 
   /* Extension area and developer area are silently ignored.  The Targa 2.0
-*spec says we're not required to read or write them.
-*/
+   *spec says we're not required to read or write them.
+   */
 
 } tga_image;
 

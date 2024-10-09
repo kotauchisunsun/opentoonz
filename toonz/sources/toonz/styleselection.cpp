@@ -60,7 +60,7 @@ bool pasteStylesWithoutUndo(TPaletteP palette, int pageIndex,
   // cerco il punto di inserimento (primo stile selezionato oppure dopo l'ultimo
   // stile della pagina
   // se nulla e' selezionato)
-  int indexInPage                               = page->getStyleCount();
+  int indexInPage = page->getStyleCount();
   if (!styleIndicesInPage->empty()) indexInPage = *styleIndicesInPage->begin();
   // prendo i dati dalla clipboard
   const StyleData *data =

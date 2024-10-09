@@ -15,7 +15,7 @@ IGS_FOG_EXPORT bool have_change(
     const double power  // 1.00(-2.00 ... 2.00)
     ,
     const double threshold_min  // 0.00(0.00 ... 1.01)
-    );
+);
 IGS_FOG_EXPORT void convert(void *in, void *out, double *buffer
 
                             ,
@@ -42,8 +42,8 @@ IGS_FOG_EXPORT void convert(void *in, void *out, double *buffer
                             const double threshold_max = 0.0  // 0.00 ... 1.01
                             ,
                             const bool alpha_rendering_sw = false  // true,false
-                            );
-}
-}
+);
+}  // namespace fog
+}  // namespace igs
 
 #endif /* !igs_fog_h */

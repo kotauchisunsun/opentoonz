@@ -32,12 +32,12 @@ using namespace ToonzExt;
 namespace {
 
 /*
-   * Avoid to reduce curves with great zoom out.
-   * assert that pixelSize and factor > 0.0
-   */
+ * Avoid to reduce curves with great zoom out.
+ * assert that pixelSize and factor > 0.0
+ */
 double computeReductionFactor(double pixelSize, double factor) {
   assert(pixelSize > 0.0 && factor > 0.0);
-  if (factor <= 0.0) factor                          = 1.0;
+  if (factor <= 0.0) factor = 1.0;
   if (pixelSize <= 0.0 || pixelSize > 1.0) pixelSize = 1.0;
   return pixelSize * factor;
 }
@@ -195,7 +195,7 @@ bool areDifferent(const TStroke *ref1, const TStroke *ref2) {
 }
 
 //---------------------------------------------------------------------------
-}
+}  // namespace
 
 //-----------------------------------------------------------------------------
 
@@ -484,7 +484,7 @@ TStroke *StrokeDeformationImpl::deactivate_impl() {
   const int size = stroke2manipulate_->getControlPointCount();
   std::vector<TThickPoint> pnt(size);
   for (int i = 0; i < size; ++i)
-    pnt[i]   = stroke2manipulate_->getControlPoint(i);
+    pnt[i] = stroke2manipulate_->getControlPoint(i);
 
   std::vector<TStroke *>::iterator it =
       std::find(strokes_.begin(), strokes_.end(), stroke2manipulate_);

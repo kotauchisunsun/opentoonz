@@ -50,7 +50,9 @@ extern "C" {
 #endif
 
 #define NOT_LESS_THAN(A, B)
-typedef struct { UCHAR r, g, b, m; } LPIXEL;
+typedef struct {
+  UCHAR r, g, b, m;
+} LPIXEL;
 
 #define TMALLOC(A, C) A = malloc(C * sizeof(A[0]));
 #define TFREE(A) free(A);
@@ -198,32 +200,32 @@ typedef struct {
   char tga_is_compressed;
 
   /*
-* Microsoft Windows Bitmap (BMP and DIB)
-*
-*                         | compression | colorstyle | numcolors |
-* ---------------------------------------------------------------
-*       BLack & White     |      0      |     0      |     2     |
-* ----------------------------------------------------------------
-*    16 Grey Tones        |      0      |    GR8     |     16    |
-* ---------------------------------------------------------------
-*    16 Grey Tones Comp.  |      1      |    GR8     |     16    |
-* ---------------------------------------------------------------
-*   256 Grey Tones        |      0      |    GR8     |     256   |
-* ---------------------------------------------------------------
-*   256 Grey Tones Comp.  |      1      |    GR8     |     256   |
-* ---------------------------------------------------------------
-*    16 Color Mapped      |      0      |  CMAPPED   |     16    |
-* ---------------------------------------------------------------
-*    16 Color Mapped Comp.|      1      |  CMAPPED   |     16    |
-* ---------------------------------------------------------------
-*   256 Color Mapped      |      0      |  CMAPPED   |     256   |
-* ---------------------------------------------------------------
-*   256 Color Mapped Comp.|      1      |  CMAPPED   |     256   |
-* ---------------------------------------------------------------
-*       Full Color        |      0      |    RGB     |     0     |
-* ---------------------------------------------------------------
-*
-*/
+   * Microsoft Windows Bitmap (BMP and DIB)
+   *
+   *                         | compression | colorstyle | numcolors |
+   * ---------------------------------------------------------------
+   *       BLack & White     |      0      |     0      |     2     |
+   * ----------------------------------------------------------------
+   *    16 Grey Tones        |      0      |    GR8     |     16    |
+   * ---------------------------------------------------------------
+   *    16 Grey Tones Comp.  |      1      |    GR8     |     16    |
+   * ---------------------------------------------------------------
+   *   256 Grey Tones        |      0      |    GR8     |     256   |
+   * ---------------------------------------------------------------
+   *   256 Grey Tones Comp.  |      1      |    GR8     |     256   |
+   * ---------------------------------------------------------------
+   *    16 Color Mapped      |      0      |  CMAPPED   |     16    |
+   * ---------------------------------------------------------------
+   *    16 Color Mapped Comp.|      1      |  CMAPPED   |     16    |
+   * ---------------------------------------------------------------
+   *   256 Color Mapped      |      0      |  CMAPPED   |     256   |
+   * ---------------------------------------------------------------
+   *   256 Color Mapped Comp.|      1      |  CMAPPED   |     256   |
+   * ---------------------------------------------------------------
+   *       Full Color        |      0      |    RGB     |     0     |
+   * ---------------------------------------------------------------
+   *
+   */
   unsigned short bmp_compression;
   unsigned short bmp_colorstyle;
   unsigned short bmp_numcolors;
@@ -432,27 +434,23 @@ height = image->pixmap.ysize;
   TIFFSetField(tfp, TIFFTAG_COMPRESSION, tif_compression);
 
   /*
-* NOTARE CHE VA COMPLETATA LA PARTE RELAITVA AL SETTAGGIO DELLA RISOLUZIONE
-*
-*/
+   * NOTARE CHE VA COMPLETATA LA PARTE RELAITVA AL SETTAGGIO DELLA RISOLUZIONE
+   *
+   */
   TIFFSetField(tfp, TIFFTAG_RESOLUTIONUNIT, RESUNIT_INCH);
   TIFFSetField(tfp, TIFFTAG_XRESOLUTION, image->pixmap.x_dpi);
   TIFFSetField(tfp, TIFFTAG_YRESOLUTION, image->pixmap.y_dpi);
   switch (orientation) {
-    CASE ORIENTATION_BOTLEFT
-        : __OR ORIENTATION_BOTRIGHT
-          : __OR ORIENTATION_TOPLEFT
-            : __OR ORIENTATION_TOPRIGHT
-              : if (image->pixmap.x_dpi) TIFFSetField(
-                    tfp, TIFFTAG_XPOSITION,
-                    image->pixmap.h_pos / image->pixmap.x_dpi + 8.0);
-    CASE ORIENTATION_LEFTBOT
-        : __OR ORIENTATION_RIGHTBOT
-          : __OR ORIENTATION_LEFTTOP
-            : __OR ORIENTATION_RIGHTTOP
-              : if (image->pixmap.y_dpi) TIFFSetField(
-                    tfp, TIFFTAG_XPOSITION,
-                    image->pixmap.h_pos / image->pixmap.y_dpi + 8.0);
+    CASE ORIENTATION_BOTLEFT : __OR ORIENTATION_BOTRIGHT
+        : __OR ORIENTATION_TOPLEFT : __OR ORIENTATION_TOPRIGHT
+        : if (image->pixmap.x_dpi)
+              TIFFSetField(tfp, TIFFTAG_XPOSITION,
+                           image->pixmap.h_pos / image->pixmap.x_dpi + 8.0);
+    CASE ORIENTATION_LEFTBOT : __OR ORIENTATION_RIGHTBOT
+        : __OR ORIENTATION_LEFTTOP : __OR ORIENTATION_RIGHTTOP
+        : if (image->pixmap.y_dpi)
+              TIFFSetField(tfp, TIFFTAG_XPOSITION,
+                           image->pixmap.h_pos / image->pixmap.y_dpi + 8.0);
   }
   /*snprintf(str, sizeof(str), "TOONZ %s", versione_del_software);*/
   TIFFSetField(tfp, TIFFTAG_SOFTWARE, str);
@@ -497,9 +495,9 @@ else
   bytes_per_line = TIFFScanlineSize(tfp);
 
   /*
-* massima lunghezza di bytes in una strip e' 8k
-* vedi Graphics File Formats pag.48
-*/
+   * massima lunghezza di bytes in una strip e' 8k
+   * vedi Graphics File Formats pag.48
+   */
   if (planar_config == PLANARCONFIG_CONTIG)
     rows_per_strip = (8 * 1024) / bytes_per_line;
   else
@@ -934,8 +932,7 @@ for (x = 0; x < xsize; x++)
 
   switch (tzup_f.photometric) {
     CASE PHOTOMETRIC_MINISBLACK : __OR PHOTOMETRIC_MINISWHITE
-                                  : __OR PHOTOMETRIC_RGB
-                                    :;  // image->type = RGB;
+        : __OR PHOTOMETRIC_RGB:;  // image->type = RGB;
 
     CASE PHOTOMETRIC_PALETTE :
         /*
@@ -1047,9 +1044,9 @@ static int read_region_tzup_16(IMAGE *image, TIFF *tfp, char *filename,
 
   row = region->startScanRow;
   /*
-* Questa serie di scanline viene fatta perche' non viene
-* accettato un accesso random alle righe del file.
-*/
+   * Questa serie di scanline viene fatta perche' non viene
+   * accettato un accesso random alle righe del file.
+   */
   if (row > 0) {
     int c;
     c = (row / rowperstrip) * rowperstrip;
@@ -1080,7 +1077,7 @@ static int read_region_tzup_16(IMAGE *image, TIFF *tfp, char *filename,
         break;
       else
         nextRow = row + scale;
-      stepRow   = (nextRow / rowperstrip) * rowperstrip;
+      stepRow = (nextRow / rowperstrip) * rowperstrip;
       for (currRow = stepRow; currRow < nextRow; currRow++) {
         if (TIFFReadScanline(tfp, buf, currRow, 0) < 0) {
           // tmsg_error("bad image data in file %s at line %d", filename,
@@ -1116,9 +1113,9 @@ static int read_region_tzup_24(IMAGE *image, TIFF *tfp, char *filename,
 
   row = region->startScanRow;
   /*
-* Questa serie di scanline viene fatta perche' non viene
-* accettato un accesso random alle righe del file.
-*/
+   * Questa serie di scanline viene fatta perche' non viene
+   * accettato un accesso random alle righe del file.
+   */
   if (row > 0) {
     int c;
     c = (row / rowperstrip) * rowperstrip;
@@ -1149,7 +1146,7 @@ static int read_region_tzup_24(IMAGE *image, TIFF *tfp, char *filename,
         break;
       else
         nextRow = row + scale;
-      stepRow   = (nextRow / rowperstrip) * rowperstrip;
+      stepRow = (nextRow / rowperstrip) * rowperstrip;
       for (currRow = stepRow; currRow < nextRow; currRow++) {
         if (TIFFReadScanline(tfp, buf, currRow, 0) < 0) {
           // tmsg_error("bad image data in file %s at line %d", filename,
@@ -1189,9 +1186,9 @@ static int read_region_extra(IMAGE *image, TIFF *tfp, char *filename,
 
   row = region->startScanRow;
   /*
-* Questa serie di scanline viene fatta perche' non viene
-* accettato un accesso random alle righe del file.
-*/
+   * Questa serie di scanline viene fatta perche' non viene
+   * accettato un accesso random alle righe del file.
+   */
   if (row > 0) {
     int c;
     c = (row / rowperstrip) * rowperstrip;
@@ -1220,7 +1217,7 @@ static int read_region_extra(IMAGE *image, TIFF *tfp, char *filename,
         break;
       else
         nextRow = row + scale;
-      stepRow   = (nextRow / rowperstrip) * rowperstrip;
+      stepRow = (nextRow / rowperstrip) * rowperstrip;
       for (currRow = stepRow; currRow < nextRow; currRow++) {
         if (TIFFReadScanline(tfp, buf, currRow, 0) < 0) {
           // tmsg_error("bad extra data in file %s at line %d", filename,
@@ -1321,7 +1318,7 @@ goto bad;
 
   switch (tzup_f.photometric) {
     CASE PHOTOMETRIC_MINISBLACK : __OR PHOTOMETRIC_MINISWHITE
-                                  : __OR PHOTOMETRIC_RGB : image->type = RGB;
+        : __OR PHOTOMETRIC_RGB : image->type = RGB;
 
     CASE PHOTOMETRIC_PALETTE : if (tzup_f.bits_per_sample == 32) image->type =
         CMAPPED24;
@@ -1520,7 +1517,7 @@ tmsg_warning (str);
 
   switch (tzup_f.photometric) {
     CASE PHOTOMETRIC_MINISBLACK : __OR PHOTOMETRIC_MINISWHITE
-                                  : __OR PHOTOMETRIC_RGB : image->type = RGB;
+        : __OR PHOTOMETRIC_RGB : image->type = RGB;
 
     CASE PHOTOMETRIC_PALETTE : if (tzup_f.bits_per_sample == 32) image->type =
         CMAPPED24;
@@ -1727,13 +1724,13 @@ static void get_image_offsets_and_dimensions(TIFF *tfp, int xSBsize,
 
     *edu_file = FALSE;
   } else {
-    *x0                     = window[0];
-    *y0                     = window[1];
-    *xsize                  = window[2];
-    *ysize                  = window[3];
+    *x0    = window[0];
+    *y0    = window[1];
+    *xsize = window[2];
+    *ysize = window[3];
     if (*xsize == 0) *xsize = xSBsize + *x0;
     if (*ysize == 0) *ysize = ySBsize + *y0;
-    *extra_mask             = Read_with_extra ? window[4] : 0;
+    *extra_mask = Read_with_extra ? window[4] : 0;
 
     *edu_file = window[TOONZWINDOW_COUNT - 1] & 1;
   }
@@ -1741,16 +1738,12 @@ static void get_image_offsets_and_dimensions(TIFF *tfp, int xSBsize,
   if (!TIFFGetField(tfp, TIFFTAG_ORIENTATION, &orientation))
     orientation = ORIENTATION_TOPLEFT;
   switch (orientation) {
-    CASE ORIENTATION_BOTLEFT
-        : __OR ORIENTATION_BOTRIGHT
-          : __OR ORIENTATION_TOPLEFT
-            : __OR ORIENTATION_TOPRIGHT
-              : if (!TIFFGetField(tfp, TIFFTAG_XRESOLUTION, &dpi)) dpi = 0.0;
-    CASE ORIENTATION_LEFTBOT
-        : __OR ORIENTATION_RIGHTBOT
-          : __OR ORIENTATION_LEFTTOP
-            : __OR ORIENTATION_RIGHTTOP
-              : if (!TIFFGetField(tfp, TIFFTAG_YRESOLUTION, &dpi)) dpi = 0.0;
+    CASE ORIENTATION_BOTLEFT : __OR ORIENTATION_BOTRIGHT
+        : __OR ORIENTATION_TOPLEFT : __OR ORIENTATION_TOPRIGHT
+        : if (!TIFFGetField(tfp, TIFFTAG_XRESOLUTION, &dpi)) dpi = 0.0;
+    CASE ORIENTATION_LEFTBOT : __OR ORIENTATION_RIGHTBOT
+        : __OR ORIENTATION_LEFTTOP : __OR ORIENTATION_RIGHTTOP
+        : if (!TIFFGetField(tfp, TIFFTAG_YRESOLUTION, &dpi)) dpi = 0.0;
   }
   *h_pos = (xposition - 8.0) * dpi;
 }

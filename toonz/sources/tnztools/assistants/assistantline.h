@@ -3,15 +3,12 @@
 #ifndef ASSISTANTLINE_INCLUDED
 #define ASSISTANTLINE_INCLUDED
 
-
 // TnzTools includes
 #include <tools/assistant.h>
 #include <tools/assistants/guidelineline.h>
 
-
 // TnzCore includes
 #include <tgl.h>
-
 
 //*****************************************************************************************
 //    TAssistantLine definition
@@ -39,16 +36,13 @@ public:
 
   void updateTranslation() const override;
 
-  inline bool getRestrictA() const
-    { return data()[m_idRestricktA].getBool(); }
-  inline bool getRestrictB() const
-    { return data()[m_idRestricktB].getBool(); }
-  inline bool getParallel() const
-    { return data()[m_idParallel].getBool(); }
-  inline bool getGrid() const
-    { return data()[m_idGrid].getBool(); }
-  inline bool getPerspective() const
-    { return data()[m_idPerspective].getBool(); }
+  inline bool getRestrictA() const { return data()[m_idRestricktA].getBool(); }
+  inline bool getRestrictB() const { return data()[m_idRestricktB].getBool(); }
+  inline bool getParallel() const { return data()[m_idParallel].getBool(); }
+  inline bool getGrid() const { return data()[m_idGrid].getBool(); }
+  inline bool getPerspective() const {
+    return data()[m_idPerspective].getBool();
+  }
 
   void onDataChanged(const TVariant &value) override;
 
@@ -58,42 +52,23 @@ private:
 public:
   void onMovePoint(TAssistantPoint &point, const TPointD &position) override;
 
-  void getGuidelines(
-    const TPointD &position,
-    const TAffine &toTool,
-    const TPixelD &color,
-    TGuidelineList &outGuidelines ) const override;
+  void getGuidelines(const TPointD &position, const TAffine &toTool,
+                     const TPixelD &color,
+                     TGuidelineList &outGuidelines) const override;
 
-  static void drawRuler(
-    const TPointD &a,
-    const TPointD &b,
-    const TPointD &grid0,
-    const TPointD &grid1,
-    const TPointD *perspectiveBase,
-    double alpha );
+  static void drawRuler(const TPointD &a, const TPointD &b,
+                        const TPointD &grid0, const TPointD &grid1,
+                        const TPointD *perspectiveBase, double alpha);
 
-  static void drawLine(
-    const TAffine &matrix,
-    const TAffine &matrixInv,
-    double pixelSize,
-    const TPointD &a,
-    const TPointD &b,
-    bool restrictA,
-    bool restrictB,
-    double alpha );
+  static void drawLine(const TAffine &matrix, const TAffine &matrixInv,
+                       double pixelSize, const TPointD &a, const TPointD &b,
+                       bool restrictA, bool restrictB, double alpha);
 
-  static void drawGrid(
-    const TPointD &a,
-    const TPointD &b,
-    const TPointD &grid0,
-    const TPointD &grid1,
-    bool restrictA,
-    bool restrictB,
-    bool perspective,
-    double alpha );
+  static void drawGrid(const TPointD &a, const TPointD &b, const TPointD &grid0,
+                       const TPointD &grid1, bool restrictA, bool restrictB,
+                       bool perspective, double alpha);
 
   void draw(TToolViewer *viewer, bool enabled) const override;
 };
-
 
 #endif

@@ -68,8 +68,9 @@ class DVAPI MeshTexturizer {
 public:
   struct TextureData;
 
-  enum PremultMode     //! Premultiplication specifier for texture binding.
-  { NONPREMULTIPLIED,  //!< Texture is not premultiplied.
+  enum PremultMode  //! Premultiplication specifier for texture binding.
+  {
+    NONPREMULTIPLIED,  //!< Texture is not premultiplied.
     PREMULTIPLIED,     //!< Texture is premultiplied.
   };
 

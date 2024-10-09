@@ -54,7 +54,7 @@ void checkAndCorrectPremultipliedImage(TRaster32P ras) {
     }
   }
 }
-}
+}  // namespace
 #endif
 
 //=============================================================================
@@ -89,11 +89,11 @@ public:
       , m_osMask() {}
   virtual ~Imp() {}
 
-  virtual void startScene(const ToonzScene &scene, int r) = 0;
+  virtual void startScene(const ToonzScene &scene, int r)      = 0;
   virtual void addSoundtrack(const ToonzScene &scene, int frameOffset,
-                             int sceneFrameCount) = 0;
+                             int sceneFrameCount)              = 0;
   virtual bool addFrame(ToonzScene &scene, int r, bool isLast) = 0;
-  virtual void close() = 0;
+  virtual void close()                                         = 0;
 };
 
 //===================================================================
@@ -274,15 +274,15 @@ false,0);
     }
     long samplePerFrame = snd->getSampleRate() / m_fps;
     TSoundTrackP snd1   = snd->extract(
-        frameOffset * samplePerFrame,
-        (TINT32)((frameOffset + sceneFrameCount - 1) * samplePerFrame));
+          frameOffset * samplePerFrame,
+          (TINT32)((frameOffset + sceneFrameCount - 1) * samplePerFrame));
     if (!m_st) {
       m_st          = TSoundTrack::create(snd1->getFormat(), m_whiteSample);
       m_whiteSample = 0;
     }
     TINT32 fromSample = m_st->getSampleCount();
     TINT32 numSample  = std::max(TINT32(sceneFrameCount * samplePerFrame),
-                                snd1->getSampleCount());
+                                 snd1->getSampleCount());
     m_st = TSop::insertBlank(m_st, fromSample, numSample + m_whiteSample);
     m_st->copy(snd1, TINT32(fromSample + m_whiteSample));
     m_whiteSample = 0;
@@ -344,7 +344,7 @@ bool MovieGenerator::addScene(ToonzScene &scene, int r0, int r1) {
   TApp *app                 = TApp::instance();
   RasterMovieGenerator *imp = dynamic_cast<RasterMovieGenerator *>(m_imp.get());
   if (imp) imp->m_alphaEnabled = true;
-  m_imp->m_renderRange         = std::make_pair(r0, r1);
+  m_imp->m_renderRange = std::make_pair(r0, r1);
   m_imp->startScene(scene, r0);
   for (int r = r0; r <= r1; r++) {
     TColorStyle::m_currentFrame = r;

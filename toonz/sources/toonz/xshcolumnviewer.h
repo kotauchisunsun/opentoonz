@@ -50,7 +50,8 @@ class MotionPathMenu final : public QWidget {
   QPoint m_pos;
 
 public:
-  MotionPathMenu(QWidget *parent = 0, Qt::WindowFlags flags = Qt::WindowFlags());
+  MotionPathMenu(QWidget *parent       = 0,
+                 Qt::WindowFlags flags = Qt::WindowFlags());
   ~MotionPathMenu();
 
 protected:

@@ -70,7 +70,7 @@ inline void deleteTexturesContainer(
     const std::pair<int, TexturesContainer *> &pair) {
   delete pair.second;
 }
-}
+}  // namespace
 
 //***************************************************************************************
 //    DrawableTextureData implementation

@@ -27,8 +27,8 @@ void render(const double radius, const double smooth_outer_range,
             ,
             const std::vector<std::vector<double>> &tracks,
             const std::vector<double> &alpha_ref, std::vector<double> &result);
-}
-}
-}
+}  // namespace slrender
+}  // namespace maxmin
+}  // namespace igs
 
 #endif /* !igs_maxmin_slrender_h */

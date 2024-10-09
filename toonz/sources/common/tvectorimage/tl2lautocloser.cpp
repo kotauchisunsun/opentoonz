@@ -38,9 +38,10 @@ public:
   double elapsedSeconds() {
     LARGE_INTEGER curTime;
     QueryPerformanceCounter(&curTime);
-    LONGLONG microseconds = 1000000 * (curTime.QuadPart - m_startTime.QuadPart -
-                                       m_overhead.QuadPart) /
-                            m_freq.QuadPart;
+    LONGLONG microseconds =
+        1000000 *
+        (curTime.QuadPart - m_startTime.QuadPart - m_overhead.QuadPart) /
+        m_freq.QuadPart;
     return 0.000001 * (double)microseconds;
   }
 };
@@ -90,7 +91,7 @@ struct StrokePoint {
     if (c > 0)
       crvdir = crv * (1.0 / c);
     else
-      crvdir         = TPointD();
+      crvdir = TPointD();
     tgdir            = stroke->getSpeed(w);
     double tgdirNorm = norm(tgdir);
     if (tgdirNorm > 0.000001)
@@ -378,7 +379,7 @@ timer.start();
     double minDist2 = 0;
     int k           = -1;
 
-    int j0             = 0;
+    int j0 = 0;
     if (sameStroke) j0 = i + 1;
     for (int j = 0; j < nb; j++) {
       TPointD delta = psb->points[j].pos - psa->points[i].pos;

@@ -459,7 +459,7 @@ void StrokeSelection::removeEndpoints() {
     TStroke *s = m_vi->removeEndpoints(e, &offset);
     UndoVectorData undoStroke;
 
-    undoStroke.index   = e;
+    undoStroke.index     = e;
     undoStroke.oldStroke = s;
     undoStroke.offset    = offset;
 
@@ -591,8 +591,8 @@ void StrokeSelection::paste() {
 
   TVectorImageP tarImg = tool->touchImage();
   if (!tarImg) return;
-  TPaletteP palette       = tarImg->getPalette();
-  TPaletteP oldPalette    = new TPalette();
+  TPaletteP palette    = tarImg->getPalette();
+  TPaletteP oldPalette = new TPalette();
   if (palette) oldPalette = palette->clone();
   bool isPaste = pasteStrokesWithoutUndo(tarImg, m_indexes, m_sceneHandle);
   if (isPaste) {

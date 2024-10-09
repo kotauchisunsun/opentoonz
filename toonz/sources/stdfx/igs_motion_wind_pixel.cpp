@@ -67,7 +67,7 @@ void wind_rgb_(const double key, const double ratio, bool &sw, double &tgt) {
 void wind_a_(const double key /* alpha値 */
              ,
              const double ratio, const bool sw, double &tgt /* alpha値 */
-             ) {
+) {
   if ((tgt < key) || sw) {
     double val = tgt + (ratio * (key - tgt));
     if (tgt < val) { /* 元より明るいときのみ変化 */
@@ -110,27 +110,28 @@ void invert_pixel_(const int channels, double *pixel) {
     pixel[gre] = (1.0 - pixel[gre]) * pixel[alp];
     pixel[blu] = (1.0 - pixel[blu]) * pixel[alp];
   } else /* Alphaがないなら、ただ白黒反転 */
-      if (igs::image::rgb::siz == channels) {
-    using namespace igs::image::rgb;
-    pixel[red] = 1.0 - pixel[red];
-    pixel[gre] = 1.0 - pixel[gre];
-    pixel[blu] = 1.0 - pixel[blu];
-  } else {
-    for (int zz = 0; zz < channels; ++zz) {
-      pixel[zz] = 1.0 - pixel[zz];
+    if (igs::image::rgb::siz == channels) {
+      using namespace igs::image::rgb;
+      pixel[red] = 1.0 - pixel[red];
+      pixel[gre] = 1.0 - pixel[gre];
+      pixel[blu] = 1.0 - pixel[blu];
+    } else {
+      for (int zz = 0; zz < channels; ++zz) {
+        pixel[zz] = 1.0 - pixel[zz];
+      }
     }
-  }
 }
 void rgb_to_lightness_(const double re, const double gr, const double bl,
                        double &li) {
-  li = ((re < gr) ? ((gr < bl) ? bl : gr)
-                  : (((re < bl) ? bl : re) + ((gr < re) ? ((bl < gr) ? bl : gr)
-                                                        : ((bl < re) ? bl : re)))) /
+  li = ((re < gr)
+            ? ((gr < bl) ? bl : gr)
+            : (((re < bl) ? bl : re) +
+               ((gr < re) ? ((bl < gr) ? bl : gr) : ((bl < re) ? bl : re)))) /
        2.0;
 }
 double get_lightness_(const int channels, const double *pixel
                       // , const bool blow_dark_sw
-                      ) {
+) {
   double lightness;
 
   if (igs::image::rgba::siz == channels) {
@@ -146,7 +147,7 @@ double get_lightness_(const int channels, const double *pixel
   // if (blow_dark_sw) { lightness = 1.0 - lightness; }
   return lightness;
 }
-}
+}  // namespace
 //------------------------------------------------------------
 int igs::motion_wind::pixel::change(
     const bool key_reset_sw
@@ -167,7 +168,7 @@ int igs::motion_wind::pixel::change(
   /* 現位置の明るさを求める */
   const double crnt_lightness =
       get_lightness_(channels, pixel_tgt  // , this->blow_dark_sw_
-                     );
+      );
 
   /* スキャンラインの始点のではkey pixel値のreset */
   if (key_reset_sw) {

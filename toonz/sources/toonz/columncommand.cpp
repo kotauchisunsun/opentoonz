@@ -1503,7 +1503,7 @@ public:
     bool sound_changed = false;
     TTool *tool        = TApp::instance()->getCurrentTool()->getTool();
     TToolViewer *viewer = tool ? tool->getViewer() : nullptr;
-    bool viewer_changed   = false;
+    bool viewer_changed = false;
 
     int startCol =
         Preferences::instance()->isXsheetCameraColumnVisible() ? -1 : 0;
@@ -1516,8 +1516,8 @@ public:
       if (!column) continue;
       /*- Skip if target is in selected column mode and not selected -*/
       bool isSelected = selection && !selection->isEmpty()
-                      ? selection->isColumnSelected(i)
-                      : cc == i;
+                            ? selection->isColumnSelected(i)
+                            : cc == i;
       if (m_target == TARGET_SELECTED && !isSelected) continue;
 
       /*-

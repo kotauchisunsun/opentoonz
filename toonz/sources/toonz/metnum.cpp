@@ -227,7 +227,7 @@ int MetNum::Cholesky(int n, double **A) {
     A[j][j] = radq;
     for (i = j + 1; i < n; i++) {
       acc = A[i][j];
-      for (k  = 0; k < j; k++) acc -= A[i][k] * A[j][k];
+      for (k = 0; k < j; k++) acc -= A[i][k] * A[j][k];
       A[i][j] = acc / radq;
     }
   }

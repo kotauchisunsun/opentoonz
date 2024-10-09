@@ -258,15 +258,15 @@ static char *Tenv_browser_mode[] = {"show all files", "show significant only"};
 static char *Tenv_turn_mode[]    = {"ON", "OFF"};
 static char *Tenv_onion_img_mode[] = {"keep loaded", "load when needed",
                                       "disabled"};
-static char *Tenv_flash_viewer[] = {"Internal", "System"};
+static char *Tenv_flash_viewer[]   = {"Internal", "System"};
 static char *Tenv_work_res[] = {"pal",  "ntsc", "640",      "1K",      "1280",
                                 "1.5K", "1840", "1920",     "2K",      "2560",
                                 "3K",   "4K",   "cin_half", "cin_full"};
-static char *Tenv_camera_prev[] = {"Vertical_Fit(TV)", "Horiz_Fit(Film)"};
-static char *Tenv_fc_trasp[]    = {"white", "black"};
-static char *Tenv_ddr_connect[] = {"SCSI", "ETHERNET"};
-static char *Tenv_default_plt[] = {"32 inks + 128 paints",
-                                   "256 inks + 256 paints"};
+static char *Tenv_camera_prev[]    = {"Vertical_Fit(TV)", "Horiz_Fit(Film)"};
+static char *Tenv_fc_trasp[]       = {"white", "black"};
+static char *Tenv_ddr_connect[]    = {"SCSI", "ETHERNET"};
+static char *Tenv_default_plt[]    = {"32 inks + 128 paints",
+                                      "256 inks + 256 paints"};
 static char *Tenv_scanner_dpi[]    = {"LOW", "MEDIUM", "HIGH"};
 static char *Tenv_scanner_tone[]   = {"B&W", "GREYTONES", "RGB"};
 static char *Tenv_scanner_driver[] = {"INTERNAL"
@@ -287,55 +287,55 @@ static char *Tenv_colorstyle[]    = {"gray scale", "full color"};
 static char *Tenv_tga_subtypes[] = {"gray scale", "color mapped", "full color"};
 static char *Tenv_bmp_subtypes[] = {"black and white", "gray scale",
                                     "color mapped", "full color"};
-static char *Tenv_orientation[] = {"RIGHT BOTTOM", "RIGHT TOP",  "LEFT BOTTOM",
-                                   "LEFT TOP",     "TOP RIGHT",  "TOP LEFT",
-                                   "BOTTOM RIGHT", "BOTTOM LEFT"};
-static char *Tenv_rgb_bpp[] = {"8 (gray scale)", "24 (RGB)", "32 (RGBM)",
-                               "48 (RGB)", "64 (RGBM)"};
-static char *Tenv_mm_rgb_bpp[] = {"32 (RGBM)", "64 (RGBM)"};
-static char *Tenv_tga_bpp[]    = {"8 (gray scale)",
-                               "8 (fast cmapped-16)",
-                               "8 (fast cmapped-24)",
-                               "8 (fast cmapped-32)",
-                               "8 (smart cmapped-16)",
-                               "8 (smart cmapped-24)",
-                               "8 (smart cmapped-32)",
-                               "16 (RGB)",
-                               "24 (RGB)",
-                               "32 (RGBM)"};
+static char *Tenv_orientation[]  = {"RIGHT BOTTOM", "RIGHT TOP",  "LEFT BOTTOM",
+                                    "LEFT TOP",     "TOP RIGHT",  "TOP LEFT",
+                                    "BOTTOM RIGHT", "BOTTOM LEFT"};
+static char *Tenv_rgb_bpp[]      = {"8 (gray scale)", "24 (RGB)", "32 (RGBM)",
+                                    "48 (RGB)", "64 (RGBM)"};
+static char *Tenv_mm_rgb_bpp[]   = {"32 (RGBM)", "64 (RGBM)"};
+static char *Tenv_tga_bpp[]      = {"8 (gray scale)",
+                                    "8 (fast cmapped-16)",
+                                    "8 (fast cmapped-24)",
+                                    "8 (fast cmapped-32)",
+                                    "8 (smart cmapped-16)",
+                                    "8 (smart cmapped-24)",
+                                    "8 (smart cmapped-32)",
+                                    "16 (RGB)",
+                                    "24 (RGB)",
+                                    "32 (RGBM)"};
 static char *Tenv_mm_tga_bpp[] = {"8 (fast cmapped-32)", "8 (smart cmapped-32)",
                                   "32 (RGBM)"};
 static char *Tenv_tga_bpp_bgt[] = {
     "8 (gray scale)", "8 (cmapped-16)", "8 (cmapped-24)", "8 (cmapped-32)",
     "16 (RGB)",       "24 (RGB)",       "32 (RGBM)"};
-static char *Tenv_bmp_bpp[] = {"1 (black and white)", "4 (gray scale)",
-                               "8 (gray scale)",      "8 (fast cmapped)",
-                               "8 (smart cmapped)",   "24 (RGB)"};
-static char *Tenv_bmp_bpp_bgt[] = {"1 (black and white)", "4 (gray scale)",
-                                   "8 (gray scale)", "8 (cmapped)", "24 (RGB)"};
-static char *Tenv_jpg_bpp[]      = {"8 (gray scale)", "24 (RGB)"};
-static char *Tenv_tif_compress[] = {"NONE", "CCITTFAX3", "CCITTFAX4",
-                                    "PACKBITS", "LZW"};
+static char *Tenv_bmp_bpp[]         = {"1 (black and white)", "4 (gray scale)",
+                                       "8 (gray scale)",      "8 (fast cmapped)",
+                                       "8 (smart cmapped)",   "24 (RGB)"};
+static char *Tenv_bmp_bpp_bgt[]     = {"1 (black and white)", "4 (gray scale)",
+                                       "8 (gray scale)", "8 (cmapped)", "24 (RGB)"};
+static char *Tenv_jpg_bpp[]         = {"8 (gray scale)", "24 (RGB)"};
+static char *Tenv_tif_compress[]    = {"NONE", "CCITTFAX3", "CCITTFAX4",
+                                       "PACKBITS", "LZW"};
 static char *Tenv_mm_tif_compress[] = {"NONE", "PACKBITS", "LZW"};
 static char *Tenv_tif_bpp[]         = {"1 (black and white)",
-                               "1 (white and black)",
-                               "8 (gray scale)",
-                               "8 (fast cmapped)",
-                               "8 (smart cmapped)",
-                               "24 (RGB)",
-                               "32 (RGBM)",
-                               "48 (RGB)",
-                               "64 (RGBM)"};
-static char *Tenv_mm_tif_bpp[]  = {"32 (RGBM)", "64 (RGBM)"};
-static char *Tenv_tif_bpp_bgt[] = {"1 (black and white)",
-                                   "1 (white and black)",
-                                   "8 (gray scale)",
-                                   "8 (cmapped)",
-                                   "24 (RGB)",
-                                   "32 (RGBM)",
-                                   "48 (RGB)",
-                                   "64 (RGBM)"};
-static char *Tenv_screen_buf[]  = {"singlebuffer", "doublebuffer"};
+                                       "1 (white and black)",
+                                       "8 (gray scale)",
+                                       "8 (fast cmapped)",
+                                       "8 (smart cmapped)",
+                                       "24 (RGB)",
+                                       "32 (RGBM)",
+                                       "48 (RGB)",
+                                       "64 (RGBM)"};
+static char *Tenv_mm_tif_bpp[]      = {"32 (RGBM)", "64 (RGBM)"};
+static char *Tenv_tif_bpp_bgt[]     = {"1 (black and white)",
+                                       "1 (white and black)",
+                                       "8 (gray scale)",
+                                       "8 (cmapped)",
+                                       "24 (RGB)",
+                                       "32 (RGBM)",
+                                       "48 (RGB)",
+                                       "64 (RGBM)"};
+static char *Tenv_screen_buf[]      = {"singlebuffer", "doublebuffer"};
 static char *Tenv_loading_pol[] = {"whole level", "first only", "one every 10",
                                    "one every 4", "one every 2"};
 static char *Tenv_unit_system[] = {"inches/degrees", "pulses", "cm/degrees",
@@ -360,8 +360,8 @@ static char *Tenv_xsh_level_names[]    = {"repeat at marks", "first cell only"};
 static char *Tenv_xsh_cuts_and_holds[] = {"yes", "no"};
 static char *Tenv_subpix_move[]        = {"all", "none", "only_rgb"};
 static char *Tenv_bpc_prec[]           = {"32 bit", "64 bit"};
-static char *Tenv_resample_t[] = {"standard_quality", "improved_quality",
-                                  "high_quality"};
+static char *Tenv_resample_t[]  = {"standard_quality", "improved_quality",
+                                   "high_quality"};
 static char *Tenv_ident_img_h[] = {"link_to_previous",
                                    "do_not_link_to_previous"};
 static char *Tenv_cosmo_compr[] = {/*"BLACK&WHITE", "GREYTONES",

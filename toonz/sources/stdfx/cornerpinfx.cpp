@@ -14,7 +14,7 @@
 
 namespace {
 inline bool myIsEmpty(const TRectD &r) { return r.x0 >= r.x1 || r.y0 >= r.y1; }
-}
+}  // namespace
 
 //==============================================================================
 
@@ -381,9 +381,9 @@ void CornerPinFx::doDryCompute(TRectD &rect, double frame,
 
   if (!m_texture.isConnected()) return;
 
-  bool isSwatch                = ri2.m_isSwatch;
+  bool isSwatch = ri2.m_isSwatch;
   if (isSwatch) ri2.m_isSwatch = false;
-  PaletteFilterData->m_keep    = !(m_keep->getValue() == 1);
+  PaletteFilterData->m_keep = !(m_keep->getValue() == 1);
 
   // Second child compute: part of output that IS to be texturized
   m_input->dryCompute(rect, frame, ri2);
@@ -444,9 +444,9 @@ void CornerPinFx::doCompute(TTile &tile, double frame,
   // genero il tile il cui raster contiene l'immagine in input a cui sono stati
   // tolti i pixel
   // colorati con indici diversi da quelli contenuti nel vettore items
-  bool isSwatch                = ri2.m_isSwatch;
+  bool isSwatch = ri2.m_isSwatch;
   if (isSwatch) ri2.m_isSwatch = false;
-  PaletteFilterData->m_keep    = !(m_keep->getValue() == 1);
+  PaletteFilterData->m_keep = !(m_keep->getValue() == 1);
   m_input->compute(tile, frame, ri2);
   if (isSwatch) ri2.m_isSwatch = true;
 

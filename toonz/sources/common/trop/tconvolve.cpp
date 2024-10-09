@@ -39,10 +39,9 @@ void doConvolve_row_9_i(PIXOUT *pixout, int n, PIXIN *pixarr[], long w[]) {
   p8 = pixarr[7];
   p9 = pixarr[8];
 
-  int rightShift = 16 +
-                   ((int)sizeof(typename PIXIN::Channel) -
-                    (int)sizeof(typename PIXOUT::Channel)) *
-                       8;
+  int rightShift = 16 + ((int)sizeof(typename PIXIN::Channel) -
+                         (int)sizeof(typename PIXOUT::Channel)) *
+                            8;
 
   while (n-- > 0) {
     pixout->r = (typename PIXOUT::Channel)(
@@ -158,10 +157,9 @@ void doConvolve_row_i(PIXOUT *pixout, int n, PIXIN *pixarr[], long w[],
   long ar, ag, ab, am;
   int i;
 
-  int rightShift = 16 +
-                   ((int)sizeof(typename PIXIN::Channel) -
-                    (int)sizeof(typename PIXOUT::Channel)) *
-                       8;
+  int rightShift = 16 + ((int)sizeof(typename PIXIN::Channel) -
+                         (int)sizeof(typename PIXOUT::Channel)) *
+                            8;
 
   while (n-- > 0) {
     ar = ag = ab = am = 0;
@@ -392,7 +390,7 @@ void doConvolve_cm32_3_i(TRasterPT<PIXOUT> rout, TRasterCM32P rin,
 
   int colorCount = palette->getStyleCount();
   colorCount     = std::max(
-      {colorCount, TPixelCM32::getMaxInk(), TPixelCM32::getMaxPaint()});
+          {colorCount, TPixelCM32::getMaxInk(), TPixelCM32::getMaxPaint()});
 
   std::vector<TPixel32> paints(colorCount);
   std::vector<TPixel32> inks(colorCount);
@@ -402,7 +400,7 @@ void doConvolve_cm32_3_i(TRasterPT<PIXOUT> rout, TRasterCM32P rin,
   TPixelCM32 *bufferin = rin->pixels();
   PIXOUT *bufferout    = rout->pixels();
 
-  for (int i  = 0; i < palette->getStyleCount(); i++)
+  for (int i = 0; i < palette->getStyleCount(); i++)
     paints[i] = inks[i] = palette->getStyle(i)->getAverageColor();
 
   for (y = y1; y <= y2; y++) {
@@ -473,7 +471,7 @@ void doConvolve_cm32_i(TRasterPT<PIXOUT> rout, TRasterCM32P rin,
 
   int colorCount = palette->getStyleCount();
   colorCount     = std::max(
-      {colorCount, TPixelCM32::getMaxInk(), TPixelCM32::getMaxPaint()});
+          {colorCount, TPixelCM32::getMaxInk(), TPixelCM32::getMaxPaint()});
 
   std::vector<TPixel32> paints(colorCount);
   std::vector<TPixel32> inks(colorCount);
@@ -483,7 +481,7 @@ void doConvolve_cm32_i(TRasterPT<PIXOUT> rout, TRasterCM32P rin,
   TPixelCM32 *bufferin = rin->pixels();
   PIXOUT *bufferout    = rout->pixels();
 
-  for (int i  = 0; i < palette->getStyleCount(); i++)
+  for (int i = 0; i < palette->getStyleCount(); i++)
     paints[i] = inks[i] = palette->getStyle(i)->getAverageColor();
 
   for (y = y1; y <= y2; y++) {

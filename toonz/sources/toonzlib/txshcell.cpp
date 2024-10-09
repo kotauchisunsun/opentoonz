@@ -7,9 +7,10 @@
 
 TImageP TXshCell::getImage(bool toBeModified, int subsampling) const {
   if (TXshSimpleLevel *sl = getSimpleLevel())
-    return sl->getFrame(m_frameId, toBeModified ? ImageManager::toBeModified
-                                                : ImageManager::none,
-                        subsampling);
+    return sl->getFrame(
+        m_frameId,
+        toBeModified ? ImageManager::toBeModified : ImageManager::none,
+        subsampling);
 
   return TImageP();
 }

@@ -237,7 +237,9 @@ struct buildResources_locals {
     const MergeData *mdt,
         *mdEnd = mergeTable + boost::size(mergeTable) - 1;  // Last item is fake
 
-    mdt = std::find_if(mergeTable, mdEnd, [&rt](const MergeData& mergeData){ return exactMatch(mergeData, rt->first.first.m_relFp); });
+    mdt = std::find_if(mergeTable, mdEnd, [&rt](const MergeData &mergeData) {
+      return exactMatch(mergeData, rt->first.first.m_relFp);
+    });
 
     if (mdt != mdEnd) {
       // Lookup every possible resource component to merge
@@ -301,8 +303,10 @@ void buildResources(std::vector<Resource> &resources, const TFilePath &rootPath,
 
       const FormatData *fdt,
           *fdEnd = l_formatDatas + boost::size(l_formatDatas);
-      fdt        = std::find_if(
-          l_formatDatas, fdEnd, [&relPath](const FormatData &formatData){ return exactMatch(formatData, relPath); });
+      fdt        = std::find_if(l_formatDatas, fdEnd,
+                                [&relPath](const FormatData &formatData) {
+                           return exactMatch(formatData, relPath);
+                         });
 
       if (fdt != fdEnd) {
         relPath       = fdt->m_resourcePathFunc(relPath);
@@ -359,7 +363,7 @@ struct import_Locals {
         m_scene.getImportedLevelPath(path.absoluteResourcePath())
             .getParentDir()            // E.g. +drawings/
         + path.m_rootFp.getWideName()  // Root dir name
-        );
+    );
   }
 
   static void copy(const TFilePath &srcDir, const TFilePath &dstDir,
@@ -396,8 +400,11 @@ struct import_Locals {
       }
 
       // Perform resource copy
-      std::for_each(rsrc.m_components.begin(), rsrc.m_components.end(),
-                    [&srcDir, &dstDir, &overwrite](const Resource::Component &comp){ copy(srcDir, dstDir, comp, overwrite); });
+      std::for_each(
+          rsrc.m_components.begin(), rsrc.m_components.end(),
+          [&srcDir, &dstDir, &overwrite](const Resource::Component &comp) {
+            copy(srcDir, dstDir, comp, overwrite);
+          });
     } catch (const TException &e) {
       DVGui::error(QString::fromStdWString(e.getMessage()));
     } catch (...) {
@@ -486,7 +493,9 @@ QString OverwriteDialog::acceptResolution(void *obj_, int resolution,
 
     static bool existsResource(const TFilePath &dstDir, const Resource &rsrc) {
       return std::any_of(rsrc.m_components.begin(), rsrc.m_components.end(),
-                         [&dstDir](const Resource::Component &comp){ return existsComponent(dstDir, comp); });
+                         [&dstDir](const Resource::Component &comp) {
+                           return existsComponent(dstDir, comp);
+                         });
     }
   };  // locals
 
@@ -539,9 +548,10 @@ int IoCmd::loadResourceFolders(LoadResourceArguments &args,
   // Deal with import decision
   bool import = false;
   {
-    if (std::any_of(
-            args.resourceDatas.begin(), args.resourceDatas.end(),
-            [scene](const LRArgs::ResourceData &rd){ return locals::isExternPath(*scene, rd); })) {
+    if (std::any_of(args.resourceDatas.begin(), args.resourceDatas.end(),
+                    [scene](const LRArgs::ResourceData &rd) {
+                      return locals::isExternPath(*scene, rd);
+                    })) {
       // Ask for data import in this case
       int resolutionButton = DVGui::MsgBox(
           QObject::tr("Selected folders don't belong to the current project.\n"
@@ -565,7 +575,9 @@ int IoCmd::loadResourceFolders(LoadResourceArguments &args,
   std::vector<Resource> resources;
 
   boost::for_each(args.resourceDatas,
-    [&resources](const LRArgs::ResourceData &resourceData){ buildResources(resources, resourceData.m_path, TFilePath()); });
+                  [&resources](const LRArgs::ResourceData &resourceData) {
+                    buildResources(resources, resourceData.m_path, TFilePath());
+                  });
 
   // Import them if required
   if (import) ::import(*scene, resources, *sb);

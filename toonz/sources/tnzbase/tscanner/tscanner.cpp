@@ -264,16 +264,16 @@ void TScannerParameters::loadData(TIStream &is) {
   std::string tagName;
   while (is.matchTag(tagName)) {
     if (tagName == "dpi") {
-      std::string s                  = is.getTagAttribute("value");
+      std::string s = is.getTagAttribute("value");
       if (isDouble(s)) m_dpi.m_value = std::stof(s);
     } else if (tagName == "brightness") {
-      std::string s                         = is.getTagAttribute("value");
+      std::string s = is.getTagAttribute("value");
       if (isDouble(s)) m_brightness.m_value = std::stof(s);
     } else if (tagName == "threshold") {
-      std::string s                        = is.getTagAttribute("value");
+      std::string s = is.getTagAttribute("value");
       if (isDouble(s)) m_threshold.m_value = std::stof(s);
     } else if (tagName == "contrast") {
-      std::string s                       = is.getTagAttribute("value");
+      std::string s = is.getTagAttribute("value");
       if (isDouble(s)) m_contrast.m_value = std::stof(s);
     } else if (tagName == "autoFeeder") {
       m_paperFeeder.m_value = 1.0;
@@ -305,7 +305,7 @@ void TScannerParameters::loadData(TIStream &is) {
 namespace {
 TScanner *instanceTwain = 0;
 TScanner *instanceEpson = 0;
-}
+}  // namespace
 
 //-------------------------------------------------------------------
 
@@ -319,13 +319,13 @@ public:
   bool m_activated;
   Cleaner() : m_activated(false) {}
   ~Cleaner() {
-    TScanner *scannerToDestroy        = 0;
+    TScanner *scannerToDestroy = 0;
     if (m_activated) scannerToDestroy = TScanner::instance();
     delete scannerToDestroy;
   }
 };
 Cleaner MyCleaner;
-};
+};  // namespace
 
 //-------------------------------------------------------------------
 

@@ -28,7 +28,7 @@ void gauss_distribution_1d_(double *sequence,
                             ,
                             const int int_radius, const double real_radius,
                             const double sigma /* = 0.25 : 適当な値... */
-                            ) {
+) {
   /* メモリクリア */
   for (int ii = 0; ii < int_diameter; ++ii) {
     sequence[ii] = 0.0;
@@ -67,4 +67,4 @@ void gauss_distribution_1d_(double *sequence,
     sequence[ii] /= dd;
   }
 }
-}
+}  // namespace

@@ -68,7 +68,7 @@ const char *TnzLibMainProcName = "TLibMain";
 #if !defined(_WIN32)
 const char *TnzLibMainProcName2 = "_TLibMain";
 #endif
-}
+}  // namespace
 
 //=============================================================================
 

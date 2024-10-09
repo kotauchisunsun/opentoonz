@@ -418,7 +418,7 @@ void HookTool::leftButtonDown(const TPointD &pos, const TMouseEvent &e) {
   m_buttonDown = true;
   m_snapped    = false;
 
-  TXshLevel *xl                          = app->getCurrentLevel()->getLevel();
+  TXshLevel *xl = app->getCurrentLevel()->getLevel();
   if (xl && xl->getSimpleLevel()) m_undo = new HookUndo(xl->getSimpleLevel());
   m_selection.setLevel(xl);
   m_firstPos = m_lastPos = pos;
@@ -541,7 +541,7 @@ void HookTool::leftButtonDrag(const TPointD &pp, const TMouseEvent &e) {
       pos.y = m_firstPos.y;
     else
       pos.x = m_firstPos.x;
-    delta   = pos - m_lastPos;
+    delta = pos - m_lastPos;
   } else if (count == 1 && isSnappedActive() && !draggingPivot) {
     // snappa
     TPointD oldHookPos = hookPos;

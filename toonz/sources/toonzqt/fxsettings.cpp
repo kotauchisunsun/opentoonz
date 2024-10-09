@@ -846,7 +846,7 @@ void ParamsPageSet::addParamsPage(ParamsPage *page, const char *name) {
   /*-- このFxで最大サイズのページに合わせてダイアログをリサイズ --*/
   QSize pagePreferredSize = page->getPreferredSize();
   m_preferredSize         = m_preferredSize.expandedTo(
-      pagePreferredSize + QSize(m_tabBarContainer->height() + 2,
+              pagePreferredSize + QSize(m_tabBarContainer->height() + 2,
                                         2)); /*-- 2は上下左右のマージン --*/
 
   QScrollArea *pane = new QScrollArea(this);
@@ -950,7 +950,7 @@ void ParamsPageSet::createPage(TIStream &is, const TFxP &fx, int index) {
   /*-- このFxで最大サイズのページに合わせてダイアログをリサイズ --*/
   QSize pagePreferredSize = paramsPage->getPreferredSize();
   m_preferredSize         = m_preferredSize.expandedTo(
-      pagePreferredSize + QSize(m_tabBarContainer->height() + 2,
+              pagePreferredSize + QSize(m_tabBarContainer->height() + 2,
                                         2)); /*-- 2は上下左右のマージン --*/
 
   QScrollArea *scrollAreaPage = new QScrollArea(this);

@@ -955,7 +955,7 @@ void create_calc(const TRasterPT<T> &rin, int min_pix_ref_u, int max_pix_ref_u,
   calc_bytewrap   = p_calc_bytewrap;
   calc_bytesize   = calc_bytewrap * lv;  // lv * ceil(lu/8)
   if (calc_bytesize > p_calc_allocsize) {
-    if (p_calc_allocsize) delete[] (p_calc);
+    if (p_calc_allocsize) delete[](p_calc);
     // TMALLOC (*p_calc, calc_bytesize)
     p_calc = new UCHAR[calc_bytesize];
     assert(p_calc);
@@ -3841,7 +3841,7 @@ void resample_main_cm32_rgbm_bigradius(
 
   int colorCount = palette->getStyleCount();
   colorCount     = std::max(
-      {colorCount, TPixelCM32::getMaxInk(), TPixelCM32::getMaxPaint()});
+          {colorCount, TPixelCM32::getMaxInk(), TPixelCM32::getMaxPaint()});
 
   std::vector<TPixel32> paints(colorCount);
   std::vector<TPixel32> inks(colorCount);
@@ -4126,7 +4126,7 @@ void resample_main_cm32_rgbm(TRasterPT<T> rout, const TRasterCM32P &rin,
 
   int colorCount = palette->getStyleCount();
   colorCount     = std::max(
-      {colorCount, TPixelCM32::getMaxInk(), TPixelCM32::getMaxPaint()});
+          {colorCount, TPixelCM32::getMaxInk(), TPixelCM32::getMaxPaint()});
 
   std::vector<TPixel32> paints(colorCount);
   std::vector<TPixel32> inks(colorCount);
@@ -4395,7 +4395,7 @@ resample_main_rgbm_bigradius<T>( rout, rin,
 
   int colorCount = palette->getStyleCount();
   colorCount     = std::max(
-      {colorCount, TPixelCM32::getMaxInk(), TPixelCM32::getMaxPaint()});
+          {colorCount, TPixelCM32::getMaxInk(), TPixelCM32::getMaxPaint()});
 
   std::vector<TPixel32> paints(colorCount);
   std::vector<TPixel32> inks(colorCount);

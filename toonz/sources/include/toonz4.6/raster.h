@@ -393,7 +393,7 @@ TNZAPI void rop_ovr_3(RASTER *rbot, RASTER *rmid, RASTER *rtop, RASTER *rovr);
  * lx and ly are the ones of the result raster,
  * if the bottom raster is opaque but is RAS_RGBM, it should be temporarily
  * set to RAS_RGB_ for increased speed.
-*/
+ */
 TNZAPI void rop_ovr_n(RASTER *rbot, RASTER **rtop, int n, RASTER *rovr);
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
@@ -413,7 +413,7 @@ TNZAPI void rop_zoom_out_ovr_3(RASTER *rbot, RASTER *rmid, RASTER *rtop,
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 /* like rop_ovr_n, but zooming out at the same time (see rop_zoom_out)
-*/
+ */
 TNZAPI void rop_zoom_out_ovr_n(RASTER *rbot, RASTER **rtop, int n, RASTER *rovr,
                                int abs_zoom_level);
 

@@ -29,7 +29,7 @@ TFARMAPI void success(const QString &msg);
 TFARMAPI void warning(const QString &msg);
 TFARMAPI void error(const QString &msg);
 TFARMAPI void info(const QString &msg);
-}
+}  // namespace TSysLog
 
 //------------------------------------------------------------------------------
 

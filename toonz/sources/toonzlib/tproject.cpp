@@ -1016,7 +1016,8 @@ std::shared_ptr<TProject> TProjectManager::getCurrentProject() {
    folder of a project root.
         \note \b scenePath must be an absolute path.\n
         Creates a new TProject. The caller gets ownership.*/
-std::shared_ptr<TProject> TProjectManager::loadSceneProject(const TFilePath &scenePath) {
+std::shared_ptr<TProject> TProjectManager::loadSceneProject(
+    const TFilePath &scenePath) {
   // cerca il file scenes.xml nella stessa directory della scena
   // oppure in una
   // directory superiore
@@ -1109,7 +1110,7 @@ void TProjectManager::removeListener(Listener *listener) {
         \see TSceneProperties
 */
 void TProjectManager::initializeScene(ToonzScene *scene) {
-  auto project = scene->getProject();
+  auto project            = scene->getProject();
   TSceneProperties *sprop = scene->getProperties();
 
   TFilePath currentProjectPath = getCurrentProjectPath();

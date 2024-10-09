@@ -16,6 +16,6 @@ namespace Tiio {
 
 DVAPI void defineStd();
 
-}  // namespace
+}  // namespace Tiio
 
 #endif

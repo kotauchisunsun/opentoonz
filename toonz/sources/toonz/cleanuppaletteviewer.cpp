@@ -40,7 +40,7 @@ int search(TPalette *plt, TCleanupStyle *style) {
   assert(false);
   return -1;
 }
-}
+}  // namespace
 
 //********************************************************************************
 //    CleanupPaletteViewer implementation
@@ -88,7 +88,7 @@ CleanupPaletteViewer::CleanupPaletteViewer(QWidget *parent)
   ret      = ret && connect(m_ph, SIGNAL(paletteSwitched()), SLOT(buildGUI()));
   ret      = ret && connect(m_ph, SIGNAL(paletteChanged()), SLOT(buildGUI()));
   ret      = ret && connect(m_ph, SIGNAL(colorStyleChanged(bool)),
-                       SLOT(onColorStyleChanged()));
+                            SLOT(onColorStyleChanged()));
 
   ret = ret && connect(m_add, SIGNAL(clicked(bool)), SLOT(onAddClicked(bool)));
   ret = ret &&

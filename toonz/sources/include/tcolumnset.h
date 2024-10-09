@@ -179,7 +179,7 @@ public:
     assert(index >= 0);
     assert(count > 1);
 
-    int columnCount                        = m_columns.size();
+    int columnCount = m_columns.size();
     if (index + count > columnCount) count = columnCount - index;
 
     if (count < 2) return;
@@ -191,7 +191,7 @@ public:
     ColumnP tmp = m_columns[i];
 
     for (int k = i; k < j; ++k) m_columns[k] = m_columns[k + 1];
-    m_columns[j]                             = tmp;
+    m_columns[j] = tmp;
 
     update(0);
   }
@@ -202,7 +202,7 @@ public:
     assert(index >= 0);
     assert(count > 1);
 
-    int columnCount                        = m_columns.size();
+    int columnCount = m_columns.size();
     if (index + count > columnCount) count = columnCount - index;
 
     if (count < 2) return;
@@ -214,7 +214,7 @@ public:
     ColumnP tmp = m_columns[j];
 
     for (int k = j; k > i; --k) m_columns[k] = m_columns[k - 1];
-    m_columns[i]                             = tmp;
+    m_columns[i] = tmp;
 
     update(0);
   }

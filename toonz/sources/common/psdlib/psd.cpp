@@ -249,7 +249,7 @@ bool TPSDReader::readLayerInfo(int i) {
     skipBlock(m_file);  // skip  "layer info: extra data";
   } else {
     li->chan    = (TPSDChannelInfo *)mymalloc(li->channels *
-                                           sizeof(struct TPSDChannelInfo));
+                                              sizeof(struct TPSDChannelInfo));
     li->chindex = (int *)mymalloc((li->channels + 2) * sizeof(int));
     li->chindex += 2;  //
 
@@ -308,7 +308,7 @@ bool TPSDReader::readLayerInfo(int i) {
     // process layer's 'additional info'
     // Assumption: File will provide all layerIds or none at all.
     // Set layer id, for now, knowing it may be overwritten if found in file
-    li->layerId = i + 1;
+    li->layerId       = i + 1;
     li->additionalpos = ftell(m_file);
     li->additionallen = extrastart + extralen - li->additionalpos;
     doExtraData(li, li->additionallen);

@@ -1404,7 +1404,7 @@ void StopMotion::setLiveViewImage() {
 
     if (!m_usingWebcam) {
       minimumDpi     = std::min(m_fullImageDimensions.lx / size.lx,
-                            m_fullImageDimensions.ly / size.ly);
+                                m_fullImageDimensions.ly / size.ly);
       m_fullImageDpi = TPointD(minimumDpi, minimumDpi);
     } else {
       m_fullImageDimensions = m_liveViewImageDimensions;
@@ -2217,7 +2217,7 @@ bool StopMotion::exportImageSequence() {
     if (TFileStatus(exportFile).doesExist()) {
       QString question = tr("Overwrite existing files?");
       int ret          = DVGui::MsgBox(question, QObject::tr("Overwrite"),
-                              QObject::tr("Cancel"));
+                                       QObject::tr("Cancel"));
       if (ret == 0 || ret == 2) return false;
     }
     TSystem::copyFile(exportFile, sourceFile);

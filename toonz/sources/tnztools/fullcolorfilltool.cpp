@@ -129,7 +129,7 @@ void doFill(const TImageP &img, const TPointD &pos, FillParameters &params,
   TTool *t = app->getCurrentTool()->getTool();
   if (t) t->notifyImageChanged();
 }
-};
+};  // namespace
 
 //=============================================================================
 // FullColorFillTool

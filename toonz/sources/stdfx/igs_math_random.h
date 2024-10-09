@@ -33,7 +33,7 @@ public:
 private:
   unsigned long seed_;
 };
-}
-}
+}  // namespace math
+}  // namespace igs
 
 #endif /* !igs_math_random_h */

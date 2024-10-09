@@ -220,11 +220,11 @@ public:
   void vertexDeformations(vd_iterator &begin, vd_iterator &end)
       const;  //!< Returns the ordered range of vertex deformations
 
-  void vdSkeletonVertices(const QString &vertexName, vx_iterator &begin,
-                          vx_iterator &end)
-      const;  //!< Returns the ordered range of skeleton vertices
-              //!< (at max one per skeleton id) associated to a
-              //!< vertex name
+  void vdSkeletonVertices(
+      const QString &vertexName, vx_iterator &begin,
+      vx_iterator &end) const;  //!< Returns the ordered range of skeleton
+                                //!< vertices (at max one per skeleton id)
+                                //!< associated to a vertex name
   // Hook number-related methods
 
   int hookNumber(const QString &name) const;

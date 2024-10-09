@@ -115,7 +115,7 @@ void VersionControlThread::run() {
     args << "--non-interactive";
     args << "--trust-server-cert";
 
-    QString executablePath                = vc->getExecutablePath();
+    QString executablePath = vc->getExecutablePath();
     if (!executablePath.isEmpty()) binary = executablePath + "/" + m_binary;
 
     m_mutex.unlock();
@@ -611,10 +611,12 @@ bool VersionControl::testSetup() {
 
     if (!list.isEmpty()) {
       QString firstLine = list.first();
-      firstLine         = firstLine.remove("svn, version 1."); //ignore the 1. since SVN decimal versions are not zero padded
+      firstLine         = firstLine.remove(
+                  "svn, version 1.");  // ignore the 1. since SVN decimal versions are
+                               // not zero padded
 
       double version = firstLine.left(3).toDouble();
-      if (version < 5) { // only check decimal version 1.xx
+      if (version < 5) {  // only check decimal version 1.xx
         DVGui::warning(
             tr("The version control client application installed on your "
                "computer needs to be updated, otherwise some features may not "

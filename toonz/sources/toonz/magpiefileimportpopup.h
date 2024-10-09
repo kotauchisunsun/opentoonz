@@ -12,7 +12,7 @@ namespace DVGui {
 class IntLineEdit;
 class FileField;
 class LineEdit;
-}
+}  // namespace DVGui
 
 class MagpieInfo {
   QList<QString> m_actorActs;

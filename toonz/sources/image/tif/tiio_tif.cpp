@@ -902,7 +902,8 @@ void TifWriter::open(FILE *file, const TImageInfo &info) {
     std::wstring compressionType =
         ((TEnumProperty *)(m_properties->getProperty("Compression Type")))
             ->getValue();
-    if (compressionType == TNZ_INFO_COMPRESS_LZW || compressionType == TNZ_INFO_COMPRESS_LZW_LEG)
+    if (compressionType == TNZ_INFO_COMPRESS_LZW ||
+        compressionType == TNZ_INFO_COMPRESS_LZW_LEG)
       TIFFSetField(m_tiff, TIFFTAG_COMPRESSION, COMPRESSION_LZW);
     else if (compressionType == TNZ_INFO_COMPRESS_PACKBITS)
       TIFFSetField(m_tiff, TIFFTAG_COMPRESSION, COMPRESSION_PACKBITS);

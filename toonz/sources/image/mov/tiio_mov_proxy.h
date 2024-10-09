@@ -3,7 +3,8 @@
 #ifndef TIIO_MOV_PROXY_H
 #define TIIO_MOV_PROXY_H
 
-#if defined(x64) || defined(__LP64__) || defined(LINUX) || defined(FREEBSD)  || defined(HAIKU) || (defined(_WIN32) && defined(__GNUC__))
+#if defined(x64) || defined(__LP64__) || defined(LINUX) || defined(FREEBSD) || \
+    defined(HAIKU) || (defined(_WIN32) && defined(__GNUC__))
 
 // Qt includes
 #include <QString>
@@ -80,7 +81,7 @@ class MovWriterProperties final : public TPropertyGroup {
 public:
   MovWriterProperties();
 };
-}
+}  // namespace Tiio
 
 //===========================================================================
 

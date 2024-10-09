@@ -259,6 +259,6 @@ ColorModelBehaviorPopup::~ColorModelBehaviorPopup() {
 
   ColorModelBehavior_ChipGridLineWidth = m_colorChipGridLineWidth->getValue();
 
-  id                                         = m_colorChipOrder->checkedId();
+  id = m_colorChipOrder->checkedId();
   if (id != -1) ColorModelBehavior_ChipOrder = id;
 }

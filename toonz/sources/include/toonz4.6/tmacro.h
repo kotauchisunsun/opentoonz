@@ -51,12 +51,24 @@ typedef unsigned long ULONG;
 
 /*---------------------------------------------------------------------------*/
 
-typedef struct { int x0, y0, x1, y1; } TRECT;
-typedef struct { double x0, y0, x1, y1; } TDRECT;
-typedef struct { int x0, y0, x1, y1; } TLINE;
-typedef struct { double x0, y0, x1, y1; } TDLINE;
-typedef struct { int x, y; } TPOINT;
-typedef struct { double x, y; } TDPOINT;
+typedef struct {
+  int x0, y0, x1, y1;
+} TRECT;
+typedef struct {
+  double x0, y0, x1, y1;
+} TDRECT;
+typedef struct {
+  int x0, y0, x1, y1;
+} TLINE;
+typedef struct {
+  double x0, y0, x1, y1;
+} TDLINE;
+typedef struct {
+  int x, y;
+} TPOINT;
+typedef struct {
+  double x, y;
+} TDPOINT;
 
 /*---------------------------------------------------------------------------*/
 

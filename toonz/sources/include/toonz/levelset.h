@@ -69,9 +69,8 @@ class DVAPI TLevelSet {
   std::vector<TFilePath> m_folders;  //!< Folders container
   TFilePath m_defaultFolder;         //!< The root folder
 
-  std::set<TXshLevel *>
-      m_saveSet;  //!< If m_saveSet is not empty, only its levels
-                  //!< will be saved
+  std::set<TXshLevel *> m_saveSet;  //!< If m_saveSet is not empty, only its
+                                    //!< levels will be saved
 public:
   TLevelSet();
   ~TLevelSet();

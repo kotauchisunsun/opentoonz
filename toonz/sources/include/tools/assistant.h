@@ -20,7 +20,6 @@
 #include <string>
 #include <map>
 
-
 #undef DVAPI
 #undef DVVAR
 #ifdef TNZTOOLS_EXPORTS
@@ -30,7 +29,6 @@
 #define DVAPI DV_IMPORT_API
 #define DVVAR DV_IMPORT_VAR
 #endif
-
 
 //==============================================================
 
@@ -49,10 +47,9 @@ class TGuideline;
 typedef TSmartPointerT<TGuideline> TGuidelineP;
 typedef std::vector<TGuidelineP> TGuidelineList;
 typedef std::map<TStringId, TAssistantPoint> TAssistantPointMap;
-typedef std::vector<const TAssistantPoint*> TAssistantPointOrder;
+typedef std::vector<const TAssistantPoint *> TAssistantPointOrder;
 
 //===================================================================
-
 
 //*****************************************************************************************
 //    TGuideline definition
@@ -64,40 +61,39 @@ public:
   const double magnetism;
   const TPixelD color;
 
-  TGuideline(bool enabled, double magnetism, const TPixelD &color):
-    enabled(enabled), magnetism(magnetism), color(color) { }
+  TGuideline(bool enabled, double magnetism, const TPixelD &color)
+      : enabled(enabled), magnetism(magnetism), color(color) {}
 
-  virtual TTrackPoint transformPoint(const TTrackPoint &point) const
-    { return point; }
-  
-  // this function uses in calcTrackWeight to select best guideline,
-  // does not use for drawing
-  virtual TPointD nearestPoint(const TPointD &point) const
-    { return transformPoint(TTrackPoint(point)).position; }
-  
-  virtual void draw(bool active, bool enabled) const
-    { }
-  
-  void draw(bool active = false) const
-    { draw(active, true); }
-
-  TTrackPoint smoothTransformPoint(const TTrackPoint &point, double magnetism = 1.0) const {
-    return enabled
-         ? TTrack::interpolationLinear(point, transformPoint(point), magnetism*this->magnetism)
-         : point;
+  virtual TTrackPoint transformPoint(const TTrackPoint &point) const {
+    return point;
   }
 
-  void drawSegment(
-    const TPointD &p0,
-    const TPointD &p1,
-    double pixelSize,
-    bool active,
-    bool enabled = true) const;
+  // this function uses in calcTrackWeight to select best guideline,
+  // does not use for drawing
+  virtual TPointD nearestPoint(const TPointD &point) const {
+    return transformPoint(TTrackPoint(point)).position;
+  }
 
-  double calcTrackWeight(const TTrack &track, const TAffine &toScreen, bool &outLongEnough) const;
-  static TGuidelineP findBest(const TGuidelineList &guidelines, const TTrack &track, const TAffine &toScreen, bool &outLongEnough);
+  virtual void draw(bool active, bool enabled) const {}
+
+  void draw(bool active = false) const { draw(active, true); }
+
+  TTrackPoint smoothTransformPoint(const TTrackPoint &point,
+                                   double magnetism = 1.0) const {
+    return enabled ? TTrack::interpolationLinear(point, transformPoint(point),
+                                                 magnetism * this->magnetism)
+                   : point;
+  }
+
+  void drawSegment(const TPointD &p0, const TPointD &p1, double pixelSize,
+                   bool active, bool enabled = true) const;
+
+  double calcTrackWeight(const TTrack &track, const TAffine &toScreen,
+                         bool &outLongEnough) const;
+  static TGuidelineP findBest(const TGuidelineList &guidelines,
+                              const TTrack &track, const TAffine &toScreen,
+                              bool &outLongEnough);
 };
-
 
 //*****************************************************************************************
 //    TAssistantPoint definition
@@ -124,43 +120,37 @@ public:
 
   mutable bool selected;
 
-  explicit TAssistantPoint(const TStringId &name, const TPointD &defPosition = TPointD());
+  explicit TAssistantPoint(const TStringId &name,
+                           const TPointD &defPosition = TPointD());
 };
-
 
 //*****************************************************************************************
 //    TAssistantType definition
 //*****************************************************************************************
 
-class DVAPI TAssistantType: public TMetaObjectType {
+class DVAPI TAssistantType : public TMetaObjectType {
 public:
-  TAssistantType(const TStringId &name):
-    TMetaObjectType(name) { }
-  TMetaObjectHandler* createHandler(TMetaObject &obj) const override;
-  virtual TAssistantBase* createAssistant(TMetaObject &obj) const
-    { return 0; }
+  TAssistantType(const TStringId &name) : TMetaObjectType(name) {}
+  TMetaObjectHandler *createHandler(TMetaObject &obj) const override;
+  virtual TAssistantBase *createAssistant(TMetaObject &obj) const { return 0; }
 };
-
 
 //*****************************************************************************************
 //    TAssistantTypeT definition
 //*****************************************************************************************
 
-template<typename T>
-class TAssistantTypeT: public TAssistantType {
+template <typename T>
+class TAssistantTypeT : public TAssistantType {
 public:
   typedef T Type;
 
-  explicit TAssistantTypeT(
-    const TStringId &name,
-    const TStringId &alias1 = TStringId(),
-    const TStringId &alias2 = TStringId(),
-    const TStringId &alias3 = TStringId(),
-    const TStringId &alias4 = TStringId(),
-    const TStringId &alias5 = TStringId()
-  ):
-    TAssistantType(TStringId(name))
-  {
+  explicit TAssistantTypeT(const TStringId &name,
+                           const TStringId &alias1 = TStringId(),
+                           const TStringId &alias2 = TStringId(),
+                           const TStringId &alias3 = TStringId(),
+                           const TStringId &alias4 = TStringId(),
+                           const TStringId &alias5 = TStringId())
+      : TAssistantType(TStringId(name)) {
     if (alias1) registerAlias(alias1);
     if (alias2) registerAlias(alias2);
     if (alias3) registerAlias(alias3);
@@ -168,16 +158,13 @@ public:
     if (alias5) registerAlias(alias5);
   }
 
-  explicit TAssistantTypeT(
-    const std::string &name,
-    const std::string &alias1 = std::string(),
-    const std::string &alias2 = std::string(),
-    const std::string &alias3 = std::string(),
-    const std::string &alias4 = std::string(),
-    const std::string &alias5 = std::string()
-  ):
-    TAssistantType(TStringId(name))
-  {
+  explicit TAssistantTypeT(const std::string &name,
+                           const std::string &alias1 = std::string(),
+                           const std::string &alias2 = std::string(),
+                           const std::string &alias3 = std::string(),
+                           const std::string &alias4 = std::string(),
+                           const std::string &alias5 = std::string())
+      : TAssistantType(TStringId(name)) {
     if (!alias1.empty()) registerAlias(TStringId(alias1));
     if (!alias2.empty()) registerAlias(TStringId(alias2));
     if (!alias3.empty()) registerAlias(TStringId(alias3));
@@ -185,14 +172,14 @@ public:
     if (!alias5.empty()) registerAlias(TStringId(alias5));
   }
 
-  TAssistantBase* createAssistant(TMetaObject &obj) const override
-    { return new Type(obj); }
+  TAssistantBase *createAssistant(TMetaObject &obj) const override {
+    return new Type(obj);
+  }
   QString getLocalName() const override {
     QString localName = Type::getLocalName();
     return localName.isEmpty() ? QString::fromStdString(name.str()) : localName;
   }
 };
-
 
 //*****************************************************************************************
 //    TAssistantBase definition
@@ -204,14 +191,14 @@ public:
   enum {
     DRAW_ERROR = 1,
   };
-  
+
   static TPixelD colorBase;
   static TPixelD colorError;
   static TPixelD colorEdit;
   static TPixelD colorSelect;
   static unsigned int drawFlags;
   static const double lineWidthScale;
-  
+
 protected:
   const TStringId m_idEnabled;
   const TStringId m_idPoints;
@@ -223,22 +210,21 @@ protected:
 
   TAssistantPointMap m_points;
   TAssistantPointOrder m_pointsOrder;
-  TAssistantPoint* m_basePoint;
+  TAssistantPoint *m_basePoint;
 
   mutable TPropertyGroup m_properties;
 
 public:
   TAssistantBase(TMetaObject &object);
 
-  static QString getLocalName()
-    { return QString(); }
+  static QString getLocalName() { return QString(); }
 
-  inline const TAssistantPointMap& points() const
-    { return m_points; }
-  inline const TAssistantPointOrder& pointsOrder() const
-    { return m_pointsOrder; }
+  inline const TAssistantPointMap &points() const { return m_points; }
+  inline const TAssistantPointOrder &pointsOrder() const {
+    return m_pointsOrder;
+  }
 
-  inline const TAssistantPoint* findPoint(const TStringId &name) const {
+  inline const TAssistantPoint *findPoint(const TStringId &name) const {
     TAssistantPointMap::const_iterator i = points().find(name);
     return i == points().end() ? 0 : &i->second;
   }
@@ -249,55 +235,48 @@ public:
   void setPointSelection(const TStringId &name, bool selected) const;
   void setAllPointsSelection(bool selected) const;
 
-  bool getEnabled() const
-    { return data()[m_idEnabled].getBool(); }
-  void setEnabled(bool x)
-    { if (getEnabled() != x) data()[m_idEnabled].setBool(x); }
+  bool getEnabled() const { return data()[m_idEnabled].getBool(); }
+  void setEnabled(bool x) {
+    if (getEnabled() != x) data()[m_idEnabled].setBool(x);
+  }
 
-  inline void selectPoint(const TStringId &name) const
-    { setPointSelection(name, true); }
-  inline void deselectPoint(const TStringId &name) const
-    { setPointSelection(name, false); }
-  inline void selectAll() const
-    { setAllPointsSelection(true); }
-  inline void deselectAll() const
-    { setAllPointsSelection(false); }
+  inline void selectPoint(const TStringId &name) const {
+    setPointSelection(name, true);
+  }
+  inline void deselectPoint(const TStringId &name) const {
+    setPointSelection(name, false);
+  }
+  inline void selectAll() const { setAllPointsSelection(true); }
+  inline void deselectAll() const { setAllPointsSelection(false); }
 
-  TPropertyGroup& getProperties() const
-    { return m_properties; }
-  void propertyChanged(const TStringId &name)
-    { onPropertyChanged(name); }
+  TPropertyGroup &getProperties() const { return m_properties; }
+  void propertyChanged(const TStringId &name) { onPropertyChanged(name); }
 
-  const TAssistantPoint& getBasePoint() const;
+  const TAssistantPoint &getBasePoint() const;
 
 protected:
-  TAssistantPoint& addPoint(
-    const TStringId &name,
-    TAssistantPoint::Type type,
-    const TPointD &defPosition,
-    bool visible,
-    double radius );
+  TAssistantPoint &addPoint(const TStringId &name, TAssistantPoint::Type type,
+                            const TPointD &defPosition, bool visible,
+                            double radius);
 
-  TAssistantPoint& addPoint(
-    const TStringId &name,
-    TAssistantPoint::Type type = TAssistantPoint::Circle,
-    const TPointD &defPosition = TPointD(),
-    bool visible               = true );
+  TAssistantPoint &addPoint(
+      const TStringId &name,
+      TAssistantPoint::Type type = TAssistantPoint::Circle,
+      const TPointD &defPosition = TPointD(), bool visible = true);
 
-  inline TAssistantPoint& addPoint(
-    const std::string &name,
-    TAssistantPoint::Type type,
-    const TPointD &defPosition,
-    bool visible,
-    double radius )
-      { return addPoint(TStringId(name), type, defPosition, visible, radius); }
+  inline TAssistantPoint &addPoint(const std::string &name,
+                                   TAssistantPoint::Type type,
+                                   const TPointD &defPosition, bool visible,
+                                   double radius) {
+    return addPoint(TStringId(name), type, defPosition, visible, radius);
+  }
 
-  inline TAssistantPoint& addPoint(
-    const std::string &name,
-    TAssistantPoint::Type type = TAssistantPoint::Circle,
-    const TPointD &defPosition = TPointD(),
-    bool visible               = true )
-      { return addPoint(TStringId(name), type, defPosition, visible); }
+  inline TAssistantPoint &addPoint(
+      const std::string &name,
+      TAssistantPoint::Type type = TAssistantPoint::Circle,
+      const TPointD &defPosition = TPointD(), bool visible = true) {
+    return addPoint(TStringId(name), type, defPosition, visible);
+  }
 
   //! usually called when meta-object created
   void onSetDefaults() override;
@@ -323,28 +302,37 @@ protected:
   double getDrawingAlpha(bool enabled = true) const;
   double getDrawingGridAlpha() const;
 
-  TIntProperty* createSpinProperty(const TStringId &id, int def, int min, int max, bool hasMax = true);
-  inline TIntProperty* createSpinProperty(const TStringId &id, int def, int min)
-    { return createSpinProperty(id, def, min, 0, false); }
-  
+  TIntProperty *createSpinProperty(const TStringId &id, int def, int min,
+                                   int max, bool hasMax = true);
+  inline TIntProperty *createSpinProperty(const TStringId &id, int def,
+                                          int min) {
+    return createSpinProperty(id, def, min, 0, false);
+  }
+
   void addProperty(TProperty *p);
   void setTranslation(const TStringId &name, const QString &localName) const;
 
 public:
   static TPixelD makeContrastColor(const TPixelD &color);
-  static void drawSegment(const TPointD &p0, const TPointD &p1, double pixelSize, double alpha0, double alpha1);
-  static void drawMark(const TPointD &p, const TPointD &normal, double pixelSize, double alpha);
+  static void drawSegment(const TPointD &p0, const TPointD &p1,
+                          double pixelSize, double alpha0, double alpha1);
+  static void drawMark(const TPointD &p, const TPointD &normal,
+                       double pixelSize, double alpha);
   static void drawDot(const TPointD &p, const TPixelD &color);
   static void drawDot(const TPointD &p, double alpha);
   static void drawPoint(const TAssistantPoint &point, double pixelSize);
-  static void drawIndex(const TPointD &p, int index, bool selected, double pixelSize);
+  static void drawIndex(const TPointD &p, int index, bool selected,
+                        double pixelSize);
 
-  static inline void drawSegment(const TPointD &p0, const TPointD &p1, double pixelSize, double alpha)
-    { drawSegment(p0, p1, pixelSize, alpha, alpha); }
-  inline void drawSegment(const TPointD &p0, const TPointD &p1, double pixelSize) const
-    { drawSegment(p0, p1, pixelSize, getDrawingAlpha()); }
-  inline void drawDot(const TPointD &p) const
-    { drawDot(p, getDrawingAlpha()); }
+  static inline void drawSegment(const TPointD &p0, const TPointD &p1,
+                                 double pixelSize, double alpha) {
+    drawSegment(p0, p1, pixelSize, alpha, alpha);
+  }
+  inline void drawSegment(const TPointD &p0, const TPointD &p1,
+                          double pixelSize) const {
+    drawSegment(p0, p1, pixelSize, getDrawingAlpha());
+  }
+  inline void drawDot(const TPointD &p) const { drawDot(p, getDrawingAlpha()); }
 
   virtual void updateTranslation() const;
   virtual void draw(TToolViewer *viewer, bool enabled) const;
@@ -352,7 +340,6 @@ public:
   virtual void drawEdit(TToolViewer *viewer) const;
   virtual void drawEdit(TToolViewer *viewer, int index) const;
 };
-
 
 //*****************************************************************************************
 //    TAssistant definition
@@ -369,43 +356,27 @@ protected:
 public:
   TAssistant(TMetaObject &object);
 
-  double getMagnetism() const
-    { return data()[m_idMagnetism].getDouble(); }
-  void setMagnetism(double x)
-    { if (getMagnetism() != x) data()[m_idMagnetism].setDouble(x); }
+  double getMagnetism() const { return data()[m_idMagnetism].getDouble(); }
+  void setMagnetism(double x) {
+    if (getMagnetism() != x) data()[m_idMagnetism].setDouble(x);
+  }
 
 public:
   void updateTranslation() const override;
-  virtual void getGuidelines(
-    const TPointD &position,
-    const TAffine &toTool,
-    const TPixelD &color,
-    TGuidelineList &outGuidelines) const;
+  virtual void getGuidelines(const TPointD &position, const TAffine &toTool,
+                             const TPixelD &color,
+                             TGuidelineList &outGuidelines) const;
 
   // calc W-coefficient and i-bounds for formula: x0 + 1/(i*W + 1)
-  static bool calcPerspectiveStep(
-    double minStep,
-    double minX,
-    double maxX,
-    double x0,
-    double x1,
-    double x2,
-    double &outW,
-    double &outMinI,
-    double &outMaxI );
-  
-  static bool scanAssistants(
-    TTool *tool,
-    const TPointD *positions,
-    int positionsCount,
-    TGuidelineList *outGuidelines,
-    bool draw,
-    bool enabledOnly,
-    bool markEnabled,
-    bool drawGuidelines,
-    TImage *skipImage );
-};
+  static bool calcPerspectiveStep(double minStep, double minX, double maxX,
+                                  double x0, double x1, double x2, double &outW,
+                                  double &outMinI, double &outMaxI);
 
+  static bool scanAssistants(TTool *tool, const TPointD *positions,
+                             int positionsCount, TGuidelineList *outGuidelines,
+                             bool draw, bool enabledOnly, bool markEnabled,
+                             bool drawGuidelines, TImage *skipImage);
+};
 
 //*****************************************************************************************
 //    export template implementations for win32
@@ -414,6 +385,5 @@ public:
 #ifdef _WIN32
 template class DVAPI TSmartPointerT<TGuideline>;
 #endif
-
 
 #endif

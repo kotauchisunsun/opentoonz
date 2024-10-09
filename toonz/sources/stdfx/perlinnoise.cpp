@@ -199,7 +199,7 @@ void doCloudsT(const TRasterPT<PIXEL> &ras, const TSpectrumT<PIXEL> &spectrum,
   }
   ras->unlock();
 }
-}
+}  // namespace
 
 void doClouds(const TRasterP &ras, const TSpectrumParamP colors, TPointD pos,
               double evolution, double size, double min, double max, int type,

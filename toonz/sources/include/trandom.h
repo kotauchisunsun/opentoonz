@@ -16,7 +16,7 @@
 #endif
 
 /*! Generates a pseudorandom sequence
-*/
+ */
 class DVAPI TRandom {
 public:
   TRandom(UINT seed = 0);

@@ -40,7 +40,7 @@ class DoubleLineEdit;
 class IntLineEdit;
 class MeasuredDoubleLineEdit;
 class CheckBox;
-}
+}  // namespace DVGui
 
 class DVAPI CleanupCameraSettingsWidget : public QFrame {
   Q_OBJECT

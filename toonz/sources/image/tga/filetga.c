@@ -707,7 +707,7 @@ uint8_t *tga_find_pixel(const tga_image *img, uint16_t x, uint16_t y) {
   if (x >= img->width || y >= img->height) return NULL;
 
   if (!tga_is_top_to_bottom(img)) y = img->height - 1 - y;
-  if (tga_is_right_to_left(img)) x  = img->width - 1 - x;
+  if (tga_is_right_to_left(img)) x = img->width - 1 - x;
   return img->image_data + (x + y * img->width) * img->pixel_depth / 8;
 }
 

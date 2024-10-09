@@ -357,7 +357,7 @@ TOStream &TOStream::operator<<(string v) {
     if ((!iswalnum(v[i]) && v[i] != '_' && v[i] != '%') ||
         v[i] < 32      // Less than ASCII for SPACE
         || v[i] > 126  // Greater than ASCII for ~
-        )
+    )
       break;
   if (i == len)
     os << v << " ";
@@ -386,7 +386,7 @@ TOStream &TOStream::operator<<(QString _v) {
     if ((!iswalnum(v[i]) && v[i] != '_' && v[i] != '%') ||
         v[i] < 32      // Less than ASCII for SPACE
         || v[i] > 126  // Greater than ASCII for ~
-        )
+    )
       break;
   if (i == len)
     os << v << " ";
@@ -802,8 +802,7 @@ void TIStream::Imp::skipCurrentTag() {
 
     if (c == '/') {
       // end tag
-      do
-        c = getNextChar();
+      do c = getNextChar();
       while (c >= 0 && c != '>');
       if (c < 0) break;  // unexpected eof
       if (--level <= 0) {

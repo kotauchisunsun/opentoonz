@@ -31,6 +31,6 @@ Tiio::Writer *makeTgaWriter();
 
 //===========================================================================
 
-}  // namespace
+}  // namespace Tiio
 
 #endif

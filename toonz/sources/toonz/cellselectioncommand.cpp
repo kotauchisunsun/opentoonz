@@ -77,7 +77,7 @@ public:
 //-----------------------------------------------------------------------------
 
 void ReverseUndo::redo() const {
-  TCG_ASSERT(m_r1 >= m_r0 && m_c1 >= m_c0, return);
+  TCG_ASSERT(m_r1 >= m_r0 && m_c1 >= m_c0, return );
 
   TApp::instance()->getCurrentXsheet()->getXsheet()->reverseCells(m_r0, m_c0,
                                                                   m_r1, m_c1);
@@ -135,7 +135,7 @@ void SwingUndo::redo() const {
 //-----------------------------------------------------------------------------
 
 void SwingUndo::undo() const {
-  TCG_ASSERT(m_r1 >= m_r0 && m_c1 >= m_c0, return);
+  TCG_ASSERT(m_r1 >= m_r0 && m_c1 >= m_c0, return );
 
   for (int c = m_c0; c <= m_c1; ++c)
     TApp::instance()->getCurrentXsheet()->getXsheet()->removeCells(m_r1 + 1, c,
@@ -188,7 +188,7 @@ public:
 //-----------------------------------------------------------------------------
 
 void IncrementUndo::redo() const {
-  TCG_ASSERT(m_r1 >= m_r0 && m_c1 >= m_c0, return);
+  TCG_ASSERT(m_r1 >= m_r0 && m_c1 >= m_c0, return );
 
   m_undoCells.clear();
   m_ok = TApp::instance()->getCurrentXsheet()->getXsheet()->incrementCells(
@@ -201,7 +201,7 @@ void IncrementUndo::redo() const {
 //-----------------------------------------------------------------------------
 
 void IncrementUndo::undo() const {
-  TCG_ASSERT(m_r1 >= m_r0 && m_c1 >= m_c0 && m_ok, return);
+  TCG_ASSERT(m_r1 >= m_r0 && m_c1 >= m_c0 && m_ok, return );
 
   TXsheet *xsh = TApp::instance()->getCurrentXsheet()->getXsheet();
 
@@ -276,7 +276,7 @@ public:
 
 RandomUndo::RandomUndo(int r0, int c0, int r1, int c1)
     : m_r0(r0), m_c0(c0), m_r1(r1), m_c1(c1) {
-  TCG_ASSERT(m_r1 >= m_r0 && m_c1 >= m_c0, return);
+  TCG_ASSERT(m_r1 >= m_r0 && m_c1 >= m_c0, return );
 
   int r, rowCount = r1 - r0 + 1;
   std::vector<std::pair<unsigned int, int>> rndTable(rowCount);
@@ -397,7 +397,7 @@ StepUndo::StepUndo(int r0, int c0, int r1, int c1, int step)
 //-----------------------------------------------------------------------------
 
 void StepUndo::redo() const {
-  TCG_ASSERT(m_rowsCount > 0 && m_colsCount > 0, return);
+  TCG_ASSERT(m_rowsCount > 0 && m_colsCount > 0, return );
 
   TApp::instance()->getCurrentXsheet()->getXsheet()->stepCells(m_r0, m_c0, m_r1,
                                                                m_c1, m_step);
@@ -409,7 +409,7 @@ void StepUndo::redo() const {
 //-----------------------------------------------------------------------------
 
 void StepUndo::undo() const {
-  TCG_ASSERT(m_rowsCount > 0 && m_colsCount > 0 && m_cells, return);
+  TCG_ASSERT(m_rowsCount > 0 && m_colsCount > 0 && m_cells, return );
 
   TApp *app    = TApp::instance();
   TXsheet *xsh = app->getCurrentXsheet()->getXsheet();
@@ -499,7 +499,7 @@ EachUndo::EachUndo(int r0, int c0, int r1, int c1, int each)
 //-----------------------------------------------------------------------------
 
 void EachUndo::redo() const {
-  TCG_ASSERT(m_rowsCount > 0 && m_colsCount > 0, return);
+  TCG_ASSERT(m_rowsCount > 0 && m_colsCount > 0, return );
 
   TApp::instance()->getCurrentXsheet()->getXsheet()->eachCells(m_r0, m_c0, m_r1,
                                                                m_c1, m_each);
@@ -511,7 +511,7 @@ void EachUndo::redo() const {
 //-----------------------------------------------------------------------------
 
 void EachUndo::undo() const {
-  TCG_ASSERT(m_rowsCount > 0 && m_colsCount > 0 && m_cells, return);
+  TCG_ASSERT(m_rowsCount > 0 && m_colsCount > 0 && m_cells, return );
 
   TApp *app    = TApp::instance();
   TXsheet *xsh = app->getCurrentXsheet()->getXsheet();
@@ -943,7 +943,7 @@ ResetStepUndo::ResetStepUndo(int r0, int c0, int r1, int c1)
 //-----------------------------------------------------------------------------
 
 void ResetStepUndo::redo() const {
-  TCG_ASSERT(m_rowsCount > 0 && m_colsCount > 0, return);
+  TCG_ASSERT(m_rowsCount > 0 && m_colsCount > 0, return );
 
   TApp::instance()->getCurrentXsheet()->getXsheet()->resetStepCells(m_r0, m_c0,
                                                                     m_r1, m_c1);
@@ -1630,7 +1630,7 @@ void CloneLevelUndo::cloneLevels() const {
       // Build the destination level data
       TXshSimpleLevel *dstSl = 0;
       TFilePath dstPath      = scene->decodeFilePath(
-          srcPath.withName(srcPath.getWideName() + L"_clone"));
+               srcPath.withName(srcPath.getWideName() + L"_clone"));
 
       // Ask user to suggest an appropriate level name
       if (askCloneName && !chooseLevelName(dstPath)) continue;

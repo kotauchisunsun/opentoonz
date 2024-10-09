@@ -28,7 +28,8 @@ rop_copy funz.su RAS_BW, RAS_BW
 e
 s 00016 / 00000 / 08315
 d D 1.99 99 / 08 / 20 09 : 53 : 22 vincenzo 99 98
-c messaggi(disattivati) di diagnostica sulla memoria
+c messaggi(disattivati)
+di diagnostica sulla memoria
 e
 s 00090 / 00000 / 08225
 d D 1.98 99 / 05 / 17 17 : 28 : 42 vincenzo 98 97
@@ -52,541 +53,418 @@ rop_copy funz.su RAS_BW, RAS_BW
 c rop_subimage_to_raster anche per RGBM64
 e
 s 00007 / 00006 / 07562
-d D 1.93 99 / 02 / 20 15:51:08 tross 93 92
+d D 1.93 99 / 02 / 20 15:51
+                          :08 tross 93 92
 c corretta rop_clear(sbagliava se y1 != 0)
 e
 s 00001 / 00001 / 07567
-d D 1.92 99 / 02 / 17 19:07:11 vincenzo 92 91
+d D 1.92 99 / 02 / 17
+                        19:07
+                          :11 vincenzo 92 91
 c la clone_raster fa anche gli extra
 e
 s 00020 / 00016 / 07548
-d D 1.91 99 / 02 / 15 17:31:49 tross 91 90
+d D 1.91 99 / 02 / 15
+                        17:31
+                          :49 tross 91 90
 c corretta la clone_raster per CM
 e
 s 00029 / 00002 / 07535
-d D 1.90 99 / 02 / 15 17:22:14 vincenzo 90 89
+d D 1.90 99 / 02 / 15
+                        17:22
+                          :14 vincenzo 90 89
 c RAS_GR16
 e
 s 00713 / 00426 / 06824
-d D 1.89 99 / 01 / 11 18:03:57 tross 89 88
-c migliorati extra:corretti bachi e aggiunte funz -
+d D 1.89 99 / 01 / 11
+                        18:03
+                          :57 tross 89 88
+c migliorati
+                     extra:corretti bachi e aggiunte funz -
                            corretta
                                rop_custom_fill_cmap_penramp(baco tcheck cm24)
 e
 s 00034 / 00002 / 07216
 d D 1.88 98 / 12 / 14
-                        16:
-                        21:17 vincenzo 88 87
+                        16:21
+                          :17 vincenzo 88 87
 c ristrutturazione megagalattica per le dll
 e
 s 00013 / 00000 / 07205
 d D 1.87 98 / 10 / 23
-                        17:
-                        21:44 vincenzo 87 86
+                        17:21
+                          :44 vincenzo 87 86
 c convert_raster
 e
 s 00007 / 00001 / 07198
 d D 1.86 98 / 09 / 24
-                        18:
-                        32:38 tross 86 85
+                        18:32
+                          :38 tross 86 85
 c messa cmap.info in create_raster()
 e
 s 00003 / 00000 / 07196
 d D 1.85 98 / 09 / 14
-                        16:
-                        15:32 vincenzo 85 84
+                        16:15
+                          :32 vincenzo 85 84
 c clone_raster mette anchge la cmap
 e
 s 01500 / 00701 / 05696
 d D 1.84 98 / 09 / 14
-                        15:
-                        57:39 tross 84 83
-c modifiche per CM24, velocizzati[un] premult_lpixel
+                        15:57
+                          :39 tross 84 83
+c modifiche per CM24,
+                           velocizzati[un] premult_lpixel
 e
 s 00044 / 00064 / 06353
 d D 1.83 98 / 08 / 14
-                        17:
-                        14:44 tross 83 82
+                        17:14
+                          :44 tross 83 82
 c tolti UNICM
 e
 s 00013 / 00014 / 06404
 d D 1.82 98 / 08 / 14
-                        14:
-                        39:55 tross 82 81
+                        14:39
+                          :55 tross 82 81
 c tolto cmap.size
 e
 s 00348 / 00177 / 06070
 d D 1.81 98 / 07 / 16
-                        20:
-                        02:00 tross 81 80
+                        20:02
+                          :00 tross 81 80
 c rop_copy e rop_zoom_out rgb_rgb16
 e
 s 00028 / 00000 / 06219
 d D 1.80 98 / 07 / 10
-                        18:
-                        32:08 vincenzo 80 79
+                        18:32
+                          :08 vincenzo 80 79
 c create_subraster e clone_raster
 e
 s 00005 / 00014 / 06214
 d D 1.79 98 / 06 / 09
-                        17:
-                        29:54 vincenzo 79 78
+                        17:29
+                          :54 vincenzo 79 78
 c eliminata struct cmap_color
 e
 s 00025 / 00025 / 06203
 d D 1.78 98 / 03 / 26
-                        01:
-                        07:03 tross 78 77
+                        01:07
+                          :03 tross 78 77
 c assert(FALSE)-- > abort()per problemi di GP piena
 e
 s 00038 / 00000 / 06190
 d D 1.77 98 / 03 / 13
-                        18:
-                        35:34 vincenzo 77 76
+                        18:35
+                          :34 vincenzo 77 76
 c create_raster e release_raster
 e
 s 00002 / 00002 / 06188
 d D 1.76 98 / 03 / 09
-                        15:
-                        00:15 vincenzo 76 75
-c rop_image_to_(sub)raster non inizializzava native_buffer
+                        15:00
+                          :15 vincenzo 76 75
+c rop_image_to_(sub)
+raster non inizializzava native_buffer
 e
 s 00004 / 00004 / 06186
-d D 1.75 98 / 02 / 23
-                        12:
-                        35:57 vincenzo 75 74
+d D 1.75 98 / 02 / 23 12 : 35 : 57 vincenzo 75 74
 c sbagliata scansione raster su premultiply
 e
 s 00082 / 00002 / 06108
-d D 1.74 98 / 02 / 23
-                        11:
-                        15:21 tross 74 73
+d D 1.74 98 / 02 / 23 11 : 15 : 21 tross 74 73
 c rop_premultiply()
 e
 s 00056 / 00051 / 06054
-d D 1.73 97 / 12 / 01
-                        18:
-                        26:04 vincenzo 73 72
+d D 1.73 97 / 12 / 01 18 : 26 : 04 vincenzo 73 72
 c rgbx->bw_q, cm16->bw_q
 e
 s 00020 / 00000 / 06085
-d D 1.72 97 / 11 / 28
-                        17:
-                        31:32 vincenzo 72 71
+d D 1.72 97 / 11 / 28 17 : 31 : 32 vincenzo 72 71
 c gestione RAS_CMxSy(copy, pixbytes pix_to_ras etc)
 e
 s 00017 / 00001 / 06068
-d D 1.71 97 / 11 / 18
-                        16:
-                        42:31 tross 71 70
+d D 1.71 97 / 11 / 18 16 : 42 : 31 tross 71 70
 c rop_copy RAS_CMxSy
 e
 s 00033 / 00001 / 06036
-d D 1.70 97 / 09 / 26
-                        12:
-                        25:32 vincenzo 70 69
+d D 1.70 97 / 09 / 26 12 : 25 : 32 vincenzo 70 69
 c rop_copy_rgb16_rgbm
 e
 s 00010 / 00007 / 06027
-d D 1.69 97 / 09 / 23
-                        15:
-                        53:42 tross 69 68
+d D 1.69 97 / 09 / 23 15 : 53 : 42 tross 69 68
 c migliorata la rop_copy_bw
 e
 s 00043 / 00003 / 05991
-d D 1.68 97 / 09 / 23
-                        00:
-                        00:23 tross 68 67
+d D 1.68 97 / 09 / 23 00 : 00 : 23 tross 68 67
 c rop_copy_bw_bw
 e
 s 00038 / 00000 / 05956
-d D 1.67 97 / 09 / 22
-                        22:
-                        20:35 tross 67 66
+d D 1.67 97 / 09 / 22 22 : 20 : 35 tross 67 66
 c rop_copy_rgbx_rgb(vincenzo)
 e
 s 00006 / 00016 / 05950
-d D 1.66 97 / 04 / 01
-                        18:
-                        46:33 vincenzo 66 65
+d D 1.66 97 / 04 / 01 18 : 46 : 33 vincenzo 66 65
 c esportata la dither
 e
 s 00037 / 00021 / 05929
-d D 1.65 97 / 03 / 27
-                        19:
-                        54:27 tross 65 64
+d D 1.65 97 / 03 / 27 19 : 54 : 27 tross 65 64
 c rop_copy_rgbm64_rgbm con random round
 e
 s 00001 / 00001 / 05949
-d D 1.64 97 / 01 / 03
-                        15:
-                        10:39 roberto 64 63
+d D 1.64 97 / 01 / 03 15 : 10 : 39 roberto 64 63
 c Corretto bug in rop_copy_90(CASE-- __OR)
 e
 s 00453 / 00002 / 05497
-d D 1.63 96 / 11 / 24
-                        22:
-                        36:00 tross 63 62
+d D 1.63 96 / 11 / 24 22 : 36 : 00 tross 63 62
 c rop_copy_90_rgb_rgb16, rop_zoom_out_90_rgb_rgb16 / rgbm
 e
 s 00381 / 00003 / 05118
-d D 1.62 96 / 09 / 14
-                        21:
-                        54:23 tross 62 61
+d D 1.62 96 / 09 / 14 21 : 54 : 23 tross 62 61
 c rop_zoom_out_bw_rgb16 / rgbm
 e
 s 00577 / 00323 / 04544
-d D 1.61 96 / 09 / 12
-                        19:
-                        44:13 tross 61 60
+d D 1.61 96 / 09 / 12 19 : 44 : 13 tross 61 60
 c rop_zoom_out_bw_rgbm / rgb16, corretto rop_zoom_out_90_gr8_...
 e
 s 00026 / 00026 / 04841
-d D 1.60 96 / 08 / 05
-                        18:
-                        15:12 vincenzo 60 59
+d D 1.60 96 / 08 / 05 18 : 15 : 12 vincenzo 60 59
 c gl_color->LPIXEL
 e
 s 00002 / 00001 / 04865
-d D 1.59 96 / 07 / 12
-                        18:
-                        41:01 vincenzo 59 58
+d D 1.59 96 / 07 / 12 18 : 41 : 01 vincenzo 59 58
 c messo RGBM64 rop_pixbytes
 e
 s 00246 / 00123 / 04620
-d D 1.58 96 / 07 / 10
-                        17:
-                        57:56 vincenzo 58 57
+d D 1.58 96 / 07 / 10 17 : 57 : 56 vincenzo 58 57
 c introdotto rop_copy per RAS_RGBM64
 e
 s 00280 / 00086 / 04463
-d D 1.57 96 / 07 / 10
-                        01:
-                        01:58 tross 57 56
+d D 1.57 96 / 07 / 10 01 : 01 : 58 tross 57 56
 c rop_zoom_out_90, per ora solo gr8-- > rgb16 / rgbm
 e
 s 00279 / 00110 / 04270
-d D 1.56 96 / 07 / 09
-                        16:
-                        44:14 tross 56 55
+d D 1.56 96 / 07 / 09 16 : 44 : 14 tross 56 55
 c cmap.offset-- > cmap.info.offset_mask etc.
 e
 s 00238 / 00065 / 04142
-d D 1.55 96 / 07 / 01
-                        16:
-                        24:22 tross 55 54
+d D 1.55 96 / 07 / 01 16 : 24 : 22 tross 55 54
 c rop_copy_90_bw / gr8_rgb16 
 e
 s 00205 / 00009 / 04002
-d D 1.54 96 / 06 / 27
-                        20:
-                        46:24 tross 54 53
+d D 1.54 96 / 06 / 27 20 : 46 : 24 tross 54 53
 c rop_copy_bw / gr8_rgb16, rop_zoom_out_gr8_rgb16, aggiornati nomi macro RGB16
 e
 s 00094 / 00047 / 03917
-d D 1.53 96 / 06 / 27
-                        04:
-                        39:24 tross 53 52
+d D 1.53 96 / 06 / 27 04 : 39 : 24 tross 53 52
 c conversioni pix_type<->ras_type
 e
 s 00675 / 00343 / 03289
-d D 1.52 96 / 06 / 26 02:04:18 tross 52 51
+d D 1.52 96 / 06 / 26 02 : 04 : 18 tross 52 51
 c potrebbero funziare un po' di copy e zoom_out ->rgb16
 e
 s 00002 / 00001 / 03630
-d D 1.51 96 / 05 / 15 22:11:20 tross 51 50
+d D 1.51 96 / 05 / 15 22 : 11 : 20 tross 51 50
 c tmsg.h
 e
 s 00011 / 00000 / 03620
-d D 1.50 96 / 05 / 11 13:34:15 tross 50 49
+d D 1.50 96 / 05 / 11 13 : 34 : 15 tross 50 49
 c variabili non inizializzate
 e
 s 00001 / 00001 / 03619
-d D 1.49 96 / 04 / 10 02:05:56 tross 49 48
+d D 1.49 96 / 04 / 10 02 : 05 : 56 tross 49 48
 c rop_zoom_out_rgb_rgbm(con baco corretto)
 e
 s 00112 / 00001 / 03508
-d D 1.48 96 / 04 / 10 02:01:59 tross 48 47
+d D 1.48 96 / 04 / 10 02 : 01 : 59 tross 48 47
 c 
 e
 s 00104 / 00010 / 03405
-d D 1.47 96 / 03 / 19 18:04:11 tross 47 46
+d D 1.47 96 / 03 / 19 18 : 04 : 11 tross 47 46
 c rop_zoom_out_gr8_rgbm
 e
 s 00139 / 00010 / 03276
-d D 1.46 96 / 03 / 18 20:22:38 tross 46 45
+d D 1.46 96 / 03 / 18 20 : 22 : 38 tross 46 45
 c rop_zoom_out_rgbx
 e
 s 00003 / 00002 / 03283
-d D 1.45 96 / 02 / 08 23:16:51 tross 45 44
+d D 1.45 96 / 02 / 08 23 : 16 : 51 tross 45 44
 c mancava la rop_copy_90 RGB--> RGB_
 e
 s 00000 / 00002 / 03285
-d D 1.44 96 / 02 / 07
-                        18:
-                        24:05 tross 44 43
+d D 1.44 96 / 02 / 07 18 : 24 : 05 tross 44 43
 c tolta una printf
 e
 s 00091 / 00000 / 03196
-d D 1.43 95 / 11 / 21
-                        16:
-                        33:23 roberto 43 42
+d D 1.43 95 / 11 / 21 16 : 33 : 23 roberto 43 42
 c Introdotta rgb to rgbm
 e
 s 00004 / 00001 / 03192
-d D 1.42 95 / 10 / 09
-                        14:
-                        57:40 vinz 42 41
+d D 1.42 95 / 10 / 09 14 : 57 : 40 vinz 42 41
 c aggiunti i rop_copy RAS_CM16-- > quantized type
 e
 s 00061 / 00042 / 03132
-d D 1.41 95 / 10 / 04
-                        18:
-                        16:37 tross 41 40
-c corretto baco di
-                  rop_copy:fatto rop_copy_same()
+d D 1.41 95 / 10 / 04 18 : 16 : 37 tross 41 40
+c corretto baco di rop_copy : fatto rop_copy_same()
 e
 s 00061 / 00001 / 03113
-d D 1.40 95 / 10 / 04
-                        16:
-                        05:47 tross 40 39
+d D 1.40 95 / 10 / 04 16 : 05 : 47 tross 40 39
 c rop_[sub] image_to_raster()
 e
 s 00095 / 00017 / 03019
-d D 1.39 95 / 10 / 04
-                        12:
-                        27:49 vinz 39 38
+d D 1.39 95 / 10 / 04 12 : 27 : 49 vinz 39 38
 c aggiunto il rop_shrink
 e
 s 00007 / 00007 / 03029
-d D 1.38 95 / 09 / 25
-                        02:
-                        26:09 tross 38 37
-c corretto baco(poco visibile)nei rop_zoom_out... _rgbm()
+d D 1.38 95 / 09 / 25 02 : 26 : 09 tross 38 37
+c corretto baco(poco visibile) nei rop_zoom_out... _rgbm()
 e
 s 00001 / 00004 / 03035
-d D 1.37 95 / 09 / 20
-                        15:
-                        57:00 tross 37 36
+d D 1.37 95 / 09 / 20 15 : 57 : 00 tross 37 36
 c migliorate rop_custom_fill_cmap_ramp / buffer
 e
 s 00060 / 00000 / 02979
-d D 1.36 95 / 09 / 19
-                        17:
-                        22:55 tross 36 35
+d D 1.36 95 / 09 / 19 17 : 22 : 55 tross 36 35
 c rop_custom_fill_cmap_ramp / buffer
 e
 s 00002 / 00006 / 02977
-d D 1.35 95 / 07 / 28
-                        21:
-                        35:43 tross 35 34
+d D 1.35 95 / 07 / 28 21 : 35 : 43 tross 35 34
 c estetica
 e
 s 00004 / 00000 / 02979
-d D 1.34 95 / 07 / 28
-                        17:
-                        17:40 grisu 34 33
+d D 1.34 95 / 07 / 28 17 : 17 : 40 grisu 34 33
 c corretto un baco sull' offset della cmap
 e
 s 00001 / 00001 / 02978
-d D 1.33 95 / 07 / 28
-                        15:
-                        22:33 tross 33 32
+d D 1.33 95 / 07 / 28 15 : 22 : 33 tross 33 32
 c corretto baco di un controllo in rop_fill_cmap_buffer
 e
 s 00119 / 00005 / 02860
-d D 1.32 95 / 07 / 27
-                        21:
-                        36:31 tross 32 31
+d D 1.32 95 / 07 / 27 21 : 36 : 31 tross 32 31
 c rop_fill_cmap_ramp / buffer
 e
 s 00275 / 00022 / 02590
-d D 1.31 95 / 07 / 27
-                        00:
-                        05:00 tross 31 30
+d D 1.31 95 / 07 / 27 00 : 05 : 00 tross 31 30
 c rop_zoom_out_cm16_rgbm, rop_zoom_out_rgbm
 e
 s 00003 / 00001 / 02609
-d D 1.30 95 / 07 / 09
-                        22:
-                        23:39 tross 30 29
+d D 1.30 95 / 07 / 09 22 : 23 : 39 tross 30 29
 c messaggio in rop_zoom_out access violation
 e
 s 00043 / 00034 / 02567
-d D 1.29 95 / 07 / 04
-                        01:
-                        50:38 tross 29 28
+d D 1.29 95 / 07 / 04 01 : 50 : 38 tross 29 28
 c rop_zoom_out a scacchiera, cmap_offset presottratto a varie funz
 e
 s 00531 / 00005 / 02070
-d D 1.28 95 / 07 / 04
-                        00:
-                        46:11 tross 28 27
+d D 1.28 95 / 07 / 04 00 : 46 : 11 tross 28 27
 c con rop_zoom_out funzionante per cm16_rgb_
 e
 s 00003 / 00001 / 02072
-d D 1.27 95 / 07 / 03
-                        15:
-                        38:32 tross 27 26
+d D 1.27 95 / 07 / 03 15 : 38 : 32 tross 27 26
 c messaggio completo in caso di access violation
 e
 s 00086 / 00000 / 01987
-d D 1.26 94 / 12 / 28
-                        21:
-                        07:43 tross 26 25
+d D 1.26 94 / 12 / 28 21 : 07 : 43 tross 26 25
 c aggiunta rop_copy_90_rgbm
 e
 s 00043 / 00000 / 01944
-d D 1.25 94 / 11 / 30
-                        22:
-                        03:25 tross 25 24
+d D 1.25 94 / 11 / 30 22 : 03 : 25 tross 25 24
 c aggiunto rop_add / remove_white_to / from_cmap
 e
 s 00001 / 00001 / 01943
-d D 1.24 94 / 10 / 26
-                        00:
-                        28:46 tross 24 23
+d D 1.24 94 / 10 / 26 00 : 28 : 46 tross 24 23
 c corretto baco rop_copy_rgb_rgbm
 e
 s 00147 / 00014 / 01797
-d D 1.23 94 / 09 / 16
-                        19:
-                        45:57 tross 23 22
+d D 1.23 94 / 09 / 16 19 : 45 : 57 tross 23 22
 c cm8
 e
 s 00231 / 00000 / 01580
-d D 1.22 94 / 09 / 16
-                        00:
-                        02:27 tross 22 21
+d D 1.22 94 / 09 / 16 00 : 02 : 27 tross 22 21
 c rop_copy_90_bw / gr8_rgbm
 e
 s 00243 / 00027 / 01337
-d D 1.21 94 / 09 / 11
-                        20:
-                        52:53 tross 21 20
+d D 1.21 94 / 09 / 11 20 : 52 : 53 tross 21 20
 c con rop_copy_90-- > cm16
 e
 s 00243 / 00000 / 01121
-d D 1.20 94 / 09 / 05
-                        23:
-                        18:47 tross 20 19
+d D 1.20 94 / 09 / 05 23 : 18 : 47 tross 20 19
 c iniziato rop_reduce
 e
 s 00059 / 00000 / 01062
-d D 1.19 94 / 06 / 07
-                        07:
-                        01:19 tross 19 18
+d D 1.19 94 / 06 / 07 07 : 01 : 19 tross 19 18
 c rop_copy WB->RGBM
 e
 s 00096 / 00004 / 00966
-d D 1.18 94 / 06 / 01
-                        00:
-                        42:00 tross 18 17
+d D 1.18 94 / 06 / 01 00 : 42 : 00 tross 18 17
 c con cura dimagrante per entrare nella cassetta
 e
 s 00124 / 00001 / 00846
-d D 1.17 94 / 04 / 29
-                        23:
-                        15:12 tross 17 16
+d D 1.17 94 / 04 / 29 23 : 15 : 12 tross 17 16
 c rop_copy_90_bw_gr8
 e
 s 00009 / 00009 / 00838
-d D 1.16 94 / 04 / 14
-                        23:
-                        21:49 tross 16 15
+d D 1.16 94 / 04 / 14 23 : 21 : 49 tross 16 15
 c wrap((+7) / 8)
 e
 s 00155 / 00001 / 00692
-d D 1.15 94 / 04 / 06
-                        16:
-                        19:14 tross 15 14
+d D 1.15 94 / 04 / 06 16 : 19 : 14 tross 15 14
 c rop_copy_90_bw piu' veloce
 e
 s 00273 / 00068 / 00420
-d D 1.14 94 / 04 / 06
-                        03:
-                        25:39 tross 14 13
+d D 1.14 94 / 04 / 06 03 : 25 : 39 tross 14 13
 c rop_copy_90 pare funzionare per bw e gr8
 e
 s 00003 / 00003 / 00485
-d D 1.13 94 / 03 / 31
-                        19:
-                        38:31 tross 13 12
+d D 1.13 94 / 03 / 31 19 : 38 : 31 tross 13 12
 c 
 e
 s 00012 / 00008 / 00476
-d D 1.12 94 / 03 / 30
-                        21:
-                        06:15 tross 12 11
+d D 1.12 94 / 03 / 30 21 : 06 : 15 tross 12 11
 c 
 e
 s 00001 / 00001 / 00483
-d D 1.11 94 / 03 / 30
-                        20:
-                        46:54 tross 11 10
+d D 1.11 94 / 03 / 30 20 : 46 : 54 tross 11 10
 c 
 e
 s 00030 / 00048 / 00454
-d D 1.10 94 / 03 / 30
-                        20:
-                        45:37 tross 10 9
+d D 1.10 94 / 03 / 30 20 : 45 : 37 tross 10 9
 c rimesso a posto il wrap(in pixel)
 e
 s 00007 / 00000 / 00495
-d D 1.9 94 / 03 / 30
-                        17:
-                        30:50 tross 9 8
+d D 1.9 94 / 03 / 30 17 : 30 : 50 tross 9 8
 c rop_pixbytes
 e
 s 00021 / 00006 / 00474
-d D 1.8 94 / 03 / 13
-                        17:
-                        41:53 tross 8 7
+d D 1.8 94 / 03 / 13 17 : 41 : 53 tross 8 7
 c corretto baco su rop_copy tra dimensioni diverse
 e
 s 00005 / 00001 / 00475
-d D 1.7 94 / 03 / 11
-                        14:
-                        04:27 tross 7 6
-c bachetto rop_copy, per 3.01j
+d D 1.7 94 / 03 / 11 14 : 04 : 27 tross 7 6
+c bachetto rop_copy,
+    per 3.01j
 e
 s 00187 / 00001 / 00289
-d D 1.6 94 / 03 / 11
-                        13:
-                        48:45 tross 6 5
+d D 1.6 94 / 03 / 11 13 : 48 : 45 tross 6 5
 c per 3.01j
 e
 s 00024 / 00027 / 00266
-d D 1.5 94 / 03 / 02
-                        15:
-                        14:56 tross 5 4
+d D 1.5 94 / 03 / 02 15 : 14 : 56 tross 5 4
 c cmap per copy bw->cm16 sempre lunga 256
 e
 s 00125 / 00008 / 00168
-d D 1.4 94 / 02 / 28
-                        15:
-                        53:37 tross 4 3
+d D 1.4 94 / 02 / 28 15 : 53 : 37 tross 4 3
 c rop_copy per RAS_BW e RAS_WB
 e
 s 00002 / 00000 / 00174
-d D 1.3 94 / 02 / 19
-                        22:
-                        17:18 tross 3 2
+d D 1.3 94 / 02 / 19 22 : 17 : 18 tross 3 2
 c per fullwarn su os_4
 e
 s 00024 / 00019 / 00150
-d D 1.2 94 / 02 / 10
-                        14:
-                        04:52 tross 2 1
+d D 1.2 94 / 02 / 10 14 : 04 : 52 tross 2 1
 c cambiati i RAS_
 e
 s 00169 / 00000 / 00000
-d D 1.1 94 / 02 / 04
-                        22:
-                        02:58 tross 1 0
-c date and time created 94 / 02 / 04
-                        22:
-                        02:58 by tross
+d D 1.1 94 / 02 / 04 22 : 02 : 58 tross 1 0
+c date and time created 94 / 02 /
+        04 22 : 02 : 58 by tross
 e
 u
 U
@@ -699,7 +577,7 @@ rop_copy funz.su RAS_BW, RAS_BW
 E 74
 E 66
 E 62
-    /*---------------------------------------------------------------------------*/
+        /*---------------------------------------------------------------------------*/
 
 E 61
 D 52
@@ -708,7 +586,7 @@ rop_copy funz.su RAS_BW, RAS_BW
 E 32
 I 6
 D 14
-    /* TOGLIERE QUESTA ROBA (chiedere a Walter) */
+        /* TOGLIERE QUESTA ROBA (chiedere a Walter) */
 E 14 static void rop_copy_90_bw(RASTER *rin, RASTER *rout, int x1, int y1,
                                   int x2, int y2, int newx, int newy,
 D 14 int ninety, int flip);
@@ -860,8 +738,8 @@ void rop_subimage_to_raster (IMAGE *img,
 I 94 ras->native_buffer = ras->buffer = (LPIXEL *)img->pixmap.buffer + img_x0
 E 94
 E 76 + img_y0 * img->pixmap.xsize;
-    I 94 CASE RGB64 : ras->type        = RAS_RGBM64;
-    ras->native_buffer                  = ras->buffer =
+    I 94 CASE RGB64 : ras->type = RAS_RGBM64;
+    ras->native_buffer           = ras->buffer =
         (SPIXEL *)img->pixmap.buffer + img_x0 + img_y0 * img->pixmap.xsize;
     E 94
 D 78 DEFAULT : assert(FALSE);
@@ -898,7 +776,7 @@ void rop_subimage_to_raster (IMAGE *img,
       E 56
 D 79 if (build_cmap) {
         TMALLOC(ras->cmap.buffer, ras->cmap.size)
-        for (i                        = 0; i < ras->cmap.size; i++) {
+        for (i = 0; i < ras->cmap.size; i++) {
           D 60 ras->cmap.buffer[i].r = img->cmap.buffer[i].red;
           ras->cmap.buffer[i].g       = img->cmap.buffer[i].green;
           ras->cmap.buffer[i].b       = img->cmap.buffer[i].blue;
@@ -950,8 +828,8 @@ raster; ogni modifica di questa va anche riportata li'. Vincenzo */
 rop_pixbits(RAS_TYPE rastertype) {
   D 2
       /* attenzione: appena entra il primo tipo non multiplo di 8 bits
-* tutto il codice di questo pacchetto va ricontrollato da cima a fondo
-*/
+       * tutto il codice di questo pacchetto va ricontrollato da cima a fondo
+       */
 
 E 2 switch (rastertype) {
     D 2 CASE RAS_BW : return 8;
@@ -1200,8 +1078,8 @@ PIX_TYPE rop_pix_type_of_ras_type(RAS_TYPE ras_type) {
   {                                                                            \
     double mf = (double)(M) * (1.0 / 65535.0);                                 \
     (V).r     = (USHORT)((double)((V).r) * mf + 0.5);                          \
-    (V).g = (USHORT)((double)((V).g) * mf + 0.5);                              \
-    (V).b = (USHORT)((double)((V).b) * mf + 0.5);                              \
+    (V).g     = (USHORT)((double)((V).g) * mf + 0.5);                          \
+    (V).b     = (USHORT)((double)((V).b) * mf + 0.5);                          \
   }
 
       assert(rin->lx == rout->lx && rin->ly == rout->ly);
@@ -1216,19 +1094,19 @@ PIX_TYPE rop_pix_type_of_ras_type(RAS_TYPE ras_type) {
 E 75
 I 75 for (y = 0; y < ly; y++)
 E 75 {
-      in64 = ((SPIXEL *)rin->buffer) + y * wrapin;
-      out64        = ((SPIXEL *)rout->buffer) + y * wrapout;
+      in64  = ((SPIXEL *)rin->buffer) + y * wrapin;
+      out64 = ((SPIXEL *)rout->buffer) + y * wrapout;
       D 75 for (x = lx; x > 0; x--)
 E 75
-I 75 for (x            = 0; x < lx; x++)
+I 75 for (x = 0; x < lx; x++)
 E 75 {
-        val64            = *in64++;
-        m                = val64.m;
+        val64 = *in64++;
+        m     = val64.m;
         if (!m) *out64++ = transp64;
         D 104 else if (m == 255U)
 E 104
 I 104 else if (m == 0xffff)
-E 104 *out64++         = val64;
+E 104 *out64++ = val64;
         else {
           PREMULT64(val64, m)
           *out64++ = val64;
@@ -1241,14 +1119,14 @@ PIX_TYPE rop_pix_type_of_ras_type(RAS_TYPE ras_type) {
 E 75
 I 75 for (y = 0; y < ly; y++)
 E 75 {
-      in = ((LPIXEL *)rin->buffer) + y * wrapin;
-      out          = ((LPIXEL *)rout->buffer) + y * wrapout;
+      in  = ((LPIXEL *)rin->buffer) + y * wrapin;
+      out = ((LPIXEL *)rout->buffer) + y * wrapout;
       D 75 for (x = lx; x > 0; x--)
 E 75
 I 75 for (x = 0; x < lx; x++)
 E 75 {
-        val   = *in++;
-        m     = val.m;
+        val = *in++;
+        m   = val.m;
         if (!m)
           *out++ = transp;
         else if (m == 255U)
@@ -1626,7 +1504,7 @@ static void rop_zoom_out_gr8_rgbm(RASTER *rin, RASTER *rout,
     for (x = 0; x < lx; x++)
 			D 29 *pixout++ = cmap[*pixin++ - cmap_offset];
     E 29
-I 29 *pixout++    = cmap[*pixin++];
+I 29 *pixout++ = cmap[*pixin++];
     E 29 rowin += wrapin;
     rowout += wrapout;
   }
@@ -2041,7 +1919,7 @@ static void rop_copy_rgbm64_rgbm(RASTER *rin, RASTER *rout,
       tmp_r = tmp_g = tmp_b = tmp_m = 0;
       D 84 for (j = 0; j < factor; j++) for (i = 0; i < factor; i++)
 E 84
-I 84 in = pixin;
+I 84 in                           = pixin;
       for (j = 0; j < factor; j += 2) {
         for (i = 0; i < factor; i += 2)
 					E 84 {
@@ -3928,8 +3806,8 @@ static void rop_reduce_gr8(RASTER *rin, RASTER *rout,
 E 28
 I 28 for (y = y1; y < ylast; y += factor)
 E 84
-I 84 rowin = (UCHAR *)rin->buffer + wrapin * y1 + x1;
-  rowout     = (ULONG *)rout->buffer + wrapout * newy + newx;
+I 84 rowin  = (UCHAR *)rin->buffer + wrapin * y1 + x1;
+  rowout      = (ULONG *)rout->buffer + wrapout * newy + newx;
   while (ly-- > 0)
 		E 84
 E 28 {
@@ -3938,7 +3816,7 @@ static void rop_reduce_gr8(RASTER *rin, RASTER *rout,
       for (x = x1; x < xlast; x += factor) {
         tmp = 0;
         for (j = 0; j < factor; j++)
-          for (i   = 0; i < factor; i++) tmp += bytein[i + j * wrapin];
+          for (i = 0; i < factor; i++) tmp += bytein[i + j * wrapin];
         *byteout++ = tmp / (factor * factor);
         bytein += factor;
       }
@@ -3965,7 +3843,7 @@ static void rop_reduce_gr8(RASTER *rin, RASTER *rout,
     for (x = x1; x < xlast; x += factor) {
       tmp = 0;
       for (j = 0; j < yrest; j++)
-        for (i   = 0; i < factor; i++) tmp += bytein[i + j * wrapin];
+        for (i = 0; i < factor; i++) tmp += bytein[i + j * wrapin];
       *byteout++ = tmp / (yrest * factor);
       bytein += factor;
     }
@@ -5764,10 +5642,10 @@ rop_copy_rgbx64_xrgb1555(RASTER *rin, RASTER *rout, int x1, int y1, int x2,
 E 20
 
     /* copia un rettangolo da rin a rout.
-* Le coordinate sono relative ai due raster: (0, 0) corrisponde
-* al primo pixel del raster.
-*
-*/
+     * Le coordinate sono relative ai due raster: (0, 0) corrisponde
+     * al primo pixel del raster.
+     *
+     */
 
     void
     rop_copy(RASTER *rin, RASTER *rout, int x1, int y1, int x2, int y2,
@@ -6283,11 +6161,11 @@ while (d-- > 0) {
 D 84
 
     /* copia un rettangolo da rin a rout.
-* Le coordinate sono relative ai due raster: (0, 0) corrisponde
-* al primo pixel del raster.
-* Riduce le dimensioni di un certo fattore facendo la media dei valori
-* dei pixel.
-*/
+     * Le coordinate sono relative ai due raster: (0, 0) corrisponde
+     * al primo pixel del raster.
+     * Riduce le dimensioni di un certo fattore facendo la media dei valori
+     * dei pixel.
+     */
 
     void
     rop_reduce(RASTER *rin, RASTER *rout, int x1, int y1, int x2, int y2,
@@ -6400,11 +6278,11 @@ while (d-- > 0) {
 E 84
 I 39
     /* copia un rettangolo da rin a rout.
-* Le coordinate sono relative ai due raster: (0, 0) corrisponde
-* al primo pixel del raster.
-* Riduce le dimensioni di un fattore di subsampling pari a shrink.
-* I due raster devono essere dello stesso tipo.
-*/
+     * Le coordinate sono relative ai due raster: (0, 0) corrisponde
+     * al primo pixel del raster.
+     * Riduce le dimensioni di un fattore di subsampling pari a shrink.
+     * I due raster devono essere dello stesso tipo.
+     */
 
     void
     rop_shrink(RASTER *rin, RASTER *rout, int x1, int y1, int x2, int y2,
@@ -7394,11 +7272,11 @@ if (rout->extra_mask)
   /*---------------------------------------------------------------------------*/
 
   /* copia un rettangolo da rin a rout.
-* Le coordinate sono relative ai due raster: (0, 0) corrisponde
-* al primo pixel del raster.
-* Riduce le dimensioni di una potenza di due facendo la media dei valori
-* dei pixel, ma solo su una parte dei pixel.
-*/
+   * Le coordinate sono relative ai due raster: (0, 0) corrisponde
+   * al primo pixel del raster.
+   * Riduce le dimensioni di una potenza di due facendo la media dei valori
+   * dei pixel, ma solo su una parte dei pixel.
+   */
 
   void rop_zoom_out(RASTER * rin, RASTER * rout, int x1, int y1, int x2, int y2,
                     int newx, int newy, int abs_zoom_level) {
@@ -7549,11 +7427,11 @@ if (rout->extra_mask)
   /*---------------------------------------------------------------------------*/
 
   /* copia un rettangolo da rin a rout,
-* specchiandolo orizzontalmente se mirror e' dispari,
-* e poi ruotandolo del multiplo di novanta gradi specificato
-* da ninety in senso antiorario
-*
-*/
+   * specchiandolo orizzontalmente se mirror e' dispari,
+   * e poi ruotandolo del multiplo di novanta gradi specificato
+   * da ninety in senso antiorario
+   *
+   */
 
   void rop_copy_90(RASTER * rin, RASTER * rout, int x1, int y1, int x2, int y2,
                    int newx, int newy, int mirror, int ninety) {
@@ -7697,7 +7575,7 @@ if (rout->extra_mask)
     }
   }
 
-/*---------------------------------------------------------------------------*/
+  /*---------------------------------------------------------------------------*/
 
 #ifdef VERSIONE_LENTA
 
@@ -9324,7 +9202,7 @@ static void rop_zoom_out_90_gr8_rgb16(RASTER *rin, RASTER *rout,
 
 E 56 bufin      = rin->buffer;
   D 55 wrapin    = rin->wrap * 3; /* mi muovo di bytes */
-     E 55
+  E 55
 I 55 wrapin     = rin->wrap;
   E 55 bufout    = rout->buffer;
   wrapout         = rout->wrap;
@@ -9571,11 +9449,11 @@ static void rop_copy_90_rgb_rgbm(RASTER *rin, RASTER *rout,
       E 56
 I 56
 D 57 rowin = (UCHAR *)rin->buffer + wrapin * v1 + u1;
-    rowout   = (USHORT *)rout->buffer + wrapout * newy + newx;
+    rowout = (USHORT *)rout->buffer + wrapout * newy + newx;
     for (v = v1; v < vlast; v += factor)
       E 57
 I 57 rowin = (UCHAR *)rin->buffer + startu + startv * wrapin;
-    rowout   = (USHORT *)rout->buffer + newx + newy * wrapout;
+    rowout = (USHORT *)rout->buffer + newx + newy * wrapout;
     for (q = 0; q < qlast; q += factor)
 			E 57
 E 56 {
@@ -12716,7 +12594,7 @@ static void rop_copy_90_gr8_rgbm(RASTER *rin, RASTER *rout,
       /*---------------------------------------------------------------------------*/
 
       /* vedi sia rop_zoom_out che rop_copy_90
-*/
+       */
       void rop_zoom_out_90(RASTER * rin, RASTER * rout, int x1, int y1, int x2,
                            int y2, int newx, int newy, int abs_zoom_level,
                            int mirror, int ninety) {
@@ -12842,11 +12720,11 @@ static void rop_copy_90_gr8_rgbm(RASTER *rin, RASTER *rout,
         bytewrap   = (wrap * pixbits + 7) >> 3;
         rowbytes   = ((x2 - x1 + 1) * pixbits) >> 3;
         E 93
-D 89 pix    = (UCHAR *)r->buffer + (((x1 + y1 * r->wrap) * pixbits) >> 3);
-        l     = y2 - y1 + 1;
+D 89 pix = (UCHAR *)r->buffer + (((x1 + y1 * r->wrap) * pixbits) >> 3);
+        l  = y2 - y1 + 1;
         while (l-- > 0)
 					E 89
-I 89 lx     = x2 - x1 + 1;
+I 89 lx = x2 - x1 + 1;
         lines = y2 - y1 + 1;
         if (r->type == RAS_CM24) {
           row24 = (ULONG *)r->buffer + x1 + y1 * wrap;
@@ -13010,7 +12888,7 @@ static void rop_copy_90_gr8_rgbm(RASTER *rin, RASTER *rout,
 D 84 cmap_size = TCM_MIN_CMAP_BUFFER_SIZE(ras->cmap.info);
           for (i = 0; i < cmap_size; i++)
 						E 84
-I 84 buffer       = ras->cmap.buffer;
+I 84 buffer = ras->cmap.buffer;
           penbuffer = ras->cmap.penbuffer;
           colbuffer = ras->cmap.colbuffer;
           if (buffer) {
@@ -13162,8 +13040,8 @@ pencil_index << info.pencil_offs | info.offset_mask;
               ramp_index = color_index << info.color_offs |
                            pencil_index << info.pencil_offs;
           E 35
-I 35 ramp_index =
-              color_index << info.color_offs | pencil_index << info.pencil_offs;
+I 35 ramp_index = color_index << info.color_offs | pencil_index
+                                                         << info.pencil_offs;
           E 35
 E 34 ramp = ras->cmap.buffer + ramp_index;
           if (!already_premultiplied) {
@@ -13212,12 +13090,12 @@ pencil_index << info.pencil_offs | info.offset_mask;
           UINT magic_tone, c_r, c_g, c_b, c_m;
 
           if (!already_premultiplied) color = premult_lpixel(color);
-          c_r                               = color.r;
-          c_g                               = color.g;
-          c_b                               = color.b;
-          c_m                               = color.m;
-          colbuffer                         = ras->cmap.colbuffer;
-          index                             = color_index << info.tone_bits;
+          c_r       = color.r;
+          c_g       = color.g;
+          c_b       = color.b;
+          c_m       = color.m;
+          colbuffer = ras->cmap.colbuffer;
+          index     = color_index << info.tone_bits;
           for (tone = 0; tone < info.n_tones; tone++) {
             magic_tone         = tone * MAGICFAC;
             val.r              = (UCHAR)((c_r * magic_tone + (1 << 23)) >> 24);
@@ -13270,8 +13148,8 @@ pencil_index << info.pencil_offs | info.offset_mask;
           int tone, tmax, tmax_2;
           int tmax_2_r, tmax_2_g, tmax_2_b, tmax_2_m;
 
-          ramp_index =
-              color_index << info.color_offs | pencil_index << info.pencil_offs;
+          ramp_index = color_index << info.color_offs | pencil_index
+                                                            << info.pencil_offs;
           ramp = ras->cmap.buffer + ramp_index;
           if (!already_premultiplied) {
             color  = premult_lpixel(color);
@@ -13374,12 +13252,12 @@ pencil_index << info.pencil_offs | info.offset_mask;
             if (!raster->native_buffer)
               E 84
 I 84 if (!already_premultiplied) color = premult_lpixel(color);
-            c_r                          = color.r;
-            c_g                          = color.g;
-            c_b                          = color.b;
-            c_m                          = color.m;
-            colbuffer                    = ras->cmap.colbuffer;
-            index                        = color_index << info.tone_bits;
+            c_r       = color.r;
+            c_g       = color.g;
+            c_b       = color.b;
+            c_m       = color.m;
+            colbuffer = ras->cmap.colbuffer;
+            index     = color_index << info.tone_bits;
             for (tone = 0; tone < info.n_tones; tone++)
 							E 84 {
                 D 84 tmsg_error("release_raster,  missing buffer");
@@ -13434,9 +13312,9 @@ pencil_index << info.pencil_offs | info.offset_mask;
                                int x1, int y1) {
             if (x1 < x0 || y1 < y0) return FALSE;
 
-            *rout                    = *rin;
-            if (x0 < 0) x0           = 0;
-            if (y0 < 0) y0           = 0;
+            *rout = *rin;
+            if (x0 < 0) x0 = 0;
+            if (y0 < 0) y0 = 0;
             if (x1 > rin->lx - 1) x1 = rin->lx - 1;
             if (y1 > rin->ly - 1) y1 = rin->ly - 1;
 
@@ -13536,8 +13414,8 @@ pencil_index << info.pencil_offs | info.offset_mask;
   int tone, tmax, tmax_2;
   int tmax_2_r, tmax_2_g, tmax_2_b, tmax_2_m;
 
-  ramp_index =
-      color_index << info.color_offs | pencil_index << info.pencil_offs;
+  ramp_index = color_index << info.color_offs | pencil_index
+                                                    << info.pencil_offs;
   ramp = ras->cmap.buffer + ramp_index;
   if (!already_premultiplied) {
     color  = premult_lpixel(color);
@@ -13588,12 +13466,12 @@ void rop_fill_cmap_colramp(RASTER * ras, TCM_INFO info, LPIXEL color,
   UINT magic_tone, c_r, c_g, c_b, c_m;
 
   if (!already_premultiplied) color = premult_lpixel(color);
-  c_r                               = color.r;
-  c_g                               = color.g;
-  c_b                               = color.b;
-  c_m                               = color.m;
-  colbuffer                         = ras->cmap.colbuffer;
-  index                             = color_index << info.tone_bits;
+  c_r       = color.r;
+  c_g       = color.g;
+  c_b       = color.b;
+  c_m       = color.m;
+  colbuffer = ras->cmap.colbuffer;
+  index     = color_index << info.tone_bits;
   for (tone = 0; tone < info.n_tones; tone++) {
     magic_tone         = tone * MAGICFAC;
     val.r              = (UCHAR)((c_r * magic_tone + (1 << 23)) >> 24);
@@ -13613,12 +13491,12 @@ void rop_fill_cmap_penramp(RASTER * ras, TCM_INFO info, LPIXEL pencil,
   UINT magic_enot, p_r, p_g, p_b, p_m;
 
   if (!already_premultiplied) pencil = premult_lpixel(pencil);
-  p_r                                = pencil.r;
-  p_g                                = pencil.g;
-  p_b                                = pencil.b;
-  p_m                                = pencil.m;
-  penbuffer                          = ras->cmap.penbuffer;
-  index                              = pencil_index << info.tone_bits;
+  p_r       = pencil.r;
+  p_g       = pencil.g;
+  p_b       = pencil.b;
+  p_m       = pencil.m;
+  penbuffer = ras->cmap.penbuffer;
+  index     = pencil_index << info.tone_bits;
   for (enot = info.n_tones - 1; enot >= 0; enot--) {
     magic_enot         = enot * MAGICFAC;
     val.r              = (UCHAR)((p_r * magic_enot + (1 << 23)) >> 24);
@@ -13640,8 +13518,8 @@ void rop_custom_fill_cmap_ramp(RASTER * ras, TCM_INFO info, LPIXEL color,
   int tone, tmax, tmax_2;
   int tmax_2_r, tmax_2_g, tmax_2_b, tmax_2_m;
 
-  ramp_index =
-      color_index << info.color_offs | pencil_index << info.pencil_offs;
+  ramp_index = color_index << info.color_offs | pencil_index
+                                                    << info.pencil_offs;
   ramp = ras->cmap.buffer + ramp_index;
   if (!already_premultiplied) {
     color  = premult_lpixel(color);
@@ -13684,12 +13562,12 @@ void rop_custom_fill_cmap_colramp(RASTER * ras, TCM_INFO info, LPIXEL color,
   UINT magic_tone, c_r, c_g, c_b, c_m;
 
   if (!already_premultiplied) color = premult_lpixel(color);
-  c_r                               = color.r;
-  c_g                               = color.g;
-  c_b                               = color.b;
-  c_m                               = color.m;
-  colbuffer                         = ras->cmap.colbuffer;
-  index                             = color_index << info.tone_bits;
+  c_r       = color.r;
+  c_g       = color.g;
+  c_b       = color.b;
+  c_m       = color.m;
+  colbuffer = ras->cmap.colbuffer;
+  index     = color_index << info.tone_bits;
   for (tone = 0; tone < info.n_tones; tone++) {
     magic_tone         = custom_tone[tone] * MAGICFAC;
     val.r              = (UCHAR)((c_r * magic_tone + (1 << 23)) >> 24);
@@ -13710,13 +13588,13 @@ void rop_custom_fill_cmap_penramp(RASTER * ras, TCM_INFO info, LPIXEL pencil,
   UINT magic_enot, p_r, p_g, p_b, p_m;
 
   if (!already_premultiplied) pencil = premult_lpixel(pencil);
-  p_r                                = pencil.r;
-  p_g                                = pencil.g;
-  p_b                                = pencil.b;
-  p_m                                = pencil.m;
-  penbuffer                          = ras->cmap.penbuffer;
-  index                              = pencil_index << info.tone_bits;
-  maxtone                            = info.n_tones - 1;
+  p_r       = pencil.r;
+  p_g       = pencil.g;
+  p_b       = pencil.b;
+  p_m       = pencil.m;
+  penbuffer = ras->cmap.penbuffer;
+  index     = pencil_index << info.tone_bits;
+  maxtone   = info.n_tones - 1;
   for (tone = 0; tone < info.n_tones; tone++) {
     magic_enot         = (maxtone - custom_tone[tone]) * MAGICFAC;
     val.r              = (UCHAR)((p_r * magic_enot + (1 << 23)) >> 24);
@@ -13944,9 +13822,9 @@ int create_subraster(RASTER * rin, RASTER * rout, int x0, int y0, int x1,
 E 89 {
   if (x1 < x0 || y1 < y0) return FALSE;
 
-  *rout                    = *rin;
-  if (x0 < 0) x0           = 0;
-  if (y0 < 0) y0           = 0;
+  *rout = *rin;
+  if (x0 < 0) x0 = 0;
+  if (y0 < 0) y0 = 0;
   if (x1 > rin->lx - 1) x1 = rin->lx - 1;
   if (y1 > rin->ly - 1) y1 = rin->ly - 1;
 
@@ -14053,11 +13931,11 @@ void clone_raster(RASTER * rin, RASTER * rout) {
 static void init_reverse_lut(void) {
   UCHAR meta_lut[] = {0x0, 0x8, 0x4, 0xc, 0x2, 0xa, 0x6, 0xe,
                       0x1, 0x9, 0x5, 0xd, 0x3, 0xb, 0x7, 0xf};
-  static int i = 0;
+  static int i     = 0;
 
   if (i == 256) return;
 
-  for (i           = 0; i < 256; i++)
+  for (i = 0; i < 256; i++)
     Reverse_lut[i] = (meta_lut[i & 0xf] << 4) | (meta_lut[i >> 4]);
 }
 

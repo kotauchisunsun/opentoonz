@@ -52,4 +52,4 @@ DVAPI TFilePath addFolder(const TFilePath &parentFolderPath);
 DVAPI void deleteFolder(const TFilePath &folderPath);
 
 DVAPI void scanPalettes(const TFilePath &folder, const TFilePath &sourcePath);
-}
+}  // namespace StudioPaletteCmd

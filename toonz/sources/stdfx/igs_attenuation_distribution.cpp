@@ -45,15 +45,15 @@ bool inside_polygon_(double radius, int odd_diameter, double xp, double yp,
 (xa - x1)=(yp - y1)*(x2 - x1)/(y2 - y1); */
       xa = (yp - y1) * (x2 - x1) / (y2 - y1) + x1;
     } else
-        /* 2番目の交差 */
-        if (xb == -odd_diameter) {
-      xb = (yp - y1) * (x2 - x1) / (y2 - y1) + x1;
-      if (((xa <= xp) && (xp <= xb)) || ((xb <= xp) && (xp <= xa))) {
-        return true;
-      } else {
-        return false;
-      } /* 水平範囲外 */
-    }
+      /* 2番目の交差 */
+      if (xb == -odd_diameter) {
+        xb = (yp - y1) * (x2 - x1) / (y2 - y1) + x1;
+        if (((xa <= xp) && (xp <= xb)) || ((xb <= xp) && (xp <= xa))) {
+          return true;
+        } else {
+          return false;
+        } /* 水平範囲外 */
+      }
   }
   return false;
 }
@@ -70,7 +70,7 @@ void attenuation_distribution_(
     const int polygon_num /* =2  2:円 3<=:円内接多角形(中心右始) */
     ,
     const double degree /* =0. 多角形開始角度(傾き)(反時計回り) */
-    ) {
+) {
   /*
   double radius
           影響の半径
@@ -219,4 +219,4 @@ void attenuation_distribution_(
   }
   // return true;
 }
-}
+}  // namespace

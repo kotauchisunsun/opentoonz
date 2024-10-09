@@ -43,7 +43,7 @@ DVAPI TFilePath getReslistPath(bool forCleanup);
 DVAPI TFilePath getCacheRootFolder();
 DVAPI TFilePath getCrashReportFolder();
 DVAPI TFilePath getProfileFolder();
-};
+};  // namespace ToonzFolder
 
 class DVAPI FolderListenerManager {  // singleton
 

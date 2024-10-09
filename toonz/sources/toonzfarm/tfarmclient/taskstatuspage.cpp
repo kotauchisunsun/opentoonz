@@ -171,7 +171,7 @@ public:
   void onExpand(TTreeViewItem *item) {
     string id       = "";
     TaskTreeItem *i = dynamic_cast<TaskTreeItem *>(item);
-    if (i) id       = i->getId();
+    if (i) id = i->getId();
 
     item->clearItems();
     TFarmController *controller = Application::instance()->getController();
@@ -277,7 +277,7 @@ if(taskItem)
 
     string taskId;
     TaskTreeItem *task = dynamic_cast<TaskTreeItem *>(item);
-    if (task) taskId   = task->getId();
+    if (task) taskId = task->getId();
 
     vector<TaskShortInfo> subTasks;
     try {
@@ -374,7 +374,7 @@ if(taskItem)
       int count = item->getItemCount();
       for (int i = 0; i < count; ++i) {
         TaskTreeItem *task = dynamic_cast<TaskTreeItem *>(item->getItem(i));
-        if (task) old      = (*it == task->getId());
+        if (task) old = (*it == task->getId());
         if (old) break;
       }
 

@@ -328,7 +328,7 @@ void MovieRenderer::Imp::prepareForStart() {
 
 void MovieRenderer::Imp::addSoundtrack(int r0, int r1, double fps,
                                        int boardDuration) {
-  TCG_ASSERT(r0 <= r1, return);
+  TCG_ASSERT(r0 <= r1, return );
 
   TXsheet::SoundProperties *prop =
       new TXsheet::SoundProperties();  // Ownership will be surrendered ...

@@ -473,7 +473,7 @@ void PaintBrushTool::leftButtonDown(const TPointD &pos, const TMouseEvent &e) {
   TImageP image(getImage(true));
   if (m_colorType.getValue() == LINES) m_colorTypeBrush = INK;
   if (m_colorType.getValue() == AREAS) m_colorTypeBrush = PAINT;
-  if (m_colorType.getValue() == ALL) m_colorTypeBrush   = INKNPAINT;
+  if (m_colorType.getValue() == ALL) m_colorTypeBrush = INKNPAINT;
 
   if (TToonzImageP ti = image) {
     TRasterCM32P ras = ti->getRaster();
@@ -483,10 +483,10 @@ void PaintBrushTool::leftButtonDown(const TPointD &pos, const TMouseEvent &e) {
       TTileSetCM32 *tileSet = new TTileSetCM32(ras->getSize());
       m_tileSaver           = new TTileSaverCM32(ras, tileSet);
       m_rasterTrack         = new RasterStrokeGenerator(
-          ras, PAINTBRUSH, m_colorTypeBrush, styleId,
-          TThickPoint(m_mousePos + convert(ras->getCenter()), thickness),
-          m_onlyEmptyAreas.getValue(), 0, m_modifierLockAlpha.getValue(),
-          false);
+                  ras, PAINTBRUSH, m_colorTypeBrush, styleId,
+                  TThickPoint(m_mousePos + convert(ras->getCenter()), thickness),
+                  m_onlyEmptyAreas.getValue(), 0, m_modifierLockAlpha.getValue(),
+                  false);
       /*-- 現在のFidを記憶 --*/
       m_workingFrameId = getFrameId();
       m_tileSaver->save(m_rasterTrack->getLastRect());

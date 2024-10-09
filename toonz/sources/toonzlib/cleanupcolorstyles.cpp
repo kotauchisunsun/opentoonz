@@ -376,4 +376,4 @@ void TBlackCleanupStyle::setWhiteThreshold(double threshold) {
 namespace {
 TColorStyle::Declaration s0(new TBlackCleanupStyle());
 TColorStyle::Declaration s1(new TColorCleanupStyle());
-}
+}  // namespace

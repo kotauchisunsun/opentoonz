@@ -36,7 +36,7 @@ TXshSimpleLevel *Level::getLevel() const {
   return sl;
 }
 
-}  // ScriptWrapper
+}  // namespace ScriptWrapper
 
 QScriptValue getLevel(QScriptContext *ctx, QScriptEngine *eng) {
   QString levelName = ctx->argument(0).toString();

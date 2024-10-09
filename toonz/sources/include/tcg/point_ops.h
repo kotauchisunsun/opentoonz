@@ -536,7 +536,7 @@ bool bestFit(Point_ref p, Point &d, point_iterator begin, point_iterator end) {
 
   return bestFit(p, d, sums_x, sums_y, sums2_x, sums2_y, sums_xy, n);
 }
-}
-}  // namespace tcg::point_ops
+}  // namespace point_ops
+}  // namespace tcg
 
 #endif  // TCG_POINT_OPS_H

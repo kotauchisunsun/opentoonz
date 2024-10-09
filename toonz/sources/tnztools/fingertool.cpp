@@ -407,9 +407,9 @@ void FingerTool::leftButtonDown(const TPointD &pos, const TMouseEvent &e) {
       TTileSetCM32 *tileSet = new TTileSetCM32(ras->getSize());
       m_tileSaver           = new TTileSaverCM32(ras, tileSet);
       m_rasterTrack         = new RasterStrokeGenerator(
-          ras, FINGER, INK, styleId,
-          TThickPoint(pos + convert(ras->getCenter()), thickness),
-          m_invert.getValue(), 0, false, false);
+                  ras, FINGER, INK, styleId,
+                  TThickPoint(pos + convert(ras->getCenter()), thickness),
+                  m_invert.getValue(), 0, false, false);
 
       /*-- 作業中Fidを現在のFIDにする --*/
       m_workingFrameId = getFrameId();

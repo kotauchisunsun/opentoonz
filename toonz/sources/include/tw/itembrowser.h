@@ -31,7 +31,7 @@ public:
   void setItemSize(const TDimension &d);
   TDimension getItemSize() const;
 
-  virtual int getItemCount() const = 0;
+  virtual int getItemCount() const           = 0;
   virtual void drawItem(TWidget *w, const TRect &rect, int index,
                         bool selected) const = 0;
   virtual bool isItemWide(int index) const { return false; };

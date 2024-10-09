@@ -17,7 +17,7 @@ void prepare_lut(double max, int edge, std::vector<T> &lut) {
     lut[i] = (int)((max / (edge - aux)) * (i - aux));
   }
 }
-}
+}  // namespace
 
 //===================================================================
 
@@ -68,7 +68,7 @@ void update_param(T &param, TRaster64P ras) {
   param = param * 257;
   return;
 }
-}
+}  // namespace
 
 //-------------------------------------------------------------------
 

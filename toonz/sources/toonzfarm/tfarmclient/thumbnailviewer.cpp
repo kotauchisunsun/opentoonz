@@ -212,8 +212,8 @@ void ThumbnailViewer::drawItem(int index) {
   TPoint textOrigin = r2.getP00() + TPoint(2 - 10, (r2.getLy() - ts.ly) / 2);
 
   setColor(Black);
-  string fname          = name;
-  string type           = item->getPath().getType();
+  string fname = name;
+  string type  = item->getPath().getType();
   if (type != "") fname = fname + "." + type;
 
   fname = item->getPath().getLevelName();

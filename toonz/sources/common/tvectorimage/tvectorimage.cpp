@@ -2029,7 +2029,8 @@ TStroke *TVectorImage::removeEndpoints(int strokeIndex, double *offset) {
   return m_imp->removeEndpoints(strokeIndex, offset);
 }
 
-void TVectorImage::restoreEndpoints(int index, TStroke *oldStroke, double offset) {
+void TVectorImage::restoreEndpoints(int index, TStroke *oldStroke,
+                                    double offset) {
   m_imp->restoreEndpoints(index, oldStroke, offset);
 }
 

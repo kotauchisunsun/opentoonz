@@ -24,7 +24,7 @@
 namespace TSyntax {
 class Parser;
 class Grammar;
-}
+}  // namespace TSyntax
 
 class DVAPI TExpressionField : public TTextField {
 public:

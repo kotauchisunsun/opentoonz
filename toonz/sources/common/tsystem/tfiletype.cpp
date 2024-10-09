@@ -28,7 +28,7 @@ public:
 //================================================================================
 
 TFileType::Type TFileType::getInfo(const TFilePath &fp) {
-  FileTypeData *data = FileTypeData::instance();
+  FileTypeData *data                      = FileTypeData::instance();
   std::map<std::string, int>::iterator it = data->m_table.find(fp.getType());
 
   int type = (it == data->m_table.end()) ? TFileType::UNKNOW_FILE : it->second;
@@ -41,7 +41,7 @@ TFileType::Type TFileType::getInfo(const TFilePath &fp) {
 //--------------------------------------------------------------------------------
 
 TFileType::Type TFileType::getInfoFromExtension(const std::string &extension) {
-  FileTypeData *data = FileTypeData::instance();
+  FileTypeData *data                      = FileTypeData::instance();
   std::map<std::string, int>::iterator it = data->m_table.find(extension);
   int type = (it == data->m_table.end()) ? TFileType::UNKNOW_FILE : it->second;
   return (TFileType::Type)type;

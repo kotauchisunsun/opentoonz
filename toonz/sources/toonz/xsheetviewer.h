@@ -169,7 +169,8 @@ class XsheetScrollArea final : public QScrollArea {
   Q_OBJECT
 
 public:
-  XsheetScrollArea(QWidget *parent = 0, Qt::WindowFlags flags = Qt::WindowFlags())
+  XsheetScrollArea(QWidget *parent       = 0,
+                   Qt::WindowFlags flags = Qt::WindowFlags())
       : QScrollArea(parent) {
     setObjectName("xsheetScrollArea");
     setFrameStyle(QFrame::StyledPanel);
@@ -249,8 +250,8 @@ class XsheetViewer final : public QFrame, public SaveLoadQSettings {
                  setCurrentFrameTextColor)
   Q_PROPERTY(QColor SelectedTextColor READ getSelectedTextColor WRITE
                  setSelectedTextColor)
-  Q_PROPERTY(QColor FrameTextColor READ getFrameTextColor WRITE
-                 setFrameTextColor)
+  Q_PROPERTY(
+      QColor FrameTextColor READ getFrameTextColor WRITE setFrameTextColor)
   Q_PROPERTY(QColor KeyframeLineColor READ getKeyframeLineColor WRITE
                  setKeyframeLineColor)
   Q_PROPERTY(QColor PreviewFrameTextColor READ getPreviewFrameTextColor WRITE
@@ -263,12 +264,11 @@ class XsheetViewer final : public QFrame, public SaveLoadQSettings {
                  WRITE setCurrentTimeIndicatorColor)
   // Column
   QColor m_columnTextColor;
-  Q_PROPERTY(QColor ColumnTextColor READ getColumnTextColor WRITE
-                 setColumnTextColor)
+  Q_PROPERTY(
+      QColor ColumnTextColor READ getColumnTextColor WRITE setColumnTextColor)
   QColor m_highlightColumnTextColor;
-  Q_PROPERTY(QColor HighlightColumnTextColor READ
-                 getHighlightColumnTextColor WRITE
-                 setHighlightColumnTextColor)
+  Q_PROPERTY(QColor HighlightColumnTextColor READ getHighlightColumnTextColor
+                 WRITE setHighlightColumnTextColor)
   QColor m_emptyColumnHeadColor;  // empty column header (200,200,200)
   Q_PROPERTY(QColor EmptyColumnHeadColor READ getEmptyColumnHeadColor WRITE
                  setEmptyColumnHeadColor)
@@ -471,8 +471,8 @@ class XsheetViewer final : public QFrame, public SaveLoadQSettings {
       QColor XsheetPreviewButtonBgOnColor READ getXsheetPreviewButtonBgOnColor
           WRITE setXsheetPreviewButtonBgOnColor)
   Q_PROPERTY(
-      QString XsheetPreviewButtonOnImage READ getXsheetPreviewButtonOnImage WRITE
-          setXsheetPreviewButtonOnImage)
+      QString XsheetPreviewButtonOnImage READ getXsheetPreviewButtonOnImage
+          WRITE setXsheetPreviewButtonOnImage)
   Q_PROPERTY(
       QColor XsheetPreviewButtonBgOffColor READ getXsheetPreviewButtonBgOffColor
           WRITE setXsheetPreviewButtonBgOffColor)
@@ -539,9 +539,9 @@ class XsheetViewer final : public QFrame, public SaveLoadQSettings {
   Q_PROPERTY(QColor TimelinePreviewButtonBgOffColor READ
                  getTimelinePreviewButtonBgOffColor WRITE
                      setTimelinePreviewButtonBgOffColor)
-  Q_PROPERTY(
-      QString TimelinePreviewButtonOffImage READ getTimelinePreviewButtonOffImage
-          WRITE setTimelinePreviewButtonOffImage)
+  Q_PROPERTY(QString TimelinePreviewButtonOffImage READ
+                 getTimelinePreviewButtonOffImage WRITE
+                     setTimelinePreviewButtonOffImage)
   Q_PROPERTY(QString TimelineUnifiedButtonTranspImage READ
                  getTimelineUnifiedButtonTranspImage WRITE
                      setTimelineUnifiedButtonTranspImage)
@@ -554,9 +554,9 @@ class XsheetViewer final : public QFrame, public SaveLoadQSettings {
   Q_PROPERTY(QColor TimelineCamstandButtonBgOnColor READ
                  getTimelineCamstandButtonBgOnColor WRITE
                      setTimelineCamstandButtonBgOnColor)
-  Q_PROPERTY(
-      QString TimelineCamstandButtonOnImage READ getTimelineCamstandButtonOnImage
-          WRITE setTimelineCamstandButtonOnImage)
+  Q_PROPERTY(QString TimelineCamstandButtonOnImage READ
+                 getTimelineCamstandButtonOnImage WRITE
+                     setTimelineCamstandButtonOnImage)
   Q_PROPERTY(QString TimelineCamstandButtonTranspImage READ
                  getTimelineCamstandButtonTranspImage WRITE
                      setTimelineCamstandButtonTranspImage)
@@ -580,8 +580,8 @@ class XsheetViewer final : public QFrame, public SaveLoadQSettings {
       QColor TimelineLockButtonBgOffColor READ getTimelineLockButtonBgOffColor
           WRITE setTimelineLockButtonBgOffColor)
   Q_PROPERTY(
-      QString TimelineLockButtonOffImage READ getTimelineLockButtonOffImage WRITE
-          setTimelineLockButtonOffImage)
+      QString TimelineLockButtonOffImage READ getTimelineLockButtonOffImage
+          WRITE setTimelineLockButtonOffImage)
   // Timeline Config Button
   QColor m_timelineConfigButtonBgColor;
   QString m_timelineConfigButtonImage;
@@ -625,7 +625,7 @@ class XsheetViewer final : public QFrame, public SaveLoadQSettings {
   XsheetGUI::NoteArea *m_noteArea;
   XsheetGUI::XSheetToolbar *m_toolbar;
   XsheetGUI::BreadcrumbArea *m_breadcrumbArea;
-  
+
   LayerFooterPanel *m_layerFooterPanel;
 
   Spreadsheet::FrameScroller m_frameScroller;
@@ -855,9 +855,7 @@ public:
     m_selectedTextColor = color;
   }
   QColor getSelectedTextColor() const { return m_selectedTextColor; }
-  void setFrameTextColor(const QColor &color) {
-    m_frameTextColor = color;
-  }
+  void setFrameTextColor(const QColor &color) { m_frameTextColor = color; }
   QColor getFrameTextColor() const { return m_frameTextColor; }
   void setCurrentFrameTextColor(const QColor &color) {
     m_currentFrameTextColor = color;
@@ -877,12 +875,8 @@ public:
   QColor getOnionSkinAreaBgColor() const { return m_onionSkinAreaBgColor; }
 
   // Column
-  void setColumnTextColor(const QColor &color) {
-    m_columnTextColor = color;
-  }
-  QColor getColumnTextColor() const {
-    return m_columnTextColor;
-  }
+  void setColumnTextColor(const QColor &color) { m_columnTextColor = color; }
+  QColor getColumnTextColor() const { return m_columnTextColor; }
   void setHighlightColumnTextColor(const QColor &color) {
     m_highlightColumnTextColor = color;
   }

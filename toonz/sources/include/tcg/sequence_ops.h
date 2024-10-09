@@ -99,8 +99,8 @@ public:
 template <typename ranit_type, typename edge_eval, typename containers_reader>
 bool minimalPath(ranit_type begin, ranit_type end, edge_eval &evaluator,
                  containers_reader &output);
-}
-}  // namespace tcg::sequence_ops
+}  // namespace sequence_ops
+}  // namespace tcg
 
 #endif  // TCG_SEQUENCE_OPS_H
 

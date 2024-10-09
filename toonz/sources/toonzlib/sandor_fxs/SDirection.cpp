@@ -119,8 +119,8 @@ double CSDirection::getAngle(const short sum[4], short ma) {
   if (nbMax == 1) {
     double angle, corrAngle;
     if (ma == sum[0]) {
-      angle                      = 0.0;
-      corrAngle                  = adjustAngle(sum, 0, 3, 1);
+      angle     = 0.0;
+      corrAngle = adjustAngle(sum, 0, 3, 1);
       if (corrAngle < 0.0) angle = 180.0;
     } else if (ma == sum[1]) {
       angle     = 45.0;
@@ -171,7 +171,7 @@ void CSDirection::makeDir(UCHAR *sel) {
   UCHAR *pDir = m_dir.get();
   for (int y = 0; y < m_lY; y++)
     for (int x = 0; x < m_lX; x++, pSel++, pDir++) {
-      *pDir                = 0;
+      *pDir = 0;
       if (*pSel > 0) *pDir = getDir(x, y, sel);
     }
 }
@@ -342,7 +342,7 @@ void CSDirection::blurRadius(const int dBlur) {
     UCHAR *pSel = sel.get();
     UCHAR *pDir = m_dir.get();
     for (int y = 0; y < m_lY; y++)
-      for (int x                    = 0; x < m_lX; x++, pSel++, pDir++)
+      for (int x = 0; x < m_lX; x++, pSel++, pDir++)
         if (*pSel > (UCHAR)0) *pDir = blurRadius(sel.get(), x, y, dBlur);
   }
 }

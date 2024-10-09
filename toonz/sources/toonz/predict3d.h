@@ -14,6 +14,6 @@ struct Point {
 };
 
 bool Predict(int k, Point initial[], Point current[], bool visible[]);
-}
+}  // namespace Predict3D
 
 #endif

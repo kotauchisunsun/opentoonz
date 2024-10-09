@@ -832,8 +832,8 @@ void removeStageObjectNode(const TStageObjectId &id, TXsheetHandle *xshHandle,
 //-------------------------------------------------------------------
 
 void removeColumns(const QVector<int> &columnIndexes, TXsheetHandle *xshHandle,
-                  TObjectHandle *objHandle, TFxHandle *fxHandle,
-                  bool doUndo = true) {
+                   TObjectHandle *objHandle, TFxHandle *fxHandle,
+                   bool doUndo = true) {
   TXsheet *xsh = xshHandle->getXsheet();
   int i;
   QMap<TStageObjectId, QList<TFxPort *>> columnFxConnection;

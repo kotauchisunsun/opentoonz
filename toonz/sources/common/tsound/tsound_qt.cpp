@@ -20,7 +20,8 @@ using namespace std;
 
 //==============================================================================
 
-class TSoundOutputDeviceImp: public std::enable_shared_from_this<TSoundOutputDeviceImp> {
+class TSoundOutputDeviceImp
+    : public std::enable_shared_from_this<TSoundOutputDeviceImp> {
 private:
   QMutex m_mutex;
 
@@ -37,21 +38,20 @@ private:
 public:
   std::set<TSoundOutputDeviceListener *> m_listeners;
 
-  TSoundOutputDeviceImp():
-    m_mutex(QMutex::Recursive),
-    m_volume(0.5),
-    m_looping(false),
-    m_bytesSent(0),
-    m_bufferIndex(0),
-    m_audioBuffer()
-  { }
+  TSoundOutputDeviceImp()
+      : m_mutex(QMutex::Recursive)
+      , m_volume(0.5)
+      , m_looping(false)
+      , m_bytesSent(0)
+      , m_bufferIndex(0)
+      , m_audioBuffer() {}
 
 private:
   void reset() {
     if (m_audioOutput) {
       m_audioOutput->reset();
       m_audioBuffer = m_audioOutput->start();
-      m_bytesSent = 0;
+      m_bytesSent   = 0;
     }
   }
 
@@ -60,17 +60,16 @@ private:
 
     if (!m_audioOutput) return;
     if (!m_buffer.size()) return;
-    if ( m_audioOutput->error() != QAudio::NoError
-      && m_audioOutput->error() != QAudio::UnderrunError )
-    {
+    if (m_audioOutput->error() != QAudio::NoError &&
+        m_audioOutput->error() != QAudio::UnderrunError) {
       stop();
       std::cerr << "error " << m_audioOutput->error() << std::endl;
       return;
     }
 
-    bool looping = isLooping();
+    bool looping       = isLooping();
     qint64 bytesRemain = m_audioOutput->bytesFree();
-    while(bytesRemain > 0) {
+    while (bytesRemain > 0) {
       qint64 bytesCount = m_buffer.size() - m_bufferIndex;
       if (bytesCount <= 0) {
         if (!looping) break;
@@ -104,11 +103,9 @@ public:
 
   bool isPlaying() {
     QMutexLocker lock(&m_mutex);
-    return m_audioOutput
-        && m_buffer.size()
-        && ( isLooping()
-          || m_bufferIndex < m_buffer.size()
-          /*|| m_audioOutput->state() == QAudio::ActiveState*/ );
+    return m_audioOutput && m_buffer.size() &&
+           (isLooping() || m_bufferIndex < m_buffer.size()
+            /*|| m_audioOutput->state() == QAudio::ActiveState*/);
   }
 
   void setVolume(double x) {
@@ -144,12 +141,13 @@ public:
 
   void stop() {
     QMutexLocker lock(&m_mutex);
-    //reset(); audio buffer too small, so optimization not uses
+    // reset(); audio buffer too small, so optimization not uses
     m_buffer.clear();
     m_bufferIndex = 0;
   }
 
-  void play(const TSoundTrackP &st, TINT32 s0, TINT32 s1, bool loop, bool scrubbing) {
+  void play(const TSoundTrackP &st, TINT32 s0, TINT32 s1, bool loop,
+            bool scrubbing) {
     QMutexLocker lock(&m_mutex);
 
     QAudioFormat format;
@@ -171,13 +169,13 @@ public:
     format.setSampleRate(st->getSampleRate());
 
     QAudioDeviceInfo info(QAudioDeviceInfo::defaultOutputDevice());
-    if (!info.isFormatSupported((format)))
-      format = info.nearestFormat(format);
+    if (!info.isFormatSupported((format))) format = info.nearestFormat(format);
 
     qint64 totalPacketCount = s1 - s0;
-    qint64 fileByteCount    = (s1 - s0)*st->getSampleSize();
+    qint64 fileByteCount    = (s1 - s0) * st->getSampleSize();
     m_buffer.resize(fileByteCount);
-    memcpy(m_buffer.data(), st->getRawData() + s0*st->getSampleSize(), fileByteCount);
+    memcpy(m_buffer.data(), st->getRawData() + s0 * st->getSampleSize(),
+           fileByteCount);
     m_bufferIndex = 0;
 
     m_looping = loop;
@@ -190,20 +188,21 @@ public:
       qint64 audioBufferSize = format.bytesForDuration(100000);
       m_audioOutput->setBufferSize(audioBufferSize);
       m_audioOutput->setNotifyInterval(50);
-      QObject::connect(m_audioOutput.data(), &QAudioOutput::notify, [=](){ sendBuffer(); });
+      QObject::connect(m_audioOutput.data(), &QAudioOutput::notify,
+                       [=]() { sendBuffer(); });
 
       reset();
-    }/* audio buffer too small, so optimization not uses
-    else {
-      // if less than 0.1 sec of data in audio buffer,
-      // then just sent next portion of data
-      // else reset audio buffer before
-      qint64 sentUSecs = format.durationForBytes(m_bytesSent);
-      qint64 processedUSecs = m_audioOutput->processedUSecs();
-      if (sentUSecs - processedUSecs > 100000ll)
-        reset();
-    }
-    */
+    } /* audio buffer too small, so optimization not uses
+     else {
+       // if less than 0.1 sec of data in audio buffer,
+       // then just sent next portion of data
+       // else reset audio buffer before
+       qint64 sentUSecs = format.durationForBytes(m_bytesSent);
+       qint64 processedUSecs = m_audioOutput->processedUSecs();
+       if (sentUSecs - processedUSecs > 100000ll)
+         reset();
+     }
+     */
 
     sendBuffer();
   }
@@ -232,9 +231,7 @@ bool TSoundOutputDevice::installed() { return true; }
 
 //------------------------------------------------------------------------------
 
-bool TSoundOutputDevice::open(const TSoundTrackP &st) {
-  return true;
-}
+bool TSoundOutputDevice::open(const TSoundTrackP &st) { return true; }
 
 //------------------------------------------------------------------------------
 
@@ -246,7 +243,7 @@ bool TSoundOutputDevice::close() {
 //------------------------------------------------------------------------------
 
 void TSoundOutputDevice::prepareVolume(double volume) {
-    m_imp->prepareVolume(volume);
+  m_imp->prepareVolume(volume);
 }
 
 //------------------------------------------------------------------------------
@@ -272,9 +269,7 @@ void TSoundOutputDevice::play(const TSoundTrackP &st, TINT32 s0, TINT32 s1,
 
 //------------------------------------------------------------------------------
 
-void TSoundOutputDevice::stop() {
-  m_imp->stop();
-}
+void TSoundOutputDevice::stop() { m_imp->stop(); }
 
 //------------------------------------------------------------------------------
 
@@ -290,9 +285,7 @@ void TSoundOutputDevice::detach(TSoundOutputDeviceListener *listener) {
 
 //------------------------------------------------------------------------------
 
-double TSoundOutputDevice::getVolume() {
-  return m_imp->getVolume();
-}
+double TSoundOutputDevice::getVolume() { return m_imp->getVolume(); }
 
 //------------------------------------------------------------------------------
 

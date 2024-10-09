@@ -323,8 +323,8 @@ public:
         ip.m = (int)pLL.m;
         break;
       default:
-         break;
-     }
+        break;
+      }
     } else
       ip.r = ip.g = ip.b = ip.m = 0;
   }
@@ -361,7 +361,7 @@ public:
         pS->m = (USHORT)ip.m;
         break;
       default:
-         break;
+        break;
       }
     }
   }

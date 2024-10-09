@@ -90,7 +90,7 @@ inline bool areNear(Scalar a, Scalar b, Scalar tolerance) {
 
 template <typename Scalar>
 inline typename std::enable_if<!tcg::is_floating_point<Scalar>::value,
-                                Scalar>::type
+                               Scalar>::type
 mod(Scalar val, Scalar mod) {
   Scalar m = val % mod;
   return (m >= 0) ? m : m + mod;
@@ -138,7 +138,7 @@ inline Scalar modShift(Scalar val1, Scalar val2, Scalar a, Scalar b) {
 */
 template <typename Scalar>
 inline typename std::enable_if<!tcg::is_floating_point<Scalar>::value,
-                                Scalar>::type
+                               Scalar>::type
 div(Scalar val, Scalar d) {
   TCG_STATIC_ASSERT(-3 / 5 == 0);
   TCG_STATIC_ASSERT(3 / -5 == 0);
@@ -206,7 +206,7 @@ inline UScalar GE_2Power(UScalar val) {
 
   return 1 << i;
 }
-}
-}  // namespace tcg::numeric_ops
+}  // namespace numeric_ops
+}  // namespace tcg
 
 #endif  // TCG_NUMERIC_OPS_H

@@ -194,7 +194,7 @@ DVAPI void setFieldGuideAspectRatio(double ar);
 DVAPI double getFieldGuideAspectRatio();
 
 DVAPI void setCurrentDpiGetter(CurrentDpiGetter f);
-}
+}  // namespace UnitParameters
 
 //---------------------------
 

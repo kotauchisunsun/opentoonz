@@ -221,7 +221,7 @@ static IMAGERGB *iopen(int fd, OpenMode openMode, unsigned int type,
     if (dim > 2) image->zsize = zsize;
 
     if (image->zsize == 1) {
-      image->dim                        = 2;
+      image->dim = 2;
       if (image->ysize == 1) image->dim = 1;
     } else {
       image->dim = 3;
@@ -346,7 +346,7 @@ static void cvtshorts(unsigned short buffer[], TINT32 n) {
 /*-----------------------------------------------------------------------------*/
 /*
  *  INVERTE I LONG DEL BUFFER
-   */
+ */
 /*-----------------------------------------------------------------------------*/
 
 static void cvtTINT32s(TUINT32 buffer[], TINT32 n) {
@@ -362,7 +362,7 @@ static void cvtTINT32s(TUINT32 buffer[], TINT32 n) {
 /*-----------------------------------------------------------------------------*/
 /*
  *  INVERTE I LONG E GLI SHORT DEL BUFFER
-*/
+ */
 /*-----------------------------------------------------------------------------*/
 
 static void cvtimage(IMAGERGB *image) {
@@ -382,7 +382,7 @@ static void cvtimage(IMAGERGB *image) {
     if (pixel & 0x80) {                                                        \
       while (count--) *optr++ = (TYPE)*iptr++;                                 \
     } else {                                                                   \
-      pixel                   = *iptr++;                                       \
+      pixel = *iptr++;                                                         \
       while (count--) *optr++ = (TYPE)pixel;                                   \
     }                                                                          \
   }
@@ -390,7 +390,7 @@ static void cvtimage(IMAGERGB *image) {
 /*-----------------------------------------------------------------------------*/
 /*
  *  ESPANDE UNA IMMAGINE FORMATO RGB-RLE
-*/
+ */
 /*-----------------------------------------------------------------------------*/
 
 static void img_rle_expand(unsigned short *rlebuf, int ibpp,
@@ -426,7 +426,7 @@ static void img_rle_expand(unsigned short *rlebuf, int ibpp,
 /*-----------------------------------------------------------------------------*/
 /*
  *  RITORNA L'AMPIEZZA DELLA RIGA DI UN IMMAGINE RGB
-*/
+ */
 /*-----------------------------------------------------------------------------*/
 
 static int img_getrowsize(IMAGERGB *image) {
@@ -444,7 +444,7 @@ static int img_getrowsize(IMAGERGB *image) {
 /*-----------------------------------------------------------------------------*/
 /*
  * SPOSTA IL PUNTATORE AL FILE RGB
-*/
+ */
 /*-----------------------------------------------------------------------------*/
 
 static TUINT32 img_optseek(IMAGERGB *image, TUINT32 offset) {
@@ -458,7 +458,7 @@ static TUINT32 img_optseek(IMAGERGB *image, TUINT32 offset) {
 /*-----------------------------------------------------------------------------*/
 /*
  *  LEGGE DAL FILE RGB E RIEMPE IL BUFFER
-*/
+ */
 /*-----------------------------------------------------------------------------*/
 
 static TINT32 rgb_img_read(IMAGERGB *image, char *buffer, TINT32 count) {
@@ -476,7 +476,7 @@ static TINT32 rgb_img_read(IMAGERGB *image, char *buffer, TINT32 count) {
 /*-----------------------------------------------------------------------------*/
 /*
  * CONTROLLA SE LA RIGA CORRENTE DELL'IMMAGINE RGB E' VALIDA
-*/
+ */
 /*-----------------------------------------------------------------------------*/
 
 static int img_badrow(IMAGERGB *image, int y, int z) {
@@ -652,7 +652,7 @@ static void img_setrowsize(IMAGERGB *image, UINT cnt, UINT y, UINT z) {
     while (count) {                                                            \
       todo = (TYPE)(count > 126 ? 126 : count);                                \
       count -= todo;                                                           \
-      *optr++                = (TYPE)(0x80 | todo);                            \
+      *optr++ = (TYPE)(0x80 | todo);                                           \
       while (todo--) *optr++ = (TYPE)*sptr++;                                  \
     }                                                                          \
     sptr = iptr;                                                               \
@@ -876,7 +876,7 @@ void SgiReader::open(FILE *file) {
   Tiio::SgiWriterProperties *prop = new Tiio::SgiWriterProperties();
   m_info.m_properties             = prop;
   prop->m_endianness.setValue(m_header->dorev == 1 ? L"Big Endian"
-                                                  : L"Little Endian");
+                                                   : L"Little Endian");
   prop->m_compressed.setValue(ISRLE(m_header->type) ? true : false);
   wstring pixelSize;
   int ps = m_info.m_bitsPerSample * m_info.m_samplePerPixel;

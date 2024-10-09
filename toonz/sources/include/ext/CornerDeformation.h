@@ -42,7 +42,7 @@ public:
 
   static CornerDeformation *instance();
 };
-}
+}  // namespace ToonzExt
 #endif /* CORNERDEFORMATION_H */
 //-----------------------------------------------------------------------------
 //  End Of File

@@ -153,7 +153,7 @@ void SVNConfigReader::readRepository() {
   repo.m_localPath = localPath;
   repo.m_repoPath  = repoPath;
   repo.m_username  = QString::fromStdString(
-      PermissionsManager::instance()->getSVNUserName(m_repositories.size()));
+       PermissionsManager::instance()->getSVNUserName(m_repositories.size()));
   repo.m_password = QString::fromStdString(
       PermissionsManager::instance()->getSVNPassword(m_repositories.size()));
   m_repositories.append(repo);

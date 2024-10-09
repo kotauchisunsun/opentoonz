@@ -68,7 +68,8 @@ protected:
   bool m_isActive = false;
 
 public:
-  BaseViewerPanel(QWidget *parent = 0, Qt::WindowFlags flags = Qt::WindowFlags());
+  BaseViewerPanel(QWidget *parent       = 0,
+                  Qt::WindowFlags flags = Qt::WindowFlags());
   ~BaseViewerPanel() {}
 
   virtual void updateShowHide();

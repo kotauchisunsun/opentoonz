@@ -229,7 +229,7 @@ void fx_(const TRasterP in_ras  // with margin
   ino::arr_to_ras(out_gr8->getRawData(), ino::channels(), out_ras, margin);
   out_gr8->unlock();
 }
-}
+}  // namespace
 //------------------------------------------------------------
 void ino_motion_blur::doCompute(TTile &tile, double frame,
                                 const TRenderSettings &rend_sets) {

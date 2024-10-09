@@ -98,7 +98,7 @@ void CALLBACK tessVertex(void *vertex_data, void *polygon_data) {
 template <typename mesh_type>
 void CALLBACK edgeFlag(GLboolean flag) {}
 
-}  // namespace tcg::detail
+}  // namespace detail
 
 //**************************************************************************************
 //    Polygon triangulation
@@ -111,7 +111,7 @@ void gluRegister(GLUtesselator *tess, GLenum which, Func *func) {
   gluTessCallback(tess, which, (TCG_GLU_CALLBACK)func);
 }
 
-}  // namespace tcg::detail
+}  // namespace detail
 
 //---------------------------------------------------------------------------
 
@@ -256,7 +256,7 @@ public:
   }
 };
 
-}  // namespace tcg::detail
+}  // namespace detail
 
 //=============================================================================
 
@@ -442,7 +442,7 @@ inline bool testCollapse(const mesh_type &mesh, int e,
   return true;
 }
 
-}  // namespace tcg::detail
+}  // namespace detail
 
 //----------------------------------------------------------------------------
 

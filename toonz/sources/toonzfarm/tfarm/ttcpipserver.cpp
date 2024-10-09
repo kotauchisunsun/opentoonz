@@ -365,7 +365,7 @@ void TTcpIpServer::run() {
 
     int err = establish(m_imp->m_port, m_imp->m_s);
     if (!err && m_imp->m_s != -1) {
-//      signal(SIGCHLD, fireman);           /* this eliminates zombies */
+      //      signal(SIGCHLD, fireman);           /* this eliminates zombies */
 
 #ifdef MACOSX
       struct sigaction sact;

@@ -64,7 +64,7 @@ void TStageObjectValues::updateValues() {
   TXsheet *xsh = m_xsheetHandle->getXsheet();
   if (m_objectId == TStageObjectId::NoneId)
     m_objectId = m_objectHandle->getObjectId();
-  m_frame      = m_frameHandle->getFrame();
+  m_frame = m_frameHandle->getFrame();
   std::vector<Channel>::iterator it;
 
   for (it = m_channels.begin(); it != m_channels.end(); ++it) {
@@ -85,7 +85,7 @@ TStageObject *getAncestor(TStageObjectTree *tree, TStageObject *obj) {
   }
   return root;
 }
-}
+}  // namespace
 //-----------------------
 void TStageObjectValues::applyValues(bool undoEnabled) const {
   TXsheet *xsh = m_xsheetHandle->getXsheet();
@@ -119,7 +119,7 @@ void TStageObjectValues::applyValues(bool undoEnabled) const {
 void TStageObjectValues::Channel::setValue(double value) {
   if (m_actionId == TStageObject::T_ScaleX ||
       m_actionId == TStageObject::T_ScaleY) {
-    const double eps             = 1.e-8;
+    const double eps = 1.e-8;
     if (fabs(value) < eps) value = value < 0 ? -eps : eps;
   }
   m_value = value;

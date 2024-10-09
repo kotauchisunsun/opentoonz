@@ -129,7 +129,7 @@ void doEmboss(TRasterPT<PIXEL> ras, TRasterPT<PIXEL> srcraster, double azimuth,
       else if ((NdotL = Nx * Lx + Ny * Ly + Nz * Lz) < 0)
         val = 0;
       else
-        val       = NdotL / sqrt(Nx * Nx + Ny * Ny + Nz2);
+        val = NdotL / sqrt(Nx * Nx + Ny * Ny + Nz2);
       (pixout)->r = (val < PIXEL::maxChannelValue)
                         ? (val > 0 ? (CHANNEL_TYPE)val : 0)
                         : PIXEL::maxChannelValue;

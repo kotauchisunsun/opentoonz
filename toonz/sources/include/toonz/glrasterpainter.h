@@ -24,4 +24,4 @@ DVAPI void drawRaster(const TAffine &aff, UCHAR *buffer, int wrap, int bpp,
                       const TDimension &rasSize, bool premultiplied);
 DVAPI void drawRaster(const TImageP &image, const TDimension &viewerSize,
                       const TAffine &aff, bool showSavebox, bool premultiplied);
-}
+}  // namespace GLRasterPainter

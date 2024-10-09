@@ -29,8 +29,8 @@ class StrokeParametricDeformer;
 //---------------------------------------------------------------------------
 
 /**
-   * @brief This class maintains data required from manipulator.
-   */
+ * @brief This class maintains data required from manipulator.
+ */
 struct DVAPI ContextStatus {
   // useful for special key status
   enum { CTRL = 0x0001, ALT = 0x0002, SHIFT = 0x0004, NONE = 0x0000 };
@@ -79,7 +79,7 @@ straightCorners_;
   void init();
 };
 //---------------------------------------------------------------------------
-}
+}  // namespace ToonzExt
 #endif /* CONTEXTSTATUS_H */
 //-----------------------------------------------------------------------------
 //  End Of File

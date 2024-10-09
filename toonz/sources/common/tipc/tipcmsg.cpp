@@ -24,7 +24,7 @@
 namespace {
 QHash<QString, QSharedMemory *> sharedMemories;
 QHash<QString, QString> temporaryFiles;
-}
+}  // namespace
 
 //---------------------------------------------------------------------
 

@@ -83,25 +83,24 @@ static void patternmapUC(
         // Calculates the rotation angle
         double angle = 0.0;
         if (pmP.m_isRandomDir)
-          angle = pmP.m_minDirAngle +
-                  (double)(rand() % 1001) * 0.001 *
-                      (pmP.m_maxDirAngle - pmP.m_minDirAngle);
+          angle =
+              pmP.m_minDirAngle + (double)(rand() % 1001) * 0.001 *
+                                      (pmP.m_maxDirAngle - pmP.m_minDirAngle);
         else {
           if (pp->x >= 0 && pp->y >= 0 && pp->x < ipUC.m_lX &&
               pp->y < ipUC.m_lY) {
             UCHAR *sel = ipUC.m_sel.get() + pp->y * ipUC.m_lX + pp->x;
             if (*sel > (UCHAR)0) angle = (double)(*sel) - 50.0;
           }
-          angle += pmP.m_minDirAngle +
-                   (double)(rand() % 1001) * 0.001 *
-                       (pmP.m_maxDirAngle - pmP.m_minDirAngle);
+          angle +=
+              pmP.m_minDirAngle + (double)(rand() % 1001) * 0.001 *
+                                      (pmP.m_maxDirAngle - pmP.m_minDirAngle);
         }
 
         // Calculates the scale
         double scale = 1.0;
-        scale =
-            pmP.m_minScale +
-            (double)(rand() % 1001) * 0.001 * (pmP.m_maxScale - pmP.m_minScale);
+        scale        = pmP.m_minScale + (double)(rand() % 1001) * 0.001 *
+                                     (pmP.m_maxScale - pmP.m_minScale);
 
         // Mapping of Pattern
         pat.mapIt(ipUC, ipOri, pp->x, pp->y, scale, angle, pmP.m_isUseInkColor,
@@ -165,25 +164,24 @@ static void patternmapUS(
         // Calculates the rotation angle
         double angle = 0.0;
         if (pmP.m_isRandomDir)
-          angle = pmP.m_minDirAngle +
-                  (double)(rand() % 1001) * 0.001 *
-                      (pmP.m_maxDirAngle - pmP.m_minDirAngle);
+          angle =
+              pmP.m_minDirAngle + (double)(rand() % 1001) * 0.001 *
+                                      (pmP.m_maxDirAngle - pmP.m_minDirAngle);
         else {
           if (pp->x >= 0 && pp->y >= 0 && pp->x < ipUS.m_lX &&
               pp->y < ipUS.m_lY) {
             UCHAR *sel = ipUS.m_sel.get() + pp->y * ipUS.m_lX + pp->x;
             if (*sel > (UCHAR)0) angle = (double)(*sel) - 50.0;
           }
-          angle += pmP.m_minDirAngle +
-                   (double)(rand() % 1001) * 0.001 *
-                       (pmP.m_maxDirAngle - pmP.m_minDirAngle);
+          angle +=
+              pmP.m_minDirAngle + (double)(rand() % 1001) * 0.001 *
+                                      (pmP.m_maxDirAngle - pmP.m_minDirAngle);
         }
 
         // Calculates the scale
         double scale = 1.0;
-        scale =
-            pmP.m_minScale +
-            (double)(rand() % 1001) * 0.001 * (pmP.m_maxScale - pmP.m_minScale);
+        scale        = pmP.m_minScale + (double)(rand() % 1001) * 0.001 *
+                                     (pmP.m_maxScale - pmP.m_minScale);
 
         // Mapping of Pattern
         pat.mapIt(ipUS, ipOri, pp->x, pp->y, scale, angle, pmP.m_isUseInkColor,

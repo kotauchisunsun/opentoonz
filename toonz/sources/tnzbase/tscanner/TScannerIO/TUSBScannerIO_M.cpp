@@ -61,7 +61,7 @@ void buf2printable(const unsigned char *buffer, const int size,
   }
   if (i < size) os << "...";
 }
-}
+}  // namespace
 //-----------------------------------------------------------------------------
 
 TUSBScannerIO::TUSBScannerIO() : m_data(new TUSBScannerIOPD()) { TRACE }
@@ -83,7 +83,7 @@ struct usb_device *doCheck(struct usb_device *dev, int level) {
 }
 
 #endif
-};
+};  // namespace
 
 bool TUSBScannerIO::open() {
 #if defined(HAS_LIBUSB)

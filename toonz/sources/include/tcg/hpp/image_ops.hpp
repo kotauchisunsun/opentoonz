@@ -118,7 +118,7 @@ void _flatFilterLine(PtrIn in, PtrOut out, int lx, int addIn, int addOut,
         const pixIn_type &npi = *newPixIn, &li = *lineIn;
 
         if (selector(npi)) sum = sum + npi, ++count;
-        if (selector(li)) sum  = sum - li, --count;
+        if (selector(li)) sum = sum - li, --count;
 
         *pixsum = *pixsum + sum, *pixcount += count;
       }
@@ -307,7 +307,7 @@ void blur(const ImgIn &imgIn, ImgOut &imgOut, int radius, SelectorFunc selector,
   blurRows(imgIn, imgOut, radius, selector, Scalar);
   blurCols(imgOut, imgOut, radius, selector, Scalar);
 }
-}
-}  // namespace tcg::image_ops
+}  // namespace image_ops
+}  // namespace tcg
 
 #endif  // TCG_IMAGE_OPS_HPP

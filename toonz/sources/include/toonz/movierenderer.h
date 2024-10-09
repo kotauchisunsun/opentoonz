@@ -48,8 +48,8 @@ class DVAPI MovieRenderer final : public QObject {
 public:
   class Listener {
   public:
-    virtual bool onFrameCompleted(int frame) = 0;
-    virtual bool onFrameFailed(int frame, TException &e) = 0;
+    virtual bool onFrameCompleted(int frame)              = 0;
+    virtual bool onFrameFailed(int frame, TException &e)  = 0;
     virtual void onSequenceCompleted(const TFilePath &fp) = 0;
     virtual ~Listener() {}
   };

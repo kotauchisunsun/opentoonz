@@ -165,8 +165,8 @@ class ImageMesh final : public TSmartObject,
                         public tcg::Mesh<Vertex, Edge, Face> {};
 
 //--------------------------------------------------------------------------------
-}
-}  // namespace TRop::borders
+}  // namespace borders
+}  // namespace TRop
 
 #ifdef _WIN32
 template class DVAPI TSmartPointerT<TRop::borders::ImageMesh>;
@@ -266,8 +266,8 @@ void readMeshes(const TRasterPT<Pixel> &raster,
                 ImageMeshesReaderT<Pixel> &reader);
 
 //--------------------------------------------------------------------------------
-}
-}  // namespace TRop::borders
+}  // namespace borders
+}  // namespace TRop
 
 #endif  // TROP_BORDERS_H
 

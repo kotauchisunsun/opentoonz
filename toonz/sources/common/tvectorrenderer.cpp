@@ -190,23 +190,33 @@ void hardRenderVectorImage(const TVectorRenderData &rd, TRaster32P &ras,
   static PIXELFORMATDESCRIPTOR pfd = {
       sizeof(PIXELFORMATDESCRIPTOR),  // size of this pfd
       1,                              // version number
-      0 | (false ? (PFD_DRAW_TO_WINDOW | PFD_DOUBLEBUFFER)
+      0 |
+          (false ? (PFD_DRAW_TO_WINDOW | PFD_DOUBLEBUFFER)
                  : (PFD_DRAW_TO_BITMAP | PFD_SUPPORT_GDI)) |
           PFD_SUPPORT_OPENGL,  // support OpenGL
       PFD_TYPE_RGBA,           // RGBA type
       32,                      // 32-bit color depth
       0,
-      0, 0, 0, 0, 0,   // color bits ignored
-      0,               // no alpha buffer
-      0,               // shift bit ignored
-      0,               // no accumulation buffer
-      0, 0, 0, 0,      // accum bits ignored
+      0,
+      0,
+      0,
+      0,
+      0,  // color bits ignored
+      0,  // no alpha buffer
+      0,  // shift bit ignored
+      0,  // no accumulation buffer
+      0,
+      0,
+      0,
+      0,               // accum bits ignored
       32,              // 32-bit z-buffer
       0,               // no stencil buffer
       0,               // no auxiliary buffer
       PFD_MAIN_PLANE,  // main layer
       0,               // reserved
-      0, 0, 0          // layer masks ignored
+      0,
+      0,
+      0  // layer masks ignored
   };
 
   // get the best available match of pixel format for the device context
@@ -350,12 +360,12 @@ GLXPixmap make_pixmap(Display *dpy, Window win, unsigned int width,
   XGetWindowAttributes(dpy, win, &attr);
 
 /*
-    * IMPORTANT:
-    *   Use the glXCreateGLXPixmapMESA function when using Mesa because
-    *   Mesa needs to know the colormap associated with a pixmap in order
-    *   to render correctly.  This is because Mesa allows RGB rendering
-    *   into any kind of visual, not just TrueColor or DirectColor.
-    */
+ * IMPORTANT:
+ *   Use the glXCreateGLXPixmapMESA function when using Mesa because
+ *   Mesa needs to know the colormap associated with a pixmap in order
+ *   to render correctly.  This is because Mesa allows RGB rendering
+ *   into any kind of visual, not just TrueColor or DirectColor.
+ */
 #ifdef PROBLEMI_CON_IL_DRIVER_NVIDIA  // GLX_MESA_pixmap_colormap //
   if (strstr(glXQueryExtensionsString(dpy, 0), "GLX_MESA_pixmap_colormap")) {
     /* stand-alone Mesa, specify the colormap */
@@ -377,7 +387,7 @@ GLXPixmap make_pixmap(Display *dpy, Window win, unsigned int width,
 
   return glxpm;
 }
-}
+}  // namespace
 
 // void  offscreenRender(TRaster32P& ras, const TVectorImageP& vimg, const
 // TAffine& aff)

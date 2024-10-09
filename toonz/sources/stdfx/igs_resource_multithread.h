@@ -21,7 +21,7 @@ public:
 private:
   std::vector<void *> thre_exec_;
 };
-}
-}
+}  // namespace resource
+}  // namespace igs
 
 #endif /* !igs_resource_multithread_h */

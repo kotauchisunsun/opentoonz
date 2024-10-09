@@ -41,7 +41,7 @@ inline TRectD gridAlign(const TRectD &rect, TPointD origin, double step) {
   result += origin;
   return result;
 }
-}
+}  // namespace
 
 //****************************************************************************
 //    Mosaic Namespace
@@ -332,12 +332,10 @@ void MosaicFx::doDryCompute(TRectD &rect, double frame,
                   tround(tileBoxD.x1 / stepD), tround(tileBoxD.y1 / stepD));
 
   int enlargement =
-      (ri.m_quality == TRenderSettings::StandardResampleQuality)
-          ? 1.0
-          : (ri.m_quality == TRenderSettings::ImprovedResampleQuality)
-                ? 2.0
-                : (ri.m_quality == TRenderSettings::HighResampleQuality) ? 3.0
-                                                                         : 0.0;
+      (ri.m_quality == TRenderSettings::StandardResampleQuality)   ? 1.0
+      : (ri.m_quality == TRenderSettings::ImprovedResampleQuality) ? 2.0
+      : (ri.m_quality == TRenderSettings::HighResampleQuality)     ? 3.0
+                                                                   : 0.0;
 
   srcRectD = srcRectD.enlarge(enlargement);
 
@@ -398,12 +396,10 @@ void MosaicFx::doCompute(TTile &tile, double frame, const TRenderSettings &ri) {
   // The calculated source rect must be enlarged by a small amount, since the
   // resample algrotihms add some transparency to the edges.
   int enlargement =
-      (ri.m_quality == TRenderSettings::StandardResampleQuality)
-          ? 1
-          : (ri.m_quality == TRenderSettings::ImprovedResampleQuality)
-                ? 2
-                : (ri.m_quality == TRenderSettings::HighResampleQuality) ? 3
-                                                                         : 0;
+      (ri.m_quality == TRenderSettings::StandardResampleQuality)   ? 1
+      : (ri.m_quality == TRenderSettings::ImprovedResampleQuality) ? 2
+      : (ri.m_quality == TRenderSettings::HighResampleQuality)     ? 3
+                                                                   : 0;
   assert(enlargement > 0);
 
   srcRect = srcRect.enlarge(enlargement);

@@ -73,7 +73,7 @@ private:
   /* 代入演算子を無効化 */
   pixel &operator=(const pixel &);
 };
-}
-}
+}  // namespace motion_wind
+}  // namespace igs
 
 #endif /* !igs_motion_wind_pixel_h */

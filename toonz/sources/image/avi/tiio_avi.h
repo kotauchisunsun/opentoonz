@@ -115,6 +115,6 @@ public:
 
   void updateTranslation() override;
 };
-}
+}  // namespace Tiio
 
 #endif  // TIIO_AVI_H

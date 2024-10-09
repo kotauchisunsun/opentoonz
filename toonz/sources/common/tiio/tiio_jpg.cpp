@@ -140,7 +140,7 @@ void JpgReader::readLine(char *buffer, int x0, int x1, int shrink) {
     dst += x0;
     src += 3 * x0;
 
-    int width           = (m_cinfo.output_width - 1) / shrink + 1;
+    int width = (m_cinfo.output_width - 1) / shrink + 1;
     if (x1 >= x0) width = (x1 - x0) / shrink + 1;
 
     while (--width >= 0) {
@@ -160,7 +160,7 @@ void JpgReader::readLine(char *buffer, int x0, int x1, int shrink) {
     dst += x0;
     src += x0;
 
-    int width           = (m_cinfo.output_width - 1) / shrink + 1;
+    int width = (m_cinfo.output_width - 1) / shrink + 1;
     if (x1 >= x0) width = (x1 - x0) / shrink + 1;
 
     while (--width >= 0) {

@@ -560,7 +560,7 @@ bool IoCmd::exportLevel(const TFilePath &path, TXshSimpleLevel *sl,
                                       //                      necessary?
   try {
     return (path.getType() == "tlv") ? assert(sl->getType() == PLI_XSHLEVEL),
-           locals.exportToTlv() : locals.exportToMultifile();
+           locals.exportToTlv()      : locals.exportToMultifile();
   } catch (...) {
     return false;
   }

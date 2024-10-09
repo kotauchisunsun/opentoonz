@@ -83,9 +83,8 @@ class StopMotionController final : public QWidget {
       *m_focusFar3Button, *m_captureFilterSettingsBtn, *m_testLightsButton;
   QHBoxLayout *m_focusAndZoomLayout;
   QLabel *m_frameInfoLabel, *m_cameraSettingsLabel, *m_cameraModeLabel,
-      *m_resolutionLabel, *m_cameraStatusLabel,
-      *m_apertureLabel, *m_kelvinValueLabel, *m_isoLabel, *m_shutterSpeedLabel,
-      *m_webcamLabel;
+      *m_resolutionLabel, *m_cameraStatusLabel, *m_apertureLabel,
+      *m_kelvinValueLabel, *m_isoLabel, *m_shutterSpeedLabel, *m_webcamLabel;
   QToolButton *m_previousLevelButton, *m_previousFrameButton,
       *m_previousXSheetFrameButton;
   QSlider *m_apertureSlider, *m_shutterSpeedSlider, *m_isoSlider,

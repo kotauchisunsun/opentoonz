@@ -186,7 +186,7 @@ void getCameraSection(T3DPointD points[4], int row, double z)
 
 //-----------------------------------------------------------------------------
 /*! when camera view mode, draw the mask plane outside of the camera box
-*/
+ */
 void ViewerDraw::drawCameraMask(SceneViewer *viewer) {
   TXsheet *xsh = TApp::instance()->getCurrentXsheet()->getXsheet();
 
@@ -258,8 +258,8 @@ void ViewerDraw::drawCameraMask(SceneViewer *viewer) {
 
 void ViewerDraw::drawGridAndGuides(SceneViewer *viewer, double sc, Ruler *vr,
                                    Ruler *hr, bool gridEnabled) {
-  int vGuideCount     = 0;
-  int hGuideCount     = 0;
+  int vGuideCount = 0;
+  int hGuideCount = 0;
   if (vr) vGuideCount = vr->getGuideCount();
   if (hr) hGuideCount = hr->getGuideCount();
 
@@ -423,7 +423,7 @@ void ViewerDraw::draw3DCamera(unsigned long flags, double zmin, double phi) {
 
   TPointD cameraCorners[4] = {camAff * rect.getP00(), camAff * rect.getP10(),
                               camAff * rect.getP11(), camAff * rect.getP01()};
-  TPointD cameraCenter = 0.5 * (cameraCorners[0] + cameraCorners[2]);
+  TPointD cameraCenter     = 0.5 * (cameraCorners[0] + cameraCorners[2]);
 
   T3DPointD cage[4][4];
   std::vector<double> cageZ;
@@ -458,8 +458,8 @@ void ViewerDraw::draw3DCamera(unsigned long flags, double zmin, double phi) {
   }
   glEnable(GL_LINE_STIPPLE);
 
-  double yBigBox       = -Stage::bigBoxSize[1];
-  double xBigBox       = Stage::bigBoxSize[0];
+  double yBigBox = -Stage::bigBoxSize[1];
+  double xBigBox = Stage::bigBoxSize[0];
   if (phi < 0) xBigBox = -xBigBox;
 
   for (int i = 0; i < m; i++) {
@@ -700,11 +700,11 @@ void ViewerDraw::drawFieldGuide() {
   TSceneProperties *sprop =
       TApp::instance()->getCurrentScene()->getScene()->getProperties();
 
-  int n        = sprop->getFieldGuideSize();
+  int n = sprop->getFieldGuideSize();
   if (n < 4) n = 4;
-  double ar    = sprop->getFieldGuideAspectRatio();
-  double lx    = 0.5 * n / f * Stage::inch;  // 320;
-  double ly    = lx / ar;
+  double ar = sprop->getFieldGuideAspectRatio();
+  double lx = 0.5 * n / f * Stage::inch;  // 320;
+  double ly = lx / ar;
   glPushMatrix();
   glScaled(f, f, 1);
   double ux = lx / n;

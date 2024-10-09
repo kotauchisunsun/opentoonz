@@ -52,7 +52,7 @@ StrokeDeformationImpl *DeformationSelector::getDeformation(
 
     if (tmp->check(status)) {
       if (it->second > candidate.second) {
-        candidate                                        = *it;
+        candidate = *it;
         if (it->second < default_def.second) default_def = *it;
       }
     }

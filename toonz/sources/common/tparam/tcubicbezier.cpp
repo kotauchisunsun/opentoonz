@@ -6,8 +6,8 @@
 
 DVAPI double invCubicBezierX(double x, const TPointD &a, const TPointD &aSpeed,
                              const TPointD &bSpeed, const TPointD &b) {
-  double aSpeedX            = aSpeed.x;
-  double bSpeedX            = bSpeed.x;
+  double aSpeedX = aSpeed.x;
+  double bSpeedX = bSpeed.x;
   if (aSpeedX == 0) aSpeedX = epsilon;
   if (bSpeedX == 0) bSpeedX = -epsilon;
 
@@ -93,14 +93,14 @@ DVAPI std::pair<TPointD, TPointD> getMinMaxCubicBezierY(const TPointD &a,
       double inv_2aY    = 1.0 / (2.0 * aaY);
       double u0         = (-bbY + sqrt_discr) * inv_2aY;
       double u1         = (-bbY - sqrt_discr) * inv_2aY;
-      if (u0 > 1.0) u0  = 1.0;
-      if (u0 < 0.0) u0  = 0.0;
-      if (u1 > 1.0) u1  = 1.0;
-      if (u1 < 0.0) u1  = 0.0;
-      double y_0        = aY * u0 * u0 * u0 + bY * u0 * u0 + cY * u0 + dY;
-      double y_1        = aY * u1 * u1 * u1 + bY * u1 * u1 + cY * u1 + dY;
-      double x_0        = aX * u0 * u0 * u0 + bX * u0 * u0 + cX * u0 + dX;
-      double x_1        = aX * u1 * u1 * u1 + bX * u1 * u1 + cX * u1 + dX;
+      if (u0 > 1.0) u0 = 1.0;
+      if (u0 < 0.0) u0 = 0.0;
+      if (u1 > 1.0) u1 = 1.0;
+      if (u1 < 0.0) u1 = 0.0;
+      double y_0 = aY * u0 * u0 * u0 + bY * u0 * u0 + cY * u0 + dY;
+      double y_1 = aY * u1 * u1 * u1 + bY * u1 * u1 + cY * u1 + dY;
+      double x_0 = aX * u0 * u0 * u0 + bX * u0 * u0 + cX * u0 + dX;
+      double x_1 = aX * u1 * u1 * u1 + bX * u1 * u1 + cX * u1 + dX;
       if (y_0 < y_1)
         return std::pair<TPointD, TPointD>(TPointD(x_0, y_0),
                                            TPointD(x_1, y_1));

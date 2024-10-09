@@ -439,12 +439,13 @@ void findIntersections(double y, const TQuadratic &q, double t0, double t1,
 
   } else  // la quadratica e' un segmento orizzontale
     findIntersections(
-        y, TQuadratic(q.getPoint(t0),
-                      0.5 * (q.getPoint(t0) + q.getPoint(t1)) + TPointD(0, 1.0),
-                      q.getPoint(t1)),
+        y,
+        TQuadratic(q.getPoint(t0),
+                   0.5 * (q.getPoint(t0) + q.getPoint(t1)) + TPointD(0, 1.0),
+                   q.getPoint(t1)),
         0, 1, intersections, sides);
 }
-}
+}  // namespace
 //-----------------------------------------------------------------------------
 
 bool TRegion::contains(const TPointD &p) const { return m_imp->contains(p); }
@@ -555,8 +556,9 @@ static void checkPolyline(const std::vector<T3DPointD> &p) {
 
       ret = intersect(s0, s1, res);
       if (ret)
-        assert((ret == 1) && (areAlmostEqual(res[0].first, 1) ||
-                              areAlmostEqual(res[0].first, 0)) &&
+        assert((ret == 1) &&
+               (areAlmostEqual(res[0].first, 1) ||
+                areAlmostEqual(res[0].first, 0)) &&
                (areAlmostEqual(res[0].second, 1) ||
                 areAlmostEqual(res[0].second, 0)));
     }
@@ -576,8 +578,9 @@ static void checkPolyline(const std::vector<T3DPointD> &p) {
 
     ret = intersect(s0, s1, res);
     if (ret)
-      assert((ret == 1) && (areAlmostEqual(res[0].first, 1) ||
-                            areAlmostEqual(res[0].first, 0)) &&
+      assert((ret == 1) &&
+             (areAlmostEqual(res[0].first, 1) ||
+              areAlmostEqual(res[0].first, 0)) &&
              (areAlmostEqual(res[0].second, 1) ||
               areAlmostEqual(res[0].second, 0)));
   }
@@ -742,12 +745,12 @@ std::swap(t0, t1);
         side = findSides(p, *q0, t0, 0, leftAreOdd, side);
         for (int j = chunkIndex0 - 1; j > chunkIndex1; j--)
           side = findSides(p, *s->getChunk(j), 1, 0, leftAreOdd, side);
-        side   = findSides(p, *q1, 1, t1, leftAreOdd, side);
+        side = findSides(p, *q1, 1, t1, leftAreOdd, side);
       } else {
         side = findSides(p, *q0, t0, 1, leftAreOdd, side);
         for (int j = chunkIndex0 + 1; j < chunkIndex1; j++)
           side = findSides(p, *s->getChunk(j), 0, 1, leftAreOdd, side);
-        side   = findSides(p, *q1, 0, t1, leftAreOdd, side);
+        side = findSides(p, *q1, 0, t1, leftAreOdd, side);
       }
 
     } else
@@ -820,13 +823,17 @@ int TRegion::Imp::leftScanlineIntersections(const TPointD &p,
         if (t0 <= s && s < t1) {
           double ys = getY(q, s);
 
-          solIdx[0] = ((ys < m_y && m_y <= y0) || (y0 <= m_y && m_y < ys)) ? 0 : -1;
-          solIdx[1] = ((ys < m_y && m_y < y1) || (y1 < m_y && m_y < ys)) ? 1 : -1;
+          solIdx[0] =
+              ((ys < m_y && m_y <= y0) || (y0 <= m_y && m_y < ys)) ? 0 : -1;
+          solIdx[1] =
+              ((ys < m_y && m_y < y1) || (y1 < m_y && m_y < ys)) ? 1 : -1;
         } else if (t1 < s && s <= t0) {
           double ys = getY(q, s);
 
-          solIdx[0] = ((ys < m_y && m_y <= y0) || (y0 <= m_y && m_y < ys)) ? 1 : -1;
-          solIdx[1] = ((ys < m_y && m_y < y1) || (y1 < m_y && m_y < ys)) ? 0 : -1;
+          solIdx[0] =
+              ((ys < m_y && m_y <= y0) || (y0 <= m_y && m_y < ys)) ? 1 : -1;
+          solIdx[1] =
+              ((ys < m_y && m_y < y1) || (y1 < m_y && m_y < ys)) ? 0 : -1;
         } else {
           solIdx[0] = isInYRange(y0, y1) ? (t0 < s) ? 0 : 1 : -1;
           solIdx[1] = -1;
@@ -841,12 +848,11 @@ int TRegion::Imp::leftScanlineIntersections(const TPointD &p,
       const TPointD &p0 = seg.getP0(), &p1 = seg.getP1();
       bool wasAscending = ascending;
 
-      ascending = (y(p1) > y(p0))
-                      ? true
-                      : (y(p1) < y(p0))
-                            ? false
-                            : (wasAscending = !ascending,
-                               ascending);  // Couples with the cusp check below
+      ascending = (y(p1) > y(p0)) ? true
+                  : (y(p1) < y(p0))
+                      ? false
+                      : (wasAscending = !ascending,
+                         ascending);  // Couples with the cusp check below
 
       if (!isInYRange(y(p0), y(p1))) return 0;
 
@@ -871,9 +877,9 @@ int TRegion::Imp::leftScanlineIntersections(const TPointD &p,
                         (2 * int(forward) - 1),
              yaccel = y2_y1 - y1_y0;
 
-      return (yspeed_2 > 0.0)
-                 ? 1
-                 : (yspeed_2 < 0.0) ? -1 : tcg::numeric_ops::sign(yaccel);
+      return (yspeed_2 > 0.0)   ? 1
+             : (yspeed_2 < 0.0) ? -1
+                                : tcg::numeric_ops::sign(yaccel);
     }
 
     int leftScanlineIntersections(const TQuadratic &q, double t0, double t1,
@@ -891,13 +897,11 @@ int TRegion::Imp::leftScanlineIntersections(const TPointD &p,
       int ascends       = isAscending(q, t1, t0 < t1);
       bool wasAscending = ascending;
 
-      ascending =
-          (ascends > 0)
-              ? true
-              : (ascends < 0)
-                    ? false
-                    : (wasAscending = !ascending,
-                       ascending);  // Couples with the cusps check below
+      ascending = (ascends > 0) ? true
+                  : (ascends < 0)
+                      ? false
+                      : (wasAscending = !ascending,
+                         ascending);  // Couples with the cusps check below
 
       // In case the y coords are not in range, quit
       int solIdx[2];
@@ -1112,14 +1116,16 @@ bool TRegion::Imp::isSubRegionOf(const TRegion::Imp &r) const {
           (subE->m_w0 < m_edge[i]->m_w1) == (e->m_w0 < e->m_w1)) {
         bool forward = (e->m_w0 < e->m_w1);
 
-        if (forward && (subE->m_w0 >= e->m_w0 ||
-                        areAlmostEqual(subE->m_w0, e->m_w0, 1e-3)) &&
+        if (forward &&
+            (subE->m_w0 >= e->m_w0 ||
+             areAlmostEqual(subE->m_w0, e->m_w0, 1e-3)) &&
             (subE->m_w1 <= e->m_w1 ||
              areAlmostEqual(subE->m_w1, e->m_w1, 1e-3)))
           return true;
 
-        if (!forward && (subE->m_w0 <= e->m_w0 ||
-                         areAlmostEqual(subE->m_w0, e->m_w0, 1e-3)) &&
+        if (!forward &&
+            (subE->m_w0 <= e->m_w0 ||
+             areAlmostEqual(subE->m_w0, e->m_w0, 1e-3)) &&
             (subE->m_w1 >= e->m_w1 ||
              areAlmostEqual(subE->m_w1, e->m_w1, 1e-3)))
           return true;

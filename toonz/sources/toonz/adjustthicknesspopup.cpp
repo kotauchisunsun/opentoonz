@@ -74,9 +74,8 @@ struct TransformFunc {
     m_vi.notifyChangedStrokes(m_changedStrokeIdxs, m_changedStrokes);
   }
 
-  void operator()(
-      int s)  //! Transforms the stroke thickness, and marks the specified
-              //! stroke as \a modified.
+  void operator()(int s)  //! Transforms the stroke thickness, and marks the
+                          //! specified stroke as \a modified.
   {
     TStroke *stroke = m_vi.getStroke(s);
 
@@ -149,7 +148,7 @@ void transformThickness_styles(const TVectorImageP &vi,
 
   TransformFunc transformer = {*vi, transform};
   StylesFilter filter       = {*vi, stylesSelection,
-                         stylesSelection + stylesSelectionCount};
+                               stylesSelection + stylesSelectionCount};
 
   boost::counting_iterator<int> sBegin(0), sEnd(vi->getStrokeCount());
 
@@ -696,9 +695,9 @@ AdjustThicknessPopup::AdjustThicknessPopup()
   m_thicknessMode = new QComboBox;
   topLayout->addWidget(m_thicknessMode, row++, 2, Qt::AlignLeft);
 
-  m_thicknessMode->addItems(QStringList() << tr("Scale Thickness")
-                                          << tr("Add Thickness")
-                                          << tr("Constant Thickness"));
+  m_thicknessMode->addItems(QStringList()
+                            << tr("Scale Thickness") << tr("Add Thickness")
+                            << tr("Constant Thickness"));
 
   topLayout->addWidget(new QLabel(tr("Start:")), row, 1, Qt::AlignRight);
 
@@ -753,7 +752,7 @@ AdjustThicknessPopup::AdjustThicknessPopup()
   // Establish connections
   bool ret = true;
   ret      = connect(m_thicknessMode, SIGNAL(currentIndexChanged(int)), this,
-                SLOT(onModeChanged())) &&
+                     SLOT(onModeChanged())) &&
         ret;
   ret = connect(m_fromScale, SIGNAL(valueChanged(bool)), this,
                 SLOT(onParamsChanged())) &&
@@ -1029,8 +1028,8 @@ void AdjustThicknessUndo::redo() const {
     m_originalImages.push_back(ImageBackup(fid, viIn));
 
     // Process required frame
-    TVectorImageP viOut = ::processFrame(
-        m_selData, frameIdx, m_fromTransform, m_toTransform);
+    TVectorImageP viOut =
+        ::processFrame(m_selData, frameIdx, m_fromTransform, m_toTransform);
 
     sl->setFrame(fid, viOut);
 

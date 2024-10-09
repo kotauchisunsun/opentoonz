@@ -276,7 +276,7 @@ AutoInputCellNumberPopup::AutoInputCellNumberPopup()
   // signal-slot connections
   bool ret = true;
   ret      = ret && connect(m_overwriteBtn, SIGNAL(clicked()), this,
-                       SLOT(onOverwritePressed()));
+                            SLOT(onOverwritePressed()));
   ret      = ret &&
         connect(m_insertBtn, SIGNAL(clicked()), this, SLOT(onInsertPressed()));
   ret = ret && connect(cancelBtn, SIGNAL(clicked()), this, SLOT(close()));

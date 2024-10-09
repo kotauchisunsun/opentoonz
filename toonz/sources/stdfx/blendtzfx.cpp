@@ -102,7 +102,7 @@ private:
     double blendSize;
     int defaultBorder = 5;
     if (argc != 6) return defaultBorder;
-    blendSize                 = m_amount->getValue(frame) * 0.5;
+    blendSize = m_amount->getValue(frame) * 0.5;
     if (shrink > 0) blendSize = blendSize / (double)shrink;
     // if (blendcmapImgDpi>0.0 )
     //	blendSize*=(blendcmapImgDpi*0.01);

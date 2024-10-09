@@ -38,7 +38,8 @@ void pixel_push_(const double *in, const double mul_val, const int cc, T *out) {
 template <class T, class R>
 void change_template_vert_(
     T *in, const int ww, const int hh, const int cc, const R *ref, const int rw,
-    const int rh, const int rc
+    const int rh,
+    const int rc
     //, const int rz
     ,
     const int ref_mode /* 0=R,1=G,2=B,3=A,4=Luminance,5=Nothing */
@@ -92,7 +93,8 @@ if (pix_rend.change(xx <= 0, rz, rp_p, cc, pixel_in)) {
 template <class T, class R>
 void change_template_hori_(
     T *in, const int ww, const int hh, const int cc, const R *ref, const int rw,
-    const int rh, const int rc
+    const int rh,
+    const int rc
     //, const int rz
     ,
     const int ref_mode /* 0=R,1=G,2=B,3=A,4=Luminance,5=Nothing */
@@ -149,7 +151,7 @@ if (pix_rend.change(xx <= 0, rz, rp_p, cc, pixel_in)) {
     in += ww * cc; /* 下から上 */
   }
 }
-}
+}  // namespace
 /*-------------------------------------------------------
         Parameter
         方向			left-bottom is origin.
@@ -192,7 +194,8 @@ void igs::motion_wind::change(
     const unsigned char *ref
 
     ,
-    const int rh, const int rw, const int rc, const int rb
+    const int rh, const int rw, const int rc,
+    const int rb
 
     //, const int rz
     ,
@@ -237,7 +240,7 @@ void igs::motion_wind::change(
     const double density_bias  // 1.0(0.0<...1.0...)
     ,
     const bool density_ref_sw  // false(false,true)
-    ) {
+) {
   /* ユーザーによるノーアクションの指定、つまりゼロ長
   の時は処理せず終る */
   if ((length_max <= 0.0) && (length_min <= 0.0)) {
@@ -257,27 +260,31 @@ void igs::motion_wind::change(
       if ((0 == direction) || (2 == direction)) {
         change_template_hori_(
             in, ww, hh, cc, reinterpret_cast<const unsigned short *>(ref), rw,
-            rh, rc
+            rh,
+            rc
             //,rz
             ,
             ref_mode, pix_rend, (0 == direction) ? false : true);
       } else if ((1 == direction) || (3 == direction)) {
         change_template_vert_(
             in, ww, hh, cc, reinterpret_cast<const unsigned short *>(ref), rw,
-            rh, rc
+            rh,
+            rc
             //,rz
             ,
             ref_mode, pix_rend, (1 == direction) ? false : true);
       }
     } else { /* refbi is 8(uchar) or other(0...) */
       if ((0 == direction) || (2 == direction)) {
-        change_template_hori_(in, ww, hh, cc, ref, rw, rh, rc
+        change_template_hori_(in, ww, hh, cc, ref, rw, rh,
+                              rc
                               //,rz
                               ,
                               ref_mode, pix_rend,
                               (0 == direction) ? false : true);
       } else if ((1 == direction) || (3 == direction)) {
-        change_template_vert_(in, ww, hh, cc, ref, rw, rh, rc
+        change_template_vert_(in, ww, hh, cc, ref, rw, rh,
+                              rc
                               //,rz
                               ,
                               ref_mode, pix_rend,
@@ -289,14 +296,16 @@ void igs::motion_wind::change(
       if ((0 == direction) || (2 == direction)) {
         change_template_hori_(
             reinterpret_cast<unsigned short *>(in), ww, hh, cc,
-            reinterpret_cast<const unsigned short *>(ref), rw, rh, rc
+            reinterpret_cast<const unsigned short *>(ref), rw, rh,
+            rc
             //,rz
             ,
             ref_mode, pix_rend, (0 == direction) ? false : true);
       } else if ((1 == direction) || (3 == direction)) {
         change_template_vert_(
             reinterpret_cast<unsigned short *>(in), ww, hh, cc,
-            reinterpret_cast<const unsigned short *>(ref), rw, rh, rc
+            reinterpret_cast<const unsigned short *>(ref), rw, rh,
+            rc
             //,rz
             ,
             ref_mode, pix_rend, (1 == direction) ? false : true);
@@ -304,13 +313,15 @@ void igs::motion_wind::change(
     } else { /* refbi is 8(uchar) or other(0...) */
       if ((0 == direction) || (2 == direction)) {
         change_template_hori_(
-            reinterpret_cast<unsigned short *>(in), ww, hh, cc, ref, rw, rh, rc
+            reinterpret_cast<unsigned short *>(in), ww, hh, cc, ref, rw, rh,
+            rc
             //,rz
             ,
             ref_mode, pix_rend, (0 == direction) ? false : true);
       } else if ((1 == direction) || (3 == direction)) {
         change_template_vert_(
-            reinterpret_cast<unsigned short *>(in), ww, hh, cc, ref, rw, rh, rc
+            reinterpret_cast<unsigned short *>(in), ww, hh, cc, ref, rw, rh,
+            rc
             //,rz
             ,
             ref_mode, pix_rend, (1 == direction) ? false : true);

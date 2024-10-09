@@ -16,7 +16,7 @@ class TFilePath;
 namespace DVGui {
 class CheckBox;
 class LineEdit;
-}
+}  // namespace DVGui
 
 class QLabel;
 class QRadioButton;

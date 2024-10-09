@@ -697,7 +697,7 @@ void FunctionPanel::updateGadgets(TDoubleParam *curve) {
 
     TDoubleKeyframe kf = curve->getKeyframe(i);
     kf.m_value         = curve->getValue(
-        kf.m_frame);  // Some keyframe values do NOT correspond to the
+                kf.m_frame);  // Some keyframe values do NOT correspond to the
                       // actual displayed curve value (eg with expressions)
     // Build keyframe positions
     QPointF p     = getWinPos(curve, kf.m_frame);
@@ -1290,8 +1290,8 @@ void FunctionPanel::mousePressEvent(QMouseEvent *e) {
                     selectedIndices.count() - 1) {
               bool moveLeft = selectedIndices.first() == kIndex;
               m_dragTool    = new StretchPointDragTool(
-                  this, currentCurve, selectedIndices.first(),
-                  selectedIndices.last(), moveLeft);
+                     this, currentCurve, selectedIndices.first(),
+                     selectedIndices.last(), moveLeft);
             }
           }
 

@@ -36,12 +36,12 @@
   s_rg        = (c1 + c2) >> 16;                                               \
   rColDownTmp = s_rg >> 32;                                                    \
   gColDownTmp = s_rg & 0x1FF;                                                  \
-  rCol = (unsigned char)((yWeight0 * rColDownTmp + yWeight1 * rColUpTmp) >>    \
-                         PADN);                                                \
-  gCol = (unsigned char)((yWeight0 * gColDownTmp + yWeight1 * gColUpTmp) >>    \
-                         PADN);                                                \
-  bCol = (unsigned char)((yWeight0 * bColDownTmp + yWeight1 * bColUpTmp) >>    \
-                         PADN);                                                \
+  rCol   = (unsigned char)((yWeight0 * rColDownTmp + yWeight1 * rColUpTmp) >>  \
+                         PADN);                                              \
+  gCol   = (unsigned char)((yWeight0 * gColDownTmp + yWeight1 * gColUpTmp) >>  \
+                         PADN);                                              \
+  bCol   = (unsigned char)((yWeight0 * bColDownTmp + yWeight1 * bColUpTmp) >>  \
+                         PADN);                                              \
   *dnPix = TPixel32(rCol, gCol, bCol, upPix00->m);
 
 // -------------------------------------------------------------------------------------------------
@@ -215,12 +215,12 @@
   s_rg        = (c1 + c2) >> 16;                                               \
   rColDownTmp = s_rg >> 32;                                                    \
   gColDownTmp = s_rg & 0x1FF;                                                  \
-  rCol = (unsigned char)((yWeight0 * rColDownTmp + yWeight1 * rColUpTmp) >>    \
-                         PADN);                                                \
-  gCol = (unsigned char)((yWeight0 * gColDownTmp + yWeight1 * gColUpTmp) >>    \
-                         PADN);                                                \
-  bCol = (unsigned char)((yWeight0 * bColDownTmp + yWeight1 * bColUpTmp) >>    \
-                         PADN);                                                \
+  rCol   = (unsigned char)((yWeight0 * rColDownTmp + yWeight1 * rColUpTmp) >>  \
+                         PADN);                                              \
+  gCol   = (unsigned char)((yWeight0 * gColDownTmp + yWeight1 * gColUpTmp) >>  \
+                         PADN);                                              \
+  bCol   = (unsigned char)((yWeight0 * bColDownTmp + yWeight1 * bColUpTmp) >>  \
+                         PADN);                                              \
   *dnPix = TPixel32(rCol, gCol, bCol, upPix00->m);
 
 // -------------------------------------------------------------------------------------------------

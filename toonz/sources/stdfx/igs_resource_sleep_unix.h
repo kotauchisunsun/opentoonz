@@ -13,8 +13,8 @@ namespace igs {
 namespace resource {
 /* 1second = 1,000milli_seconds(ミリ秒) */
 IGS_RESOURCE_IFX_EXPORT void sleep_m(const DWORD milli_seconds);
-}
-}
+}  // namespace resource
+}  // namespace igs
 
 #if !defined _WIN32
 #include <ctime>  // time_t, ::nanosleep()
@@ -25,8 +25,8 @@ namespace resource {
 tv_sec(seconds)が負か、tv_nsec(nano_seconds)が0〜999,999,999範囲外、はエラー
         */
 void sleep_sn(const time_t seconds, const long nano_seconds);
-}
-}
+}  // namespace resource
+}  // namespace igs
 #endif /* !_WIN32 */
 
 #endif /* !igs_resource_sleep_h */

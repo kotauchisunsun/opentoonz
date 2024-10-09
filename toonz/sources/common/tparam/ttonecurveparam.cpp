@@ -193,11 +193,12 @@ QList<TPointD> TToneCurveParam::getValue(double frame) const {
       double nextF = (*nextIt);
       double ratio = (frame - prevF) / (nextF - prevF);
       if (i % 3 == 2) {  // left handle
-        TPointParamP left_Param  = getCurrentParamSet()->getParam(i);
-        TPointParamP cp_Param    = getCurrentParamSet()->getParam(i + 1);
-        TPointParamP right_Param = (i == pointCount - 2)
-                                       ? cp_Param
-                                       : TPointParamP(getCurrentParamSet()->getParam(i + 2));
+        TPointParamP left_Param = getCurrentParamSet()->getParam(i);
+        TPointParamP cp_Param   = getCurrentParamSet()->getParam(i + 1);
+        TPointParamP right_Param =
+            (i == pointCount - 2)
+                ? cp_Param
+                : TPointParamP(getCurrentParamSet()->getParam(i + 2));
 
         TPointD prevAnLen =
             handleAngleLength(left_Param, cp_Param, right_Param, prevF);
@@ -211,7 +212,8 @@ QList<TPointD> TToneCurveParam::getValue(double frame) const {
         TPointParamP right_Param = getCurrentParamSet()->getParam(i);
         TPointParamP cp_Param    = getCurrentParamSet()->getParam(i - 1);
         TPointParamP left_Param =
-            (i == 1) ? cp_Param : TPointParamP(getCurrentParamSet()->getParam(i - 2));
+            (i == 1) ? cp_Param
+                     : TPointParamP(getCurrentParamSet()->getParam(i - 2));
 
         TPointD prevAnLen =
             handleAngleLength(right_Param, cp_Param, left_Param, prevF, false);

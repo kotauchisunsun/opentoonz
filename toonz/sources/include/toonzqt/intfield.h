@@ -174,10 +174,8 @@ class DVAPI IntField : public QWidget {
   bool m_isLinearSlider;
 
 public:
-  IntField(QWidget *parent = 0,
-           bool isMaxRangeLimited = true,
-           bool isRollerHide = true,
-           bool isSpinnerHide = true );
+  IntField(QWidget *parent = 0, bool isMaxRangeLimited = true,
+           bool isRollerHide = true, bool isSpinnerHide = true);
   ~IntField() {}
 
   /*! Set to \b minValue and \b maxValue slider and text field range.

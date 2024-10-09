@@ -48,7 +48,7 @@ public:
     setIconSize(QSize(23, 17));  //
   }
 };
-}
+}  // namespace DVGui
 
 //*************************************************************************
 //    FunctionToolbar  declaration

@@ -33,7 +33,7 @@ class IntLineEdit;
 class DoubleLineEdit;
 class MeasuredDoubleLineEdit;
 class ColorField;
-}
+}  // namespace DVGui
 
 class FileBrowser;
 

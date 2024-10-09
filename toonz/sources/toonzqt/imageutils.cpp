@@ -150,8 +150,7 @@ TFilePath duplicate(const TFilePath &levelPath) {
   NameBuilder *nameBuilder =
       NameBuilder::getBuilder(::to_wstring(levelPath.getName()));
   std::wstring levelNameOut;
-  do
-    levelNameOut = nameBuilder->getNext();
+  do levelNameOut = nameBuilder->getNext();
   while (TSystem::doesExistFileOrLevel(levelPath.withName(levelNameOut)));
 
   TFilePath levelPathOut = levelPath.withName(levelNameOut);
@@ -859,30 +858,18 @@ bool ShortcutZoomer::exec(QKeyEvent *event) {
   key = key | event->modifiers() &
                   (~0xf0000000);  // Ignore if the key is a numpad key
 
-  return (key == showHideFullScreenKey)
-             ? toggleFullScreen()
-             : (key == Qt::Key_Escape)
-                   ? toggleFullScreen(true)
-                   : (key == actualPixelSize)
-                         ? setActualPixelSize()
-                         : (key == zoomFitKey)
-                               ? fit()
-                               : (key == zoomInKey || key == zoomOutKey ||
-                                  key == viewResetKey)
-                                     ? zoom(key == zoomInKey,
-                                            key == viewResetKey)
-                                     : (key == flipX)
-                                           ? setFlipX()
-                                           : (key == flipY)
-                                                 ? setFlipY()
-                                                 : (key == zoomReset)
-                                                       ? resetZoom()
-                                                       : (key == rotateReset)
-                                                             ? resetRotation()
-                                                             : (key ==
-                                                                positionReset)
-                                                                   ? resetPosition()
-                                                                   : false;
+  return (key == showHideFullScreenKey) ? toggleFullScreen()
+         : (key == Qt::Key_Escape)      ? toggleFullScreen(true)
+         : (key == actualPixelSize)     ? setActualPixelSize()
+         : (key == zoomFitKey)          ? fit()
+         : (key == zoomInKey || key == zoomOutKey || key == viewResetKey)
+             ? zoom(key == zoomInKey, key == viewResetKey)
+         : (key == flipX)         ? setFlipX()
+         : (key == flipY)         ? setFlipY()
+         : (key == zoomReset)     ? resetZoom()
+         : (key == rotateReset)   ? resetRotation()
+         : (key == positionReset) ? resetPosition()
+                                  : false;
   ;
 }
 

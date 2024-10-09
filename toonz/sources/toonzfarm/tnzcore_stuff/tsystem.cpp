@@ -509,7 +509,7 @@ string TSystem::getUserName() {
 #endif
   const long bufSize = UNLEN;
 #else
-  const long bufSize                                 = L_cuserid;
+  const long bufSize = L_cuserid;
 #endif
 
   char userName[bufSize + 1];
@@ -630,7 +630,7 @@ TFilePath TSystem::getBinDir() {
 #else
   string binroot = TSystem::getSystemValue("BINROOT");
   if (binroot == "") {
-    assert(!"BINROOT variable undefined");
+                 assert(!"BINROOT variable undefined");
   }
   return TFilePath(binroot) + "bin";
 #endif
@@ -791,8 +791,8 @@ void TSystem::copyFile(const TFilePath &dst, const TFilePath &src) {
   if (!fpin || !fpout) throw TSystemException(src, "unable to copy file");
   int c = fpin.get();
   while (!fpin.eof()) {
-    fpout.put(c);
-    c = fpin.get();
+                 fpout.put(c);
+                 c = fpin.get();
   }
 #endif
 }
@@ -876,10 +876,10 @@ void TSystem::readDirectory(TFilePathSet &dst, const TFilePath &path) {
   dirp = opendir(path.getFullPath().c_str());
   if (dirp == 0) throw TSystemException(path, errno);
   while (directp = readdir(dirp)) {
-    string filename(directp->d_name);
-    if (filename == "." || filename == "..") continue;
+                 string filename(directp->d_name);
+                 if (filename == "." || filename == "..") continue;
     TFilePath son = path + filename;
-    dst.push_back(son);
+                 dst.push_back(son);
   }
   closedir(dirp);
 #endif
@@ -936,15 +936,15 @@ void TSystem::readDirectoryTree(TFilePathSet &dst, const TFilePath &path) {
   dirp = opendir(path.getFullPath().c_str());
   if (dirp == 0) throw TSystemException(path, errno);
   while (directp = readdir(dirp)) {
-    string filename(directp->d_name);
-    if (filename == "." || filename == "..") continue;
+                 string filename(directp->d_name);
+                 if (filename == "." || filename == "..") continue;
     TFilePath son = path + filename;
-    if (TFileStatus(son).isDirectory())
+                 if (TFileStatus(son).isDirectory())
       readDirectoryTree(dst, son);
     else
       dst.push_back(son);
   }
-  closedir(dirp);
+               closedir(dirp);
 #endif
 }
 
@@ -1012,12 +1012,12 @@ TFilePathSet TSystem::getDisks() {
 #else
   FILE *f = setmntent("/etc/fstab", "r");
   if (f) {
-    while (struct mntent *m = getmntent(f)) {
-      // cout << "machine "<< m->mnt_fsname << " dir " <<m->mnt_dir << " type "
+                 while (struct mntent *m = getmntent(f)) {
+                   // cout << "machine "<< m->mnt_fsname << " dir " <<m->mnt_dir << " type "
       // <<  m->mnt_type << endl;
       filePathSet.push_back(m->mnt_dir);
     }
-    endmntent(f);
+                 endmntent(f);
   }
 
   return filePathSet;
@@ -1047,11 +1047,11 @@ ULONG TSystem::getDiskSize(const TFilePath &diskName) {
   DWORD totalNumberOfClusters;
 
   BOOL rc = GetDiskFreeSpace(diskName.getFullPath().c_str(),  // root path
-                             &sectorsPerCluster,     // sectors per cluster
-                             &bytesPerSector,        // bytes per sector
-                             &numberOfFreeClusters,  // free clusters
-                             &totalNumberOfClusters  // total clusters
-                             );
+                                          &sectorsPerCluster,  // sectors per cluster
+                                          &bytesPerSector,  // bytes per sector
+                                          &numberOfFreeClusters,  // free clusters
+                                          &totalNumberOfClusters  // total clusters
+               );
 
   if (!rc)
     throw TSystemException(diskName, getFormattedMessage(GetLastError()));
@@ -1084,11 +1084,11 @@ ULONG TSystem::getFreeDiskSize(const TFilePath &diskName) {
   DWORD totalNumberOfClusters;
 
   BOOL rc = GetDiskFreeSpace(diskName.getFullPath().c_str(),  // root path
-                             &sectorsPerCluster,     // sectors per cluster
-                             &bytesPerSector,        // bytes per sector
-                             &numberOfFreeClusters,  // free clusters
-                             &totalNumberOfClusters  // total clusters
-                             );
+                                          &sectorsPerCluster,  // sectors per cluster
+                                          &bytesPerSector,  // bytes per sector
+                                          &numberOfFreeClusters,  // free clusters
+                                          &totalNumberOfClusters  // total clusters
+               );
 
   if (!rc)  // eccezione... getLastError etc...
     throw TSystemException(diskName, getFormattedMessage(GetLastError()));
@@ -1121,7 +1121,7 @@ ULONG TSystem::getFreeMemorySize() {
 
   // avrei voluto fare: struct swaptable *table = new struct swaptable[...]
   struct swaptable *table = (struct swaptable *)calloc(
-      1, sizeof(struct swapent) * numberOfResources + sizeof(int));
+                   1, sizeof(struct swapent) * numberOfResources + sizeof(int));
 
   table->swt_n = numberOfResources;
   swapctl(SC_LIST, table); /* list all the swapping resources */
@@ -1129,7 +1129,7 @@ ULONG TSystem::getFreeMemorySize() {
   ULONG virtualFree  = 0;
   ULONG physicalFree = 0;
   for (int i = 0; i < table->swt_n; i++) {
-    virtualFree += table->swt_ent[i].ste_free;
+                 virtualFree += table->swt_ent[i].ste_free;
   }
 
   free(table);
@@ -1321,7 +1321,7 @@ extern "C" void unloadPlugins() {
 #endif
   PluginInstanceTable.clear();
 }
-}
+}  // namespace
 
 //--------------------------------------------------------------
 
@@ -1354,7 +1354,7 @@ void TSystem::loadPlugins(const TFilePath &dir) {
 #ifdef WIN32
     HINSTANCE handle = LoadLibrary(fp.getFullPath().c_str());
 #else
-    void *handle   = dlopen(fp.getFullPath().c_str(), RTLD_LAZY);
+    void *handle = dlopen(fp.getFullPath().c_str(), RTLD_LAZY);
 #endif
 
     if (!handle) {

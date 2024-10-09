@@ -218,7 +218,7 @@ std::pair<double, MeshIndex> closestEdge(const TMeshImage &mi,
   return closest;
 }
 
-}  // namespace
+}  // namespace PlasticToolLocals
 
 //****************************************************************************************
 //    Cut Mesh  operation
@@ -397,9 +397,9 @@ void slitMesh(TTextureMesh &mesh,
   // Alter the face to host the duplicate
   TTextureMesh::face_type &fc = mesh.face(f);
 
-  (fc.edge(0) == e)
-      ? fc.setEdge(0, eDup)
-      : (fc.edge(1) == e) ? fc.setEdge(1, eDup) : fc.setEdge(2, eDup);
+  (fc.edge(0) == e)   ? fc.setEdge(0, eDup)
+  : (fc.edge(1) == e) ? fc.setEdge(1, eDup)
+                      : fc.setEdge(2, eDup);
 }
 
 //------------------------------------------------------------------------
@@ -432,9 +432,9 @@ void cutEdge(TTextureMesh &mesh, const EdgeCut &edgeCut) {
       {
         face_type &fc = mesh.face(f);
 
-        (fc.edge(0) == eFrom)
-            ? fc.setEdge(0, eTo)
-            : (fc.edge(1) == eFrom) ? fc.setEdge(1, eTo) : fc.setEdge(2, eTo);
+        (fc.edge(0) == eFrom)   ? fc.setEdge(0, eTo)
+        : (fc.edge(1) == eFrom) ? fc.setEdge(1, eTo)
+                                : fc.setEdge(2, eTo);
 
         edTo.addFace(f);
         edFrom.eraseFace(edFrom.facesBegin() + 1);
@@ -488,7 +488,7 @@ void cutEdge(TTextureMesh &mesh, const EdgeCut &edgeCut) {
 }
 
 //------------------------------------------------------------------------
-}
+}  // namespace
 namespace locals_ {      // Need to use a named namespace due to
                          // a known gcc 4.2 bug with compiler-generated
 struct VertexesRecorder  // copy constructors.
@@ -504,7 +504,7 @@ public:
 
   void operator()(int v, const TTextureMesh &) { m_examinedVertexes.insert(v); }
 };
-}
+}  // namespace locals_
 namespace {  //
 
 void splitUnconnectedMesh(TMeshImage &mi, int meshIdx) {
@@ -512,7 +512,8 @@ void splitUnconnectedMesh(TMeshImage &mi, int meshIdx) {
     static void buildConnectedComponent(const TTextureMesh &mesh,
                                         std::unordered_set<int> &vertexes) {
       // Prepare BFS algorithm
-      std::unique_ptr<UCHAR[]> colorMapP(new UCHAR[mesh.vertices().nodesCount()]());
+      std::unique_ptr<UCHAR[]> colorMapP(
+          new UCHAR[mesh.vertices().nodesCount()]());
 
       locals_::VertexesRecorder vertexesRecorder(vertexes);
       std::stack<int> verticesQueue;
@@ -719,8 +720,10 @@ public:
     l_plasticTool.notifyImageChanged();
   }
 
-  void undo() const override { redo(); }  // Operation is idempotent (indices
-                                          // are perfectly restored, too)
+  void undo() const override {
+    redo();
+  }  // Operation is idempotent (indices
+     // are perfectly restored, too)
 };
 
 //==============================================================================
@@ -1016,7 +1019,7 @@ void PlasticTool::mouseMove_mesh(const TPointD &pos, const TMouseEvent &me) {
   if (m_mi) {
     // Look for nearest primitive
     std::pair<double, MeshIndex> closestVertex = ::closestVertex(*m_mi, pos),
-                                 closestEdge = ::closestEdge(*m_mi, pos);
+                                 closestEdge   = ::closestEdge(*m_mi, pos);
 
     // Discriminate on fixed metric
     const double hDistSq = sq(getPixelSize() * MESH_HIGHLIGHT_DISTANCE);

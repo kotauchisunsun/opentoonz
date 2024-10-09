@@ -37,7 +37,7 @@ public:
     for (int i = 0; i < (int)fxs.size(); i++) {
       TFx *fx              = fxs[i];
       TZeraryColumnFx *zfx = dynamic_cast<TZeraryColumnFx *>(fx);
-      if (zfx) fx          = zfx->getZeraryFx();
+      if (zfx) fx = zfx->getZeraryFx();
       Node node;
       node.m_fx              = fx;
       node.m_xsheetConnected = fxDag->getTerminalFxs()->containsFx(fx);

@@ -1,6 +1,7 @@
 
 
-#if (!(defined(x64) || defined(__LP64__) || defined(LINUX) || defined(FREEBSD) || defined(HAIKU)))
+#if (!(defined(x64) || defined(__LP64__) || defined(LINUX) ||                  \
+       defined(FREEBSD) || defined(HAIKU)))
 
 // Toonz stuff
 #include "tiio.h"
@@ -66,7 +67,7 @@
 namespace {
 QHash<unsigned int, TLevelReaderP> readers;
 QHash<unsigned int, TLevelWriterP> writers;
-}
+}  // namespace
 
 //---------------------------------------------------
 

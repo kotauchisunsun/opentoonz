@@ -129,6 +129,6 @@ inline Answer yesNoCancel(const string &str, const Arg &arg0, const Arg &arg1,
 DVAPI int multipleChoicesQuestion(const string &question, const ArgList &argLst,
                                   std::vector<string> &buttons);
 
-}  // namespace
+}  // namespace TMessage
 
 #endif

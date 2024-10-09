@@ -43,7 +43,7 @@ QScriptValue CenterlineVectorizer::vectorizeImage(const TImageP &src,
     return context()->throwError(QObject::tr("Vectorization failed"));
   }
   if (dpix != 0.0 && dpiy != 0.0) dpiAff = TScale(factor / dpix, factor / dpiy);
-  factor                                 = norm(dpiAff * TPointD(1, 0));
+  factor = norm(dpiAff * TPointD(1, 0));
 
   m_parameters->m_affine     = dpiAff * TTranslation(-center);
   m_parameters->m_thickScale = factor;

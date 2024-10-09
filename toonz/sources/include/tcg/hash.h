@@ -144,7 +144,7 @@ public:
       it->m_prev = _neg;
 
       if (idx != _neg) m_items[idx].m_prev = it.m_idx;
-      idx                                  = it.m_idx;
+      idx = it.m_idx;
     }
   }
 
@@ -222,7 +222,7 @@ public:
   //--------------------------------------------------------------------------
 
   void erase(iterator it) {
-    BucketNode &node                                     = *it;
+    BucketNode &node = *it;
     if (node.m_next != _neg) m_items[node.m_next].m_prev = node.m_prev;
     if (node.m_prev != _neg)
       m_items[node.m_prev].m_next = node.m_next;

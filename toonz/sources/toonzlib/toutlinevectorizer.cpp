@@ -258,7 +258,7 @@ void OutlineVectorizer::init() {
   DataRasterP dataRaster = m_dataRaster;
   const int wrap         = dataRaster->getWrap();
   const int delta[]      = {-wrap - 1, -wrap, -wrap + 1, 1,
-                       wrap + 1,  wrap,  wrap - 1,  -1};
+                            wrap + 1,  wrap,  wrap - 1,  -1};
 
   for (y = 1; y < dataRaster->getLy() - 1; y++) {
     DataPixel *pix    = dataRaster->pixels(y);
@@ -278,8 +278,7 @@ void OutlineVectorizer::init() {
         int j = (i + 1) & 0x7;
         assert(i < 8 && pix[delta[i]].m_ink);
         assert(j < 8 && pix[delta[j]].m_ink == false);
-        do
-          j = (j + 1) & 0x7;
+        do j = (j + 1) & 0x7;
         while (pix[delta[j]].m_ink == false);
         assert(j < 8 && pix[delta[j]].m_ink);
         if (((i + 2) & 0x7) != j || (i & 1) == 0) {
@@ -1316,26 +1315,23 @@ void VectorizerCore::applyFillColors(TRegion *r, const TRasterP &ras,
                                    c.m_threshold),
                          inverse, c, r, pd)
                    :  // must suffice.
-                    getInternalPoint(
-                        rgr,
-                        std::bind(gr_func(isBright), std::placeholders::_1,
-                                  c.m_threshold),
-                        inverse, c, r, pd)
-          : rt ? getInternalPoint(
-                     rt,
-                     std::bind(cm_func(isDark), std::placeholders::_1,
-                               c.m_threshold),
-                     inverse, c, r, pd)
-               : rr ? getInternalPoint(
-                          rr,
-                          std::bind(rgbm_func(isDark), std::placeholders::_1,
-                                    c.m_threshold),
-                          inverse, c, r, pd)
-                    : getInternalPoint(
-                          rgr,
-                          std::bind(gr_func(isDark), std::placeholders::_1,
-                                    c.m_threshold),
-                          inverse, c, r, pd);
+                getInternalPoint(
+                    rgr,
+                    std::bind(gr_func(isBright), std::placeholders::_1,
+                              c.m_threshold),
+                    inverse, c, r, pd)
+      : rt ? getInternalPoint(rt,
+                              std::bind(cm_func(isDark), std::placeholders::_1,
+                                        c.m_threshold),
+                              inverse, c, r, pd)
+      : rr ? getInternalPoint(rr,
+                              std::bind(rgbm_func(isDark),
+                                        std::placeholders::_1, c.m_threshold),
+                              inverse, c, r, pd)
+           : getInternalPoint(rgr,
+                              std::bind(gr_func(isDark), std::placeholders::_1,
+                                        c.m_threshold),
+                              inverse, c, r, pd);
 
   if (tookPoint) {
     pd = inverse * pd;
@@ -1347,9 +1343,9 @@ void VectorizerCore::applyFillColors(TRegion *r, const TRasterP &ras,
       if (rt) {
         TPixelCM32 col = rt->pixels(p.y)[p.x];
         styleId        = isBrightRegion
-                      ? col.getPaint()
-                      : col.getInk();  // Only paint colors with centerline
-      }                                // vectorization
+                             ? col.getPaint()
+                             : col.getInk();  // Only paint colors with centerline
+      }                                       // vectorization
       else {
         TPixel32 color;
 

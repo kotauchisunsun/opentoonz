@@ -1,12 +1,11 @@
 #define _XOPEN_SOURCE 700 /* isascii() */
-#undef _GNU_SOURCE /* int strerror_r() on glibc */
+#undef _GNU_SOURCE        /* int strerror_r() on glibc */
 #include <cerrno>
 #include <cstring> /* memset */
 #include <vector>
 #include <stdexcept>  // std::domain_error(-)
 #include <locale>
 #include "igs_resource_msg_from_err.h"
-
 
 #if defined UNICODE
 /*------ ワイド文字文字列 --> マルチバイト文字列 ------*/
@@ -40,8 +39,7 @@ static void wcs_to_mbs(const std::wstring &wcs, std::string &mbs) {
 }
 #endif
 /*------ UNICODE宣言ならワイド文字文字列をマルチバイト文字列に変換 ------*/
-const static std::string mbs_from_ts(
-    const std::basic_string<TCHAR> &ts) {
+const static std::string mbs_from_ts(const std::basic_string<TCHAR> &ts) {
 #if defined UNICODE
   std::string mbs;
   wcs_to_mbs(ts, mbs);
@@ -132,7 +130,7 @@ http://japanese-linux-man-pages.coding-school.com/man/X_strerror_r-3
     if (0 == ret) {
       errmsg += buff;
     } else if (-1 == ret) {
-      switch(errno) {
+      switch (errno) {
       case EINVAL:
         errmsg +=
             "strerror_r() gets Error : The value of errnum is not a "

@@ -49,8 +49,7 @@ void FileData::getFiles(TFilePath folder,
     NameBuilder *nameBuilder =
         NameBuilder::getBuilder(::to_wstring(path.getName()));
     std::wstring levelNameOut;
-    do
-      levelNameOut = nameBuilder->getNext();
+    do levelNameOut = nameBuilder->getNext();
     while (TSystem::doesExistFileOrLevel(path.withName(levelNameOut)));
 
     TFilePath levelPathOut = path.withName(levelNameOut);

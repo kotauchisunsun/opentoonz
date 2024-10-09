@@ -11,12 +11,12 @@ namespace {
 const GLfloat s_normalColor[]      = {250.0 / 255.0, 127 / 255.0, 240 / 255.0};
 const GLfloat s_highlightedColor[] = {150.0 / 255.0, 255.0 / 255.0,
                                       140.0 / 255.0};
-const double s_sqrt_2      = sqrt(2.0);
-const double s_radius      = 5.0;
-const double s_over_size   = 10;
-const double s_length      = 15;
-const double s_square_size = 5;
-const double s_arrow_ratio = 2.5;
+const double s_sqrt_2              = sqrt(2.0);
+const double s_radius              = 5.0;
+const double s_over_size           = 10;
+const double s_length              = 15;
+const double s_square_size         = 5;
+const double s_arrow_ratio         = 2.5;
 
 void drawArrow(const TPointD &from, const TPointD &direction, double length,
                const TPointD &arrowDirection = TPointD(0.0, -1.0),
@@ -52,7 +52,7 @@ void drawArrow(const TPointD &from, const TPointD &direction, double length,
   tglVertex(from + down);
   glEnd();
 }
-}
+}  // namespace
 
 //-----------------------------------------------------------------------------
 

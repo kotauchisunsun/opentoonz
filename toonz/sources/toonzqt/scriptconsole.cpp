@@ -103,8 +103,8 @@ void ScriptConsole::insertFromMimeData(const QMimeData *source) {
     if (source->hasText())
       QTextEdit::insertFromMimeData(source);
     else if (source->hasUrls() && source->urls().length() == 1) {
-      QUrl url                    = source->urls()[0];
-      QString text                = url.toString();
+      QUrl url     = source->urls()[0];
+      QString text = url.toString();
       if (url.isLocalFile()) text = url.toLocalFile();
       text = "\"" + text.replace("\\", "\\\\").replace("\"", "\\\"") + "\"";
       textCursor().insertText(text);

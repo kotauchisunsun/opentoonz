@@ -29,7 +29,9 @@
   int num_args;                                                                \
   CASM_NODE **args;
 
-typedef struct CASM_NODE { CASM_NODE_HD } CASM_NODE;
+typedef struct CASM_NODE {
+  CASM_NODE_HD
+} CASM_NODE;
 
 typedef struct CASM_TILE {
   RASTER r;
@@ -232,7 +234,9 @@ typedef struct CASM_NODE_WARP {
 
 /*----------------------------------------------------------------------------*/
 
-typedef struct CASM_NODE_OVR { CASM_BINARY_NODE_HD } CASM_NODE_OVR;
+typedef struct CASM_NODE_OVR {
+  CASM_BINARY_NODE_HD
+} CASM_NODE_OVR;
 
 /*----------------------------------------------------------------------------*/
 
@@ -319,15 +323,21 @@ typedef struct CASM_NODE_NO_INK {
 
 /*----------------------------------------------------------------------------*/
 
-typedef struct CASM_NODE_UNARY { CASM_UNARY_NODE_HD } CASM_NODE_UNARY;
+typedef struct CASM_NODE_UNARY {
+  CASM_UNARY_NODE_HD
+} CASM_NODE_UNARY;
 
 /*----------------------------------------------------------------------------*/
 
-typedef struct CASM_NODE_BINARY { CASM_BINARY_NODE_HD } CASM_NODE_BINARY;
+typedef struct CASM_NODE_BINARY {
+  CASM_BINARY_NODE_HD
+} CASM_NODE_BINARY;
 
 /*----------------------------------------------------------------------------*/
 
-typedef struct CASM_NODE_N_ARY { CASM_N_ARY_NODE_HD } CASM_NODE_N_ARY;
+typedef struct CASM_NODE_N_ARY {
+  CASM_N_ARY_NODE_HD
+} CASM_NODE_N_ARY;
 
 /*----------------------------------------------------------------------------*/
 

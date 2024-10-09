@@ -118,9 +118,9 @@ SpeedInOutSegmentPage::SpeedInOutSegmentPage(FunctionSegmentViewer *parent)
   bool ret = connect(m_speed0xFld, SIGNAL(editingFinished()), this,
                      SLOT(onFirstHandleXChanged()));
   ret      = ret && connect(m_speed0yFld, SIGNAL(editingFinished()), this,
-                       SLOT(onFirstHandleYChanged()));
+                            SLOT(onFirstHandleYChanged()));
   ret      = ret && connect(m_firstSpeedFld, SIGNAL(editingFinished()), this,
-                       SLOT(onFirstSpeedChanged()));
+                            SLOT(onFirstSpeedChanged()));
 
   ret = ret && connect(m_speed1xFld, SIGNAL(editingFinished()), this,
                        SLOT(onLastHandleXChanged()));
@@ -1041,19 +1041,19 @@ FunctionSegmentViewer::FunctionSegmentViewer(QWidget *parent,
   //---- signal-slot connections
   bool ret = true;
   ret      = ret && connect(m_typeCombo, SIGNAL(currentIndexChanged(int)),
-                       m_parametersPanel, SLOT(setCurrentIndex(int)));
+                            m_parametersPanel, SLOT(setCurrentIndex(int)));
   ret      = ret && connect(m_typeCombo, SIGNAL(activated(int)), this,
-                       SLOT(onSegmentTypeChanged(int)));
+                            SLOT(onSegmentTypeChanged(int)));
   ret      = ret && connect(applyButton, SIGNAL(clicked()), this,
-                       SLOT(onApplyButtonPressed()));
+                            SLOT(onApplyButtonPressed()));
   ret      = ret && connect(m_prevCurveButton, SIGNAL(clicked()), this,
-                       SLOT(onPrevCurveButtonPressed()));
+                            SLOT(onPrevCurveButtonPressed()));
   ret      = ret && connect(m_nextCurveButton, SIGNAL(clicked()), this,
-                       SLOT(onNextCurveButtonPressed()));
+                            SLOT(onNextCurveButtonPressed()));
   ret      = ret && connect(m_prevLinkButton, SIGNAL(clicked()), this,
-                       SLOT(onPrevLinkButtonPressed()));
+                            SLOT(onPrevLinkButtonPressed()));
   ret      = ret && connect(m_nextLinkButton, SIGNAL(clicked()), this,
-                       SLOT(onNextLinkButtonPressed()));
+                            SLOT(onNextLinkButtonPressed()));
   assert(ret);
 
   m_sheet = sheet;

@@ -593,7 +593,7 @@ bool lzoDecompress(const QByteArray src, int dstSize, QByteArray &dst) {
   dst = process.readAll();
   return process.exitCode() == 0 && dst.size() == dstSize;
 }
-}
+}  // namespace
 
 //------------------------------------------------------------------------------
 

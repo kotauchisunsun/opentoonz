@@ -182,8 +182,9 @@ void DvScrollWidget::setWidget(QWidget *widget) {
   // Use animations to make scrolling 'smooth'
   delete m_animation;
   m_animation = new QPropertyAnimation(m_content, "pos");
-  connect(m_animation, SIGNAL(stateChanged(QAbstractAnimation::State,
-                                           QAbstractAnimation::State)),
+  connect(m_animation,
+          SIGNAL(stateChanged(QAbstractAnimation::State,
+                              QAbstractAnimation::State)),
           this, SLOT(updateButtonsVisibility()));
 }
 

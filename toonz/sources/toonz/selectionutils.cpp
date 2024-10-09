@@ -61,8 +61,11 @@ void getSelectedFrames<TXshSimpleLevel>(
     TXshSimpleLevel *sl = dynamic_cast<TXshSimpleLevel *>(levels[l]);
     if (!sl) continue;
 
-    tcg::substitute(frames[sl], boost::counting_range(0, sl->getFrameCount()) |
-      boost::adaptors::transformed([&sl](int index){ return sl->getFrameId(index); }));
+    tcg::substitute(frames[sl],
+                    boost::counting_range(0, sl->getFrameCount()) |
+                        boost::adaptors::transformed([&sl](int index) {
+                          return sl->getFrameId(index);
+                        }));
   }
 }
 

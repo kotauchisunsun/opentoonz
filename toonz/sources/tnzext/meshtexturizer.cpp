@@ -40,7 +40,7 @@ int getMaxTextureTileSize() {
   }
   return maxTexSize;
 }
-};
+};  // namespace
 
 //******************************************************************************************
 //    MeshTexturizer::Imp  definition

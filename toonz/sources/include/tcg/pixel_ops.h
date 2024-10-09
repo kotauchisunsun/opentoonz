@@ -339,9 +339,8 @@ inline Pix blend(const Pix &p0, const Pix &p1, Scalar t) {
 
 template <typename Pix, typename Scalar>
 inline void over_premult(Pix &down, const Pix &up, Scalar = 0) {
-  Scalar t =
-      (1 -
-       pixel_traits<Pix>::m(up) / Scalar(pixel_traits<Pix>::max_channel_value));
+  Scalar t = (1 - pixel_traits<Pix>::m(up) /
+                      Scalar(pixel_traits<Pix>::max_channel_value));
 
   pixel_traits<Pix>::r(down) =
       pixel_traits<Pix>::r(up) + t * pixel_traits<Pix>::r(down);
@@ -357,9 +356,8 @@ inline void over_premult(Pix &down, const Pix &up, Scalar = 0) {
 
 template <typename Pix, typename Scalar>
 inline void over(Pix &down, const Pix &up, Scalar = 0) {
-  Scalar t = (1 -
-              pixel_traits<Pix>::m(up) /
-                  Scalar(pixel_traits<Pix>::max_channel_value)) *
+  Scalar t = (1 - pixel_traits<Pix>::m(up) /
+                      Scalar(pixel_traits<Pix>::max_channel_value)) *
              pixel_traits<Pix>::m(down);
   Scalar m = pixel_traits<Pix>::m(up) + t;
 
@@ -374,7 +372,7 @@ inline void over(Pix &down, const Pix &up, Scalar = 0) {
       up_fac * pixel_traits<Pix>::b(up) + dn_fac * pixel_traits<Pix>::b(down);
   pixel_traits<Pix>::m(down) = m;
 }
-}
-}  // namespace tcg::pixel_ops
+}  // namespace pixel_ops
+}  // namespace tcg
 
 #endif  // TCG_PIXEL_OPS_H

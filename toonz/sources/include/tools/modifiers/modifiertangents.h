@@ -6,7 +6,6 @@
 // TnzTools includes
 #include <tools/inputmanager.h>
 
-
 #undef DVAPI
 #undef DVVAR
 #ifdef TNZTOOLS_EXPORTS
@@ -17,17 +16,16 @@
 #define DVVAR DV_IMPORT_VAR
 #endif
 
-
 //===================================================================
 
 //*****************************************************************************************
 //    TModifierTangents definition
 //*****************************************************************************************
 
-class DVAPI TModifierTangents: public TInputModifier {
+class DVAPI TModifierTangents : public TInputModifier {
 public:
   typedef TSubTrackHandler Handler;
-  class DVAPI Interpolator: public TTrackInterpolator {
+  class DVAPI Interpolator : public TTrackInterpolator {
   public:
     TTrackTangentList tangents;
     using TTrackInterpolator::TTrackInterpolator;
@@ -36,9 +34,7 @@ public:
 
   static TTrackTangent calcTangent(const TTrack &track, int index);
 
-  void modifyTrack(
-    const TTrack &track,
-    TTrackList &outTracks ) override;
+  void modifyTrack(const TTrack &track, TTrackList &outTracks) override;
 };
 
 #endif

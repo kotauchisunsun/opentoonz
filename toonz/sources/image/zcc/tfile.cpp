@@ -42,7 +42,7 @@ bool TFile::open_internal(const TFilePath &fname,
   // Win32 docs are screwed here -- FILE_SHARE_xxx is the inverse of a deny
   // flag.
 
-  DWORD dwShareMode                  = FILE_SHARE_READ | FILE_SHARE_WRITE;
+  DWORD dwShareMode = FILE_SHARE_READ | FILE_SHARE_WRITE;
   if (flags & kDenyRead) dwShareMode = FILE_SHARE_WRITE;
   if (flags & kDenyWrite) dwShareMode &= ~FILE_SHARE_WRITE;
 
@@ -140,7 +140,7 @@ bool TFile::close() {
 //------------------------------------------------------------------------------
 
 bool TFile::truncate() {
-  DWORD rc     = SetEndOfFile(m_hFile);
+  DWORD rc = SetEndOfFile(m_hFile);
   if (rc) m_ec = GetLastError();
   return 0 != rc;
 }

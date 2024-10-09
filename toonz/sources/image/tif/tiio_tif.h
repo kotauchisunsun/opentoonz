@@ -65,6 +65,6 @@ Tiio::Writer *makeTifWriter();
 
 Tiio::Reader *makeTziReader();
 
-}  // namespace
+}  // namespace Tiio
 
 #endif  // TTIO_TIF_INCLUDED

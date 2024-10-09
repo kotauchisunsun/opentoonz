@@ -155,7 +155,7 @@ PlasticSkeleton &PlasticSkeleton::operator=(const PlasticSkeleton &other) {
   assert(m_imp->m_deformations.empty());
 
   mesh_type::operator=(other);
-  *m_imp             = *other.m_imp;
+  *m_imp = *other.m_imp;
 
   return *this;
 }
@@ -171,7 +171,7 @@ PlasticSkeleton &PlasticSkeleton::operator=(PlasticSkeleton &&other) {
   assert(m_imp->m_deformations.empty());
 
   mesh_type::operator=(std::forward<mesh_type>(other));
-  *m_imp             = std::move(*other.m_imp);
+  *m_imp = std::move(*other.m_imp);
 
   return *this;
 }
@@ -538,7 +538,7 @@ int PlasticSkeleton::closestVertex(const TPointD &pos, double *dist) const {
 
   tcg::list<vertex_type>::const_iterator vt, vEnd(m_vertices.end());
   for (vt = m_vertices.begin(); vt != vEnd; ++vt) {
-    d2                          = tcg::point_ops::dist2(pos, vt->P());
+    d2 = tcg::point_ops::dist2(pos, vt->P());
     if (d2 < minDist2) minDist2 = d2, v = int(vt.m_idx);
   }
 
@@ -559,7 +559,7 @@ int PlasticSkeleton::closestEdge(const TPointD &pos, double *dist) const {
     const TPointD &vp0 = vertex(et->vertex(0)).P(),
                   &vp1 = vertex(et->vertex(1)).P();
 
-    d                        = tcg::point_ops::segDist(vp0, vp1, pos);
+    d = tcg::point_ops::segDist(vp0, vp1, pos);
     if (d < minDist) minDist = d, e = int(et.m_idx);
   }
 

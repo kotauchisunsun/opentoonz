@@ -63,7 +63,7 @@ void TXshSoundLevel::loadSoundTrack() {
   TSceneProperties *properties = getScene()->getProperties();
   if (properties) {
     TOutputProperties *outputProperties = properties->getOutputProperties();
-    if (outputProperties) m_fps         = outputProperties->getFrameRate();
+    if (outputProperties) m_fps = outputProperties->getFrameRate();
   }
   TFilePath path = getScene()->decodeFilePath(m_path);
   try {

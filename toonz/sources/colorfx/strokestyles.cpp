@@ -103,7 +103,7 @@ void TOptimizedStrokePropT<T>::draw(
 
   glPopMatrix();
 }
-}
+}  // namespace
 
 //=============================================================================
 
@@ -281,8 +281,8 @@ void TChainStrokeStyle::computeData(Points &data, const TStroke *stroke,
        stroke->getThickPoint(2.0 / 3.0).thick + stroke->getThickPoint(1).thick);
 
   if (thickness == 0) thickness = 0.1;
-  double ringHeight             = thickness;
-  double ringWidth              = 1.5 * ringHeight;
+  double ringHeight = thickness;
+  double ringWidth  = 1.5 * ringHeight;
 
   // distanza fra i centri degli anelli
   double ringDistance = 2 * 1.2 * ringWidth;
@@ -528,7 +528,7 @@ void TSprayStrokeStyle::drawStroke(const TColorFunction *cf,
   if (cf)
     color = (*(cf))(m_color);
   else
-    color             = m_color;
+    color = m_color;
   dcolor              = toPixelD(color);
   double s            = 0;
   double minthickness = MINTHICK * sqrt(tglGetPixelSize2());
@@ -725,7 +725,7 @@ double inline get_line_slope(double meter, double inmax, double linemax,
   else
     return 0;
 }
-}
+}  // namespace
 
 //-----------------------------------------------------------------------------
 
@@ -886,12 +886,12 @@ void TDottedLineStrokeStyle::computeData(Points &positions,
     if (meter >= total) {
       meter = 0;
 
-      line                        = linemax * (1 + rnd.getFloat()) * thickness;
+      line = linemax * (1 + rnd.getFloat()) * thickness;
       if (line > length - s) line = length - s;
-      in                          = inmax * line;
-      out                         = outmax * line;
-      line                        = line - in - out;
-      blank                       = blankmax * (1 + rnd.getFloat()) * thickness;
+      in    = inmax * line;
+      out   = outmax * line;
+      line  = line - in - out;
+      blank = blankmax * (1 + rnd.getFloat()) * thickness;
       if (in + out > length) {
         in   = rnd.getFloat() * (length / 2);
         out  = length - in;
@@ -917,10 +917,10 @@ void TDottedLineStrokeStyle::computeData(Points &positions,
       center = 0.0;
     else
       center = 0.5;
-    pos1     = pos + v;
-    pos2     = pos + v * 0.5;
-    pos3     = pos - v * 0.5;
-    pos4     = pos - v;
+    pos1 = pos + v;
+    pos2 = pos + v * 0.5;
+    pos3 = pos - v * 0.5;
+    pos4 = pos - v;
 
     positions.push_back(pos1);
     positions.push_back(pos2);
@@ -1043,12 +1043,12 @@ void TRopeStrokeStyle::computeData(Points &positions, const TStroke *stroke,
       s += 0.1;
       continue;
     }  // non dovrebbe succedere mai, ma per prudenza....
-    u                          = normalize(u);
-    bend                       = pos.thick * m_bend;
-    bump                       = pos.thick * 0.3;
+    u    = normalize(u);
+    bend = pos.thick * m_bend;
+    bump = pos.thick * 0.3;
     if (bump >= bump_max) bump = bump_max;
-    TPointD v                  = rotate90(u) * pos.thick;
-    TPointD v1                 = v * 0.2;
+    TPointD v  = rotate90(u) * pos.thick;
+    TPointD v1 = v * 0.2;
     if (firstRing) {
       firstRing = false;
     } else {
@@ -1344,7 +1344,7 @@ void Stripe::drawlines(TPixel32 blackcolor) {
   tglVertex(oldpos2);
   glEnd();
 }
-}
+}  // namespace
 
 //-----------------------------------------------------------------------------
 
@@ -1482,7 +1482,7 @@ void TBraidStrokeStyle::drawStroke(const TColorFunction *cf,
       colors[k] = m_colors[k];
   }
   TPixel32 blackcolor = TPixel32::Black;
-  if (cf) blackcolor  = (*(cf))(blackcolor);
+  if (cf) blackcolor = (*(cf))(blackcolor);
 
   for (k = 0; k < 3; k++) {
     Stripe tmp;
@@ -2144,11 +2144,11 @@ void TNormal2StrokeStyle::drawStroke(const TColorFunction *cf,
   glEnable(GL_LIGHTING);
   glEnable(GL_LIGHT0);
   glEnable(GL_NORMALIZE);
-  GLfloat mat_ambient[] = {(float)dcolor.r, (float)dcolor.g, (float)dcolor.b,
-                           1.0};
-  GLfloat mat_specular[] = {(float)(m_metal * (1 - dcolor.r) + dcolor.r),
-                            (float)(m_metal * (1 - dcolor.g) + dcolor.g),
-                            (float)(m_metal * (1 - dcolor.b) + dcolor.b), 1.0};
+  GLfloat mat_ambient[]   = {(float)dcolor.r, (float)dcolor.g, (float)dcolor.b,
+                             1.0};
+  GLfloat mat_specular[]  = {(float)(m_metal * (1 - dcolor.r) + dcolor.r),
+                             (float)(m_metal * (1 - dcolor.g) + dcolor.g),
+                             (float)(m_metal * (1 - dcolor.b) + dcolor.b), 1.0};
   GLfloat mat_shininess[] = {(float)m_shininess};
 
   glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, mat_specular);
@@ -2162,7 +2162,7 @@ void TNormal2StrokeStyle::drawStroke(const TColorFunction *cf,
   for (i = 0; i < v.size(); i += 2) {
     T3DPointD pointa(v[i].x, v[i].y, 0);
     T3DPointD pointb(v[i + 1].x, v[i + 1].y, 0);
-    T3DPointD d           = pointb - pointa;
+    T3DPointD d = pointb - pointa;
     if (norm2(d) > 0.0) d = normalize(d);
     normal.push_back(d);
     T3DPointD pointaNormal = T3DPointD(0, 0, 1) - bend * d;
@@ -2229,7 +2229,7 @@ double get_inout_intensityslope(double in, double out, double t) {
   else
     return 1;
 }
-}
+}  // namespace
 
 //-----------------------------------------------------------------------------
 
@@ -2633,7 +2633,7 @@ void TBlendStrokeStyle2::computeData(PointsAndDoubles &data,
       thickness = minthickness;
     else
       thickness = pos.thick;
-    TPointD v   = rotate90(u) * thickness;
+    TPointD v = rotate90(u) * thickness;
 
     TPointD v1 = v * (1 - m_blend);
     pos1       = pos + v;
@@ -3002,7 +3002,7 @@ typedef struct {
   TPointD u, v;
   TThickPoint p;
 } myLineData;
-}
+}  // namespace
 
 //-----------------------------------------------------------------------------
 
@@ -3157,7 +3157,7 @@ void TMultiLineStrokeStyle2::computeData(BlendAndPoints &data,
       thickness = minthickness;
     else
       thickness = Data.p.thick;
-    Data.v      = rotate90(Data.u) * thickness;
+    Data.v = rotate90(Data.u) * thickness;
 
     LineData.push_back(Data);
     s += step;
@@ -3173,8 +3173,8 @@ void TMultiLineStrokeStyle2::computeData(BlendAndPoints &data,
     int start = rnd.getInt(0, LineData.size());
     int end   = start + maxlength + rnd.getInt(0, maxlength);
     if (end > (int)LineData.size()) end = LineData.size();
-    double halfcount                    = (end - start) / 2.0;
-    double vshift                       = (0.5 - rnd.getFloat());
+    double halfcount = (end - start) / 2.0;
+    double vshift    = (0.5 - rnd.getFloat());
 
     appData.blend = rnd.getFloat();
 
@@ -4339,7 +4339,7 @@ void drawCenterline(const TStroke *stroke) {
   glEnd();
   return;
 }
-}
+}  // namespace
 //------------------------------------------------------------
 
 void OutlineViewerStyle::drawStroke(const TColorFunction *cf,
@@ -4429,7 +4429,7 @@ void recomputeOutlines(const TStroke *stroke, vector<TStroke *> &strokes,
   outlines[strokeId].getArray().clear();
   style->computeOutline(stroke, outlines[strokeId], param);
 }
-};
+};  // namespace
 
 void TMatrioskaStrokeProp::draw(const TVectorRenderData &rd) {
   if (rd.m_clippingRect != TRect() && !rd.m_is3dView &&
@@ -4451,7 +4451,7 @@ void TMatrioskaStrokeProp::draw(const TVectorRenderData &rd) {
     recomputeOutlines(m_stroke, m_appStrokes, m_outline, m_colorStyle);
   } else if (!isAlmostZero(pixelSize - m_outlinePixelSize, 1e-5)
              //      || m_styleVersionNumber != m_colorStyle->getVersionNumber()
-             ) {
+  ) {
     m_strokeChanged    = false;
     m_outlinePixelSize = pixelSize;
     recomputeOutlines(m_stroke, m_appStrokes, m_outline, m_colorStyle);

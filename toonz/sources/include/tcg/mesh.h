@@ -151,7 +151,7 @@ and \p v2:
 */
   int edgeInciding(int v1, int v2, int n = 0) const;  //!< \brief Returns the
                                                       //! edge index of the
-  //!<TT>n</TT>-th edge
+  //!< TT>n</TT>-th edge
   //! inciding
   //!  \p v1 and \p v2, or \p -1 if the required edge could not be found.
   //!  \param v1  First edge endpoint.  \param v2  Second edge endpoint.  \param

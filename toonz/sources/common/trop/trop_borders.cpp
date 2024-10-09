@@ -162,8 +162,8 @@ void readBorders_simple(const TRasterP &raster, BordersReader &reader,
     return;
   }
 }
-}
-}  // namespace TRop::borders
+}  // namespace borders
+}  // namespace TRop
 
 //****************************************************************
 //    Meshes Extraction (MeshesReader::Imp)
@@ -249,8 +249,8 @@ void ImageMeshesReader::closeFace() { m_imp->m_facesStack.pop(); }
 void ImageMeshesReader::closeEdge(ImageMesh *mesh, int edgeIdx) {
   mesh->edge(edgeIdx).imageIndex() = m_imp->m_edgesCount++;
 }
-}
-}  //  namespace TRop::borders
+}  // namespace borders
+}  // namespace TRop
 
 //****************************************************************
 //    Meshes Extraction (traits)
@@ -323,5 +323,5 @@ void readMeshes(const TRasterPT<Pix> &raster, ImageMeshesReaderT<Pix> &reader) {
       raster, reader.pixelSelector(), reader);
   raster->unlock();
 }
-}
-}  // namespace TRop::borders
+}  // namespace borders
+}  // namespace TRop

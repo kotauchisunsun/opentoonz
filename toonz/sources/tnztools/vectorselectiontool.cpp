@@ -647,9 +647,10 @@ void DragSelectionTool::VectorDeformTool::transformWholeLevel() {
   level->getFids(fids);
 
   // Remove unwanted fids
-  fids.erase(std::remove_if(
-                 fids.begin(), fids.end(),
-                 [tool](const TFrameId &fid) { return currentOrNotSelected(*tool, fid); }),
+  fids.erase(std::remove_if(fids.begin(), fids.end(),
+                            [tool](const TFrameId &fid) {
+                              return currentOrNotSelected(*tool, fid);
+                            }),
              fids.end());
 
   TUndoManager::manager()->beginBlock();
@@ -697,10 +698,11 @@ void DragSelectionTool::VectorDeformTool::transformWholeLevel() {
   TUndoManager::manager()->endBlock();
 
   // Finally, notify changed frames
-  std::for_each(fids.begin(), fids.end(),
-  // NOTE: current frame is not here - it should be,
-  // but it's currently unnecessary, in fact...
-  [this](const TFrameId &fid) { m_tool->notifyImageChanged(fid); });
+  std::for_each(
+      fids.begin(), fids.end(),
+      // NOTE: current frame is not here - it should be,
+      // but it's currently unnecessary, in fact...
+      [this](const TFrameId &fid) { m_tool->notifyImageChanged(fid); });
 
   // notifyImageChanged(fid) must be invoked OUTSIDE of the loop - since it
   // seems to imply notifyImageChanged()
@@ -970,12 +972,12 @@ void DragSelectionTool::VectorChangeThicknessTool::setStrokesThickness(
     const std::set<int> &selectedStrokeIdxs = strokeSelection->getSelection();
 
     std::for_each(selectedStrokeIdxs.begin(), selectedStrokeIdxs.end(),
-      [&data](int s) { locals::setThickness(data, s); });
+                  [&data](int s) { locals::setThickness(data, s); });
   } else {
     std::vector<int> strokeIdxs = getSelectedStrokes(vi, levelSelection);
 
     std::for_each(strokeIdxs.begin(), strokeIdxs.end(),
-      [&data](int s) { locals::setThickness(data, s); });
+                  [&data](int s) { locals::setThickness(data, s); });
   }
 }
 
@@ -1024,12 +1026,12 @@ void DragSelectionTool::VectorChangeThicknessTool::changeImageThickness(
     const std::set<int> &selectedStrokeIdxs = strokeSelection->getSelection();
 
     std::for_each(selectedStrokeIdxs.begin(), selectedStrokeIdxs.end(),
-      [&data](int s) { locals::changeThickness(data, s); });
+                  [&data](int s) { locals::changeThickness(data, s); });
   } else {
     std::vector<int> strokeIdxs = getSelectedStrokes(vi, levelSelection);
 
     std::for_each(strokeIdxs.begin(), strokeIdxs.end(),
-      [&data](int s) { locals::changeThickness(data, s); });
+                  [&data](int s) { locals::changeThickness(data, s); });
   }
 }
 
@@ -1055,7 +1057,9 @@ void DragSelectionTool::VectorChangeThicknessTool::addUndo() {
 
     // Remove unwanted frames
     fids.erase(std::remove_if(fids.begin(), fids.end(),
-      [vtool](const TFrameId &fid) { return currentOrNotSelected(*vtool, fid); }),
+                              [vtool](const TFrameId &fid) {
+                                return currentOrNotSelected(*vtool, fid);
+                              }),
                fids.end());
 
     TUndoManager::manager()->beginBlock();
@@ -1090,8 +1094,9 @@ void DragSelectionTool::VectorChangeThicknessTool::addUndo() {
     TUndoManager::manager()->endBlock();
 
     // Finally, notify changed frames
-    std::for_each(fids.begin(), fids.end(),
-      [this](const TFrameId &fid) { m_tool->notifyImageChanged(fid); });
+    std::for_each(fids.begin(), fids.end(), [this](const TFrameId &fid) {
+      m_tool->notifyImageChanged(fid);
+    });
   } else
     TUndoManager::manager()->add(m_undo.release());  // Outside any undo block
 }
@@ -1275,9 +1280,10 @@ void VectorSelectionTool::setNewFreeDeformer() {
     std::vector<TFrameId> fids;
     level->getFids(fids);
 
-    fids.erase(std::remove_if(
-                   fids.begin(), fids.end(),
-                   [this](const TFrameId &fid) { return currentOrNotSelected(*this, fid); }),
+    fids.erase(std::remove_if(fids.begin(), fids.end(),
+                              [this](const TFrameId &fid) {
+                                return currentOrNotSelected(*this, fid);
+                              }),
                fids.end());
 
     std::vector<TFrameId>::iterator ft, fEnd = fids.end();
@@ -1481,7 +1487,7 @@ void VectorSelectionTool::modifySelectionOnClick(TImageP image,
   UINT index         = 0;
   bool modifiableSel = isModifiableSelectionType(),
        strokeAtPos   = getStrokeIndexFromPos(index, vi, pos, getPixelSize(),
-                                           getViewer()->getViewMatrix()),
+                                             getViewer()->getViewMatrix()),
        addStroke     = strokeAtPos && !m_strokeSelection.isSelected(index),
        toggleStroke  = strokeAtPos && e.isShiftPressed();
 

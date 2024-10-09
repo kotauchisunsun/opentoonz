@@ -582,7 +582,9 @@ void PaletteCmd::eraseStyles(const std::set<TXshSimpleLevel *> &levels,
       tcg::substitute(
           levelImages.second,
           boost::counting_range(0, levelImages.first->getFrameCount()) |
-              boost::adaptors::transformed([&levelImages](int f){ return cloneImage(*levelImages.first, f); }));
+              boost::adaptors::transformed([&levelImages](int f) {
+                return cloneImage(*levelImages.first, f);
+              }));
     }
 
     static void restoreImage(const TXshSimpleLevelP &level, int f,

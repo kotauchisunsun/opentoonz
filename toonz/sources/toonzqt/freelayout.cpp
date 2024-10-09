@@ -13,7 +13,8 @@ DummyLayout::DummyLayout() { setSizeConstraint(QLayout::SetNoConstraint); }
 //---------------------------------------------------------------------------
 
 DummyLayout::~DummyLayout() {
-  std::for_each(m_items.begin(), m_items.end(), std::default_delete<QLayoutItem>());
+  std::for_each(m_items.begin(), m_items.end(),
+                std::default_delete<QLayoutItem>());
 }
 
 //---------------------------------------------------------------------------

@@ -74,8 +74,9 @@ inline bool angleLess(const TPointD &a, const TPointD &b) {
 
 // a, b, ref assumed normalized
 inline bool angleLess(const TPointD &a, const TPointD &b, const TPointD &ref) {
-  return angleLess(a, ref) ? angleLess(b, ref) ? angleLess(a, b) : 0
-                           : angleLess(b, ref) ? 1 : angleLess(a, b);
+  return angleLess(a, ref)   ? angleLess(b, ref) ? angleLess(a, b) : 0
+         : angleLess(b, ref) ? 1
+                             : angleLess(a, b);
 }
 
 //--------------------------------------------------------------------------
@@ -265,8 +266,9 @@ class ContourEdge;
 
 class ContourNode {
 public:
-  enum Attributes           //! Node attributes
-  { HEAD            = 0x1,  //!< Node is the 'first' of a nodes ring.
+  enum Attributes  //! Node attributes
+  {
+    HEAD            = 0x1,  //!< Node is the 'first' of a nodes ring.
     ELIMINATED      = 0x4,  //!< Node was eliminated by the SS process.
     SK_NODE_DROPPED = 0x8,
     AMBIGUOUS_LEFT  = 0x10,  //!< Node represents an ambiguous \a left turn in
@@ -414,9 +416,9 @@ public:
   void advance(UINT &old, UINT &current) const {
     UINT temp = current;
     current   = m_graphHolder->getNode(current).getLink(0).getNext() == old
-                  ? m_graphHolder->getNode(current).getLink(1).getNext()
-                  : m_graphHolder->getNode(current).getLink(0).getNext();
-    old = temp;
+                    ? m_graphHolder->getNode(current).getLink(1).getNext()
+                    : m_graphHolder->getNode(current).getLink(0).getNext();
+    old       = temp;
   }
 
   // Advances a couple (current, link) of a sequence node plus its link
@@ -490,7 +492,7 @@ enum {
   COLORORDERING_SIGN  = 0x40
 };
 const int infinity = 1000000;  // just a great enough number
-};
+};                             // namespace
 
 //--------------------------------------------------------------------------
 

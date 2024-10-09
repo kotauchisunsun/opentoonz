@@ -113,8 +113,8 @@ private:
   void turnAmbiguous(const value_type &newLeftColor,
                      const value_type &newRightColor);
 };
-}
-}  // namespace TRop::borders
+}  // namespace borders
+}  // namespace TRop
 
 #endif  // RASTER_EDGE_ITERATOR_H
 

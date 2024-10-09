@@ -1,6 +1,7 @@
 
 
-#if (!(defined(x64) || defined(__LP64__) || defined(LINUX) || defined(FREEBSD) || defined(HAIKU)))
+#if (!(defined(x64) || defined(__LP64__) || defined(LINUX) ||                  \
+       defined(FREEBSD) || defined(HAIKU)))
 
 // Toonz stuff
 #include "tiio.h"
@@ -33,7 +34,6 @@
 #endif
 #include "movsettings.h"
 
-
 // Qt stuff
 #include <QString>
 #include <QHash>
@@ -50,7 +50,7 @@
 namespace {
 QHash<unsigned int, TLevelReaderP> readers;
 QHash<unsigned int, TLevelWriterP> writers;
-}
+}  // namespace
 
 //---------------------------------------------------
 
@@ -351,6 +351,6 @@ void CloseLR3gpParser::operator()(Message &msg) {
   msg << QString("ok");
 }
 
-}  // namespace mov_io
+}  // namespace _3gp_io
 
 #endif  // !x64 && !__LP64__

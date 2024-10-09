@@ -37,7 +37,7 @@ inline bool rowLess(const tlin::spmat::HashMap::BucketNode *a,
                     const tlin::spmat::HashMap::BucketNode *b) {
   return a->m_key.first < b->m_key.first;
 }
-}
+}  // namespace
 
 //*************************************************************************
 //    SuperLU-specific Functions

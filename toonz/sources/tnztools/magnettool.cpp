@@ -233,7 +233,7 @@ public:
         for (UINT ii = 0; ii < sc.m_splittedToMove.size(); ++ii) {
           TStroke *temp = sc.m_splittedToMove[ii];
           bool test     = increaseControlPoints(
-              *temp, TStrokePointDeformation(p, pointSize));
+                  *temp, TStrokePointDeformation(p, pointSize));
           assert(test);
 
           std::vector<int> *corners = new std::vector<int>;

@@ -452,7 +452,7 @@ void ProjectPopup::updateChooseProjectCombo() {
     }
   }
   // Add in project of current project if outside known Project root folders
-  auto currentProject = pm->getCurrentProject();
+  auto currentProject        = pm->getCurrentProject();
   TFilePath currentProjectFP = currentProject->getProjectPath();
   if (m_projectPaths.indexOf(currentProjectFP) == -1) {
     m_projectPaths.push_back(currentProjectFP);

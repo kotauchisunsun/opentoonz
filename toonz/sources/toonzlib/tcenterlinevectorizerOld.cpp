@@ -530,7 +530,7 @@ void CenterLineVectorizer::link(DataPixel *pix, DataPixel *srcPix,
       node    = tmp;
     }
   }
-  if (!node) node       = createNode(pix);
+  if (!node) node = createNode(pix);
   if (!srcNode) srcNode = createNode(srcPix);
   if (!dstNode) dstNode = createNode(dstPix);
 
@@ -734,7 +734,7 @@ void CenterLineVectorizer::init() {
   DataRasterP dataRaster = m_dataRaster;
   const int wrap         = dataRaster->getWrap();
   const int delta[]      = {-wrap - 1, -wrap, -wrap + 1, 1,
-                       wrap + 1,  wrap,  wrap - 1,  -1};
+                            wrap + 1,  wrap,  wrap - 1,  -1};
 
   for (y = 1; y < dataRaster->getLy() - 1; y++) {
     DataPixel *pix    = dataRaster->pixels(y);
@@ -754,8 +754,7 @@ void CenterLineVectorizer::init() {
         int j = (i + 1) & 0x7;
         assert(i < 8 && pix[delta[i]].m_ink);
         assert(j < 8 && pix[delta[j]].m_ink == false);
-        do
-          j = (j + 1) & 0x7;
+        do j = (j + 1) & 0x7;
         while (pix[delta[j]].m_ink == false);
         assert(j < 8 && pix[delta[j]].m_ink);
         if (((i + 2) & 0x7) != j || (i & 1) == 0) {
@@ -892,7 +891,7 @@ Node *CenterLineVectorizer::findOtherSide(Node *node) {
     }
   }
   if (!pix->m_node) return 0;
-  Node *q                                 = pix->m_node;
+  Node *q = pix->m_node;
   while (q->m_pixel == 0 && q->m_other) q = q->m_other;
   assert(q && q->m_pixel == pix);
 
@@ -1013,7 +1012,7 @@ bool CenterLineVectorizer::testOtherSide(Node *na1, Node *nb1,
     if (nb2 == 0 && i == 3) return true;
     if (nb2 == 0) continue;
 
-    double newStartDist2                       = computeDistance2(na2, nb2);
+    double newStartDist2 = computeDistance2(na2, nb2);
     if (newStartDist2 > startDist2) startDist2 = newStartDist2;
     for (int j = 0; j < 3 * i + 1; ++j) {
       if (nb2 == nb1) return true;
@@ -1098,7 +1097,7 @@ void CenterLineVectorizer::traceLine(DataPixel *pix) {
   if (!pix->m_ink) return;
   while (pix->m_node == 0) pix -= wrap;
 
-  Node *node                                               = pix->m_node;
+  Node *node = pix->m_node;
   while (node && node->m_pixel == 0 && node->m_other) node = node->m_other;
   assert(node && node->m_pixel == pix);
 
@@ -1174,17 +1173,17 @@ void CenterLineVectorizer::traceLine(DataPixel *pix) {
         TPointD center;
         TThickPoint point;
 
-        center                     = computeCenter(na, nb, r);
+        center = computeCenter(na, nb, r);
         if (r < THICKNESS_LIMIT) r = THICKNESS_LIMIT;
-        point                      = TThickPoint(center, r);
+        point = TThickPoint(center, r);
         if (k == 0)
           dpoints.push_front(point);
         else
           dpoints.push_back(point);
 
-        center                     = computeCenter(na1, nb1, r);
+        center = computeCenter(na1, nb1, r);
         if (r < THICKNESS_LIMIT) r = THICKNESS_LIMIT;
-        point                      = TThickPoint(center, r);
+        point = TThickPoint(center, r);
         if (k == 0)
           dpoints.push_front(point);
         else
@@ -1216,11 +1215,11 @@ void CenterLineVectorizer::traceLine(DataPixel *pix) {
         getOutPix(nb->m_pixel) = TPixel32::Green;
 #endif
       }
-      double distance2                = computeDistance2(na, nb);
+      double distance2 = computeDistance2(na, nb);
       if (distance2 < 0.25) distance2 = 0.25;
 
       double r;
-      TPointD center             = computeCenter(na, nb, r);
+      TPointD center = computeCenter(na, nb, r);
       if (r < THICKNESS_LIMIT) r = THICKNESS_LIMIT;
       TThickPoint point(center, r);
       TPointI pos = convert(center);
@@ -1232,7 +1231,7 @@ void CenterLineVectorizer::traceLine(DataPixel *pix) {
           na->m_prev == nb
           //|| isJunction(na, nb)
           //|| !(value<200)
-          ) {
+      ) {
         if (na->m_next == nb || na->m_prev == nb || na->m_next->m_next == nb ||
             na->m_prev->m_prev == nb) {
           if (k == 0) {
@@ -1709,23 +1708,20 @@ void CenterLineVectorizer::joinJunctions() {
           it_link = std::find(m_links.begin(), m_links.end(),
                               JunctionLink(currJunction, prevNode->m_junction));
           /*					if(	j >= 1*SEARCH_WINDOW &&
-						norm(currJunction->m_center - prevNode->m_junction->m_center) >= 
-junctionMaxDist)
-					{
-						assert(false);
-						if(it_link == m_links.end())
-							m_links.push_back(JunctionLink(currJunction, prevNode->m_junction));
-						else
-							++(it_link->m_order);
-					}
-					else*/ if (it_link == m_links.end() &&
-                                                   std::find(
-                                                       joinJunctions.begin(),
-                                                       joinJunctions.end(),
-                                                       JunctionMerge(
-                                                           prevNode
-                                                               ->m_junction)) ==
-                                                       joinJunctions.end()) {
+                                                norm(currJunction->m_center -
+prevNode->m_junction->m_center) >= junctionMaxDist)
+                                        {
+                                                assert(false);
+                                                if(it_link == m_links.end())
+                                                        m_links.push_back(JunctionLink(currJunction,
+prevNode->m_junction)); else
+                                                        ++(it_link->m_order);
+                                        }
+                                        else*/
+          if (it_link == m_links.end() &&
+              std::find(joinJunctions.begin(), joinJunctions.end(),
+                        JunctionMerge(prevNode->m_junction)) ==
+                  joinJunctions.end()) {
             joinJunctions.push_back(
                 JunctionMerge(prevNode->m_junction, currNode, prevNode, false));
           }
@@ -1740,23 +1736,20 @@ junctionMaxDist)
           it_link = std::find(m_links.begin(), m_links.end(),
                               JunctionLink(currJunction, nextNode->m_junction));
           /*					if(	j >= 1*SEARCH_WINDOW &&
-						norm(currJunction->m_center - nextNode->m_junction->m_center) >= 
-junctionMaxDist )
-					{
-						assert(false);
-						if(it_link == m_links.end())
-							m_links.push_back(JunctionLink(currJunction, nextNode->m_junction));
-						else
-							++(it_link->m_order);
-					}
-					else*/ if (it_link == m_links.end() &&
-                                                   std::find(
-                                                       joinJunctions.begin(),
-                                                       joinJunctions.end(),
-                                                       JunctionMerge(
-                                                           nextNode
-                                                               ->m_junction)) ==
-                                                       joinJunctions.end()) {
+                                                norm(currJunction->m_center -
+nextNode->m_junction->m_center) >= junctionMaxDist )
+                                        {
+                                                assert(false);
+                                                if(it_link == m_links.end())
+                                                        m_links.push_back(JunctionLink(currJunction,
+nextNode->m_junction)); else
+                                                        ++(it_link->m_order);
+                                        }
+                                        else*/
+          if (it_link == m_links.end() &&
+              std::find(joinJunctions.begin(), joinJunctions.end(),
+                        JunctionMerge(nextNode->m_junction)) ==
+                  joinJunctions.end()) {
             joinJunctions.push_back(
                 JunctionMerge(nextNode->m_junction, currNode, nextNode, true));
           }
@@ -2217,12 +2210,12 @@ it_node!=currJunction->m_nodes.end(); it_node++)
       }
       if (currJunction->m_protoStrokes.size() == 3 && it_candidate1 != it_e &&
           it_candidate2 != it_e) {
-        TThickPoint p1 = (candidate1_k == 0)
-                             ? (*it_candidate1)->m_points.front()
-                             : (*it_candidate1)->m_points.back();
-        TThickPoint p2 = (candidate2_k == 0)
-                             ? (*it_candidate2)->m_points.front()
-                             : (*it_candidate2)->m_points.back();
+        TThickPoint p1         = (candidate1_k == 0)
+                                     ? (*it_candidate1)->m_points.front()
+                                     : (*it_candidate1)->m_points.back();
+        TThickPoint p2         = (candidate2_k == 0)
+                                     ? (*it_candidate2)->m_points.front()
+                                     : (*it_candidate2)->m_points.back();
         currJunction->m_center = 0.5 * (p1 + p2);
       }
     }
@@ -2395,10 +2388,11 @@ void CenterLineVectorizer::createStrokes() {
         double *rr = new double[n];
         int i;
         for (i = 0; i < n; i++) rr[i] = points[i].thick;
-        for (i            = 2; i < n - 2; i++)
-          points[i].thick = 0.8 * (1 / 5.0) * (/*rr[i-4]+rr[i-3]*/ +rr[i - 2] +
-                                               rr[i - 1] + rr[i] + rr[i + 1] +
-                                               rr[i + 2] /*+rr[i+3]+rr[i+4]*/);
+        for (i = 2; i < n - 2; i++)
+          points[i].thick =
+              0.8 * (1 / 5.0) *
+              (/*rr[i-4]+rr[i-3]*/ +rr[i - 2] + rr[i - 1] + rr[i] + rr[i + 1] +
+               rr[i + 2] /*+rr[i+3]+rr[i+4]*/);
         points[0].thick = points[1].thick =
             points[2].thick;  //=points[3].thick;//=points[4].thick;
         points[n - 1].thick = points[n - 2].thick =
@@ -2700,10 +2694,10 @@ void applyFillColors(TRegion *r, const TRasterP &ras, TPalette *palette,
         TPixelCM32 col = rt->pixels(p.y)[p.x];
         int tone       = col.getTone();
         if (tone < 100) {
-          styleId                                      = col.getInk();
+          styleId = col.getInk();
           if (styleId == 0 && !leaveUnpainted) styleId = col.getPaint();
         } else if (!leaveUnpainted || col.getPaint() == 0) {
-          styleId                   = col.getPaint();
+          styleId = col.getPaint();
           if (styleId == 0) styleId = col.getInk();
         }
       } else {

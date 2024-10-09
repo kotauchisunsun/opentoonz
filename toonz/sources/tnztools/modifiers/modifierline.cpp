@@ -2,12 +2,9 @@
 
 #include <tools/modifiers/modifierline.h>
 
-
-
 //*****************************************************************************************
 //    TModifierLine implementation
 //*****************************************************************************************
-
 
 static inline void calcFixedAngle(const TTrackPoint &p0, TTrackPoint &p1) {
   TPointD p = p1.position - p0.position;
@@ -23,24 +20,20 @@ static inline void calcFixedAngle(const TTrackPoint &p0, TTrackPoint &p1) {
   p1.position = p0.position + p;
 }
 
-
-void TModifierLine::modifyTrack(const TTrack &track,
-                                TTrackList &outTracks) {
+void TModifierLine::modifyTrack(const TTrack &track, TTrackList &outTracks) {
   if (!track.handler) {
-    Handler *handler  = new Handler();
-    track.handler     = handler;
-    handler->track    = new TTrack(track);
+    Handler *handler = new Handler();
+    track.handler    = handler;
+    handler->track   = new TTrack(track);
   }
 
-  Handler *handler = dynamic_cast<Handler*>(track.handler.getPointer());
-  if (!handler)
-    return;
-  
+  Handler *handler = dynamic_cast<Handler *>(track.handler.getPointer());
+  if (!handler) return;
+
   outTracks.push_back(handler->track);
   TTrack &subTrack = *handler->track;
-  
-  if (!track.changed())
-    return;
+
+  if (!track.changed()) return;
 
   subTrack.truncate(0);
 
@@ -52,24 +45,23 @@ void TModifierLine::modifyTrack(const TTrack &track,
     maxPressure = 0;
     i0          = 0;
   }
-  for(int i = i0; i < i1; ++i) {
+  for (int i = i0; i < i1; ++i) {
     double p = track[i].pressure;
     if (maxPressure < p) maxPressure = p;
   }
   handler->maxPressure = maxPressure;
-  
+
   if (track.size() > 0)
     subTrack.push_back(subTrack.pointFromOriginal(0), false);
-  
+
   if (track.size() > 1) {
     TTrackPoint p = subTrack.pointFromOriginal(track.size() - 1);
     if (track.getKeyState(track.back()).isPressed(TKey::control))
       calcFixedAngle(subTrack.front(), p);
     subTrack.push_back(p, false);
   }
-    
-  if (track.fixedFinished())
-    subTrack.fix_all();
+
+  if (track.fixedFinished()) subTrack.fix_all();
 
   track.resetChanges();
 }

@@ -24,8 +24,10 @@
 
 namespace tcg {
 
-enum DirectAccess { direct_access };  //!< Enum used to access variables with
-                                      //!  controlled output directly.
+enum DirectAccess {
+  direct_access
+};  //!< Enum used to access variables with
+    //!  controlled output directly.
 
 //*************************************************************************
 //    tcg::controlled_access  definition

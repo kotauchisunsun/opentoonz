@@ -6,7 +6,6 @@
 // TnzTools includes
 #include <tools/inputmanager.h>
 
-
 #undef DVAPI
 #undef DVVAR
 #ifdef TNZTOOLS_EXPORTS
@@ -17,26 +16,22 @@
 #define DVVAR DV_IMPORT_VAR
 #endif
 
-
 //===================================================================
 
 //*****************************************************************************************
 //    TModifierSimplify definition
 //*****************************************************************************************
 
-class DVAPI TModifierSimplify: public TInputModifier {
+class DVAPI TModifierSimplify : public TInputModifier {
 public:
   typedef TSubTrackHandler Handler;
   typedef TTrackIntrOrig Interpolator;
-  
+
   double step;
-  
+
   explicit TModifierSimplify(double step = 1.0);
 
-  void modifyTrack(
-    const TTrack &track,
-    TTrackList &outTracks ) override;
+  void modifyTrack(const TTrack &track, TTrackList &outTracks) override;
 };
-
 
 #endif

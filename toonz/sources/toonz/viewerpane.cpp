@@ -608,7 +608,7 @@ void BaseViewerPanel::changeWindowTitle() {  // �v�m�F
 
   // if the frame type is "scene editing"
   if (app->getCurrentFrame()->isEditingScene()) {
-    auto project = scene->getProject();
+    auto project      = scene->getProject();
     QString sceneName = QString::fromStdWString(scene->getSceneName());
     if (sceneName.isEmpty()) sceneName = tr("Untitled");
     if (app->getCurrentScene()->getDirtyFlag()) sceneName += QString("*");
@@ -920,10 +920,10 @@ void BaseViewerPanel::onActiveViewerChanged() {
                   SLOT(setPressed(bool)));
     ret        = ret && connect(m_subcameraPreviewButton, SIGNAL(toggled(bool)),
                                 CommandManager::instance()->getAction(
-                             MI_ToggleViewerSubCameraPreview),
+                                    MI_ToggleViewerSubCameraPreview),
                                 SLOT(trigger()));
     ret        = ret && connect(CommandManager::instance()->getAction(
-                             MI_ToggleViewerSubCameraPreview),
+                                    MI_ToggleViewerSubCameraPreview),
                                 SIGNAL(triggered(bool)), m_subcameraPreviewButton,
                                 SLOT(setPressed(bool)));
     m_isActive = true;

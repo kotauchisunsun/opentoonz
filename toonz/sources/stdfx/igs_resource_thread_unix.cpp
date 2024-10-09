@@ -13,7 +13,7 @@
 pthread_t igs::resource::thread_run(
     void *(*function)(void *), void *func_arg,
     const int state  // PTHREAD_CREATE_JOINABLE/PTHREAD_CREATE_DETACHED
-    ) {
+) {
   pthread_attr_t attr;
   if (::pthread_attr_init(&attr)) {
     throw std::domain_error("pthread_attr_init(-)");

@@ -51,7 +51,7 @@ SceneViewerContextMenu::SceneViewerContextMenu(SceneViewer *parent)
   if (parent->isEditPreviewSubcamera()) {
     action = addAction(tr("Reset Subcamera"));
     ret    = ret && parent->connect(action, SIGNAL(triggered()),
-                                 SLOT(doDeleteSubCamera()));
+                                    SLOT(doDeleteSubCamera()));
     addSeparator();
   }
 
@@ -286,8 +286,8 @@ void SceneViewerContextMenu::addShowHideCommand(QMenu *menu,
   TXsheet *xsh  = TApp::instance()->getCurrentXsheet()->getXsheet();
   TStageObject *stageObject =
       xsh->getStageObject(TStageObjectId::ColumnId(column->getIndex()));
-  QString text = isHidden ? tr("Show %1").arg(getName(stageObject))
-                          : tr("Hide %1").arg(getName(stageObject));
+  QString text    = isHidden ? tr("Show %1").arg(getName(stageObject))
+                             : tr("Hide %1").arg(getName(stageObject));
   QAction *action = new QAction(text, this);
   action->setData(column->getIndex());
   connect(action, SIGNAL(triggered()), this, SLOT(onShowHide()));

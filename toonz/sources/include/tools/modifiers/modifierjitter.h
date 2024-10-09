@@ -34,12 +34,8 @@ public:
     const double amplitude;
     const bool keepFirstPoint;
     const bool keepLastPoint;
-    Interpolator(
-      TTrack &track,
-      double period,
-      double amplitude,
-      bool keepFirstPoint,
-      bool keepLastPoint );
+    Interpolator(TTrack &track, double period, double amplitude,
+                 bool keepFirstPoint, bool keepLastPoint);
     TTrackPoint interpolateFromOriginal(double originalIndex);
     TTrackPoint interpolate(double index) override;
   };
@@ -51,23 +47,16 @@ public:
   int skipLast;
   bool keepFirstPoint;
   bool keepLastPoint;
-  
-  explicit TModifierJitter(
-    double period = 30,
-    double amplitude = 10,
-    int skipFirst = 0,
-    int skipLast = 0,
-    bool keepFirstPoint = false,
-    bool keepLastPoint = false );
 
-  void modifyTrack(
-    const TTrack &track,
-    TTrackList &outTracks ) override;
-  
-  void modifyTracks(
-    const TTrackList &tracks,
-    TTrackList &outTracks ) override;
-  
+  explicit TModifierJitter(double period = 30, double amplitude = 10,
+                           int skipFirst = 0, int skipLast = 0,
+                           bool keepFirstPoint = false,
+                           bool keepLastPoint  = false);
+
+  void modifyTrack(const TTrack &track, TTrackList &outTracks) override;
+
+  void modifyTracks(const TTrackList &tracks, TTrackList &outTracks) override;
+
   static double func(unsigned int seed, double x);
 };
 

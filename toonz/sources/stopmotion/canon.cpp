@@ -178,7 +178,7 @@ EdsError Canon::openCameraSession() {
 
   EdsUInt32 saveto        = kEdsSaveTo_Host;
   m_error                 = EdsSetPropertyData(m_camera, kEdsPropID_SaveTo, 0,
-                               sizeof(EdsUInt32), &saveto);
+                                               sizeof(EdsUInt32), &saveto);
   EdsCapacity newCapacity = {0x7FFFFFFF, 0x1000, 1};
   m_error                 = EdsSetCapacity(m_camera, newCapacity);
   return m_error;
@@ -310,7 +310,7 @@ EdsError Canon::getAvailableExposureCompensations() {
   m_exposureOptions.clear();
 
   err       = EdsGetPropertyDesc(m_camera, kEdsPropID_ExposureCompensation,
-                           exposureDesc);
+                                 exposureDesc);
   int count = exposureDesc->numElements;
   if (count > 0) {
     int i = 0;
@@ -607,7 +607,7 @@ EdsError Canon::setAperture(QString aperture) {
         it++;
         value = it->first;
         err   = EdsSetPropertyData(m_camera, kEdsPropID_Av, 0, sizeof(value),
-                                 &value);
+                                   &value);
         break;
       }
     }
@@ -805,7 +805,7 @@ bool Canon::downloadImage(EdsBaseRef object) {
     TDimensionD size       = camera->getSize();
     m_proxyImageDimensions = TDimension(tempWidth, tempHeight);
     double minimumDpi      = std::min(m_proxyImageDimensions.lx / size.lx,
-                                 m_proxyImageDimensions.ly / size.ly);
+                                      m_proxyImageDimensions.ly / size.ly);
     m_proxyDpi             = TPointD(minimumDpi, minimumDpi);
   }
 
@@ -1180,7 +1180,7 @@ bool Canon::downloadEVFData() {
 EdsError Canon::focusNear() {
   EdsError err = EDS_ERR_OK;
   err          = EdsSendCommand(m_camera, kEdsCameraCommand_DriveLensEvf,
-                       kEdsEvfDriveLens_Near1);
+                                kEdsEvfDriveLens_Near1);
   return err;
 }
 
@@ -1189,7 +1189,7 @@ EdsError Canon::focusNear() {
 EdsError Canon::focusFar() {
   EdsError err = EDS_ERR_OK;
   err          = EdsSendCommand(m_camera, kEdsCameraCommand_DriveLensEvf,
-                       kEdsEvfDriveLens_Far1);
+                                kEdsEvfDriveLens_Far1);
   return err;
 }
 
@@ -1198,7 +1198,7 @@ EdsError Canon::focusFar() {
 EdsError Canon::focusNear2() {
   EdsError err = EDS_ERR_OK;
   err          = EdsSendCommand(m_camera, kEdsCameraCommand_DriveLensEvf,
-                       kEdsEvfDriveLens_Near2);
+                                kEdsEvfDriveLens_Near2);
   return err;
 }
 
@@ -1207,7 +1207,7 @@ EdsError Canon::focusNear2() {
 EdsError Canon::focusFar2() {
   EdsError err = EDS_ERR_OK;
   err          = EdsSendCommand(m_camera, kEdsCameraCommand_DriveLensEvf,
-                       kEdsEvfDriveLens_Far2);
+                                kEdsEvfDriveLens_Far2);
   return err;
 }
 
@@ -1216,7 +1216,7 @@ EdsError Canon::focusFar2() {
 EdsError Canon::focusNear3() {
   EdsError err = EDS_ERR_OK;
   err          = EdsSendCommand(m_camera, kEdsCameraCommand_DriveLensEvf,
-                       kEdsEvfDriveLens_Near3);
+                                kEdsEvfDriveLens_Near3);
   return err;
 }
 
@@ -1225,7 +1225,7 @@ EdsError Canon::focusNear3() {
 EdsError Canon::focusFar3() {
   EdsError err = EDS_ERR_OK;
   err          = EdsSendCommand(m_camera, kEdsCameraCommand_DriveLensEvf,
-                       kEdsEvfDriveLens_Far3);
+                                kEdsEvfDriveLens_Far3);
   return err;
 }
 

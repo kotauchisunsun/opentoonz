@@ -13,8 +13,8 @@ IGS_NEGATE_EXPORT void change(unsigned char *image_array, const int height,
                               const int width, const int channels,
                               const int bits,
                               const bool *sw_array /* channels size array */
-                              );
+);
 }
-}
+}  // namespace igs
 
 #endif /* !igs_negate_h */

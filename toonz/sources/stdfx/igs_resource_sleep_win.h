@@ -13,7 +13,7 @@ namespace igs {
 namespace resource {
 /* 1second = 1,000milli_seconds(ミリ秒) */
 IGS_RESOURCE_IFX_EXPORT void sleep_m(const DWORD milli_seconds);
-}
-}
+}  // namespace resource
+}  // namespace igs
 
 #endif /* !igs_resource_sleep_h */

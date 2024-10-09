@@ -1174,7 +1174,7 @@ void OpenGlPainter::onVectorImage(TVectorImage *vi,
   if (player.m_onionSkinDistance != c_noOnionSkin) {
     TPixel32 bgColor = TPixel32::White;
     fader            = TOnionFader(
-        bgColor, OnionSkinMask::getOnionSkinFade(player.m_onionSkinDistance));
+                   bgColor, OnionSkinMask::getOnionSkinFade(player.m_onionSkinDistance));
     cf = &fader;
   }
 

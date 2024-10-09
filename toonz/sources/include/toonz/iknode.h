@@ -86,13 +86,13 @@ private:
   TPointD s;  // Global position
   // TPointD w; // Global axis rotation
 
-  double theta;      // joint angle(radians)
-  double theta0;     // initial angle of the joint(radians)
-  double minTheta;   // lower angle limit
-  double maxTheta;   // high angle limit
-  double restAngle;  
+  double theta;     // joint angle(radians)
+  double theta0;    // initial angle of the joint(radians)
+  double minTheta;  // lower angle limit
+  double maxTheta;  // high angle limit
+  double restAngle;
 
-  bool freezed;  
+  bool freezed;
 };
 
 #endif  // IKNODE_H

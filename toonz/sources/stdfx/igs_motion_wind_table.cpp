@@ -27,7 +27,7 @@ int igs::motion_wind::make_table(
     ,
     const double density_min, const double density_max,
     const double density_bias  // 0<...1...
-    ) {
+) {
   /* length_minと、length_maxが同じ値なら固定長 */
   double length = length_min;
   if (length_min != length_max) {        /* minとmaxの間でrandomな長さ */

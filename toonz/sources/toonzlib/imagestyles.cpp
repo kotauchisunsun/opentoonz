@@ -115,7 +115,7 @@ TColorStyle *TTextureStyle::clone() const { return new TTextureStyle(*this); }
 TColorStyle *TTextureStyle::clone(std::string brushIdName) const {
   TTextureStyle *style = new TTextureStyle(*this);
 
-  std::string name = getBrushIdNameParam(brushIdName);
+  std::string name     = getBrushIdNameParam(brushIdName);
   style->m_texturePath = TFilePath(name);
   style->setAverageColor();
   return style;
@@ -201,8 +201,8 @@ void TTextureStyle::computeOutline(const TStroke *stroke,
     newPnt.first  = convert(v[i]);
     newPnt.second = convert(v[i + 1]);
     newPnt        = computeTexParameters(convert(v[i - 2]), convert(v[i - 1]),
-                                  getTexCoords(v[i - 2]),
-                                  getTexCoords(v[i - 1]), newPnt, size);
+                                         getTexCoords(v[i - 2]),
+                                         getTexCoords(v[i - 1]), newPnt, size);
     setTexCoords(newPnt.first, v[i]);
     setTexCoords(newPnt.second, v[i + 1]);
   }
@@ -384,9 +384,9 @@ void tileRaster(const TRaster32P &tile, const TRaster32P &rout) {
   int y = y0;
   for (int i = 0; i < rout->getLy(); i++, y++) {
     if (y == tile->getLy()) y = 0;
-    int x                     = x0;
-    TPixel32 *pixout          = rout->pixels(i);
-    TPixel32 *pixin           = tile->pixels(y) + x;
+    int x            = x0;
+    TPixel32 *pixout = rout->pixels(i);
+    TPixel32 *pixin  = tile->pixels(y) + x;
 
     for (int j = 0; j < rout->getLx(); j++, pixin++, pixout++, x++) {
       if (x == tile->getLx()) {
@@ -693,10 +693,9 @@ void TTextureStyle::setParamValue(int index, double value) {
     m_params.m_isPattern = (((int)value == 0) ? false : true);
     break;
   case 1:
-    m_params.m_type =
-        (((int)value == 0) ? TTextureParams::FIXED
-                           : ((int)value == 1) ? TTextureParams::AUTOMATIC
-                                               : TTextureParams::RANDOM);
+    m_params.m_type = (((int)value == 0)   ? TTextureParams::FIXED
+                       : ((int)value == 1) ? TTextureParams::AUTOMATIC
+                                           : TTextureParams::RANDOM);
     break;
   case 2:
     m_params.m_scale = value;
@@ -815,10 +814,9 @@ void TTextureStyle::loadData(TInputStreamInterface &is) {
   m_params.m_isPattern = value == 1.0 ? true : false;
 
   is >> value;
-  m_params.m_type =
-      (((int)value == 0) ? TTextureParams::FIXED
-                         : ((int)value == 1) ? TTextureParams::AUTOMATIC
-                                             : TTextureParams::RANDOM);
+  m_params.m_type = (((int)value == 0)   ? TTextureParams::FIXED
+                     : ((int)value == 1) ? TTextureParams::AUTOMATIC
+                                         : TTextureParams::RANDOM);
 
   is >> m_params.m_scale;
   is >> m_params.m_rotation;
@@ -888,8 +886,8 @@ void TTextureStyle::fillCustomTextureIcon(const TRaster32P &r) {
   drawdot(pix + x3, r->getWrap());
   // TImageWriter::save(TFilePath("C:\\temp\\boh.png"), r);
   /**(pix+x1) = TPixel::Black;
-*(pix+x2) = TPixel::Black;
-*(pix+x3) = TPixel::Black;*/
+   *(pix+x2) = TPixel::Black;
+   *(pix+x3) = TPixel::Black;*/
 }
 
 void TTextureStyle::makeIcon(const TDimension &outputRect) {
@@ -981,8 +979,9 @@ bool TTextureStyle::doCompute(const Params &params) const {
     TRaster32P rout(r->getSize());
 
     tileRaster(rTex, rin);
-    TRop::resample(rout, rin, affine.place(rin->getCenterD(),
-                                           rout->getCenterD() - convert(p)));
+    TRop::resample(
+        rout, rin,
+        affine.place(rin->getCenterD(), rout->getCenterD() - convert(p)));
     rTex = rout;
     p    = TPoint();
   } else {
@@ -1008,4 +1007,4 @@ TRaster32P makeSimpleRaster() {
 }
 
 TColorStyle::Declaration s2(new TTextureStyle(makeSimpleRaster(), TFilePath()));
-}
+}  // namespace

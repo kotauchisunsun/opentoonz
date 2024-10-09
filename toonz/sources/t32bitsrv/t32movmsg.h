@@ -224,6 +224,6 @@ public:
   void operator()(Message &stream) override;
 };
 
-}  // namespace tlevelwriter_mov
+}  // namespace mov_io
 
 #endif  // T32MOVMSG_H

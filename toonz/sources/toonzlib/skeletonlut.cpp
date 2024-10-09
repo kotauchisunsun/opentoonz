@@ -257,4 +257,4 @@ UCHAR ExtremeEndpointTable[] = {
     0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
-}  // namespace
+}  // namespace SkeletonLut

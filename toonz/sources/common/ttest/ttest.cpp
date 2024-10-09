@@ -34,7 +34,7 @@ class TTestTable {
 public:
   static TTestTable *table() {
     static TTestTable *theTable = 0;
-    if (!theTable) theTable     = new TTestTable;
+    if (!theTable) theTable = new TTestTable;
     return theTable;
   }
 
@@ -90,7 +90,7 @@ public:
     cout << count << " test(s) launched" << endl;
   }
 };
-}
+}  // namespace
 
 //------------------------------------------------------------
 
@@ -213,15 +213,15 @@ TFilePath getTestFile(string name) {
 //--------------------------------------------------------------------------------
 
 /*!
-*  Return true if \b ra raster and \b rb raster are equal, with an error
-*  less than \b err; return false otherwise.
-*  To verify rasters parity check pixel raster; if rasters are different is
-*	 showed an error message.
-*
-*  \b err max variance allowed to value pixels.
-*
-*  OSS.: Usually \b ra is check image and \b rb reference image.
-*/
+ *  Return true if \b ra raster and \b rb raster are equal, with an error
+ *  less than \b err; return false otherwise.
+ *  To verify rasters parity check pixel raster; if rasters are different is
+ *	 showed an error message.
+ *
+ *  \b err max variance allowed to value pixels.
+ *
+ *  OSS.: Usually \b ra is check image and \b rb reference image.
+ */
 int areEqual(TRasterP ra, TRasterP rb, double err) {
   if (!ra && !rb) return true;
   int y, x;
@@ -341,17 +341,17 @@ int areEqual(TRasterP ra, TRasterP rb, double err) {
 
 //-----------------------------------------------------------------------------
 /*!
-*  Return true if \b va vector image and \b vb vector image are equal, with an
-*	 error less than \b err; return false otherwise.
-*  To verify vector image parity check stroke count, control point count and
-*	 control point position; if vector image are different is showed an
-*error message.
-*
-*  \b err max percentage variance, related to save box, allowed to control point
-*					position.
-*
-*  OSS.: Usually \b va is check image and \b vb reference image.
-*/
+ *  Return true if \b va vector image and \b vb vector image are equal, with an
+ *	 error less than \b err; return false otherwise.
+ *  To verify vector image parity check stroke count, control point count and
+ *	 control point position; if vector image are different is showed an
+ *error message.
+ *
+ *  \b err max percentage variance, related to save box, allowed to control
+ *point position.
+ *
+ *  OSS.: Usually \b va is check image and \b vb reference image.
+ */
 int areEqual(TVectorImageP va, TVectorImageP vb, double err) {
   if (!va && !vb) return true;
   int aStrokeCount = va->getStrokeCount();
@@ -450,14 +450,14 @@ int areEqual(TVectorImageP va, TVectorImageP vb, double err) {
 
 //-----------------------------------------------------------------------------
 /*!
-*  Return true if images \b a and \b b are equal, with an error
-*  less than \b err; return false otherwise.
-*
-*  If images are rasters recall
-*  \b bool areEqual(TRasterP ra, TRasterP rb)
-*  else if image are vectorImage recall
-*  \b bool areEqual(TVectorImageP ra, TVectorImageP rb)
-*/
+ *  Return true if images \b a and \b b are equal, with an error
+ *  less than \b err; return false otherwise.
+ *
+ *  If images are rasters recall
+ *  \b bool areEqual(TRasterP ra, TRasterP rb)
+ *  else if image are vectorImage recall
+ *  \b bool areEqual(TVectorImageP ra, TVectorImageP rb)
+ */
 int areEqual(TImageP a, TImageP b, double err) {
   if (!a && !b) return true;
   if (!a || !b) return false;

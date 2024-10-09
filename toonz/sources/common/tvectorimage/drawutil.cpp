@@ -75,7 +75,7 @@ void drawQuadraticCenterline(const TQuadratic &inQuad, double pixelSize,
   glVertex2d(scP2.x, scP2.y);  // The curve ends in scP2
   glEnd();
 }
-}
+}  // namespace
 
 //-----------------------------------------------------------------------------
 
@@ -87,8 +87,8 @@ void stroke2polyline(std::vector<TPointD> &pnts, const TStroke &stroke,
   int i, index0, index1;
   double t0, t1;
 
-  if (isAlmostZero(w0)) w0     = 0.0;
-  if (isAlmostZero(w1)) w1     = 0.0;
+  if (isAlmostZero(w0)) w0 = 0.0;
+  if (isAlmostZero(w1)) w1 = 0.0;
   if (isAlmostZero(1 - w0)) w0 = 1.0;
   if (isAlmostZero(1 - w1)) w1 = 1.0;
 
@@ -246,7 +246,7 @@ double computeStep(const TStroke &s, double pixelSize) {
 }
 
 /*
-*/
+ */
 TRasterP prepareTexture(const TRasterP &ras, TextureInfoForGL &texinfo) {
   TDimension size = ras->getSize();
 
@@ -313,7 +313,7 @@ TRasterP prepareTexture(const TRasterP &ras, TextureInfoForGL &texinfo) {
 #endif
 
 #elif defined(TNZ_MACHINE_CHANNEL_ORDER_MRGB)
-// mrgb
+    // mrgb
 
 #warning "ottimizzare in qualche modo"
 

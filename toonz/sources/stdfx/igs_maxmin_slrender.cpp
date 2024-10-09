@@ -100,7 +100,7 @@ void set_begin_ptr_(const std::vector<std::vector<double>> &tracks,
                            : 0;
   }
 }
-}
+}  // namespace
 /* --- tracksをレンダリングする --------------------------------------*/
 void igs::maxmin::slrender::render(
     const double radius, const double smooth_outer_range,
@@ -119,7 +119,7 @@ void igs::maxmin::slrender::render(
     const std::vector<double> &alpha_ref /* alpha値で影響度合を決める */
     ,
     std::vector<double> &result /* 計算結果 */
-    ) {
+) {
   /* 初期位置 */
   std::vector<const double *> begin_ptr(lens_offsets.size());
   set_begin_ptr_(tracks, lens_offsets, 0, begin_ptr);
@@ -136,8 +136,9 @@ void igs::maxmin::slrender::render(
         /* 前のPixelと違う大きさならreshapeする */
         if (radius2 != before_radius) {
           igs::maxmin::reshape_lens_matrix(
-              radius2, igs::maxmin::outer_radius_from_radius(
-                           radius2, smooth_outer_range),
+              radius2,
+              igs::maxmin::outer_radius_from_radius(radius2,
+                                                    smooth_outer_range),
               igs::maxmin::diameter_from_outer_radius(radius +
                                                       smooth_outer_range),
               polygon_number, roll_degree, lens_offsets, lens_sizes,

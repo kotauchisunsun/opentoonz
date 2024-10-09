@@ -541,9 +541,9 @@ void PlasticTool::leftButtonDown_build(const TPointD &pos,
       if (m_snapToMesh.getValue()) {
         double d, highlightRadius = getPixelSize() * HIGHLIGHT_DISTANCE;
 
-        const TPointD &mvPos = ::closestMeshVertexPos(
-            pos, &d);  // Again, no need to check against closest
-                       // skeleton vertex.
+        const TPointD &mvPos =
+            ::closestMeshVertexPos(pos, &d);  // Again, no need to check against
+                                              // closest skeleton vertex.
         if (d < highlightRadius) m_pos = mvPos;
       }
 

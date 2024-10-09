@@ -695,7 +695,7 @@ static void putToBottom(HWND hwnd) {
                          unused,       // height
                          SWP_ASYNCWINDOWPOS | SWP_NOMOVE |
                              SWP_NOSIZE  // window-positioning options
-                         );
+  );
 }
 
 static void myHackFunction(int v) {
@@ -947,9 +947,9 @@ memset(targetBuffer, 0xff, TTwainData.transferInfo.memorySize);
       PRINTF("IMAGEMEMXFER, GET, returns SUCCESS\n");
       if (imgInfoOk) {
         TW_UINT32 colsToCopy;
-        rowsToCopy = min(imageMemXfer->Rows, rowsRemaining);
-        colsToCopy = min(imageMemXfer->Columns,
-                         (unsigned long)TTwainData.transferInfo.preferredLx);
+        rowsToCopy  = min(imageMemXfer->Rows, rowsRemaining);
+        colsToCopy  = min(imageMemXfer->Columns,
+                          (unsigned long)TTwainData.transferInfo.preferredLx);
         bytesToCopy = CEIL(colsToCopy * pixSize);
         bytesToWrap = CEIL(TTwainData.transferInfo.preferredLx * pixSize);
       } else {
@@ -990,9 +990,9 @@ memset(targetBuffer, 0xff, TTwainData.transferInfo.memorySize);
       /*copy the last transfer data*/
       if (imgInfoOk) {
         TW_UINT32 colsToCopy;
-        rowsToCopy = min(imageMemXfer->Rows, rowsRemaining);
-        colsToCopy = min(imageMemXfer->Columns,
-                         (unsigned long)TTwainData.transferInfo.preferredLx);
+        rowsToCopy  = min(imageMemXfer->Rows, rowsRemaining);
+        colsToCopy  = min(imageMemXfer->Columns,
+                          (unsigned long)TTwainData.transferInfo.preferredLx);
         bytesToCopy = CEIL(colsToCopy * pixSize);
         bytesToWrap = CEIL(TTwainData.transferInfo.preferredLx * pixSize);
       } else {

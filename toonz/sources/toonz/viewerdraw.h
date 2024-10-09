@@ -48,6 +48,6 @@ void drawSafeArea();
 
 unsigned int createDiskDisplayList();
 
-}  // namespace
+}  // namespace ViewerDraw
 
 #endif

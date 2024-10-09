@@ -94,7 +94,7 @@ static bool interpolate(const std::vector<T3DPointD> &points) {
       gPoints.push_back(AlgorithmPointI(points[curr], curr));
       guideLine = TPointI((int)(points[curr].x - points[next].x),
                           (int)(points[curr].y - points[next].y));
-      currStep = gPoints.back();
+      currStep  = gPoints.back();
       double xStepTheta, yStepTheta;
       // TPointI a;
 
@@ -180,7 +180,7 @@ inline bool isAdmissibleCorner(int currIndex, int precIndex, int nextIndex) {
       (norm2_a + norm2_b - norm2_c) / sqrt(4 * norm2_a * norm2_b);
 
   if (cosineOfAlpha < -1) cosineOfAlpha = -1;
-  if (cosineOfAlpha > 1) cosineOfAlpha  = 1;
+  if (cosineOfAlpha > 1) cosineOfAlpha = 1;
 
   double alpha = (180 / 3.14) * acos(cosineOfAlpha);
 

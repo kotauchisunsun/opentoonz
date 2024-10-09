@@ -171,7 +171,7 @@ void TStringTableImp::loadCoded(const TFilePath &fp) {
       Item &item     = m_table[id];
       item.m_name    = readStringW(is);
       if (m >= 2) {
-        item.m_help            = readStringW(is);
+        item.m_help = readStringW(is);
         if (m == 3) item.m_tip = readStringW(is);
       }
     }
@@ -307,7 +307,7 @@ std::wstring TStringTable::translate(std::string name) {
 const TStringTable *TStringTable::instance() {
   // may hurt MacOsX
   static TStringTableImp *instance = 0;
-  if (!instance) instance          = new TStringTableImp;
+  if (!instance) instance = new TStringTableImp;
 
   instance->init();
 

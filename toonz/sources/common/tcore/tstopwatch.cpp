@@ -57,8 +57,8 @@ TStopWatch::TStopWatch(std::string name)
   m_startUser.dwHighDateTime = m_startUser.dwLowDateTime = 0;
   m_startSystem.dwHighDateTime = m_startSystem.dwLowDateTime = 0;
 #else
-  m_startUser               = 0;
-  m_startSystem             = 0;
+  m_startUser   = 0;
+  m_startSystem = 0;
 #endif  //_WIN32
   m_tm       = 0;
   m_tmUser   = 0;

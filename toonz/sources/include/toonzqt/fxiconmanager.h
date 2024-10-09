@@ -145,8 +145,7 @@ const struct {
     {"STD_iwa_BokehRefFx", "fx_iwa_bokeh_ref"},
     {"STD_iwa_SoapBubbleFx", "fx_iwa_soapbubble"},
     {0, 0}};
-};
-
+};  // namespace
 
 class DVAPI FxIconPixmapManager final : public QObject {  // singleton
   Q_OBJECT

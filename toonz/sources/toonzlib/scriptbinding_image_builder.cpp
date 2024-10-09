@@ -208,7 +208,7 @@ QString ImageBuilder::add(const TImageP &img, const TAffine &aff) {
       if (img->getType() == TImage::TOONZ_RASTER) {
         TRasterCM32P rasCm = ras;
         m_img              = TToonzImageP(rasCm,
-                             TRect(0, 0, ras->getLx() - 1, ras->getLy() - 1));
+                                          TRect(0, 0, ras->getLx() - 1, ras->getLy() - 1));
         m_img->setPalette(img->getPalette());
       } else {
         m_img = TRasterImageP(ras);

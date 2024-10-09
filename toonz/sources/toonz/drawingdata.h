@@ -25,10 +25,10 @@ public:
   bool m_keepVectorFills = false;
 
   /*! Define possible level image setting.
-  *  \li INSERT Insert images before first selected;
-  *  \li OVER_FRAMEID Replace images with the same frameId images in data;
-  *  \li OVER_SELECTION Replace selected images with images in data.
-  */
+   *  \li INSERT Insert images before first selected;
+   *  \li OVER_FRAMEID Replace images with the same frameId images in data;
+   *  \li OVER_SELECTION Replace selected images with images in data.
+   */
   enum ImageSetType { INSERT, OVER_FRAMEID, OVER_SELECTION };
 
   DrawingData() {}

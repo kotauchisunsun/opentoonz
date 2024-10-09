@@ -277,17 +277,16 @@ int _readEdge(RasterEdgeIter &it, const RasterEdgeIter &end, RunsMapP runsMap,
 
   // Identify the newly found vertex. If it's a brand new one, add it
   tcg::hash<TPoint, int>::iterator ht = pointsHash.find(it.pos());
-  vIdx = (ht == pointsHash.end())
-             ? pointsHash[it.pos()] =
+  vIdx                                = (ht == pointsHash.end())
+                                            ? pointsHash[it.pos()] =
                    mesh.addVertex(typename Mesh::vertex_type(it.pos()))
-             : ht.m_idx;
+                                            : ht.m_idx;
 
   ed.addVertex(vIdx);
-  ed.direction(1) = (it.turn() == RasterEdgeIter::STRAIGHT)
-                        ? -it.dir()
-                        : (it.turn() == RasterEdgeIter::LEFT)
-                              ? tcg::point_ops::ortLeft(it.dir())
-                              : tcg::point_ops::ortRight(it.dir());
+  ed.direction(1) = (it.turn() == RasterEdgeIter::STRAIGHT) ? -it.dir()
+                    : (it.turn() == RasterEdgeIter::LEFT)
+                        ? tcg::point_ops::ortLeft(it.dir())
+                        : tcg::point_ops::ortRight(it.dir());
 
   int eIdx = mesh.addEdge(ed);
   edge_output::closeContainer(reader, &mesh, eIdx);
@@ -564,7 +563,7 @@ void readMeshes(const TRasterPT<typename PixelSelector::pixel_type> &rin,
 
   runsMap->unlock();
 }
-}
-}  // namespace TRop::borders
+}  // namespace borders
+}  // namespace TRop
 
 #endif  // BORDERS_EXTRACTOR_HPP

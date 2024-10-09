@@ -15,6 +15,6 @@ namespace Tiio {
 Tiio::Reader *makeTzpReader();
 Tiio::Writer *makeTzpWriter();
 
-}  // namespace
+}  // namespace Tiio
 
 #endif

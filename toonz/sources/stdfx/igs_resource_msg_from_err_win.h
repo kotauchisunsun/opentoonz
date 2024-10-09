@@ -27,7 +27,7 @@ const std::string msg_from_err_(/* 直によんではいけない */
                                 const std::basic_string<TCHAR> &date,
                                 const std::basic_string<TCHAR> &time);
 }
-}
+}  // namespace igs
 /*--- ::GetLastError()値からエラーメッセージを得る ---*/
 #ifdef _MSC_VER
 #define igs_resource_msg_from_err(tit, error_message_id)                       \

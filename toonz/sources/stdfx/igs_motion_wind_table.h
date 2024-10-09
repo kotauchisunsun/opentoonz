@@ -26,8 +26,8 @@ make_table(/* tableの有効長を返す */
            ,
            const double density_min = 0.0, const double density_max = 1.0,
            const double density_bias = 1.0  // 0<...1...
-           );
-}
-}
+);
+}  // namespace motion_wind
+}  // namespace igs
 
 #endif /* !igs_motion_wind_table_h */

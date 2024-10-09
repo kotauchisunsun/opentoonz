@@ -43,7 +43,7 @@ HexColorNames *HexColorNames::instance() {
 HexColorNames::HexColorNames() {}
 
 void HexColorNames::loadColorTableXML(QMap<QString, QString> &table,
-                                    const TFilePath &fp) {
+                                      const TFilePath &fp) {
   if (!TFileStatus(fp).doesExist()) throw TException("File not found");
 
   TIStream is(fp);
@@ -334,7 +334,7 @@ HexLineEdit::HexLineEdit(const QString &contents, QWidget *parent)
         connect(HexColorNames::instance(), SIGNAL(autoCompleteChanged(bool)),
                 this, SLOT(onAutoCompleteChanged(bool)));
   ret = ret && connect(HexColorNames::instance(), SIGNAL(colorsChanged()), this,
-          SLOT(onColorsChanged()));
+                       SLOT(onColorsChanged()));
   assert(ret);
 }
 
@@ -450,7 +450,7 @@ HexColorNamesEditor::HexColorNamesEditor(QWidget *parent)
     , m_selectedItem(nullptr)
     , m_newEntry(false) {
   setWindowTitle(tr("Hex Color Names Editor"));
-  setModal(false); // user may want to access main style editor and palettes
+  setModal(false);  // user may want to access main style editor and palettes
 
   QPushButton *okButton    = new QPushButton(tr("OK"), this);
   QPushButton *applyButton = new QPushButton(tr("Apply"), this);
@@ -465,7 +465,7 @@ HexColorNamesEditor::HexColorNamesEditor(QWidget *parent)
 
   // Main default color names
   QGridLayout *mainLay = new QGridLayout();
-  QWidget *mainTab = new QWidget();
+  QWidget *mainTab     = new QWidget();
   mainTab->setLayout(mainLay);
 
   m_mainTreeWidget = new QTreeWidget();
@@ -509,7 +509,7 @@ HexColorNamesEditor::HexColorNamesEditor(QWidget *parent)
 
   // Bottom widgets
   QHBoxLayout *bottomLay = new QHBoxLayout();
-  m_autoCompleteCb  = new QCheckBox(tr("Enable Auto-Complete"));
+  m_autoCompleteCb       = new QCheckBox(tr("Enable Auto-Complete"));
   m_autoCompleteCb->setChecked(HexLineEditAutoComplete != 0);
   m_autoCompleteCb->setSizePolicy(QSizePolicy::Expanding,
                                   QSizePolicy::Preferred);
@@ -608,7 +608,7 @@ bool HexColorNamesEditor::updateUserHexEntry(QTreeWidgetItem *treeItem,
 
 //-----------------------------------------------------------------------------
 
-bool HexColorNamesEditor::nameValid(const QString& name) {
+bool HexColorNamesEditor::nameValid(const QString &name) {
   if (name.isEmpty()) return false;
   return name.count(QRegExp("[\\\\#<>\"']")) == 0;
 }
@@ -727,10 +727,9 @@ void HexColorNamesEditor::focusOutEvent(QFocusEvent *e) {
 //-----------------------------------------------------------------------------
 
 bool HexColorNamesEditor::eventFilter(QObject *obj, QEvent *e) {
-  if (e->type() == QEvent::Shortcut ||
-      e->type() == QEvent::ShortcutOverride) {
-      e->accept();
-      return true;
+  if (e->type() == QEvent::Shortcut || e->type() == QEvent::ShortcutOverride) {
+    e->accept();
+    return true;
   }
   return false;
 }
@@ -801,7 +800,8 @@ void HexColorNamesEditor::onItemFinished(QTreeWidgetItem *item, int column) {
         if (text.isEmpty()) throw "";
         if (!nameValid(text))
           throw "Color name is not valid.\nFollowing characters can't be used: \\ # < > \" '";
-        if (nameExists(text, item)) throw "Color name already exists.\nPlease use another name.";
+        if (nameExists(text, item))
+          throw "Color name already exists.\nPlease use another name.";
         item->setText(0, text);
         m_userTreeWidget->sortItems(0, Qt::SortOrder::AscendingOrder);
       } else {
@@ -858,8 +858,8 @@ void HexColorNamesEditor::onHexChanged() {
 void HexColorNamesEditor::onAddColor() {
   if (m_newEntry) return;
 
-  TPixel pixel = m_colorField->getColor();
-  QString hex = HexColorNames::generateHex(pixel);
+  TPixel pixel              = m_colorField->getColor();
+  QString hex               = HexColorNames::generateHex(pixel);
   QTreeWidgetItem *treeItem = addEntry(m_userTreeWidget, "", hex, true);
 
   m_userTreeWidget->setCurrentItem(treeItem);
@@ -893,7 +893,8 @@ void HexColorNamesEditor::onImport() {
   if (fileName.isEmpty()) return;
 
   QMessageBox::StandardButton ret = QMessageBox::question(
-      this, tr("Hex Color Names Import"), tr("Do you want to merge with existing entries?"),
+      this, tr("Hex Color Names Import"),
+      tr("Do you want to merge with existing entries?"),
       QMessageBox::StandardButtons(QMessageBox::Yes | QMessageBox::No |
                                    QMessageBox::Cancel));
   if (ret == QMessageBox::Cancel) return;
@@ -914,9 +915,9 @@ void HexColorNamesEditor::onImport() {
 //-----------------------------------------------------------------------------
 
 void HexColorNamesEditor::onExport() {
-  QString fileName = QFileDialog::getSaveFileName(
-      this, tr("Save Color Names"), QString(),
-      tr("XML files (*.xml);;Text files (*.txt)"));
+  QString fileName =
+      QFileDialog::getSaveFileName(this, tr("Save Color Names"), QString(),
+                                   tr("XML files (*.xml);;Text files (*.txt)"));
   if (fileName.isEmpty()) return;
 
   HexColorNames::clearTempEntries();

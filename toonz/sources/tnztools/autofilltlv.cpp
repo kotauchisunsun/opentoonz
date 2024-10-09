@@ -32,7 +32,9 @@ struct s_segm {
   int xa, xb, region;
 };
 
-typedef struct big { UINT lo, hi; } BIG;
+typedef struct big {
+  UINT lo, hi;
+} BIG;
 #define ADD_BIG(B, X)                                                          \
   ((B).lo += (UINT)(X), (B).hi += (B).lo >> 30, (B).lo &= 0x3fffffff, (B))
 #define ASS_BIG(B, X)                                                          \
@@ -223,7 +225,7 @@ bool rect_autofill_apply(const TToonzImageP &imgToApply, int x1, int y1, int x2,
         temp_prob = 0;
         att_match = F_reference.n;
         /* Se non verra' aggiornato in seguito non verra' *
-* comunque piu' cambiato di colore               */
+         * comunque piu' cambiato di colore               */
         for (j = 0; j < F_reference.n; j++)
           if ((F_reference.array[i].match < 0) &&
               ((prob_vector[i * F_reference.n + j] / 1000.0) *
@@ -412,7 +414,7 @@ bool autofill_apply(const TToonzImageP &imgToApply, bool selective,
         temp_prob = 0;
         att_match = F_reference.n;
         /* Se non verra' aggiornato in seguito non verra' *
-* comunque piu' cambiato di colore               */
+         * comunque piu' cambiato di colore               */
         for (j = 0; j < F_reference.n; j++)
           if ((F_reference.array[i].match < 0) &&
               ((prob_vector[i * F_reference.n + j] / 1000.0) *
@@ -533,8 +535,8 @@ static void scan_fabri_regions(TRasterCM32P ras,
   rlst->size  = 100;
   rlst->array = (struct s_fabri_region *)calloc(rlst->size,
                                                 sizeof(struct s_fabri_region));
-  rlst->n   = 0;
-  firstfree = -1;
+  rlst->n     = 0;
+  firstfree   = -1;
   for (tmp = 0; tmp < rlst->size; tmp++) {
     rlst->array[tmp].vicini = NULL;
     rlst->array[tmp].holes  = 0;
@@ -622,7 +624,7 @@ static void scan_fabri_regions(TRasterCM32P ras,
                 if (row[rold][h].region == discard) row[rold][h].region = keep;
               for (h = 0; h < ncur; h++)
                 if (row[rcur][h].region == discard) row[rcur][h].region = keep;
-              region_id                                                 = keep;
+              region_id = keep;
               rinomina(discard, keep, rlst->n, rlst);
               for (tmp = 0; tmp < dx; tmp++)
                 if (ultima_zona[tmp] == discard) ultima_zona[tmp] = keep;
@@ -639,12 +641,12 @@ static void scan_fabri_regions(TRasterCM32P ras,
         PRINTF("Region ID %d %d %d %d \n", region_id, xa, xb, y);
         PRINTF("Memorizza Area \n");
         if (region_id >= 0) {
-          rlst->array[region_id].lxb                                    = xb;
-          rlst->array[region_id].lxa                                    = xa;
+          rlst->array[region_id].lxb = xb;
+          rlst->array[region_id].lxa = xa;
           if (xa < rlst->array[region_id].x1) rlst->array[region_id].x1 = xa;
           if (xb > rlst->array[region_id].x2) rlst->array[region_id].x2 = xb;
-          if (y < rlst->array[region_id].y1) rlst->array[region_id].y1  = y;
-          if (y > rlst->array[region_id].y2) rlst->array[region_id].y2  = y;
+          if (y < rlst->array[region_id].y1) rlst->array[region_id].y1 = y;
+          if (y > rlst->array[region_id].y2) rlst->array[region_id].y2 = y;
           rlst->array[region_id].npix += xb - xa + 1;
           ADD_BIG(rlst->array[region_id].by, (xb - xa + 1) * y);
           ADD_BIG(rlst->array[region_id].bx, (xb - xa + 1) * (xb + xa) / 2);
@@ -734,7 +736,7 @@ static void scan_fabri_regions(TRasterCM32P ras,
         rlst->array[n]        = rlst->array[i];
         rlst->array[n].vicini = rlst->array[i].vicini;
         rinomina(i, n, rlst->n, rlst);
-        for (tmp                                      = 0; tmp < dx; tmp++)
+        for (tmp = 0; tmp < dx; tmp++)
           if (ultima_zona[tmp] == i) ultima_zona[tmp] = n;
       }
       rlst->array[n].lx = rlst->array[n].x2 - rlst->array[n].x1 + 1;
@@ -1013,8 +1015,8 @@ static void assign_prob3(int prob[], int i, int j)
                 (BIG_TO_DOUBLE(F_work.array[j].by) / F_work.array[j].npix *
                  BIG_TO_DOUBLE(F_work.array[j].by) / F_work.array[j].npix);
 
-  delta_forma_mom =
-      std::abs(sqrt(delta_momx1 + delta_momy1) - sqrt(delta_momx2 + delta_momy2));
+  delta_forma_mom = std::abs(sqrt(delta_momx1 + delta_momy1) -
+                             sqrt(delta_momx2 + delta_momy2));
 
   delta_forma1 = ROUNDP(
       1000 * (((double)F_reference.array[i].per / F_reference.array[i].npix -
@@ -1060,8 +1062,9 @@ static void find_best(int prob[], int *col, int to)
             (prob[to * F_reference.n + j] / 1000.0) *
             (prob[to * F_reference.n + j] / 1000.0) *
             /*   (prob[(F_work.n*F_reference.n)+to*F_reference.n+j]/1500.0)*
-             */ (prob[2 * (F_work.n * F_reference.n) + to * F_reference.n + j] /
-                 1500.0);
+             */
+            (prob[2 * (F_work.n * F_reference.n) + to * F_reference.n + j] /
+             1500.0);
         numero++;
       }
     }

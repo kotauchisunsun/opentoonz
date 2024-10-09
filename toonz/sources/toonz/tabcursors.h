@@ -43,6 +43,6 @@ enum {
 
 void loadCursors();
 
-}  // namespace
+}  // namespace TabCursor
 
 #endif

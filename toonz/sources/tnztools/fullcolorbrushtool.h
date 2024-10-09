@@ -59,8 +59,7 @@ private:
 public:
   FullColorBrushTool(std::string name);
 
-  ToolType getToolType() const override
-    { return TTool::LevelWriteTool; }
+  ToolType getToolType() const override { return TTool::LevelWriteTool; }
   unsigned int getToolHints() const override;
 
   ToolOptionsBox *createOptionsBox() override;
@@ -115,7 +114,7 @@ public:
 
 private:
   void updateModifiers();
-  
+
   enum MouseEventType { ME_DOWN, ME_DRAG, ME_UP, ME_MOVE };
   void handleMouseEvent(MouseEventType type, const TPointD &pos,
                         const TMouseEvent &e);

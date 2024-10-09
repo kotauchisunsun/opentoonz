@@ -76,7 +76,7 @@ bool Predict3D::Predict(int k, Point initial[], Point current[],
   /* Costruzione dei coefficienti del sistema */
 
   for (j = 0; j < n - 1; j++) y[j] = 0.0;
-  y[n - 1]                         = 1.0;
+  y[n - 1] = 1.0;
 
   for (l = 0; l < m; l++)
     for (j = 0; j < n; j++) x[l][j] = 0.0;

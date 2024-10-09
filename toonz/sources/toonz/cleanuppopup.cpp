@@ -349,7 +349,7 @@ CleanupPopup::CleanupPopup()
 
   bool ret = true;
   ret      = ret && connect(m_progressBar, SIGNAL(valueChanged(int)), this,
-                       SLOT(onValueChanged(int)));
+                            SLOT(onValueChanged(int)));
 
   // NOTE: On MAC it seems that QAbstractButton's pressed() signal is reemitted
   // at
@@ -1079,7 +1079,7 @@ QString CleanupPopup::resetLevel() {
   // Ensure outputPath != inputPath
   const TFilePath &outputPath = scene->decodeFilePath(cl.m_outputPath),
                   &inputPath  = scene->decodeFilePath(
-                      CleanupSettingsModel::getInputPath(sl));
+                       CleanupSettingsModel::getInputPath(sl));
 
   if (inputPath == outputPath)
     return QString();  // Cannot remove source file - however, it can be

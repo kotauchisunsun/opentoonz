@@ -294,16 +294,16 @@ int intersectCloseControlPoints(const TQuadratic &c0, const TQuadratic &c1,
                                 std::vector<DoublePair> &intersections) {
   int ret = -2;
 
-  double dist1          = tdistance2(c0.getP0(), c0.getP1());
+  double dist1 = tdistance2(c0.getP0(), c0.getP1());
   if (dist1 == 0) dist1 = 1e-20;
-  double dist2          = tdistance2(c0.getP1(), c0.getP2());
+  double dist2 = tdistance2(c0.getP1(), c0.getP2());
   if (dist2 == 0) dist2 = 1e-20;
-  double val0           = std::max(dist1, dist2) / std::min(dist1, dist2);
-  double dist3          = tdistance2(c1.getP0(), c1.getP1());
+  double val0  = std::max(dist1, dist2) / std::min(dist1, dist2);
+  double dist3 = tdistance2(c1.getP0(), c1.getP1());
   if (dist3 == 0) dist3 = 1e-20;
-  double dist4          = tdistance2(c1.getP1(), c1.getP2());
+  double dist4 = tdistance2(c1.getP1(), c1.getP2());
   if (dist4 == 0) dist4 = 1e-20;
-  double val1           = std::max(dist3, dist4) / std::min(dist3, dist4);
+  double val1 = std::max(dist3, dist4) / std::min(dist3, dist4);
 
   if (val0 > 1000000 &&
       val1 > 1000000)  // both c0 and c1 approximated by segments
@@ -313,9 +313,9 @@ int intersectCloseControlPoints(const TQuadratic &c0, const TQuadratic &c1,
     ret         = intersect(s0, s1, intersections);
     for (UINT i = intersections.size() - ret; i < (int)intersections.size();
          i++) {
-      intersections[i].first = (dist1 < dist2)
-                                   ? sqrt(intersections[i].first)
-                                   : 1 - sqrt(1 - intersections[i].first);
+      intersections[i].first  = (dist1 < dist2)
+                                    ? sqrt(intersections[i].first)
+                                    : 1 - sqrt(1 - intersections[i].first);
       intersections[i].second = (dist3 < dist4)
                                     ? sqrt(intersections[i].second)
                                     : 1 - sqrt(1 - intersections[i].second);

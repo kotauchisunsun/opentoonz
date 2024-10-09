@@ -30,8 +30,7 @@ LayerHeaderPanel::LayerHeaderPanel(XsheetViewer *viewer, QWidget *parent,
   m_lockButton     = new QToolButton(this);
 
   // Define style and icon size for all buttons
-  QString buttonStyleSheet =
-      "QToolButton { padding: 0px; margin: 0px; }";
+  QString buttonStyleSheet = "QToolButton { padding: 0px; margin: 0px; }";
   QSize iconSize(16, 16);
   QSize buttonSize(20, 20);
 
@@ -43,7 +42,7 @@ LayerHeaderPanel::LayerHeaderPanel(XsheetViewer *viewer, QWidget *parent,
     button->setIconSize(iconSize);
     button->setFixedSize(buttonSize);
   }
-  
+
   m_previewButton->setIcon(createQIcon("preview"));
   m_camstandButton->setIcon(createQIcon("table"));
   m_lockButton->setIcon(createQIcon("lock_on"));

@@ -21,6 +21,6 @@ struct
     void
     outlineVectorize(const TRasterImageP &input, TVectorImageP &output);
 
-}  // namespace toutlinevectorizer
+}  // namespace tvectorizer
 
 #endif  // TNEW_OUTLINE_VECTORIZE_H

@@ -186,8 +186,8 @@ bool KeyframeMover::moveKeyframes(
     TStageObjectId objId =
         c >= 0 ? TStageObjectId::ColumnId(c)
                : TStageObjectId::CameraId(xsh->getCameraColumnIndex());
-    TStageObject *stObj    = xsh->getStageObject(objId);
-    if (r + dr < 0) dr     = -r;
+    TStageObject *stObj = xsh->getStageObject(objId);
+    if (r + dr < 0) dr = -r;
     if (dr == 0) notChange = true;
     newPositions.insert(TKeyframeSelection::Position(r, c));
   }
@@ -433,7 +433,7 @@ void KeyframeMoverTool::onClick(const QMouseEvent *event) {
     getSelection()->makeCurrent();
   }
   if (!getSelection()->isEmpty())
-    m_offset       = row - getSelection()->getFirstRow();
+    m_offset = row - getSelection()->getFirstRow();
   m_startSelection = *getSelection();
   getViewer()->update();
   m_startPos = TPointD(event->pos().x(), event->pos().y());

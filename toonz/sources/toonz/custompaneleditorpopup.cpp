@@ -426,7 +426,7 @@ void CustomPanelEditorPopup::updateControls(QWidget* customWidget) {
     if (entry.type == Button) {
       QString commandId = entry.field->commandId();
       QAction* action   = CommandManager::instance()->getAction(
-          commandId.toStdString().c_str());
+            commandId.toStdString().c_str());
       if (!action) continue;
       QAbstractButton* button = dynamic_cast<QAbstractButton*>(widget);
       QToolButton* tb         = dynamic_cast<QToolButton*>(widget);

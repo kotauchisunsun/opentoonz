@@ -27,18 +27,18 @@ class StrokeDeformation;
 class Selector;
 
 /**
-   * @brief This class is a visitor to manage properly Draw method.
-   */
+ * @brief This class is a visitor to manage properly Draw method.
+ */
 class DVAPI Designer {
 public:
   Designer();
   virtual ~Designer();
   /**
-*/
+   */
   virtual void draw(SmoothDeformation *);
 
   /**
-*/
+   */
   virtual void draw(CornerDeformation *);
 
   virtual void draw(StraightCornerDeformation *);
@@ -49,7 +49,7 @@ public:
 
   double getPixelSize2() const;
 };
-}
+}  // namespace ToonzExt
 #endif  // !defined(DESIGNER_H)
 //-----------------------------------------------------------------------------
 //  End Of File

@@ -159,6 +159,6 @@ public:
   void operator()(Message &stream);
 };
 
-}  // namespace tlevelwriter_mov
+}  // namespace font_io
 
 #endif

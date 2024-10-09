@@ -44,8 +44,9 @@ class DVAPI ValidatedChoiceDialog : public DVGui::Dialog {
   Q_OBJECT
 
 public:
-  enum Options         //!  Construction options
-  { NO_OPTIONS = 0x0,  //!< No special options.
+  enum Options  //!  Construction options
+  {
+    NO_OPTIONS = 0x0,  //!< No special options.
     APPLY_TO_ALL =
         0x1  //!< Has the "Apply to All" button. An <I>applied to all</I>
              //!  resolution persists as the default without-prompt resolution
@@ -53,12 +54,14 @@ public:
   };
 
   enum DefaultResolution  //!  Basic resolutions supported by the dialog.
-  { NO_REQUIRED_RESOLUTION =
+  {
+    NO_REQUIRED_RESOLUTION =
         0,       //!< An object supplied for validation turns out to be valid,
                  //!  no need for any resolution.
     CANCEL = 1,  //!< Resolution selection was canceled. Stop processing.
 
-    DEFAULT_RESOLUTIONS_COUNT };
+    DEFAULT_RESOLUTIONS_COUNT
+  };
 
 public:
   /*! \warning  Due to compatibility with DVGui::Dialog's interface, this class

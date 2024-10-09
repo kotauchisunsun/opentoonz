@@ -247,8 +247,9 @@ int StrokeOutlinizationData::buildPoints(const CenterlinePoint &p,
   bool pSymmetric = p.m_hasPrevD && p.m_hasNextD && p.m_nextD == p.m_prevD;
 
   // Build prev
-  bool prevSideIsNext =
-      (p.m_prevD.x < 0) ? true : (p.m_prevD.x > 0) ? false : ref.m_hasNextD;
+  bool prevSideIsNext = (p.m_prevD.x < 0)   ? true
+                        : (p.m_prevD.x > 0) ? false
+                                            : ref.m_hasNextD;
   bool hasPrev =
       p.m_hasPrevD && (prevSideIsNext ? ref.m_hasNextD : ref.m_hasPrevD);
   int prevIdx = hasPrev ? 0 : -1;
@@ -273,8 +274,9 @@ int StrokeOutlinizationData::buildPoints(const CenterlinePoint &p,
   }
 
   // Build next
-  bool nextSideIsNext =
-      (p.m_nextD.x > 0) ? true : (p.m_nextD.x < 0) ? false : ref.m_hasNextD;
+  bool nextSideIsNext = (p.m_nextD.x > 0)   ? true
+                        : (p.m_nextD.x < 0) ? false
+                                            : ref.m_hasNextD;
   bool hasNext =
       p.m_hasNextD && (nextSideIsNext ? ref.m_hasNextD : ref.m_hasPrevD);
   int nextIdx =
@@ -331,7 +333,7 @@ int StrokeOutlinizationData::buildPoints(const TStroke &stroke,
 #ifdef USE_LENGTH
   bool ok = getChunkAndT_length(path, x, pathChunk, pathT);
 #else
-  bool ok = getChunkAndT_param(path, x, pathChunk, pathT);
+  bool ok  = getChunkAndT_param(path, x, pathChunk, pathT);
 #endif
   assert(ok);
 
@@ -442,8 +444,8 @@ void ReferenceChunksLinearizator::addCenterlinePoints(
   bool ok0 = m_data.getChunkAndT_length(path, x0, chunk0, t0);
   bool ok1 = m_data.getChunkAndT_length(path, x1, chunk1, t1);
 #else
-  bool ok0   = m_data.getChunkAndT_param(path, x0, chunk0, t0);
-  bool ok1   = m_data.getChunkAndT_param(path, x1, chunk1, t1);
+  bool ok0 = m_data.getChunkAndT_param(path, x0, chunk0, t0);
+  bool ok1 = m_data.getChunkAndT_param(path, x1, chunk1, t1);
 #endif
 
   assert(ok0 && ok1);
@@ -860,7 +862,7 @@ void makeCenterline(const TStroke &path, const TEdge &edge,
   const TStroke &stroke = *edge.m_s;
 
   double w0 = edge.m_w0, w1 = edge.m_w1;
-  bool reversed    = w1 < w0;
+  bool reversed = w1 < w0;
   if (reversed) w0 = edge.m_w1, w1 = edge.m_w0;
 
   // Build outlinization data

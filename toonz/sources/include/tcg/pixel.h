@@ -132,7 +132,7 @@ struct pixel_traits<Pixel<Chan, rgbm_pixel_tag>, rgbm_pixel_tag>
   static channel_type m(const pixel_type &pix) { return pix.m; }
   static channel_type &m(pixel_type &pix) { return pix.m; }
 };
-}
-}  // namespace tcg::pixel_ops
+}  // namespace pixel_ops
+}  // namespace tcg
 
 #endif  // TCG_PIXEL_H

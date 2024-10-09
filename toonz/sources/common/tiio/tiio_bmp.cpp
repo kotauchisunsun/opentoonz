@@ -274,9 +274,9 @@ while (hd->biPad > 0)
     m_lineSize              = (lx + 7) / 8;
     break;
   case 4:
-    m_info.m_samplePerPixel                           = 1;
+    m_info.m_samplePerPixel = 1;
     if (m_header.biCompression == 0) m_readLineMethod = &BmpReader::read4Line;
-    m_lineSize                                        = (lx + 1) / 2;
+    m_lineSize = (lx + 1) / 2;
     break;
   case 8:
     m_info.m_samplePerPixel = 1;
@@ -284,7 +284,7 @@ while (hd->biPad > 0)
       m_readLineMethod = &BmpReader::read8Line;
     else if (m_header.biCompression == 1)
       m_readLineMethod = &BmpReader::read8LineRle;
-    m_lineSize         = lx;
+    m_lineSize = lx;
     break;
   case 16:
     m_info.m_samplePerPixel = 3;
@@ -354,8 +354,8 @@ int BmpReader::read1Line(char *buffer, int x0, int x1, int shrink) {
   int prevBlock = index / 8;
   for (int j = index; pix + j < endPix; j += shrink) {
     if (j / 8 > prevBlock) value = getc(m_chan);
-    prevBlock                    = j / 8;
-    pix[j]                       = m_cmap[(value >> (7 - (j % 8))) & 1];
+    prevBlock = j / 8;
+    pix[j]    = m_cmap[(value >> (7 - (j % 8))) & 1];
   }
 
   /*

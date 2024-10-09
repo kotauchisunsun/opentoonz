@@ -427,9 +427,9 @@ class InsertGlobalKeyframeUndo final : public GlobalKeyframeUndo {
 public:
   InsertGlobalKeyframeUndo(int frame, const std::vector<int> &columns)
       : GlobalKeyframeUndo(frame) {
-    tcg::substitute(
-        m_columns,
-        columns | ba::filtered([frame](int c){ return !isKeyframe(frame, c); }));
+    tcg::substitute(m_columns, columns | ba::filtered([frame](int c) {
+                                 return !isKeyframe(frame, c);
+                               }));
   }
 
   void redo() const override {
@@ -502,11 +502,13 @@ public:
       }
     };  // locals
 
-    tcg::substitute(m_columns,
-                    columns | ba::filtered([frame](int c){ return isKeyframe(frame, c); }));
+    tcg::substitute(m_columns, columns | ba::filtered([frame](int c) {
+                                 return isKeyframe(frame, c);
+                               }));
 
-    tcg::substitute(m_keyframes,
-                    m_columns | ba::transformed([frame](int c){ return locals::getKeyframe(frame, c); }));
+    tcg::substitute(m_keyframes, m_columns | ba::transformed([frame](int c) {
+                                   return locals::getKeyframe(frame, c);
+                                 }));
   }
 
   void redo() const override {

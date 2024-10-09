@@ -65,7 +65,7 @@ TINT32 TSmartObject::getInstanceCount(ClassCode
 #ifdef INSTANCE_COUNT_ENABLED
                                           code
 #endif
-                                      ) {
+) {
 #ifdef INSTANCE_COUNT_ENABLED
   TAtomicVar &instanceCount = getInstanceCounter(code);
   return instanceCount;

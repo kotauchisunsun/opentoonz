@@ -360,9 +360,9 @@ ExportLevelPopup::ExportLevelPopup()
   // Establish connections
   bool ret = true;
   ret      = connect(tabBar, SIGNAL(currentChanged(int)), stackedWidget,
-                SLOT(setCurrentIndex(int)));
+                     SLOT(setCurrentIndex(int)));
   ret      = connect(m_format, SIGNAL(currentIndexChanged(const QString &)),
-                SLOT(onformatChanged(const QString &))) &&
+                     SLOT(onformatChanged(const QString &))) &&
         ret;
   ret = connect(m_retas, SIGNAL(stateChanged(int)), SLOT(onRetas(int))) && ret;
   ret = connect(m_formatOptions, SIGNAL(clicked()), SLOT(onOptionsClicked())) &&
@@ -686,7 +686,7 @@ bool ExportLevelPopup::execute() {
 void ExportLevelPopup::initFolder() {
   TFilePath fp;
 
-  auto project = TProjectManager::instance()->getCurrentProject();
+  auto project      = TProjectManager::instance()->getCurrentProject();
   ToonzScene *scene = TApp::instance()->getCurrentScene()->getScene();
 
   if (scene) fp = scene->decodeFilePath(TFilePath("+drawings"));

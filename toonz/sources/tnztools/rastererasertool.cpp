@@ -284,7 +284,7 @@ void eraseStroke(const TToonzImageP &ti, TStroke *stroke,
   if (!invert)
     area = rasterErasedArea.enlarge(2);
   else
-    area                = ras->getBounds();
+    area = ras->getBounds();
   TTileSetCM32 *tileSet = new TTileSetCM32(ras->getSize());
   tileSet->add(ras, area);
   TUndoManager::manager()->add(new RectRasterUndo(
@@ -781,8 +781,8 @@ void EraserTool::resetMulti() {
   m_selectingRect.empty();
   TTool::Application *app = TTool::getApplication();
   m_level                 = app->getCurrentLevel()->getLevel()
-                ? app->getCurrentLevel()->getSimpleLevel()
-                : 0;
+                                ? app->getCurrentLevel()->getSimpleLevel()
+                                : 0;
   m_firstFrameId = m_veryFirstFrameId = getFrameId();
   if (m_firstStroke) {
     delete m_firstStroke;
@@ -880,9 +880,9 @@ void EraserTool::update(const TToonzImageP &ti, TRectD selArea,
 
   std::wstring inkPaint = m_colorType.getValue();
   undo                  = new RectRasterUndo(
-      tileSet, selArea, TStroke(), selective ? styleId : -1,
-      m_eraseType.getValue(), inkPaint, level.getPointer(), selective,
-      m_invertOption.getValue(), m_pencil.getValue(), frameId);
+                       tileSet, selArea, TStroke(), selective ? styleId : -1,
+                       m_eraseType.getValue(), inkPaint, level.getPointer(), selective,
+                       m_invertOption.getValue(), m_pencil.getValue(), frameId);
 
   ToonzImageUtils::eraseRect(ti, selArea, selective ? styleId : -1,
                              inkPaint == LINES || inkPaint == ALL,
@@ -925,8 +925,8 @@ void EraserTool::leftButtonDown(const TPointD &pos, const TMouseEvent &e) {
       int currentStyle = 0;
       if (m_currentStyle.getValue())
         currentStyle = TTool::getApplication()->getCurrentLevelStyleIndex();
-      m_tileSet      = new TTileSetCM32(raster->getSize());
-      m_tileSaver    = new TTileSaverCM32(raster, m_tileSet);
+      m_tileSet   = new TTileSetCM32(raster->getSize());
+      m_tileSaver = new TTileSaverCM32(raster, m_tileSet);
       TPointD halfThick(m_toolSize.getValue() * 0.5,
                         m_toolSize.getValue() * 0.5);
       invalidateRect = TRectD(fixedPos - halfThick, fixedPos + halfThick);
@@ -936,7 +936,7 @@ void EraserTool::leftButtonDown(const TPointD &pos, const TMouseEvent &e) {
           m_colorTypeEraser = INK;
         }
         if (m_colorType.getValue() == AREAS) m_colorTypeEraser = PAINT;
-        if (m_colorType.getValue() == ALL) m_colorTypeEraser   = INKNPAINT;
+        if (m_colorType.getValue() == ALL) m_colorTypeEraser = INKNPAINT;
         m_normalEraser = new RasterStrokeGenerator(
             raster, ERASE, m_colorTypeEraser, 0, intPos,
             m_currentStyle.getValue(), currentStyle, false,
@@ -1467,7 +1467,7 @@ bool EraserTool::onPropertyChanged(std::string propertyName) {
   else if (propertyName == m_hardness.getName()) {
     EraseHardness = m_hardness.getValue();
     m_brushPad    = ToolUtils::getBrushPad(m_toolSize.getValue(),
-                                        m_hardness.getValue() * 0.01);
+                                           m_hardness.getValue() * 0.01);
   }
 
   if (propertyName == m_hardness.getName() ||
@@ -1560,8 +1560,8 @@ void EraserTool::onEnter() {
   m_cleanerSize           = m_toolSize.getValue();
   TTool::Application *app = TTool::getApplication();
   m_level                 = app->getCurrentLevel()->getLevel()
-                ? app->getCurrentLevel()->getSimpleLevel()
-                : 0;
+                                ? app->getCurrentLevel()->getSimpleLevel()
+                                : 0;
 }
 
 //----------------------------------------------------------------------
@@ -1702,10 +1702,11 @@ void EraserTool::storeUndoAndRefresh() {
     TUndoManager::manager()->add(new RasterBluredEraserUndo(
         m_tileSet, m_points,
         TTool::getApplication()->getCurrentLevelStyleIndex(),
-        m_currentStyle.getValue(), TTool::getApplication()
-                                       ->getCurrentLevel()
-                                       ->getLevel()
-                                       ->getSimpleLevel(),
+        m_currentStyle.getValue(),
+        TTool::getApplication()
+            ->getCurrentLevel()
+            ->getLevel()
+            ->getSimpleLevel(),
         m_workingFrameId.isEmptyFrame() ? getCurrentFid() : m_workingFrameId,
         m_toolSize.getValue(), m_hardness.getValue() * 0.01,
         m_colorType.getValue()));

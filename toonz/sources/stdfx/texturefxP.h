@@ -202,4 +202,4 @@ void myOver64(const TRaster64P &rasOut, const TRasterP &rasUp, func64 func,
     }
   }
 }
-}
+}  // namespace

@@ -6,7 +6,6 @@
 // TnzTools includes
 #include <tools/inputmanager.h>
 
-
 #undef DVAPI
 #undef DVVAR
 #ifdef TNZTOOLS_EXPORTS
@@ -17,30 +16,25 @@
 #define DVVAR DV_IMPORT_VAR
 #endif
 
-
 //===================================================================
 
 //*****************************************************************************************
 //    TModifierSmooth definition
 //*****************************************************************************************
 
-class DVAPI TModifierSmooth: public TInputModifier {
+class DVAPI TModifierSmooth : public TInputModifier {
 public:
-  class DVAPI Handler: public TSubTrackHandler {
+  class DVAPI Handler : public TSubTrackHandler {
   public:
     const int radius;
-    inline explicit Handler(int radius): radius(radius) { }
+    inline explicit Handler(int radius) : radius(radius) {}
   };
 
   int radius;
 
   explicit TModifierSmooth(int radius = 10);
-  
-  void modifyTrack(
-    const TTrack &track,
-    TTrackList &outTracks ) override;
+
+  void modifyTrack(const TTrack &track, TTrackList &outTracks) override;
 };
 
-
 #endif
-

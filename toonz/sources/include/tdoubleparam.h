@@ -39,7 +39,7 @@ class TDoubleKeyframe;
 namespace TSyntax {
 class Grammar;
 class CalculatorNodeVisitor;
-}
+}  // namespace TSyntax
 
 #ifdef _WIN32
 template class DVAPI TPersistDeclarationT<TDoubleParam>;

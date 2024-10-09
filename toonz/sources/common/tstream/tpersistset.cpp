@@ -17,7 +17,8 @@ PERSIST_IDENTIFIER(TPersistSet, "persistSet")
 //------------------------------------------------------------------
 
 TPersistSet::~TPersistSet() {
-  std::for_each(m_objects.begin(), m_objects.end(), std::default_delete<TPersist>());
+  std::for_each(m_objects.begin(), m_objects.end(),
+                std::default_delete<TPersist>());
 }
 
 //------------------------------------------------------------------

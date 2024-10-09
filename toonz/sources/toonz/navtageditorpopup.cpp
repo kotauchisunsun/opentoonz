@@ -12,7 +12,7 @@ const QIcon getColorChipIcon(QColor color) {
   pixmap.fill(color);
   return QIcon(pixmap);
 }
-}
+}  // namespace
 
 void NavTagEditorPopup::accept() {
   m_label = QString(m_labelFld->text());

@@ -224,8 +224,9 @@ FunctionViewer::FunctionViewer(QWidget *parent, Qt::WindowFlags flags)
         Preferences::instance()->isShowXsheetBreadcrumbsEnabled() &&
         Preferences::instance()->isExpandFunctionHeaderEnabled();
     if (QSpacerItem *spacer = m_leftLayout->itemAt(0)->spacerItem()) {
-      spacer->changeSize(1, m_spacing + ((toolBarVisible) ? 10 : 0) +
-                                ((breadcrumbsVisible) ? 10 : 0),
+      spacer->changeSize(1,
+                         m_spacing + ((toolBarVisible) ? 10 : 0) +
+                             ((breadcrumbsVisible) ? 10 : 0),
                          QSizePolicy::Fixed, QSizePolicy::Fixed);
       spacer->invalidate();
     } else
@@ -517,8 +518,9 @@ void FunctionViewer::toggleMode() {
           Preferences::instance()->isShowXsheetBreadcrumbsEnabled() &&
           Preferences::instance()->isExpandFunctionHeaderEnabled();
       if (QSpacerItem *spacer = m_leftLayout->itemAt(0)->spacerItem()) {
-        spacer->changeSize(1, m_spacing + ((toolBarVisible) ? 10 : 0) +
-                                  ((breadcrumbsVisible) ? 10 : 0),
+        spacer->changeSize(1,
+                           m_spacing + ((toolBarVisible) ? 10 : 0) +
+                               ((breadcrumbsVisible) ? 10 : 0),
                            QSizePolicy::Fixed, QSizePolicy::Fixed);
         spacer->invalidate();
         m_numericalColumns->updateHeaderHeight();
@@ -701,8 +703,9 @@ void FunctionViewer::onPreferenceChanged(const QString &prefName) {
   m_functionGraph->hide();
   m_numericalColumns->show();
   if (QSpacerItem *spacer = m_leftLayout->itemAt(0)->spacerItem()) {
-    spacer->changeSize(1, m_spacing + ((toolBarVisible) ? 10 : 0) +
-                              ((breadcrumbsVisible) ? 10 : 0),
+    spacer->changeSize(1,
+                       m_spacing + ((toolBarVisible) ? 10 : 0) +
+                           ((breadcrumbsVisible) ? 10 : 0),
                        QSizePolicy::Fixed, QSizePolicy::Fixed);
     spacer->invalidate();
     m_numericalColumns->updateHeaderHeight();

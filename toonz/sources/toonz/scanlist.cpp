@@ -90,7 +90,7 @@ void ScanListFrame::setRasterImage(const TRasterImageP &ras, bool isBW) const {
   ToonzScene *scene = TApp::instance()->getCurrentScene()->getScene();
   TFilePath path    = m_xl->getPath();
   if (m_xl->getScannedPath() != TFilePath()) path = m_xl->getScannedPath();
-  path                                            = scene->decodeFilePath(path);
+  path = scene->decodeFilePath(path);
   TSystem::touchParentDir(path);
 
   TLevelWriterP lw(path);

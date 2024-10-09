@@ -41,8 +41,8 @@ enum Type {
   AUDIO_LEVEL   = 0x20 | LEVEL,
   PALETTE_LEVEL = 0x40 | LEVEL,
 
-  META_IMAGE    = 0x80,
-  META_LEVEL    = META_IMAGE | LEVEL,
+  META_IMAGE = 0x80,
+  META_LEVEL = META_IMAGE | LEVEL,
 
   TABSCENE   = 0x2000 | SCENE,
   TOONZSCENE = 0x4000 | SCENE,
@@ -51,21 +51,21 @@ enum Type {
 };
 
 /*!
-   * getInfo() returns the TFileType::Type of the filepath.
-   * e.g. 'a.tif' => RASTER_IMAGE, 'a..tif' => RASTER_LEVEL, 'a.mov' =>
+ * getInfo() returns the TFileType::Type of the filepath.
+ * e.g. 'a.tif' => RASTER_IMAGE, 'a..tif' => RASTER_LEVEL, 'a.mov' =>
  * RASTER_LEVEL, 'a.tlv' => CMAPPED_LEVEL, etc.
-   * Note!!: in the current implementation, a.0001.tif => RASTER_LEVEL,
+ * Note!!: in the current implementation, a.0001.tif => RASTER_LEVEL,
  * (probably a bad choice: should be RASTER IMAGE)
-   */
+ */
 //!
 DVAPI Type getInfo(const TFilePath &fp);
 
 /*!
-   * getInfoFromExtension() returns the TFileType::Type "naturally" associated
+ * getInfoFromExtension() returns the TFileType::Type "naturally" associated
  * to a given type (file extension)
-   * e.g. 'tif' => RASTER_IMAGE, 'mov' => RASTER_LEVEL, 'tlv' => CMAPPED_LEVEL,
+ * e.g. 'tif' => RASTER_IMAGE, 'mov' => RASTER_LEVEL, 'tlv' => CMAPPED_LEVEL,
  * etc.
-   */
+ */
 //!
 DVAPI Type getInfoFromExtension(const std::string &ext);
 DVAPI Type getInfoFromExtension(const QString &ext);
@@ -90,6 +90,6 @@ inline bool isLevelFilePath(const TFilePath &fp) {
   return (getInfo(fp) & LEVEL) != 0;
 }
 
-}  // namespace
+}  // namespace TFileType
 
 #endif

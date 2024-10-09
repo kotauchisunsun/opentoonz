@@ -131,7 +131,7 @@ public:
     return m_skip;
   }
 };
-}
-}  // namespace TRop::borders
+}  // namespace borders
+}  // namespace TRop
 
 #endif  // PIXEL_SELECTORS_H

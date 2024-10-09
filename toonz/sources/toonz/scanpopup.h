@@ -12,7 +12,7 @@ namespace DVGui {
 class DoubleField;
 class IntField;
 class CheckBox;
-}
+}  // namespace DVGui
 
 class QComboBox;
 class ProgressDialog;

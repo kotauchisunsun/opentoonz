@@ -516,9 +516,7 @@ TLevelWriter3gp::TLevelWriter3gp(const TFilePath &path, TPropertyGroup *winfo)
 #else
 #define FailWithAction(cond, action, handler)                                  \
   if (cond) {                                                                  \
-    {                                                                          \
-      action;                                                                  \
-    }                                                                          \
+    { action; }                                                                \
     goto handler;                                                              \
   } else                                                                       \
     0

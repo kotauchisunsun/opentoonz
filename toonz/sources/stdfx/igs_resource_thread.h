@@ -25,13 +25,13 @@ IGS_RESOURCE_IFX_EXPORT const HANDLE thread_run(
     THREAD_PRIORITY_LOWEST			標準より2ポイント低い
     THREAD_PRIORITY_IDLE			プロセスにより1 or 16
     */
-    );
+);
 IGS_RESOURCE_IFX_EXPORT const bool thread_was_done(const HANDLE thread_id);
 IGS_RESOURCE_IFX_EXPORT void thread_join(const HANDLE thread_id);
 IGS_RESOURCE_IFX_EXPORT void thread_wait(const HANDLE thread_id);
 IGS_RESOURCE_IFX_EXPORT void thread_close(const HANDLE thread_id);
-}
-}
+}  // namespace resource
+}  // namespace igs
 #else  //--------------------------------------------------------------
 #include <pthread.h>  // pthread_t,pthread_create(),pthread_join()
 namespace igs {
@@ -46,10 +46,10 @@ pthread_t thread_run(
     PTHREAD_CREATE_DETACHED なら、なにも呼ぶ必要がないが、
             thread終了を知るには自前で仕掛けが必要。
     */
-    );
+);
 void thread_join(const pthread_t thread_id);
-}
-}
+}  // namespace resource
+}  // namespace igs
 #endif  //-------------------------------------------------------------
 
 #endif /* !igs_resource_thread_h */

@@ -146,7 +146,7 @@ inline QRect toQRect(const TRect &r) {
 inline TRect toTRect(const QRect &r) {
   return TRect(r.left(), r.top(), r.right(), r.bottom());
 }
-}
+}  // namespace
 
 //---------------------------------------------------------------------------
 

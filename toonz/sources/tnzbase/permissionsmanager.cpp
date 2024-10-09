@@ -51,7 +51,7 @@ public:
 
   Imp() : m_user(0) {
     loadPermissions();
-    m_user              = findUser(TSystem::getUserName().toStdString(), false);
+    m_user = findUser(TSystem::getUserName().toStdString(), false);
     if (!m_user) m_user = findUser("guest", false);
   }
 
@@ -71,14 +71,14 @@ public:
   }
 
   std::string getSVNUserName(int index) {
-    User *user      = findUser(TSystem::getUserName().toStdString(), false);
+    User *user = findUser(TSystem::getUserName().toStdString(), false);
     if (!user) user = findUser("guest", false);
     if (!user) return "";
     return user->getSvnUsername(index);
   }
 
   std::string getSVNPassword(int index) {
-    User *user      = findUser(TSystem::getUserName().toStdString(), false);
+    User *user = findUser(TSystem::getUserName().toStdString(), false);
     if (!user) user = findUser("guest", false);
     if (!user) return "";
     return user->getSvnPassword(index);

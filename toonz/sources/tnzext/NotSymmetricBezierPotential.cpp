@@ -37,7 +37,7 @@ public:
     return out;
   }
 };
-}
+}  // namespace
 
 //-----------------------------------------------------------------------------
 
@@ -76,10 +76,10 @@ double ToonzExt::NotSymmetricBezierPotential::value_(double value2test) const {
 // normalization of parameter in range interval
 double ToonzExt::NotSymmetricBezierPotential::compute_shape(
     double value2test) const {
-  double x                       = ref_->getLength(value2test);
-  double shape                   = this->actionLength_ * 0.5;
+  double x     = ref_->getLength(value2test);
+  double shape = this->actionLength_ * 0.5;
   if (isAlmostZero(shape)) shape = 1.0;
-  x                              = (x - lengthAtParam_) / shape;
+  x = (x - lengthAtParam_) / shape;
   return x;
 }
 

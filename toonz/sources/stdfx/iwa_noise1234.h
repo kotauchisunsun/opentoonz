@@ -41,14 +41,14 @@ public:
   ~Noise1234() {}
 
   /** 1D, 2D, 3D and 4D float Perlin noise, SL "noise()"
-*/
+   */
   static float noise(float x);
   static float noise(float x, float y);
   static float noise(float x, float y, float z);
   static float noise(float x, float y, float z, float w);
 
   /** 1D, 2D, 3D and 4D float Perlin periodic noise, SL "pnoise()"
-*/
+   */
   static float pnoise(float x, int px);
   static float pnoise(float x, float y, int px, int py);
   static float pnoise(float x, float y, float z, int px, int py, int pz);

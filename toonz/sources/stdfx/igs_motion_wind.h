@@ -19,7 +19,8 @@ IGS_MOTION_WIND_EXPORT void change(
     const unsigned char *ref
 
     ,
-    const int rh, const int rw, const int rc, const int rb
+    const int rh, const int rw, const int rc,
+    const int rb
 
     //, const int rz
     ,
@@ -55,8 +56,8 @@ IGS_MOTION_WIND_EXPORT void change(
     const double density_bias = 0.0  // ...-1.0...0.0...1.0..
     ,
     const bool density_ref_sw = false  // false,true
-    );
+);
 }
-}
+}  // namespace igs
 
 #endif /* !igs_motion_wind_h */

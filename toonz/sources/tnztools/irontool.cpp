@@ -130,7 +130,7 @@ public:
     }
 
     if (m_strokeRef) m_cpIndexMin = m_strokeRef->getControlPointCount();
-    m_cpIndexMax                  = -1;
+    m_cpIndexMax = -1;
 
     invalidate();
   }
@@ -238,7 +238,7 @@ public:
           assert(!isIncluded(iCP0, m_cpIndexMin, m_cpIndexMax));
           m_cpIndexMin = iCP0;
         } else {
-          int sgn             = tsign(m_range.second - m_range.first);
+          int sgn = tsign(m_range.second - m_range.first);
           if (!direction) sgn = -sgn;
 
           switch (sgn) {

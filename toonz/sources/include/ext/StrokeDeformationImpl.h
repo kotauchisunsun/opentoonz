@@ -72,13 +72,13 @@ protected:
   StrokeDeformationImpl();
 
   /**
-* Is this the correct deformation?
-*/
+   * Is this the correct deformation?
+   */
   virtual bool check_(const ContextStatus *) = 0;
 
   /**
-* Retrieve the nearest extremes to point selected.
-*/
+   * Retrieve the nearest extremes to point selected.
+   */
   virtual bool findExtremes_(const ContextStatus *, Interval &) = 0;
 
   virtual double findActionLength() = 0;
@@ -98,32 +98,32 @@ public:
   const TStroke *getCopiedStroke() const { return this->getStrokeSelected(); }
 
   /**
-*Wrapper for activate.
-*/
+   *Wrapper for activate.
+   */
   virtual bool activate_impl(const ContextStatus *);
 
   /**
-* Modify stroke.
-*/
+   * Modify stroke.
+   */
   virtual void update_impl(const TPointD &delta);
 
   /**
-* Reduce control points and change stroke.
-*/
+   * Reduce control points and change stroke.
+   */
   virtual TStroke *deactivate_impl();
 
   bool check(const ContextStatus *);
 
   /**
-* Restore last good status.
-*/
+   * Restore last good status.
+   */
   virtual void reset();
 
   void setPotential(Potential *);
 
   /**
-*Apply a designer on current deformation.
-*/
+   *Apply a designer on current deformation.
+   */
   virtual void draw(Designer *);
 
   TStroke *getTransformedStroke();
@@ -137,7 +137,7 @@ public:
   int getCursorId() const { return cursorId_; }
   void setCursorId(int id) { cursorId_ = id; }
 };
-}
+}  // namespace ToonzExt
 
 #if defined(_MSC_VER) && (_MSC_VER <= 1200)
 #pragma warning(pop)

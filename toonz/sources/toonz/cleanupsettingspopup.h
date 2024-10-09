@@ -37,7 +37,7 @@ class FileField;
 class MeasuredDoubleLineEdit;
 class DoubleField;
 class IntField;
-}
+}  // namespace DVGui
 
 //================================================
 

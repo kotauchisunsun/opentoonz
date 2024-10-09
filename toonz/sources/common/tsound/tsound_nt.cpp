@@ -1785,8 +1785,8 @@ MMRESULT getLineControl(MIXERCONTROL &mxc, HMIXEROBJ hMixer, DWORD dwLineID,
   mxlc.cbmxctrl      = sizeof(MIXERCONTROL);
   mxlc.pamxctrl      = &mxc;
   MMRESULT ret       = mixerGetLineControls(
-      (HMIXEROBJ)hMixer, &mxlc,
-      MIXER_OBJECTF_HMIXER | MIXER_GETLINECONTROLSF_ONEBYTYPE);
+            (HMIXEROBJ)hMixer, &mxlc,
+            MIXER_OBJECTF_HMIXER | MIXER_GETLINECONTROLSF_ONEBYTYPE);
   return ret;
 }
 
@@ -1851,8 +1851,8 @@ MMRESULT setControlDetails(HMIXEROBJ hMixer, DWORD dwSelectControlID,
   mxcd.cbDetails      = sizeof(MIXERCONTROLDETAILS_BOOLEAN);
   mxcd.paDetails      = mxcdSelectValue;
   ret                 = mixerSetControlDetails(
-      (HMIXEROBJ)hMixer, &mxcd,
-      MIXER_OBJECTF_HMIXER | MIXER_SETCONTROLDETAILSF_VALUE);
+                      (HMIXEROBJ)hMixer, &mxcd,
+                      MIXER_OBJECTF_HMIXER | MIXER_SETCONTROLDETAILSF_VALUE);
   return ret;
 }
 
@@ -1872,8 +1872,8 @@ MMRESULT setControlDetails(HMIXEROBJ hMixer, DWORD dwSelectControlID,
   mxcd.cbDetails      = sizeof(MIXERCONTROLDETAILS_UNSIGNED);
   mxcd.paDetails      = mxcdSelectValue;
   ret                 = mixerSetControlDetails(
-      (HMIXEROBJ)hMixer, &mxcd,
-      MIXER_OBJECTF_HMIXER | MIXER_SETCONTROLDETAILSF_VALUE);
+                      (HMIXEROBJ)hMixer, &mxcd,
+                      MIXER_OBJECTF_HMIXER | MIXER_SETCONTROLDETAILSF_VALUE);
   return ret;
 }
 
@@ -1893,8 +1893,8 @@ MMRESULT getControlDetails(HMIXEROBJ hMixer, DWORD dwSelectControlID,
   mxcd.cbDetails      = sizeof(MIXERCONTROLDETAILS_UNSIGNED);
   mxcd.paDetails      = mxcdSelectValue;
   ret                 = mixerGetControlDetails(
-      (HMIXEROBJ)hMixer, &mxcd,
-      MIXER_OBJECTF_HMIXER | MIXER_SETCONTROLDETAILSF_VALUE);
+                      (HMIXEROBJ)hMixer, &mxcd,
+                      MIXER_OBJECTF_HMIXER | MIXER_SETCONTROLDETAILSF_VALUE);
   return ret;
 }
 //------------------------------------------------------------------------------

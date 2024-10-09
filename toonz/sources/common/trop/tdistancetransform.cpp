@@ -40,8 +40,9 @@ unsigned int takeoverDist(unsigned int a, unsigned int b, unsigned int d) {
   // using integers only.
 
   // NOTE: It can be proven that with integer division, x/ab == (x/a)/b.
-  return (b < a) ? d : std::max((d + (b - a) / d + 1) / 2,
-                                d);  // Note the +1 to get the ceil
+  return (b < a) ? d
+                 : std::max((d + (b - a) / d + 1) / 2,
+                            d);  // Note the +1 to get the ceil
 }
 
 //--------------------------------------------------------------
@@ -115,9 +116,8 @@ void expand(int lineLength, int linesCount, Pix *buf, int incrPix, int incrLine,
   // Process each line
   for (int l = 0; l != linesCount; ++l) {
     unsigned int *dtLineStart =
-                     dtBuf +
-                     dtIncrLine *
-                         l,  // Using dtBuf to track colors from now on,
+                     dtBuf + dtIncrLine *
+                                 l,  // Using dtBuf to track colors from now on,
         *dtLineEnd =
             dtLineStart +
             dtIncrPix * lineLength,  // it already embeds colorFunc's output due
@@ -204,7 +204,7 @@ void distanceTransform(const TRasterPT<Pix> &ras, IsInsideFunc isInside,
   expand(ly, lx, ras->pixels(ly - 1), -ras->getWrap(), 1, dtRas->pixels(ly - 1),
          -dtRas->getWrap(), 1, outFunc);
 }
-}
+}  // namespace
 
 //************************************************************************
 //    Local Functors
@@ -229,7 +229,7 @@ struct CopyPaint {
     out.setPaint(in.getPaint());
   }
 };
-}
+}  // namespace
 
 //************************************************************************
 //    API functions

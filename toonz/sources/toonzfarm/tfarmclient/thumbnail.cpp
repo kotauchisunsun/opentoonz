@@ -125,7 +125,7 @@ void doRender(const TVectorImageP &vi, const TVectorRenderData &rd,
   glContext->draw(vi, rd);
   ras->copy(glContext->getRaster());
 }
-}
+}  // namespace
 void PliThumbnail::loadFrame(int index) {
   assert(0 <= index && index < (int)m_frames.size());
   if (!m_lr) {

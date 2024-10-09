@@ -119,7 +119,7 @@ public:
   matchesValue(T v) : m_v(v) {}
   bool operator()(const std::pair<T, std::string> &p) { return m_v == p.first; }
 };
-}
+}  // namespace
 
 //---------------------------------------------------------
 

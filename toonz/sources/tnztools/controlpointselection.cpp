@@ -303,7 +303,7 @@ void ControlPointEditorStroke::updatePoints() {
 
       TThickPoint p = getControlPoint(index);
       pointIndex    = isLastSelfLoopPoint ? getStroke()->getControlPointCount()
-                                       : m_controlPoints[index].m_pointIndex;
+                                          : m_controlPoints[index].m_pointIndex;
 
       dependentPoints.clear();
       getDependentPoints(index, dependentPoints);
@@ -861,11 +861,11 @@ void ControlPointEditorStroke::moveSegment(int beforeIndex, int nextIndex,
 
   int beforePointIndex = m_controlPoints[beforeIndex].m_pointIndex;
   int nextPointIndex   = (isSelfLoop() && nextIndex == 0)
-                           ? stroke->getControlPointCount() - 1
-                           : m_controlPoints[nextIndex].m_pointIndex;
-  double w  = stroke->getW(pos);
-  double w0 = stroke->getParameterAtControlPoint(beforePointIndex);
-  double w4 = stroke->getParameterAtControlPoint(nextPointIndex);
+                             ? stroke->getControlPointCount() - 1
+                             : m_controlPoints[nextIndex].m_pointIndex;
+  double w             = stroke->getW(pos);
+  double w0            = stroke->getParameterAtControlPoint(beforePointIndex);
+  double w4            = stroke->getParameterAtControlPoint(nextPointIndex);
   if (w0 > w) return;
   assert(w0 <= w && w <= w4);
 
@@ -930,8 +930,8 @@ ControlPointEditorStroke::PointType ControlPointEditorStroke::getPointTypeAt(
     TPointD point       = stroke->getControlPoint(cPoint.m_pointIndex);
     double cpDistance2  = tdistance2(pos, point);
     double distanceIn2  = !isSpeedInLinear(i)
-                             ? tdistance2(pos, point - cPoint.m_speedIn)
-                             : cpDistance2 + 1;
+                              ? tdistance2(pos, point - cPoint.m_speedIn)
+                              : cpDistance2 + 1;
     double distanceOut2 = !isSpeedOutLinear(i)
                               ? tdistance2(pos, point + cPoint.m_speedOut)
                               : cpDistance2 + 1;

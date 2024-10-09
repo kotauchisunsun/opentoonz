@@ -63,8 +63,8 @@ inline void RasterEdgeIterator<PixelSelector>::colors(value_type &leftColor,
       if (m_pos.y > m_ly_1)
         leftColor = rightColor = m_selector.transparent();
       else {
-        leftColor = (m_pos.x > 0) ? m_selector.value(*m_leftPix)
-                                  : m_selector.transparent();
+        leftColor  = (m_pos.x > 0) ? m_selector.value(*m_leftPix)
+                                   : m_selector.transparent();
         rightColor = (m_pos.x <= m_lx_1) ? m_selector.value(*m_rightPix)
                                          : m_selector.transparent();
       }
@@ -72,8 +72,8 @@ inline void RasterEdgeIterator<PixelSelector>::colors(value_type &leftColor,
       if (m_pos.y < 1)
         leftColor = rightColor = m_selector.transparent();
       else {
-        leftColor = (m_pos.x <= m_lx_1) ? m_selector.value(*m_leftPix)
-                                        : m_selector.transparent();
+        leftColor  = (m_pos.x <= m_lx_1) ? m_selector.value(*m_leftPix)
+                                         : m_selector.transparent();
         rightColor = (m_pos.x > 0) ? m_selector.value(*m_rightPix)
                                    : m_selector.transparent();
       }
@@ -82,8 +82,8 @@ inline void RasterEdgeIterator<PixelSelector>::colors(value_type &leftColor,
     if (m_pos.x > m_lx_1)
       leftColor = rightColor = m_selector.transparent();
     else {
-      leftColor = (m_pos.y <= m_ly_1) ? m_selector.value(*m_leftPix)
-                                      : m_selector.transparent();
+      leftColor  = (m_pos.y <= m_ly_1) ? m_selector.value(*m_leftPix)
+                                       : m_selector.transparent();
       rightColor = (m_pos.y > 0) ? m_selector.value(*m_rightPix)
                                  : m_selector.transparent();
     }
@@ -91,8 +91,8 @@ inline void RasterEdgeIterator<PixelSelector>::colors(value_type &leftColor,
     if (m_pos.x < 1)
       leftColor = rightColor = m_selector.transparent();
     else {
-      leftColor = (m_pos.y > 0) ? m_selector.value(*m_leftPix)
-                                : m_selector.transparent();
+      leftColor  = (m_pos.y > 0) ? m_selector.value(*m_leftPix)
+                                 : m_selector.transparent();
       rightColor = (m_pos.y <= m_ly_1) ? m_selector.value(*m_rightPix)
                                        : m_selector.transparent();
     }
@@ -253,7 +253,7 @@ RasterEdgeIterator<PixelSelector>
 
   return *this;
 }
-}
-}  //  namespace TRop::borders
+}  // namespace borders
+}  // namespace TRop
 
 #endif  // RASTER_EDGE_ITERATOR_HPP

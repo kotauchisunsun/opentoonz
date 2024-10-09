@@ -67,13 +67,13 @@ void convert(const poly &p, std::vector<double> &v) {
 //-------------------------------------------------------------------------
 
 /*
-  * modp
-  *
-  *  calculates the modulus of u(x) / v(x) leaving it in r, it
-  *  returns 0 if r(x) is a constant.
-  *  note: this function assumes the leading coefficient of v
-  *  is 1 or -1
-  */
+ * modp
+ *
+ *  calculates the modulus of u(x) / v(x) leaving it in r, it
+ *  returns 0 if r(x) is a constant.
+ *  note: this function assumes the leading coefficient of v
+ *  is 1 or -1
+ */
 int modp(poly *u, poly *v, poly *r) {
   int k, j;
   double *nr, *end, *uc;
@@ -81,14 +81,14 @@ int modp(poly *u, poly *v, poly *r) {
   nr  = r->coef;
   end = &u->coef[u->ord];
 
-  uc                      = u->coef;
+  uc = u->coef;
   while (uc <= end) *nr++ = *uc++;
 
   if (v->coef[v->ord] < 0.0) {
     for (k = u->ord - v->ord - 1; k >= 0; k -= 2) r->coef[k] = -r->coef[k];
 
     for (k = u->ord - v->ord; k >= 0; k--)
-      for (j       = v->ord + k - 1; j >= k; j--)
+      for (j = v->ord + k - 1; j >= k; j--)
         r->coef[j] = -r->coef[j] - r->coef[v->ord + k] * v->coef[j - k];
   } else {
     for (k = u->ord - v->ord; k >= 0; k--)
@@ -110,11 +110,11 @@ int modp(poly *u, poly *v, poly *r) {
 //-------------------------------------------------------------------------
 
 /*
-  * buildsturm
-  *
-  *  build up a sturm sequence for a polynomial in sseq, returning
-  * the number of polynomials in the sequence
-  */
+ * buildsturm
+ *
+ *  build up a sturm sequence for a polynomial in sseq, returning
+ * the number of polynomials in the sequence
+ */
 int buildsturm(int ord, poly *sseq) {
   int i;
   double f, *fp, *fc;
@@ -187,11 +187,11 @@ int numroots(int np, poly *sseq, int &atneg, int &atpos) {
 //-------------------------------------------------------------------------
 
 /*
-  * numchanges
-  *
-  * return the number of sign changes in the Sturm sequence in
-  * sseq at the value a.
-  */
+ * numchanges
+ *
+ * return the number of sign changes in the Sturm sequence in
+ * sseq at the value a.
+ */
 int numchanges(int np, poly *sseq, double a) {
   int changes;
   double f, lf;
@@ -213,12 +213,12 @@ int numchanges(int np, poly *sseq, double a) {
 //-------------------------------------------------------------------------
 
 /*
-  * sbisect
-  *
-  * uses a bisection based on the sturm sequence for the polynomial
-  * described in sseq to isolate intervals in which roots occur,
-  * the roots are returned in the roots array in order of magnitude.
-  */
+ * sbisect
+ *
+ * uses a bisection based on the sturm sequence for the polynomial
+ * described in sseq to isolate intervals in which roots occur,
+ * the roots are returned in the roots array in order of magnitude.
+ */
 void sbisect(int np, poly *sseq, double min, double max, int atmin, int atmax,
              double *roots) {
   double mid;
@@ -230,9 +230,9 @@ void sbisect(int np, poly *sseq, double min, double max, int atmin, int atmax,
     if (modrf(sseq->ord, sseq->coef, min, max, &roots[0])) return;
 
     /*
-* if we get here we have to evaluate the root the hard
-* way by using the Sturm sequence.
-*/
+     * if we get here we have to evaluate the root the hard
+     * way by using the Sturm sequence.
+     */
     for (its = 0; its < MAXIT; its++) {
       mid = (min + max) / 2;
 
@@ -267,8 +267,8 @@ min, max, max - min, nroot, n1, n2);
   }
 
   /*
-* more than one root in the interval, we have to bisect...
-*/
+   * more than one root in the interval, we have to bisect...
+   */
   for (its = 0; its < MAXIT; its++) {
     mid = (min + max) / 2;
 
@@ -303,10 +303,10 @@ min, max, max - min, nroot, n1, n2);
 //-------------------------------------------------------------------------
 
 /*
-  * evalpoly
-  *
-  * evaluate polynomial defined in coef returning its value.
-    */
+ * evalpoly
+ *
+ * evaluate polynomial defined in coef returning its value.
+ */
 double evalpoly(int ord, double *coef, double x) {
   double *fp, f;
 
@@ -321,13 +321,13 @@ double evalpoly(int ord, double *coef, double x) {
 //-------------------------------------------------------------------------
 
 /*
-    * modrf
-    *
-    * uses the modified regula-falsi method to evaluate the root
-    * in interval [a,b] of the polynomial described in coef. The
-    * root is returned is returned in *val. The routine returns zero
-    * if it can't converge.
-    */
+ * modrf
+ *
+ * uses the modified regula-falsi method to evaluate the root
+ * in interval [a,b] of the polynomial described in coef. The
+ * root is returned is returned in *val. The routine returns zero
+ * if it can't converge.
+ */
 int modrf(int ord, double *coef, double a, double b, double *val) {
   int its;
   double fa, fb, x, fx, lfx;
@@ -617,7 +617,7 @@ void tLUDecomposition(double *a, int n, int *indx, double &d) {
 
     if (j != imax) {
       for (k = 1; k <= n; k++) {
-        dum = a[getEl(imax, k, n)];
+        dum                  = a[getEl(imax, k, n)];
         a[getEl(imax, k, n)] = a[getEl(j, k, n)];
         a[getEl(j, k, n)]    = dum;
       }
@@ -649,12 +649,12 @@ void tbackSubstitution(double *a, int n, int *indx, double *b) {
     if (ii)
       for (j = ii; j <= i - 1; j++) sum -= a[getEl(i, j, n)] * b[j - 1];
     else if (sum)
-      ii     = i;
+      ii = i;
     b[i - 1] = sum;
   }
   for (i = n; i >= 1; i--) {
     sum = b[i - 1];
-    for (j   = i + 1; j <= n; j++) sum -= a[getEl(i, j, n)] * b[j - 1];
+    for (j = i + 1; j <= n; j++) sum -= a[getEl(i, j, n)] * b[j - 1];
     b[i - 1] = sum / a[getEl(i, i, n)];
   }
 }
@@ -741,67 +741,68 @@ int rootFinding(const std::vector<double> &in_poly, std::vector<double> &sol) {
 int solveEquation2(std::complex<double> *roots, double a, double b, double c) {
   if (isAlmostZero(a)) {
     if (isAlmostZero(b)) return 0;
-    roots[0] = -c/b;
+    roots[0] = -c / b;
     return 1;
   }
 
-  double D = b*b - a*c*4;
-  double k = 0.5/a;
-  std::complex<double> d = D < 0
-                         ? std::complex<double>(0, sqrt(-D))
-                         : std::complex<double>(sqrt(D));
-  roots[0] = (-b - d)*k;
-  roots[1] = (-b + d)*k;
+  double D = b * b - a * c * 4;
+  double k = 0.5 / a;
+  std::complex<double> d =
+      D < 0 ? std::complex<double>(0, sqrt(-D)) : std::complex<double>(sqrt(D));
+  roots[0] = (-b - d) * k;
+  roots[1] = (-b + d) * k;
   return 2;
 }
 
 //-----------------------------------------------------------------------------
 
-int solveEquation3(std::complex<double> *roots, double a, double b, double c, double d) {
-  if (isAlmostZero(a))
-    return solveEquation2(roots, b, c, d);
+int solveEquation3(std::complex<double> *roots, double a, double b, double c,
+                   double d) {
+  if (isAlmostZero(a)) return solveEquation2(roots, b, c, d);
 
   // x = y - b/(3*a)
   // y*y*y + p*y + q = 0
-  double p = (3*a*c - b*b)/(3*a*a);
-  double q = (27*a*a*d - 9*a*b*c + 2*b*b*b)/(27*a*a*a);
+  double p = (3 * a * c - b * b) / (3 * a * a);
+  double q =
+      (27 * a * a * d - 9 * a * b * c + 2 * b * b * b) / (27 * a * a * a);
 
-  double Q = p*p*p/27 + q*q/4;
-  std::complex<double> Qs = Q < 0
-                          ? std::complex<double>(0, sqrt(-Q))
-                          : std::complex<double>(sqrt(Q));
-  std::complex<double> A = pow(-q/2 + Qs, 1.0/3);
-  std::complex<double> B = pow(-q/2 - Qs, 1.0/3);
+  double Q = p * p * p / 27 + q * q / 4;
+  std::complex<double> Qs =
+      Q < 0 ? std::complex<double>(0, sqrt(-Q)) : std::complex<double>(sqrt(Q));
+  std::complex<double> A = pow(-q / 2 + Qs, 1.0 / 3);
+  std::complex<double> B = pow(-q / 2 - Qs, 1.0 / 3);
 
   // choose complimentary B for A (A*B must be equal -p/3)
-  std::complex<double> rot(-0.5, sqrt(3.0)/2);
-  if (!isAlmostZero(A*B + p/3)) B *= rot;
-  if (!isAlmostZero(A*B + p/3)) B *= rot;
+  std::complex<double> rot(-0.5, sqrt(3.0) / 2);
+  if (!isAlmostZero(A * B + p / 3)) B *= rot;
+  if (!isAlmostZero(A * B + p / 3)) B *= rot;
 
-  std::complex<double> Y = (A - B)*std::complex<double>(0, sqrt(3.0));
+  std::complex<double> Y  = (A - B) * std::complex<double>(0, sqrt(3.0));
   std::complex<double> y0 = A + B;
-  std::complex<double> y1 = (-y0 - Y)/2.0;
-  std::complex<double> y2 = (-y0 + Y)/2.0;
+  std::complex<double> y1 = (-y0 - Y) / 2.0;
+  std::complex<double> y2 = (-y0 + Y) / 2.0;
 
-  double dd = b/(3*a);
-  roots[0] = y0 - dd;
-  roots[1] = y1 - dd;
-  roots[2] = y2 - dd;
+  double dd = b / (3 * a);
+  roots[0]  = y0 - dd;
+  roots[1]  = y1 - dd;
+  roots[2]  = y2 - dd;
   return 3;
 }
 
 //-----------------------------------------------------------------------------
 
-int solveEquation4(std::complex<double> *roots, double a, double b, double c, double d, double e) {
-  if (isAlmostZero(a))
-    return solveEquation3(roots, b, c, d, e);
+int solveEquation4(std::complex<double> *roots, double a, double b, double c,
+                   double d, double e) {
+  if (isAlmostZero(a)) return solveEquation3(roots, b, c, d, e);
 
   // x = y - b/(4*a)
   // y^4 + p*y^2 + q*y + r = 0
-  double dd = b/(4*a);
-  double p = (8*a*c - 3*b*b)/(8*a*a);
-  double q = (8*a*a*d - 4*a*b*c + b*b*b)/(8*a*a*a);
-  double r = (256*a*a*a*e - 64*a*a*b*d + 16*a*b*b*c - 3*b*b*b*b)/(256*a*a*a*a);
+  double dd = b / (4 * a);
+  double p  = (8 * a * c - 3 * b * b) / (8 * a * a);
+  double q  = (8 * a * a * d - 4 * a * b * c + b * b * b) / (8 * a * a * a);
+  double r  = (256 * a * a * a * e - 64 * a * a * b * d + 16 * a * b * b * c -
+              3 * b * b * b * b) /
+             (256 * a * a * a * a);
 
   if (isAlmostZero(q)) {
     // biquadratic equation
@@ -809,20 +810,20 @@ int solveEquation4(std::complex<double> *roots, double a, double b, double c, do
     // handling this special case will give us more accurate results
     std::complex<double> y[2];
     solveEquation2(y, 1, p, r);
-    y[0] = sqrt(y[0]);
-    y[1] = sqrt(y[1]);
+    y[0]     = sqrt(y[0]);
+    y[1]     = sqrt(y[1]);
     roots[0] = -y[0] - dd;
-    roots[1] =  y[0] - dd;
+    roots[1] = y[0] - dd;
     roots[2] = -y[1] - dd;
-    roots[3] =  y[1] - dd;
+    roots[3] = y[1] - dd;
     return 4;
   }
 
   // solve cubic equation
   // z*z*z + (p/2)*z*z + ((p*p - 4*r)/16)*z - q*q/64 = 0
-  double pp = p/2;
-  double qq = (p*p - 4*r)/16;
-  double rr = -q*q/64;
+  double pp = p / 2;
+  double qq = (p * p - 4 * r) / 16;
+  double rr = -q * q / 64;
   std::complex<double> z[3];
   solveEquation3(z, 1, pp, qq, rr);
 
@@ -833,21 +834,20 @@ int solveEquation4(std::complex<double> *roots, double a, double b, double c, do
   // we need to find signs combination where following is valid:
   // (+-z0)*(+-z1)*(+-z2) = -q/8
   // magnitudes are always equals, we need to check signs only
-  std::complex<double> zzz = z[0]*z[1]*z[2];
-  if ((zzz.real() > 0) == (q > 0))
-    z[0] = -z[0];
+  std::complex<double> zzz = z[0] * z[1] * z[2];
+  if ((zzz.real() > 0) == (q > 0)) z[0] = -z[0];
 
-  roots[0] =  z[0] - z[1] - z[2] - dd;
+  roots[0] = z[0] - z[1] - z[2] - dd;
   roots[1] = -z[0] + z[1] - z[2] - dd;
   roots[2] = -z[0] - z[1] + z[2] - dd;
-  roots[3] =  z[0] + z[1] + z[2] - dd;
+  roots[3] = z[0] + z[1] + z[2] - dd;
   return 4;
 }
 
 //-----------------------------------------------------------------------------
 
 /*
-*/
+ */
 int numberOfRootsInInterval(int order, const double *polyH, double min,
                             double max) {
   poly sseq[MAX_ORDER];
@@ -884,11 +884,11 @@ double quadraticRoot(double a, double b, double c) {
   bb = b * b;
   q  = bb - 4.0 * a * c;
   if (q < 0.0) return 1;
-  q                             = sqrt(q);
-  if (b < 0.0) q                = -q;
-  q                             = -0.5 * (b + q);
-  double root1                  = -1;
-  double root2                  = -1;
+  q = sqrt(q);
+  if (b < 0.0) q = -q;
+  q            = -0.5 * (b + q);
+  double root1 = -1;
+  double root2 = -1;
   if (fabs(q) >= epsilon) root1 = c / q;
   if (fabs(a) >= epsilon) root2 = q / a;
   if (0.0 - epsilon <= root1 && root1 <= 1.0 + epsilon) return root1;
@@ -935,7 +935,7 @@ double cubicRoot(double a, double b, double c, double d) {
     A           = -pow(fabs(R) + sqrt(RR - QQQ), 1.0 / 3.0);
     if (A != 0.0) {
       if (R < 0.0) A = -A;
-      root           = A + Q / A;
+      root = A + Q / A;
     }
     root -= b / 3.0;
     if (0.0 - epsilon < root && root < 1.0 + epsilon) return root;

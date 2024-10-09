@@ -68,6 +68,6 @@ DVAPI void enableSplineAim(TStageObject *obj, int state,
                            TXsheetHandle *xshHandle);
 DVAPI void enableSplineUppk(TStageObject *obj, bool toggled,
                             TXsheetHandle *xshHandle);
-}
+}  // namespace TStageObjectCmd
 
 #endif

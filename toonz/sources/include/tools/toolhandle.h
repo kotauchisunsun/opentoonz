@@ -47,9 +47,8 @@ public:
   void setTool(QString name);
   void setTargetType(int targetType);
 
-  const QString& getRequestedToolName() const
-    { return m_toolName; }
-  
+  const QString &getRequestedToolName() const { return m_toolName; }
+
   // used to change tool for a short while (e.g. while keeping pressed a
   // short-key)
   void storeTool();

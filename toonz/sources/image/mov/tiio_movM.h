@@ -134,7 +134,7 @@ public:
   //  wstring getCurrentQualityFromCodeQ(CodecQ &cCodeQ)const;
   //	CodecQ getCurrentQuality()const;
 };
-}
+}  // namespace Tiio
 
 #endif  //__LP64__
 

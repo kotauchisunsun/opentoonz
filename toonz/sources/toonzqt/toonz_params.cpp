@@ -16,10 +16,10 @@ int set_parameter_pages_with_error(void *host, int num,
   int e     = 0;
   void *pos = NULL;
   bool ret  = reinterpret_cast<RasterFxPluginHost *>(host)->setParamStructure(
-      num, params, e, pos);
+       num, params, e, pos);
   if (!ret) {
     if (err) {
-      *err                    = e;
+      *err = e;
       if (position) *position = pos;
     }
     return TOONZ_ERROR_INVALID_VALUE;

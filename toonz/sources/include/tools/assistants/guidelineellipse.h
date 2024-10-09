@@ -6,7 +6,6 @@
 // TnzTools includes
 #include <tools/assistant.h>
 
-
 #undef DVAPI
 #undef DVVAR
 #ifdef TNZTOOLS_EXPORTS
@@ -16,7 +15,6 @@
 #define DVAPI DV_IMPORT_API
 #define DVVAR DV_IMPORT_VAR
 #endif
-
 
 //==============================================================
 
@@ -31,33 +29,20 @@ public:
   const double Rx;
   const double Ry;
 
-  TGuidelineEllipse(
-    bool enabled,
-    double magnetism,
-    const TPixelD &color,
-    const TAffine &matrix );
+  TGuidelineEllipse(bool enabled, double magnetism, const TPixelD &color,
+                    const TAffine &matrix);
 
-  TGuidelineEllipse(
-    bool enabled,
-    double magnetism,
-    const TPixelD &color,
-    const TAffine &matrix,
-    const TAffine &matrixInv );
+  TGuidelineEllipse(bool enabled, double magnetism, const TPixelD &color,
+                    const TAffine &matrix, const TAffine &matrixInv);
 
-  TGuidelineEllipse(
-    bool enabled,
-    double magnetism,
-    const TPixelD &color,
-    const TAffine &matrix,
-    const TAffine &matrixInv,
-    double Rx,
-    double Ry );
+  TGuidelineEllipse(bool enabled, double magnetism, const TPixelD &color,
+                    const TAffine &matrix, const TAffine &matrixInv, double Rx,
+                    double Ry);
 
   //! returns false when ellipse is invisible
-  static bool truncateEllipse(
-    TAngleRangeSet &ranges,
-    const TAffine &ellipseMatrixInv,
-    const TRectD &bounds );
+  static bool truncateEllipse(TAngleRangeSet &ranges,
+                              const TAffine &ellipseMatrixInv,
+                              const TRectD &bounds);
 
   static int calcSegmentsCount(const TAffine &ellipseMatrix, double pixelSize);
 

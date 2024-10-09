@@ -1140,8 +1140,7 @@ void FlipbookPanel::initializeTitleBar(TPanelTitleBar *titleBar) {
 
   x += 28 + iconWidth;
   // minimize button
-  m_button = new TPanelTitleBarButton(
-      titleBar, getIconPath("pane_minimize"));
+  m_button = new TPanelTitleBarButton(titleBar, getIconPath("pane_minimize"));
   m_button->setToolTip(tr("Minimize"));
   m_button->setPressed(false);
 
@@ -1212,7 +1211,8 @@ class BrowserFactory final : public TPanelFactory {
 public:
   BrowserFactory() : TPanelFactory("Browser") {}
   void initialize(TPanel *panel) override {
-    FileBrowser *browser = new FileBrowser(panel, Qt::WindowFlags(), false, true);
+    FileBrowser *browser =
+        new FileBrowser(panel, Qt::WindowFlags(), false, true);
     panel->setWidget(browser);
     panel->setWindowTitle(QObject::tr("File Browser"));
     TFilePath currentProjectFolder =
@@ -1229,7 +1229,8 @@ class PreproductionBoardFactory final : public TPanelFactory {
 public:
   PreproductionBoardFactory() : TPanelFactory("PreproductionBoard") {}
   void initialize(TPanel *panel) override {
-    SceneBrowser *browser = new SceneBrowser(panel, Qt::WindowFlags(), false, true);
+    SceneBrowser *browser =
+        new SceneBrowser(panel, Qt::WindowFlags(), false, true);
     panel->setWidget(browser);
     panel->setWindowTitle(QObject::tr("Preproduction Board"));
     TFilePath scenesFolder =

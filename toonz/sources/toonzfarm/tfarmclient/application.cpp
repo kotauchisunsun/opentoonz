@@ -32,7 +32,7 @@ TFilePath getGlobalRoot() {
   return rootDir;
 #endif
 }
-};
+};  // namespace
 
 class Application::Imp {
 public:

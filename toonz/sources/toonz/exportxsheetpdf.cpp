@@ -1231,7 +1231,7 @@ void XSheetPDFTemplate::drawDialogue(QPainter& painter, int framePage) {
       if (row < drawStart) {
         int partialBlockLength = rowTo - drawStart + 1;
         int partialTextCount   = (int)std::round(
-            (double)(textCount * partialBlockLength) / (double)blockLength);
+              (double)(textCount * partialBlockLength) / (double)blockLength);
         text        = text.mid(textCount - partialTextCount);
         textCount   = partialTextCount;
         row         = drawStart;
@@ -1247,7 +1247,7 @@ void XSheetPDFTemplate::drawDialogue(QPainter& painter, int framePage) {
       if (rowTo > drawEnd) {
         int partialBlockLength = drawEnd - row + 1;
         int partialTextCount   = (int)std::round(
-            (double)(textCount * partialBlockLength) / (double)blockLength);
+              (double)(textCount * partialBlockLength) / (double)blockLength);
         text      = text.mid(0, partialTextCount);
         textCount = partialTextCount;
         rowTo     = drawEnd;

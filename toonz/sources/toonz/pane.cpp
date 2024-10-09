@@ -598,7 +598,7 @@ void TPanelTitleBar::paintEvent(QPaintEvent *) {
 
   if (!dw->isFloating()) {  // docked panel
     isPanelActive = dw->widgetInThisPanelIsFocused();
-  } else {                  // floating panel
+  } else {  // floating panel
     isPanelActive = isActiveWindow();
   }
 

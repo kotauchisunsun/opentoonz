@@ -970,7 +970,7 @@ TImageP TLevelReaderAvi::load(int frameIndex) {
 int TLevelReaderAvi::readFrameFromStream(void *bufferOut, DWORD &bufferSize,
                                          int frameIndex) const {
   assert(bufferOut && bufferSize > 0);
-  LONG bytesReaded   = 0;
+  LONG bytesReaded = 0;
   LONG samplesRead = 0;
 
   int rc = AVIStreamRead(m_videoStream, frameIndex, 1, bufferOut, bufferSize,

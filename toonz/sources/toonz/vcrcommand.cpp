@@ -137,11 +137,11 @@ public:
   ShortPlayCommand() : MenuItemHandler(MI_ShortPlay) {}
 
   void execute() override {
-    int currentFrame = TApp::instance()->getCurrentFrame()->getFrame();
+    int currentFrame        = TApp::instance()->getCurrentFrame()->getFrame();
     int shortPlayFrameCount = Preferences::instance()->getShortPlayFrameCount();
     int frameCount =
         TApp::instance()->getCurrentXsheet()->getXsheet()->getFrameCount();
-    int stopFrame = std::min(currentFrame, frameCount);
+    int stopFrame  = std::min(currentFrame, frameCount);
     int startFrame = std::max(0, stopFrame - shortPlayFrameCount);
     FlipConsole::getCurrent()->setStopAt(stopFrame + 1);
 

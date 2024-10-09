@@ -170,7 +170,7 @@ public:
 
 typedef list<LinkedQuadratic> LinkedQuadraticList;
 typedef list<TQuadratic> QuadraticList;
-}  // namespace {
+}  // namespace
 
 //---------------------------------------------------------------------------
 
@@ -651,8 +651,8 @@ inline void computeStrokeBoundary(const TStroke &stroke,
       rwdP2 = rwdP0;
     } else if (!(nextFwdP0 == fwdP2) && !(nextRwdP2 == rwdP0)) {
       bool turnLeft, turnRight;
-      turnLeft = left(thickQuadratic->getP1(), thickQuadratic->getP2(),
-                      nextThickQuadratic->getP1());
+      turnLeft  = left(thickQuadratic->getP1(), thickQuadratic->getP2(),
+                       nextThickQuadratic->getP1());
       turnRight = right(thickQuadratic->getP1(), thickQuadratic->getP2(),
                         nextThickQuadratic->getP1());
       if (turnLeft) {
@@ -793,26 +793,28 @@ inline void computeStrokeBoundary(const TStroke &stroke,
 
   //	if(	stroke->getChunk(0)->getP0() ==
   // stroke->getChunk(chunkCount-1)->getP2() )
-  /*	if(	norm(stroke->getChunk(0)->getP0() - stroke->getChunk(chunkCount-1)->getP2()) <
-		stroke->getChunk(0)->getThickP0().thick/2)
-	{
-		getAverageBoundaryPoints(thickQuadratic->getP0(),
-					thickQuadratic->getThickP1(),
-					thickQuadratic->getP2(),
-					fwdP1,
-					rwdP1);
+  /*	if(	norm(stroke->getChunk(0)->getP0() -
+     stroke->getChunk(chunkCount-1)->getP2()) <
+                stroke->getChunk(0)->getThickP0().thick/2)
+        {
+                getAverageBoundaryPoints(thickQuadratic->getP0(),
+                                        thickQuadratic->getThickP1(),
+                                        thickQuadratic->getP2(),
+                                        fwdP1,
+                                        rwdP1);
 
-		getBoundaryPoints(thickQuadratic->getP1(),
-						thickQuadratic->getP2(),
-						thickQuadratic->getThickPoint(one),
-						fwdP2,
-						rwdP0);
+                getBoundaryPoints(thickQuadratic->getP1(),
+                                                thickQuadratic->getP2(),
+                                                thickQuadratic->getThickPoint(one),
+                                                fwdP2,
+                                                rwdP0);
 
-		inputBoundaries.push_front(TQuadratic(rwdP0, rwdP1, rwdP2));
-		inputBoundaries.push_back(TQuadratic(fwdP0, fwdP1, fwdP2));
-		inputBoundaries.push_back(TQuadratic(fwdP2, (fwdP2+rwdP0)*0.5, rwdP0));
-	}
-	else
+                inputBoundaries.push_front(TQuadratic(rwdP0, rwdP1, rwdP2));
+                inputBoundaries.push_back(TQuadratic(fwdP0, fwdP1, fwdP2));
+                inputBoundaries.push_back(TQuadratic(fwdP2, (fwdP2+rwdP0)*0.5,
+     rwdP0));
+        }
+        else
 */ {
     getAverageBoundaryPoints(thickQuadratic->getP0(),
                              thickQuadratic->getThickP1(),
@@ -878,7 +880,7 @@ inline void normalizeTQuadratic(TQuadratic *&sourceQuadratic) {
 inline void getBoundaryPoints(const TPointD &P0, const TPointD &P1,
                               const TThickPoint &center, TPointD &fwdPoint,
                               TPointD &rwdPoint) {
-  double thickness                          = center.thick;
+  double thickness = center.thick;
   if (thickness < thicknessLimit) thickness = thicknessLimit;
   //	if(P1.y == P0.y)
   if (fabs(P1.y - P0.y) <= 1e-12) {
@@ -927,7 +929,7 @@ inline void getAverageBoundaryPoints(const TPointD &P0,
   getBoundaryPoints(P0, center, center, fwdP0, rwdP0);
   getBoundaryPoints(center, P2, center, fwdP2, rwdP2);
 
-  double thickness                          = center.thick;
+  double thickness = center.thick;
   if (thickness < thicknessLimit) thickness = thicknessLimit;
   if (fwdP0.x + fwdP2.x == rwdP0.x + rwdP2.x) {
     if ((fwdP0.y + fwdP2.y) - (rwdP0.y + rwdP2.y) > 0) {
@@ -1267,7 +1269,7 @@ crossing[j].first->getP0().y);
         it = crossing.begin();
         while (it != crossing.end()) {
           if (it->second == outward) {
-            it_next                                = it + 1;
+            it_next = it + 1;
             if (it_next == crossing.end()) it_next = crossing.begin();
             while (((it->first)->getP0() == (it_next->first)->getP2() &&
                     (it->first)->getP2() == (it_next->first)->getP0() &&
@@ -1275,10 +1277,10 @@ crossing[j].first->getP0().y);
                    ((it->first)->getP0() == (it_next->first)->getP0() &&
                     (it->first)->getP2() == (it_next->first)->getP2() &&
                     (it->first)->getP1() == (it_next->first)->getP1())) {
-              it_next                                = it_next + 1;
+              it_next = it_next + 1;
               if (it_next == crossing.end()) it_next = crossing.begin();
             }
-            it_nextnext                                    = it_next + 1;
+            it_nextnext = it_next + 1;
             if (it_nextnext == crossing.end()) it_nextnext = crossing.begin();
             if (((it_nextnext->first)->getP0() == (it_next->first)->getP2() &&
                  (it_nextnext->first)->getP2() == (it_next->first)->getP0() &&
@@ -1384,7 +1386,7 @@ bool processNonSimpleLoops(
           crossing.erase(it);
           loopCurr->next = 0;
           last           = remove(crossing.begin(), crossing.end(),
-                        pair<LinkedQuadratic *, Direction>(loopCurr, inward));
+                                  pair<LinkedQuadratic *, Direction>(loopCurr, inward));
           crossing.erase(last, crossing.end());
           return true;
           break;
@@ -1425,7 +1427,7 @@ inline bool deleteUnlinkedLoops(LinkedQuadraticList &inputBoundaries) {
         //!= simpleCrossing.end() )
         {
           if (current->next) current->next->prev = 0;
-          it                                     = inputBoundaries.begin();
+          it = inputBoundaries.begin();
           break;
         }
 
@@ -1459,7 +1461,7 @@ inline bool deleteUnlinkedLoops(LinkedQuadraticList &inputBoundaries) {
         //!= simpleCrossing.end() )
         {
           if (current->prev) current->prev->next = 0;
-          it                                     = inputBoundaries.begin();
+          it = inputBoundaries.begin();
           break;
         }
 
@@ -1927,6 +1929,6 @@ bool isValidArea(const TRegion &r) {
   }
   return true;
 }
-}
+}  // namespace
 
 #endif

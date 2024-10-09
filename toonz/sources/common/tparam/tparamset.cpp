@@ -14,7 +14,7 @@ namespace {
 void doRelease(const std::pair<TParam *, std::string> &param) {
   param.first->release();
 }
-};
+};  // namespace
 
 //------------------------------------------------------------------------------
 
@@ -190,7 +190,7 @@ public:
     return m_param.getPointer() == param.first;
   }
 };
-}
+}  // namespace
 
 //---------------------------------------------------------
 

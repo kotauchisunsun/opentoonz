@@ -1078,12 +1078,14 @@ TSoundTrackP doEcho(TSoundTrackT<T> *src, double delayTime, double decayFactor,
       dst->samples() + std::min(dstSampleCount, (TINT32)src->getSampleCount());
   while (dstSample < endDstSample) {
     //*dstSample = *srcSample + *(srcSample - k)*decayFactor;
-    ChannelValueType val = (ChannelValueType)(
-        (srcSample - k)->getValue(TSound::MONO) * decayFactor);
+    ChannelValueType val =
+        (ChannelValueType)((srcSample - k)->getValue(TSound::MONO) *
+                           decayFactor);
     dstSample->setValue(TSound::MONO, srcSample->getValue(TSound::MONO) + val);
     if (chans) {
-      ChannelValueType val = (ChannelValueType)(
-          (srcSample - k)->getValue(TSound::RIGHT) * decayFactor);
+      ChannelValueType val =
+          (ChannelValueType)((srcSample - k)->getValue(TSound::RIGHT) *
+                             decayFactor);
       dstSample->setValue(TSound::RIGHT,
                           srcSample->getValue(TSound::RIGHT) + val);
     }
@@ -1094,12 +1096,14 @@ TSoundTrackP doEcho(TSoundTrackT<T> *src, double delayTime, double decayFactor,
   endDstSample = dstSample + k;
   while (dstSample < endDstSample) {
     //*dstSample = *(srcSample - k)*decayFactor;
-    ChannelValueType val = (ChannelValueType)(
-        (srcSample - k)->getValue(TSound::MONO) * decayFactor);
+    ChannelValueType val =
+        (ChannelValueType)((srcSample - k)->getValue(TSound::MONO) *
+                           decayFactor);
     dstSample->setValue(TSound::MONO, val);
     if (chans) {
-      ChannelValueType val = (ChannelValueType)(
-          (srcSample - k)->getValue(TSound::RIGHT) * decayFactor);
+      ChannelValueType val =
+          (ChannelValueType)((srcSample - k)->getValue(TSound::RIGHT) *
+                             decayFactor);
       dstSample->setValue(TSound::RIGHT, val);
     }
     ++dstSample;
@@ -1292,7 +1296,7 @@ TSoundTrackP mixT(TSoundTrackT<T> *st1, double a1, TSoundTrackT<T> *st2,
 
   T *srcSample =
       st1->getSampleCount() > st2->getSampleCount() ? st1Sample : st2Sample;
-  endDstSample                                  = dst->samples() + sampleCount;
+  endDstSample = dst->samples() + sampleCount;
   while (dstSample < endDstSample) *dstSample++ = *srcSample++;
 
   return TSoundTrackP(dst);

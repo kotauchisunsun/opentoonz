@@ -77,7 +77,7 @@ void Breadcrumb::onButtonClicked() {
     else if (r > r1)
       r = r1;
     else {
-      TXshCell cell               = xsh->getCell(r, m_col);
+      TXshCell cell = xsh->getCell(r, m_col);
       while (cell.isEmpty()) cell = xsh->getCell(++r, m_col);
     }
 
@@ -118,7 +118,7 @@ void Breadcrumb::onComboBoxIndexChanged(int index) {
   else if (r > r1)
     r = r1;
   else {
-    TXshCell cell               = xsh->getCell(r, col);
+    TXshCell cell = xsh->getCell(r, col);
     while (cell.isEmpty()) cell = xsh->getCell(++r, col);
   }
 

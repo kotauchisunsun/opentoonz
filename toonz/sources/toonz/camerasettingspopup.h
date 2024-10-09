@@ -24,7 +24,7 @@ class DoubleLineEdit;
 class CheckBox;
 class ValueField;
 class MeasuredDoubleLineEdit;
-}
+}  // namespace DVGui
 
 //=============================================================================
 // CameraSettingsPopup

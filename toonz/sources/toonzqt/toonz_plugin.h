@@ -77,7 +77,7 @@ namespace toonz {
 typedef toonz_UUID UUID;
 typedef toonz_plugin_probe_t plugin_probe_t;
 typedef toonz_plugin_probe_list_t plugin_probe_list_t;
-}
+}  // namespace toonz
 #endif
 
 #define TOONZ_IF_VER(major, minor)                                             \

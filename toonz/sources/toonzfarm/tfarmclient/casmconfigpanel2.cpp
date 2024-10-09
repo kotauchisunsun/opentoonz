@@ -117,7 +117,7 @@ public:
     m_ccp->onColumnField(toString(value), m_type);
   }
 };
-}
+}  // namespace
 
 //------------------------------------------------------------------------------
 
@@ -467,7 +467,7 @@ void CasmConfigPanel2::onNumField(double v, int type) {
     m_task->m_memChunk = (int)v;
     break;
   case M_THICK:
-    if (m_lineart->isSelected()) m_task->m_lineart           = (int)v;
+    if (m_lineart->isSelected()) m_task->m_lineart = (int)v;
     if (m_edgeAliasing->isSelected()) m_task->m_edgeAliasing = (int)v;
     break;
   case M_GAMMA:

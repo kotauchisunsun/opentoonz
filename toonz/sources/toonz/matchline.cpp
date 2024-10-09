@@ -259,7 +259,7 @@ void MatchlinesDialog::accept() {
 int MatchlinesDialog::exec(TPalette *plt) {
   m_pltHandle->setPalette(plt);
 
-  int styleIndex                                    = MatchlineStyleIndex;
+  int styleIndex = MatchlineStyleIndex;
   if (styleIndex > plt->getStyleCount()) styleIndex = 1;
   if (styleIndex != -1) m_inkIndex->setText(QString::number(styleIndex));
 
@@ -526,11 +526,7 @@ public:
   DeleteMatchlineUndo(
       TXshLevel *xl, TXshSimpleLevel *sl, const std::vector<TFrameId> &fids,
       const std::vector<int> &indexes)  //, TPalette*matchPalette)
-      : TUndo(),
-        m_xl(xl),
-        m_sl(sl),
-        m_fids(fids),
-        m_indexes(indexes) {
+      : TUndo(), m_xl(xl), m_sl(sl), m_fids(fids), m_indexes(indexes) {
     int i;
     for (i = 0; i < fids.size(); i++) {
       QString id = "DeleteMatchlineUndo" + QString::number((uintptr_t)this) +

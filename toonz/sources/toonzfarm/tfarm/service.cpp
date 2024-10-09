@@ -353,11 +353,11 @@ bool TService::Imp::reportStatusToSCMgr(long currentState, long win32ExitCode,
 void TService::run(int argc, char *argv[], bool console) {
   m_imp->m_console = console;
 
-/*
-#ifdef _DEBUG
-  DebugBreak();
-#endif
-*/
+  /*
+  #ifdef _DEBUG
+    DebugBreak();
+  #endif
+  */
 
 #ifdef _WIN32
   if (console) {

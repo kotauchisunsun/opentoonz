@@ -397,7 +397,7 @@ void BinarizePopup::fetchSample() {
     TXsheet *xsh  = app->getCurrentScene()->getScene()->getXsheet();
     TXshCell cell = xsh->getCell(app->getCurrentFrame()->getFrame(),
                                  app->getCurrentColumn()->getColumnIndex());
-    img = cell.getImage(false);
+    img           = cell.getImage(false);
   }
   TRasterImageP ri = img;
   if (ri) {

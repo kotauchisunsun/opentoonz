@@ -247,9 +247,9 @@ TCacheResource *TCacheResourcePool::getResource(const std::string &name,
       result->m_pos          = m_searchIterator =
           m_memResources.insert(m_searchIterator, std::make_pair(name, result));
 
-// DIAGNOSTICS_STRSET("#resources.txt | RISORSE | " + QString::number((UINT)
-// result) + " | Name",
-// QString::fromStdString(name).left(70));
+      // DIAGNOSTICS_STRSET("#resources.txt | RISORSE | " +
+      // QString::number((UINT) result) + " | Name",
+      // QString::fromStdString(name).left(70));
 
 #ifdef USE_SQLITE_HDPOOL
       if (isHDActive()) m_hdPool->loadResourceInfos(result, resourcePath);

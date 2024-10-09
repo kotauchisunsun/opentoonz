@@ -33,6 +33,6 @@ public:
   void updateTranslation() override;
 };
 
-}  // namespace
+}  // namespace Tiio
 
 #endif

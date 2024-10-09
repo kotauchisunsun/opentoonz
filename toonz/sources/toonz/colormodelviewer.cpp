@@ -382,7 +382,7 @@ void ColorModelViewer::showEvent(QShowEvent *e) {
   bool ret = connect(paletteHandle, SIGNAL(paletteSwitched()), this,
                      SLOT(showCurrentImage()));
   ret      = ret && connect(paletteHandle, SIGNAL(paletteChanged()), this,
-                       SLOT(showCurrentImage()));
+                            SLOT(showCurrentImage()));
   ret = ret && connect(paletteHandle, SIGNAL(colorStyleChanged(bool)), this,
                        SLOT(showCurrentImage()));
   /*- ツールのTypeに合わせてPickのタイプも変え、カーソルも切り替える -*/

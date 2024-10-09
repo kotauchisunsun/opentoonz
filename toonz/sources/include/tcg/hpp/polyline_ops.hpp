@@ -146,8 +146,8 @@ _QuadraticsEdgeEvaluator<Point>::furthestFrom(const quad_iterator &at) {
     const point_type &C1 = *(bt.it() + 1);
 
     // Ensure that bt is not a corner
-    if (std::abs(tcg::point_ops::cross(*(bt.it() - 1) - *bt, *(bt.it() + 1) - *bt)) >
-        1e-3)
+    if (std::abs(tcg::point_ops::cross(*(bt.it() - 1) - *bt,
+                                       *(bt.it() + 1) - *bt)) > 1e-3)
       break;
 
     // Ensure there is no sign inversion
@@ -463,7 +463,7 @@ void toQuadratics(iter_type begin, iter_type end, containers_reader &output,
   bool ret = tcg::sequence_ops::minimalPath(bt, et, eval, quadReader);
   assert(ret);
 }
-}
-}  // namespace tcg::polyline_ops
+}  // namespace polyline_ops
+}  // namespace tcg
 
 #endif  // TCG_POLYLINE_OPS_HPP

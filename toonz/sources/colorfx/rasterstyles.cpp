@@ -142,7 +142,7 @@ bool inline isBorderPix(int index, TPixelCM32 *pix, int wrap, TPixelGR8 *pixGr,
          doIsBorderPix(index, pix + wrap, pixGr + wrapGr, color) ||
          doIsBorderPix(index, pix - wrap, pixGr - wrapGr, color);
 }
-}
+}  // namespace
 
 /*---------------------------------------------------------------------------*/
 

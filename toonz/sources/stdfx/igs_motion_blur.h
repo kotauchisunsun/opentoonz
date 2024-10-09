@@ -19,6 +19,6 @@ IGS_MOTION_BLUR_EXPORT void convert(
     const int zanzo_length = 0.0, const double zanzo_power = 1.0,
     const bool alpha_rend_sw = true);
 }
-}
+}  // namespace igs
 
 #endif /* !igs_motion_blur_h */

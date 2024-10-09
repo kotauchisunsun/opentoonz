@@ -43,7 +43,7 @@ public:
       , m_dAB(0.0)
       , m_nbColor(0)
       , m_isCM(false) {
-    for (int i      = 0; i < 5; i++)
+    for (int i = 0; i < 5; i++)
       m_color[i][0] = m_color[i][1] = m_color[i][2] = m_color[i][3] = 0;
     m_ink.nb = m_paint.nb = 0;
   };
@@ -62,7 +62,7 @@ public:
       m_ink.nb = p.m_ink.nb;
       int i    = 0;
       for (i = 0; i < m_ink.nb; i++) m_ink.ci[i] = p.m_ink.ci[i];
-      m_paint.nb                                 = p.m_paint.nb;
+      m_paint.nb = p.m_paint.nb;
       for (i = 0; i < m_paint.nb; i++) m_paint.ci[i] = p.m_paint.ci[i];
     } else
       for (int i = 0; i < 5; i++)

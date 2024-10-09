@@ -48,7 +48,7 @@ CameraTestCheck::CameraTestCheck() : m_toggle(0) {}
 
 //-----------------------------------------------------------------------------
 /*! Return current \b CameraTestCheck instance.
-*/
+ */
 CameraTestCheck *CameraTestCheck::instance() {
   static CameraTestCheck _instance;
   return &_instance;
@@ -76,7 +76,7 @@ void CameraTestCheck::setToggle(QAction *toggle) { m_toggle = toggle; }
 
 //-----------------------------------------------------------------------------
 /*! Boot \b CameraTestCheck color to color saved in file \b tcheckColors.xml.
-*/
+ */
 
 //=============================================================================
 /*! \class CleanupViewCheck
@@ -89,7 +89,7 @@ CleanupPreviewCheck::CleanupPreviewCheck() : m_toggle(0) {}
 
 //-----------------------------------------------------------------------------
 /*! Return current \b TransparencyCheck instance.
-*/
+ */
 CleanupPreviewCheck *CleanupPreviewCheck::instance() {
   static CleanupPreviewCheck _instance;
   return &_instance;
@@ -127,7 +127,7 @@ SetScanCropboxCheck::SetScanCropboxCheck() : m_enabled(false), m_toggle(0) {}
 //-----------------------------------------------------------------------------
 
 /*! Return current \b SetScanCropBoxCheck instance.
-*/
+ */
 SetScanCropboxCheck *SetScanCropboxCheck::instance() {
   static SetScanCropboxCheck _instance;
   return &_instance;

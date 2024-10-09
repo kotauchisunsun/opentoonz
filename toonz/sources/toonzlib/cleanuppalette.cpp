@@ -95,8 +95,8 @@ void TargetColors::update(TPalette *palette, bool noAntialias) {
   m_colors.clear();
 
   TargetColor transparent(TPixel32(255, 255, 255, 0) /*TPixel32::Transparent*/,
-                         0,  // BackgroundStyle,
-                         0, 0, 0, 0);
+                          0,  // BackgroundStyle,
+                          0, 0, 0, 0);
 
   m_colors.push_back(transparent);
 

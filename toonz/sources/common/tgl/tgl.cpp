@@ -78,7 +78,7 @@ TRectD tglGetBounds() {
   TAffine4 projection;
   glGetDoublev(GL_MODELVIEW_MATRIX, modelview.a);
   glGetDoublev(GL_PROJECTION_MATRIX, projection.a);
-  return (projection*modelview).get2d().inv() * TRectD(-1.0, -1.0, 1.0, 1.0);
+  return (projection * modelview).get2d().inv() * TRectD(-1.0, -1.0, 1.0, 1.0);
 }
 
 //-----------------------------------------------------------------------------
@@ -136,8 +136,8 @@ void tglDrawSegment(const TPointD &p1, const TPointD &p2) {
 void tglDrawCircle(const TPointD &center, double radius) {
   if (radius <= 0) return;
 
-  double pixelSize = sqrt( tglGetPixelSize2() );
-  int slices = std::max(3, computeSlices(radius, pixelSize));
+  double pixelSize = sqrt(tglGetPixelSize2());
+  int slices       = std::max(3, computeSlices(radius, pixelSize));
 
   double step = M_2PI / (double)slices;
   double c = cos(step), s = sin(step);
@@ -148,10 +148,10 @@ void tglDrawCircle(const TPointD &center, double radius) {
 
   double x = radius, y = 0.0;
   glVertex2d(x, y);
-  for(int i = slices - 1; i; --i) {
+  for (int i = slices - 1; i; --i) {
     double xx = x;
-    x = c*xx - s*y;
-    y = s*xx + c*y;
+    x         = c * xx - s * y;
+    y         = s * xx + c * y;
     glVertex2d(x, y);
   }
   glVertex2d(radius, 0.0);
@@ -598,7 +598,8 @@ void tglMakeCurrent(TGlContext context) {
 
 void tglDoneCurrent(TGlContext) { wglMakeCurrent(NULL, NULL); }
 
-#elif defined(LINUX) || defined(FREEBSD) || defined(__sgi) || defined(MACOSX) || defined(HAIKU)
+#elif defined(LINUX) || defined(FREEBSD) || defined(__sgi) ||                  \
+    defined(MACOSX) || defined(HAIKU)
 
 TGlContext tglGetCurrentContext() {
   return reinterpret_cast<TGlContext>(

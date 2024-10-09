@@ -31,10 +31,10 @@ class TStroke;
 namespace ToonzExt {
 class Potential;
 /**
-   * @brief This class implements new deformer.
-   *
-   * New stroke deformer doesn't change last point of stroke.
-   */
+ * @brief This class implements new deformer.
+ *
+ * New stroke deformer doesn't change last point of stroke.
+ */
 class DVAPI StrokeParametricDeformer final : public TStrokeDeformation {
 public:
   StrokeParametricDeformer(double actionLength, double startParameter,
@@ -43,63 +43,63 @@ public:
   ~StrokeParametricDeformer();
 
   /**
-*@brief Set mouse movement from last valid position.
-*@param vx  horyzontal
-*@param vy  vertical
-*/
+   *@brief Set mouse movement from last valid position.
+   *@param vx  horyzontal
+   *@param vy  vertical
+   */
   void setMouseMove(double vx, double vy);
 
   /**
-*@brief Return displacement to use with function increaseControlPoints
-*@param stroke to test
-*@param w stroke parameter
-*@return displacement to apply to obtain deformation
-*@sa increaseControlPoints
-*/
+   *@brief Return displacement to use with function increaseControlPoints
+   *@param stroke to test
+   *@param w stroke parameter
+   *@return displacement to apply to obtain deformation
+   *@sa increaseControlPoints
+   */
   TThickPoint getDisplacement(const TStroke &stroke, double w) const override;
 
   /**
-*@brief Return displacement to use with function  modifyControlPoints
-*@param stroke to test
-*@param n control point to get
-*@return displacement to apply to obtain deformation
-*@sa modifyControlPoints
-*/
+   *@brief Return displacement to use with function  modifyControlPoints
+   *@param stroke to test
+   *@param n control point to get
+   *@return displacement to apply to obtain deformation
+   *@sa modifyControlPoints
+   */
   TThickPoint getDisplacementForControlPoint(const TStroke &stroke,
                                              UINT n) const override;
   TThickPoint getDisplacementForControlPointLen(const TStroke &stroke,
                                                 double cpLen) const override;
 
   /**
-*@brief This method compute the delta (gradient) referred to stroke in
-*       at parameter w.
-*
-* This value is the result of \f$ \frac{getDisplacement(stroke,w)}{dw} \f$.
-*@note Sometimes this value can be approximated.
-*@param stroke Stroke to test
-*@param w Stroke parameter
-*@return the @b gradient in w
-*/
+   *@brief This method compute the delta (gradient) referred to stroke in
+   *       at parameter w.
+   *
+   * This value is the result of \f$ \frac{getDisplacement(stroke,w)}{dw} \f$.
+   *@note Sometimes this value can be approximated.
+   *@param stroke Stroke to test
+   *@param w Stroke parameter
+   *@return the @b gradient in w
+   */
   double getDelta(const TStroke &stroke, double w) const override;
 
   /**
-*@brief Max diff of delta (This value indicates when it's necessary
-*  to insert control point)
-*@return max displacement permitted
-*/
+   *@brief Max diff of delta (This value indicates when it's necessary
+   *  to insert control point)
+   *@return max displacement permitted
+   */
   double getMaxDiff() const override;
 
   // just for debug
   const Potential *getPotential() const { return pot_; }
 
   /**
-*@brief Change sensitivity of deformer (just for debug).
-*/
+   *@brief Change sensitivity of deformer (just for debug).
+   */
   void setDiff(double diff) { diff_ = diff; }
 
   /**
-*@brief Retrieve the parameters range where is applied deformation.
-*/
+   *@brief Retrieve the parameters range where is applied deformation.
+   */
   void getRange(double &from, double &to);
 
 private:
@@ -128,7 +128,7 @@ private:
 
   TStroke *ref_copy_;
 };
-}
+}  // namespace ToonzExt
 
 #if defined(_MSC_VER) && (_MSC_VER <= 1200)
 #pragma warning(pop)

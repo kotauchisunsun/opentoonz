@@ -377,7 +377,7 @@ void AdjustLevelsPopup::acquireRaster() {
     TXsheet *xsh  = app->getCurrentXsheet()->getXsheet();
     TXshCell cell = xsh->getCell(app->getCurrentFrame()->getFrameIndex(),
                                  app->getCurrentColumn()->getColumnIndex());
-    TRasterImageP rasImage                            = cell.getImage(true);
+    TRasterImageP rasImage = cell.getImage(true);
     if (rasImage && rasImage->getRaster()) m_inputRas = rasImage->getRaster();
   } else if (filmstripSelection) {
     TXshSimpleLevel *simpleLevel = app->getCurrentLevel()->getSimpleLevel();

@@ -53,8 +53,9 @@ ToolOptionControl::ToolOptionControl(TTool *tool, std::string propertyName,
 
 //-----------------------------------------------------------------------------
 
-void ToolOptionControl::notifyTool(bool addToUndo)
-  { m_tool->onPropertyChanged(m_propertyName, addToUndo); }
+void ToolOptionControl::notifyTool(bool addToUndo) {
+  m_tool->onPropertyChanged(m_propertyName, addToUndo);
+}
 
 //-----------------------------------------------------------------------------
 /*! return true if the control is belonging to the visible combo viewer. very
@@ -267,8 +268,7 @@ ToolOptionIntSlider::ToolOptionIntSlider(TTool *tool, TIntProperty *property,
                                          ToolHandle *toolHandle)
     : IntField(0, property->isMaxRangeLimited())
     , ToolOptionControl(tool, property->getName(), toolHandle)
-    , m_property(property)
-{
+    , m_property(property) {
   setLinearSlider(property->isLinearSlider());
   m_property->addListener(this);
   TIntProperty::Range range = property->getRange();

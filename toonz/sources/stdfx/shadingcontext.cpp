@@ -121,9 +121,9 @@ ShadingContext::ShadingContext(QOffscreenSurface *surface) : m_imp(new Imp) {
   // m_imp->m_pixelBuffer->context()->create();
   // m_imp->m_fbo(new QOpenGLFramebufferObject(1, 1));
   makeCurrent();
-   if( GLEW_VERSION_3_2 ) {
-       glewExperimental = GL_TRUE;
-   }
+  if (GLEW_VERSION_3_2) {
+    glewExperimental = GL_TRUE;
+  }
   glewInit();
   doneCurrent();
 }
@@ -210,10 +210,10 @@ void ShadingContext::resize(int lx, int ly,
   if (lx == 0 || ly == 0) {
     m_imp->m_fbo.reset(0);
   } else {
-    bool get                         = m_imp->m_fbo.get();
-    QOpenGLContext *currContext      = m_imp->m_context->currentContext();
-    bool yes                         = false;
-    if (currContext) bool yes        = true;
+    bool get                    = m_imp->m_fbo.get();
+    QOpenGLContext *currContext = m_imp->m_context->currentContext();
+    bool yes                    = false;
+    if (currContext) bool yes = true;
     while (!currContext) currContext = m_imp->m_context->currentContext();
     m_imp->m_fbo.reset(new QOpenGLFramebufferObject(lx, ly, fmt));
     assert(m_imp->m_fbo->isValid());

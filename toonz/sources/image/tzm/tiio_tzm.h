@@ -5,10 +5,9 @@
 
 #include <tlevel_io.h>
 
-
 namespace tzm {
-  TLevelWriter* createWriter(const TFilePath &path, TPropertyGroup *winfo);
-  TLevelReader* createReader(const TFilePath &path);
-}
+TLevelWriter *createWriter(const TFilePath &path, TPropertyGroup *winfo);
+TLevelReader *createReader(const TFilePath &path);
+}  // namespace tzm
 
 #endif  // TTIO_TZM_INCLUDED

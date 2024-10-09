@@ -292,7 +292,7 @@ public:
   list_base(size_t count, const T &val)
       : m_vector(count, list_node(val)), m_size(count), m_clearedHead(_neg) {
     assert(m_size >= 0);
-    for (size_t i        = 0; i < m_size; ++i)
+    for (size_t i = 0; i < m_size; ++i)
       m_vector[i].m_prev = i - 1, m_vector[i].m_next = i + 1;
     if (m_size > 0) m_vector[m_size - 1].m_next = _neg;
   }
@@ -301,7 +301,7 @@ public:
   list_base(InIt begin, InIt end)
       : m_vector(begin, end), m_size(m_vector.size()), m_clearedHead(_neg) {
     assert(m_size >= 0);
-    for (size_t i        = 0; i < m_size; ++i)
+    for (size_t i = 0; i < m_size; ++i)
       m_vector[i].m_prev = i - 1, m_vector[i].m_next = i + 1;
     if (m_size > 0) m_vector[m_size - 1].m_next = _neg;
   }
@@ -425,7 +425,7 @@ public:
       new (&node) list_node((*begin).second);
 
       // Link the node
-      node.m_prev                                   = lastIdx;
+      node.m_prev = lastIdx;
       if (lastIdx != _neg) m_vector[lastIdx].m_next = idx;
 
       lastIdx = idx;
@@ -746,15 +746,15 @@ capacity is not exceeded.
       // node has a valid next
       list_node &next = m_vector[idx];
 
-      node.m_prev                                           = next.m_prev;
-      next.m_prev                                           = nodeIdx;
-      node.m_next                                           = idx;
+      node.m_prev = next.m_prev;
+      next.m_prev = nodeIdx;
+      node.m_next = idx;
       if (node.m_prev != _neg) m_vector[node.m_prev].m_next = nodeIdx;
     } else {
-      node.m_next                                     = _neg;
-      node.m_prev                                     = m_rbegin;
+      node.m_next = _neg;
+      node.m_prev = m_rbegin;
       if (m_rbegin != _neg) m_vector[m_rbegin].m_next = nodeIdx;
-      m_rbegin                                        = nodeIdx;
+      m_rbegin = nodeIdx;
     }
 
     if (idx == m_begin) m_begin = nodeIdx;
@@ -778,7 +778,7 @@ capacity is not exceeded.
   size_t erase(size_t idx) {
     assert(list_base<T>::isValid(idx));
 
-    if (idx == m_begin) m_begin   = m_vector[idx].m_next;
+    if (idx == m_begin) m_begin = m_vector[idx].m_next;
     if (idx == m_rbegin) m_rbegin = m_vector[idx].m_prev;
 
     size_t result = m_vector[idx].m_next;

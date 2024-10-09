@@ -133,7 +133,7 @@ StudioPaletteTreeViewer::StudioPaletteTreeViewer(
   bool ret = connect(this, SIGNAL(itemChanged(QTreeWidgetItem *, int)),
                      SLOT(onItemChanged(QTreeWidgetItem *, int)));
   ret      = ret && connect(this, SIGNAL(itemClicked(QTreeWidgetItem *, int)),
-                       SLOT(onItemClicked(QTreeWidgetItem *, int)));
+                            SLOT(onItemClicked(QTreeWidgetItem *, int)));
   ret =
       ret &&
       connect(this,
@@ -145,7 +145,7 @@ StudioPaletteTreeViewer::StudioPaletteTreeViewer(
   // refresh tree with shortcut key
   QAction *refreshAct = CommandManager::instance()->getAction(MI_RefreshTree);
   ret                 = ret && connect(refreshAct, SIGNAL(triggered()), this,
-                       SLOT(onRefreshTreeShortcutTriggered()));
+                                       SLOT(onRefreshTreeShortcutTriggered()));
   addAction(refreshAct);
 
   m_palettesScanPopup = new PalettesScanPopup();

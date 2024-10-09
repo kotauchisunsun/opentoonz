@@ -13,7 +13,7 @@ class QComboBox;
 namespace DVGui {
 class ColorField;
 class IntLineEdit;
-};
+};  // namespace DVGui
 
 class ColorModelBehaviorPopup : public DVGui::Dialog {
   Q_OBJECT

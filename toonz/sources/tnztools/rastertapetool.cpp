@@ -531,8 +531,8 @@ public:
     m_selectingRect.empty();
     TTool::Application *app = TTool::getApplication();
     m_level                 = app->getCurrentLevel()->getLevel()
-                  ? app->getCurrentLevel()->getSimpleLevel()
-                  : 0;
+                                  ? app->getCurrentLevel()->getSimpleLevel()
+                                  : 0;
     m_firstFrameId = m_veryFirstFrameId = getFrameId();
     m_firstStroke                       = 0;
   }

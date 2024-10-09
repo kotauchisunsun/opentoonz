@@ -64,11 +64,15 @@ const char *RC_msg[] = {
     "TWRC_DATANOTAVAILABLE"};
 
 const char *CC_msg[] = {
-    "TWCC_SUCCESS", "TWCC_BUMMER (Failure due to unknown causes)",
-    "TWCC_LOWMEMORY", "TWCC_NODS (No Data Source)",
+    "TWCC_SUCCESS",
+    "TWCC_BUMMER (Failure due to unknown causes)",
+    "TWCC_LOWMEMORY",
+    "TWCC_NODS (No Data Source)",
     "TWCC_MAXCONNECTIONS (DS is connected to max possible apps)",
     "TWCC_OPERATIONERROR (DS/DSM reported error, app shouldn't)",
-    "TWCC_BADCAP (Unknown capability)", "7 (undefined)", "8 (undefined)",
+    "TWCC_BADCAP (Unknown capability)",
+    "7 (undefined)",
+    "8 (undefined)",
     "TWCC_BADPROTOCOL (Unrecognized triplet)",
     "TWCC_BADVALUE (Data parameter out of range)",
     "TWCC_SEQERROR (Triplet out of sequence)",
@@ -99,8 +103,8 @@ void TTWAIN_RecordError(void) {
     TTwainData.ErrCC = -1;
 
   if (TTwainData.ErrRC < (sizeof(RC_msg) / sizeof(RC_msg[0]))) {
-    snprintf(Msg_out, sizeof(Msg_out), "RC: %s(%d)",
-             RC_msg[TTwainData.ErrRC], (int)TTwainData.ErrRC);
+    snprintf(Msg_out, sizeof(Msg_out), "RC: %s(%d)", RC_msg[TTwainData.ErrRC],
+             (int)TTwainData.ErrRC);
   } else {
     snprintf(Msg_out, sizeof(Msg_out), "RC: %s(%d)", "unknown",
              (int)TTwainData.ErrRC);
@@ -111,8 +115,7 @@ void TTWAIN_RecordError(void) {
              (int)TTwainData.ErrCC);
     strcat(Msg_out, tmp);
   } else {
-    snprintf(tmp, sizeof(tmp), "CC: %s(%d)", "unknown",
-             (int)TTwainData.ErrCC);
+    snprintf(tmp, sizeof(tmp), "CC: %s(%d)", "unknown", (int)TTwainData.ErrCC);
     strcat(Msg_out, tmp);
   }
 

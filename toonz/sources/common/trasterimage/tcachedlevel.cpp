@@ -51,7 +51,7 @@ public:
       m_currentFileSize = ImpPD::m_defaultFileSize;
   };
   virtual ~ImpPD() {}
-  virtual void openFile(const TFilePath &, TINT64 fileSize) = 0;
+  virtual void openFile(const TFilePath &, TINT64 fileSize)           = 0;
   virtual void setCurrentView(int pos, int &newLowPos, int &newHiPos) = 0;
   TFilePath m_fname;
 
@@ -328,7 +328,7 @@ void ImpPDW::openFile(const TFilePath &fname, TINT64 fileSize) {
                         dwCreationDisposition,          // how to create
                         dwFlagsAndAttributes,           // file attributes
                         hTemplateFile  // handle to template file
-                        );
+  );
 
   if (m_hFile == INVALID_HANDLE_VALUE) {
     string errMsg = getLastErrorMessage();
@@ -347,7 +347,7 @@ void ImpPDW::openFile(const TFilePath &fname, TINT64 fileSize) {
                              dwMaximumSizeHigh,  // high-order DWORD of size
                              dwMaximumSizeLow,   // low-order DWORD of size
                              lpName              // object name
-                             );
+  );
 
   if (m_hMap == NULL) {
     string errMsg = getLastErrorMessage();
@@ -392,13 +392,13 @@ void ImpPDW::setCurrentView(int frame, int &newLowFrame, int &newHiFrame) {
 
   DWORD dwDesiredAccess = FILE_MAP_WRITE;
   m_fileMapAddress      = MapViewOfFile(
-      m_hMap,           // handle to file-mapping object
-      dwDesiredAccess,  // access mode: Write permission
-      DWORDLONG_HI_DWORD(
-          viewOffset),  // high-order DWORD of offset: Max. object size.
-      DWORDLONG_LO_DWORD(
-          viewOffset),  // low-order DWORD of offset: Size of hFile.
-      m_viewSize);      // number of bytes to map
+           m_hMap,           // handle to file-mapping object
+           dwDesiredAccess,  // access mode: Write permission
+           DWORDLONG_HI_DWORD(
+               viewOffset),  // high-order DWORD of offset: Max. object size.
+           DWORDLONG_LO_DWORD(
+               viewOffset),  // low-order DWORD of offset: Size of hFile.
+           m_viewSize);      // number of bytes to map
 
   if (m_fileMapAddress == NULL) {
     string errMsg = getLastErrorMessage();
@@ -586,7 +586,7 @@ void Load::run() {
   m_prefetchedRas   = m_cp->doGetRaster(m_frame);
   m_prefetchedFrame = m_frame;
 }
-};
+};  // namespace
 
 //==============================================================================
 
@@ -961,7 +961,7 @@ ZFile::ZFile(const TFilePath &fp, bool directIO, bool asyncIO)
                                &m_bytesPerSector,      // bytes per sector
                                &numberOfFreeClusters,  // free clusters
                                &totalNumberOfClusters  // total clusters
-                               );
+  );
 
   if (m_asyncIO) m_writeNotPending = CreateEvent(NULL, TRUE, TRUE, NULL);
 }

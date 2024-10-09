@@ -30,9 +30,9 @@ class DVAPI TGLArea : public TWidget {
   std::vector<TRect> *m_arrayOfRectToRedraw;
 
 protected:
-// int m_lx, m_ly;
+  // int m_lx, m_ly;
 
-// double m_angle;
+  // double m_angle;
 
 #define PEZZA_DISABLE_REDRAW
 

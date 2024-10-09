@@ -52,7 +52,7 @@ private:
   double leftFactor_;     // fattore di shape x la curva a sinistra
   double rightFactor_;    // fattore di shape x la curva a dx
 };
-}
+}  // namespace ToonzExt
 #endif /* NOT_Symmetric_BEZIER_POTENTIAL_H */
 //-----------------------------------------------------------------------------
 //  End Of File

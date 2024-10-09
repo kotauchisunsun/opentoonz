@@ -158,17 +158,17 @@ CleanupTab::CleanupTab() {
   //  Connections
   bool ret = true;
   ret      = ret && connect(m_autoCenter, SIGNAL(stateChanged(int)),
-                       SLOT(onGenericSettingsChange()));
-  ret = ret && connect(m_pegHolesOm, SIGNAL(activated(int)),
-                       SLOT(onGenericSettingsChange()));
-  ret = ret && connect(m_fieldGuideOm, SIGNAL(activated(int)),
-                       SLOT(onGenericSettingsChange()));
-  ret = ret && connect(m_rotateOm, SIGNAL(activated(int)),
-                       SLOT(onGenericSettingsChange()));
-  ret = ret && connect(m_flipX, SIGNAL(stateChanged(int)),
-                       SLOT(onGenericSettingsChange()));
-  ret = ret && connect(m_flipY, SIGNAL(stateChanged(int)),
-                       SLOT(onGenericSettingsChange()));
+                            SLOT(onGenericSettingsChange()));
+  ret      = ret && connect(m_pegHolesOm, SIGNAL(activated(int)),
+                            SLOT(onGenericSettingsChange()));
+  ret      = ret && connect(m_fieldGuideOm, SIGNAL(activated(int)),
+                            SLOT(onGenericSettingsChange()));
+  ret      = ret && connect(m_rotateOm, SIGNAL(activated(int)),
+                            SLOT(onGenericSettingsChange()));
+  ret      = ret && connect(m_flipX, SIGNAL(stateChanged(int)),
+                            SLOT(onGenericSettingsChange()));
+  ret      = ret && connect(m_flipY, SIGNAL(stateChanged(int)),
+                            SLOT(onGenericSettingsChange()));
   ret =
       ret && connect(m_pathField, SIGNAL(pathChanged()), SLOT(onPathChange()));
 
@@ -345,17 +345,17 @@ ProcessingTab::ProcessingTab() {
 
   bool ret = true;
   ret      = ret && connect(m_sharpness, SIGNAL(valueChanged(bool)),
-                       SLOT(onSharpnessChange(bool)));
-  ret = ret && connect(m_lineProcessing, SIGNAL(activated(int)),
-                       SLOT(onGenericSettingsChange()));
-  ret = ret && connect(m_antialias, SIGNAL(activated(int)),
-                       SLOT(onGenericSettingsChange()));
-  ret = ret && connect(m_autoadjustOm, SIGNAL(activated(int)),
-                       SLOT(onGenericSettingsChange()));
-  ret = ret && connect(m_despeckling, SIGNAL(valueChanged(bool)),
-                       SLOT(onGenericSettingsChange()));
-  ret = ret && connect(m_aaValue, SIGNAL(valueChanged(bool)),
-                       SLOT(onGenericSettingsChange()));
+                            SLOT(onSharpnessChange(bool)));
+  ret      = ret && connect(m_lineProcessing, SIGNAL(activated(int)),
+                            SLOT(onGenericSettingsChange()));
+  ret      = ret && connect(m_antialias, SIGNAL(activated(int)),
+                            SLOT(onGenericSettingsChange()));
+  ret      = ret && connect(m_autoadjustOm, SIGNAL(activated(int)),
+                            SLOT(onGenericSettingsChange()));
+  ret      = ret && connect(m_despeckling, SIGNAL(valueChanged(bool)),
+                            SLOT(onGenericSettingsChange()));
+  ret      = ret && connect(m_aaValue, SIGNAL(valueChanged(bool)),
+                            SLOT(onGenericSettingsChange()));
   assert(ret);
 }
 
@@ -364,8 +364,9 @@ ProcessingTab::ProcessingTab() {
 void ProcessingTab::updateGui(CleanupParameters *params,
                               CleanupParameters *oldParams) {
   m_lineProcessing->setCurrentIndex(params->m_lineProcessingMode);
-  m_antialias->setCurrentIndex(
-      params->m_postAntialias ? 2 : params->m_noAntialias ? 1 : 0);
+  m_antialias->setCurrentIndex(params->m_postAntialias ? 2
+                               : params->m_noAntialias ? 1
+                                                       : 0);
   m_autoadjustOm->setCurrentIndex((int)params->m_autoAdjustMode);
   m_sharpness->setValue(params->m_sharpness);
   m_despeckling->setValue(params->m_despeckling);
@@ -654,8 +655,8 @@ CleanupSettings::CleanupSettings(QWidget *parent)
 
   bool ret = true;
   ret      = ret && connect(tabBar, SIGNAL(currentChanged(int)), stackedWidget,
-                       SLOT(setCurrentIndex(int)));
-  ret = ret &&
+                            SLOT(setCurrentIndex(int)));
+  ret      = ret &&
         connect(m_swatchAct, SIGNAL(toggled(bool)), SLOT(enableSwatch(bool)));
   ret = ret && connect(m_opacityAct, SIGNAL(triggered(bool)), opacityCheckCmd,
                        SLOT(trigger()));
@@ -682,9 +683,9 @@ void CleanupSettings::showEvent(QShowEvent *se) {
 
     bool ret = true;
     ret      = ret && connect(model, SIGNAL(imageSwitched()), this,
-                         SLOT(onImageSwitched()));
-    ret = ret && connect(model, SIGNAL(modelChanged(bool)), this,
-                         SLOT(updateGui(bool)));
+                              SLOT(onImageSwitched()));
+    ret      = ret && connect(model, SIGNAL(modelChanged(bool)), this,
+                              SLOT(updateGui(bool)));
     ret = ret && connect(model, SIGNAL(clnLoaded()), this, SLOT(onClnLoaded()));
     assert(ret);
 
@@ -719,10 +720,10 @@ void CleanupSettings::hideEvent(QHideEvent *he) {
 
     bool ret = true;
     ret      = ret && disconnect(model, SIGNAL(imageSwitched()), this,
-                            SLOT(onImageSwitched()));
-    ret = ret && disconnect(model, SIGNAL(modelChanged(bool)), this,
-                            SLOT(updateGui(bool)));
-    ret = ret &&
+                                 SLOT(onImageSwitched()));
+    ret      = ret && disconnect(model, SIGNAL(modelChanged(bool)), this,
+                                 SLOT(updateGui(bool)));
+    ret      = ret &&
           disconnect(model, SIGNAL(clnLoaded()), this, SLOT(onClnLoaded()));
     assert(ret);
 

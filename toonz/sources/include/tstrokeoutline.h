@@ -52,26 +52,28 @@ VEDERE COMMENTI DI TStrokeOutline
                 int stepCount_,  // = 0,
                 double u_,       // = 0,
                 double v_)       // = 0)
-      : x(x_),
-        y(y_),
-        u(u_),
-        v(v_),
-        // tangent(tangent_),
-        // normal(normal_),
-        stepCount(stepCount_) {}
+      : x(x_)
+      , y(y_)
+      , u(u_)
+      , v(v_)
+      ,
+      // tangent(tangent_),
+      // normal(normal_),
+      stepCount(stepCount_) {}
 
   TOutlinePoint(const TPointD &p,
                 // const TPointD &tangent_ = TPointD(),
                 // const TPointD &normal = TPointD(),
                 int stepCount_,    // = 0,
                 const TPointD &t)  // = TPointD())
-      : x(p.x),
-        y(p.y),
-        u(t.x),
-        v(t.y),
-        // tangent(tangent_),
-        // normal(normal),
-        stepCount(stepCount_) {}
+      : x(p.x)
+      , y(p.y)
+      , u(t.x)
+      , v(t.y)
+      ,
+      // tangent(tangent_),
+      // normal(normal),
+      stepCount(stepCount_) {}
 
   TOutlinePoint(const TPointD &p, int stepCount_)
       : x(p.x)
@@ -210,7 +212,7 @@ DVAPI void makeOutline(const TStroke &path, const TRegion &brush,
                        const TRectD &brushBox, TRegionOutline &outline);
 
 DVAPI TRectD computeBBox(const TStroke &stroke);
-}
+}  // namespace TOutlineUtil
 
 //---------------------------------------------------------------------------------------
 

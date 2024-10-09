@@ -22,6 +22,6 @@ int Approx(int n, int m, double **x, double y[], double c[]);
 int Cholesky(int n, double **A);
 int CholForw(int n, double **A, double b[], double x[]);
 int CholBack(int n, double **A, double b[], double x[]);
-}
+}  // namespace MetNum
 
 #endif

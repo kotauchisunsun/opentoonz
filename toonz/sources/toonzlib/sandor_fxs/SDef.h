@@ -1,7 +1,7 @@
 #pragma once
 
 /* SDef.h: Sasa definitions.
-*/
+ */
 
 //#include "tmsg.h"
 
@@ -15,9 +15,15 @@ typedef unsigned int   UINT;
 typedef unsigned long  ULONG;
 */
 
-typedef struct _UC_PIXEL { unsigned char b, g, r, m; } UC_PIXEL;
-typedef struct _US_PIXEL { unsigned short b, g, r, m; } US_PIXEL;
-typedef struct _I_PIXEL { int b, g, r, m; } I_PIXEL;
+typedef struct _UC_PIXEL {
+  unsigned char b, g, r, m;
+} UC_PIXEL;
+typedef struct _US_PIXEL {
+  unsigned short b, g, r, m;
+} US_PIXEL;
+typedef struct _I_PIXEL {
+  int b, g, r, m;
+} I_PIXEL;
 
 #define ASSIGN_PIXEL(d, s)                                                     \
   {                                                                            \
@@ -36,13 +42,27 @@ typedef struct _I_PIXEL { int b, g, r, m; } I_PIXEL;
     (d)->m = (m);                                                              \
   }
 
-typedef struct { int x0, y0, x1, y1; } SRECT;
-typedef struct { double x0, y0, x1, y1; } SDRECT;
-typedef struct { int x0, y0, x1, y1; } SLINE;
-typedef struct { double x0, y0, x1, y1; } SDLINE;
-typedef struct { int x, y; } SPOINT;
-typedef struct { double x, y; } SDPOINT;
-typedef struct { int x, y, w; } SXYW;
+typedef struct {
+  int x0, y0, x1, y1;
+} SRECT;
+typedef struct {
+  double x0, y0, x1, y1;
+} SDRECT;
+typedef struct {
+  int x0, y0, x1, y1;
+} SLINE;
+typedef struct {
+  double x0, y0, x1, y1;
+} SDLINE;
+typedef struct {
+  int x, y;
+} SPOINT;
+typedef struct {
+  double x, y;
+} SDPOINT;
+typedef struct {
+  int x, y, w;
+} SXYW;
 typedef struct {
   int x, y;
   double w;
@@ -78,7 +98,7 @@ typedef struct {
 */
 #define DEG2RAD(x) ((x)*0.01745329252)
 /*#define RAD2DEG(x) ((x)*180.0/PI )
-*/
+ */
 #define RAD2DEG(x) ((x)*57.29577951472)
 
 #define TOONZ_INTERNAL_MSG

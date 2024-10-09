@@ -87,10 +87,10 @@ FunctionToolbar::FunctionToolbar(QWidget *parent)
 
   bool ret = connect(m_valueFld, SIGNAL(valueChanged()), this,
                      SLOT(onValueFieldChanged()));
-  ret = ret && connect(m_frameNavigator, SIGNAL(frameSwitched()), this,
-                       SLOT(onNavFrameSwitched()));
-  ret = ret && connect(toggleAction, SIGNAL(triggered()), this,
-                       SIGNAL(numericalColumnToggled()));
+  ret      = ret && connect(m_frameNavigator, SIGNAL(frameSwitched()), this,
+                            SLOT(onNavFrameSwitched()));
+  ret      = ret && connect(toggleAction, SIGNAL(triggered()), this,
+                            SIGNAL(numericalColumnToggled()));
 
   m_valueFldAction->setVisible(false);
   m_keyframeNavigatorAction->setVisible(false);

@@ -13,10 +13,10 @@
 void getInfoRegion(INFO_REGION *region, int x1_out, int y1_out, int x2_out,
                    int y2_out, int scale, int width_in, int height_in) {
   /*
-*    I suffissi _in e _out sono relativi alle immagini di
-*    input e output, cioe' all'immagine sorgente (input)
-*    ca cui prendere (leggere) la regione voluta (output).
-*/
+   *    I suffissi _in e _out sono relativi alle immagini di
+   *    input e output, cioe' all'immagine sorgente (input)
+   *    ca cui prendere (leggere) la regione voluta (output).
+   */
 
   int x1_in, y1_in, x2_in, y2_in;
 
@@ -71,16 +71,16 @@ void getInfoRegion(INFO_REGION *region, int x1_out, int y1_out, int x2_out,
   region->scanNrow = region->ysize;
 
   /* Coordinate all'interno dell'immagine sorgente, da cui deve
-* partire la scansione.
-*/
+   * partire la scansione.
+   */
   region->startScanRow = y1_out;
   region->startScanCol = x1_out - x1_in;
 
   /*
-* Questi offset sono relativi al buffer di uscita, nel caso
-* in cui una parte della regione sfora rispetto all'immagine
-* sorgente.
-*/
+   * Questi offset sono relativi al buffer di uscita, nel caso
+   * in cui una parte della regione sfora rispetto all'immagine
+   * sorgente.
+   */
   region->x_offset = 0;
   region->y_offset = 0;
 
@@ -95,12 +95,12 @@ void getInfoRegion(INFO_REGION *region, int x1_out, int y1_out, int x2_out,
       region->scanNcol = (x2_in - x1_out) / scale + 1;
       region->x_offset = 0;
     } else
-        /* La regione sfora solo sulla sinistra */
-        if (x1_out < x1_in) {
-      region->x_offset     = (x1_in - x1_out) / scale;
-      region->scanNcol     = (x2_out - x1_in) / scale + 1;
-      region->startScanCol = 0;
-    }
+      /* La regione sfora solo sulla sinistra */
+      if (x1_out < x1_in) {
+        region->x_offset     = (x1_in - x1_out) / scale;
+        region->scanNcol     = (x2_out - x1_in) / scale + 1;
+        region->startScanCol = 0;
+      }
   }
 
   /* La regione sfora in alto e in basso */
@@ -114,12 +114,12 @@ void getInfoRegion(INFO_REGION *region, int x1_out, int y1_out, int x2_out,
       region->scanNrow = (y2_in - y1_out) / scale + 1;
       region->y_offset = 0;
     } else
-        /* La regione sfora solo in basso */
-        if (y1_out < y1_in) {
-      region->scanNrow     = (y2_out - y1_in) / scale + 1;
-      region->y_offset     = (y1_in - y1_out) / scale;
-      region->startScanRow = 0;
-    }
+      /* La regione sfora solo in basso */
+      if (y1_out < y1_in) {
+        region->scanNrow     = (y2_out - y1_in) / scale + 1;
+        region->y_offset     = (y1_in - y1_out) / scale;
+        region->startScanRow = 0;
+      }
   }
 }
 
@@ -129,10 +129,10 @@ int get_info_region(EXT_INFO_REGION *region, int x1_out, int y1_out, int x2_out,
                     int y2_out, int scale, int width_in, int height_in,
                     int orientation) {
   /*
-*    I suffissi _in e _out sono relativi alle immagini di
-*    input e output, cioe' all'immagine sorgente (input)
-*    ca cui prendere (leggere) la regione voluta (output).
-*/
+   *    I suffissi _in e _out sono relativi alle immagini di
+   *    input e output, cioe' all'immagine sorgente (input)
+   *    ca cui prendere (leggere) la regione voluta (output).
+   */
 
   int x1_in, y1_in, x2_in, y2_in;
   int appo, appoNcol, appoNrow;
@@ -188,16 +188,16 @@ int get_info_region(EXT_INFO_REGION *region, int x1_out, int y1_out, int x2_out,
   region->scanNrow = region->ysize;
 
   /* Coordinate all'interno dell'immagine sorgente, da cui deve
-* partire la scansione.
-*/
+   * partire la scansione.
+   */
   region->startScanRow = y1_out;
   region->startScanCol = x1_out;
 
   /*
-* Questi offset sono relativi al buffer di uscita, nel caso
-* in cui una parte della regione sfora rispetto all'immagine
-* sorgente.
-*/
+   * Questi offset sono relativi al buffer di uscita, nel caso
+   * in cui una parte della regione sfora rispetto all'immagine
+   * sorgente.
+   */
   region->x_offset = 0;
   region->y_offset = 0;
 
@@ -212,12 +212,12 @@ int get_info_region(EXT_INFO_REGION *region, int x1_out, int y1_out, int x2_out,
       region->scanNcol = (x2_in - x1_out) / scale /* +1 */;
       region->x_offset = 0;
     } else
-        /* La regione sfora solo sulla sinistra */
-        if (x1_out < x1_in) {
-      region->scanNcol     = (x2_out - x1_in) / scale /* +1 */;
-      region->x_offset     = (x1_in - x1_out + scale - 1) / scale;
-      region->startScanCol = 0;
-    }
+      /* La regione sfora solo sulla sinistra */
+      if (x1_out < x1_in) {
+        region->scanNcol     = (x2_out - x1_in) / scale /* +1 */;
+        region->x_offset     = (x1_in - x1_out + scale - 1) / scale;
+        region->startScanCol = 0;
+      }
   }
 
   /* La regione sfora in alto e in basso */
@@ -231,12 +231,12 @@ int get_info_region(EXT_INFO_REGION *region, int x1_out, int y1_out, int x2_out,
       region->scanNrow = (y2_in - y1_out) / scale /* +1 */;
       region->y_offset = 0;
     } else
-        /* La regione sfora solo in basso */
-        if (y1_out < y1_in) {
-      region->scanNrow     = (y2_out - y1_in) / scale /* +1 */;
-      region->y_offset     = (y1_in - y1_out + scale - 1) / scale;
-      region->startScanRow = 0;
-    }
+      /* La regione sfora solo in basso */
+      if (y1_out < y1_in) {
+        region->scanNrow     = (y2_out - y1_in) / scale /* +1 */;
+        region->y_offset     = (y1_in - y1_out + scale - 1) / scale;
+        region->startScanRow = 0;
+      }
   }
 
   appoNcol = min((region->scanNcol * scale), width_in);

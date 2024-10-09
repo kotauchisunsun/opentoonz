@@ -113,8 +113,8 @@ TStageObjectTree::~TStageObjectTree() {}
 void TStageObjectTree::checkIntegrity() {
   std::map<TStageObjectId, TStageObject *> &pegbars     = m_imp->m_pegbarTable;
   std::map<TStageObjectId, TStageObject *>::iterator it = pegbars.begin();
-  int minColumnIndex = 0;
-  int maxColumnIndex = -1;
+  int minColumnIndex                                    = 0;
+  int maxColumnIndex                                    = -1;
   std::set<int> columnIndexTable;
 
   int cameraCount = 0;
@@ -246,8 +246,8 @@ void TStageObjectTree::removeColumn(int index) {
   TStageObjectId id = TStageObjectId::ColumnId(index);
   std::map<TStageObjectId, TStageObject *> &pegbars = m_imp->m_pegbarTable;
   std::map<TStageObjectId, TStageObject *>::iterator pit;
-  pit                           = pegbars.find(id);
-  TStageObject *imp             = 0;
+  pit               = pegbars.find(id);
+  TStageObject *imp = 0;
   if (pit != pegbars.end()) imp = pit->second;
 
   if (imp) {
@@ -305,7 +305,7 @@ void TStageObjectTree::removeStageObject(const TStageObjectId &id) {
 void TStageObjectTree::insertStageObject(TStageObject *pegbar) {
   TStageObject *imp = dynamic_cast<TStageObject *>(pegbar);
   assert(imp);
-  TStageObjectId id = imp->getId();
+  TStageObjectId id                                 = imp->getId();
   std::map<TStageObjectId, TStageObject *> &pegbars = m_imp->m_pegbarTable;
   assert(pegbars.count(id) == 0);
   pegbars[id] = imp;

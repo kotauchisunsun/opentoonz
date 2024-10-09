@@ -89,7 +89,7 @@ std::map<std::string, QTreeWidgetItem *> PluginLoader::create_menu_items(
 
     auto vendor = vendors[desc->vendor_];
     auto item   = new QTreeWidgetItem(
-        (QTreeWidget *)NULL, QStringList(QString::fromStdString(desc->name_)));
+          (QTreeWidget *)NULL, QStringList(QString::fromStdString(desc->name_)));
     item->setData(0, Qt::UserRole,
                   QVariant("_plg_" + QString::fromStdString(desc->id_)));
     l2_handler(item);

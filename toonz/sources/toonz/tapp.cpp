@@ -292,8 +292,8 @@ int TApp::getCurrentImageType() {
                  ? TImage::VECTOR
                  :  // RASTER image type includes both TZI_XSHLEVEL
                  (levelType == TZP_XSHLEVEL)
-                     ? TImage::TOONZ_RASTER
-                     : TImage::RASTER;  // and OVL_XSHLEVEL level types
+                 ? TImage::TOONZ_RASTER
+                 : TImage::RASTER;  // and OVL_XSHLEVEL level types
     }
 
     TXsheet *xsh = getCurrentXsheet()->getXsheet();

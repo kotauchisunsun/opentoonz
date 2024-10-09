@@ -66,7 +66,7 @@ public:
   virtual void computeData(T &data, const TStroke *stroke,
                            const TColorFunction *cf) const = 0;
   virtual void drawStroke(const TColorFunction *cf, T &data,
-                          const TStroke *stroke) const = 0;
+                          const TStroke *stroke) const     = 0;
 };
 
 //-------------------------------------------------------------------

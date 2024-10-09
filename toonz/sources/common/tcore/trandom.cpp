@@ -39,8 +39,8 @@ void TRandom::reset() {
   }
   for (k = 1; k <= 4; k++)
     for (i = 1; i <= 55; i++) ran[i] -= ran[1 + (i + 30) % 55];
-  idx1     = 55;
-  idx2     = 31;
+  idx1 = 55;
+  idx2 = 31;
 }
 
 //--------------------------------------------------------------------------
@@ -68,7 +68,7 @@ inline UINT TRandom::getNextUINT() {
   if (idx1 == 56) idx1 = 1;
   idx2++;
   if (idx2 == 56) idx2 = 1;
-  ran[idx1]            = ran[idx1] - ran[idx2];
+  ran[idx1] = ran[idx1] - ran[idx2];
   return ran[idx1];
 }
 

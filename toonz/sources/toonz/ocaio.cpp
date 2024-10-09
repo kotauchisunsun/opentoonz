@@ -182,7 +182,7 @@ bool OCAData::buildGroup(QJsonObject &json, const QList<int> &rows,
   QList<int> crows;
   int crow = xsheet->getFrameCount() - 1;
   for (int i = 0; i <= crow; i++) {
-      crows.append(i);
+    crows.append(i);
   }
 
   // Build all columns from sub-xsheet
@@ -191,7 +191,7 @@ bool OCAData::buildGroup(QJsonObject &json, const QList<int> &rows,
   for (int col = 0; col < xsheet->getFirstFreeColumnIndex(); col++) {
     if (xsheet->isColumnEmpty(col)) continue;
     TXshCellColumn *column = xsheet->getColumn(col)->getCellColumn();
-    if (!column) continue;                      // skip non-cell column
+    if (!column) continue;  // skip non-cell column
     if (!exportReferences && !column->isPreviewVisible())
       continue;  // skip inactive column
 
@@ -299,9 +299,9 @@ bool OCAData::buildLayer(QJsonObject &json, const QList<int> &rows,
     i += len - 1;
   }
 
-  json["frames"]       = jsonFrames;
-  json["childLayers"]  = QJsonArray();
-  json["type"]         = json["fileType"] == "svg" ? "vectorlayer" : "paintlayer";
+  json["frames"]      = jsonFrames;
+  json["childLayers"] = QJsonArray();
+  json["type"] = json["fileType"] == "svg" ? "vectorlayer" : "paintlayer";
   json["blendingMode"] = "normal";  // OT uses nodes Fx to make blending
                                     // possible, how to approach this?
   json["animated"]     = jsonFrames.count() >= 2;
@@ -329,8 +329,8 @@ void OCAData::build(ToonzScene *scene, TXsheet *xsheet, QString name,
   m_veSVG = vectorAsSVG;
 
   TOutputProperties *oprop = scene->getProperties()->getOutputProperties();
-  m_startTime = 0;
-  m_endTime   = xsheet->getFrameCount() - 1;
+  m_startTime              = 0;
+  m_endTime                = xsheet->getFrameCount() - 1;
 
   // Build a list of rows
   QList<int> rows;
@@ -353,7 +353,7 @@ void OCAData::build(ToonzScene *scene, TXsheet *xsheet, QString name,
   for (int col = 0; col < xsheet->getColumnCount(); col++) {
     if (xsheet->isColumnEmpty(col)) continue;
     TXshCellColumn *column = xsheet->getColumn(col)->getCellColumn();
-    if (!column) continue;                      // skip non-cell column
+    if (!column) continue;  // skip non-cell column
     if (!exportReferences && !column->isPreviewVisible())
       continue;  // skip inactive column
 
@@ -815,7 +815,7 @@ void OCAIo::OCAInputData::importOcaLayer(const QJsonObject &jsonLayer,
         TFrameId fid = fp.getFrame();
         if (fp.getDots() != "..")
           fid = jsonLayer["type"] == "vectorlayer" ? 65534 : TFrameId::NO_FRAME;
-        cell  = TXshCell(sl, fid);
+        cell = TXshCell(sl, fid);
       }
 
       int row = frame.toObject()["frameNumber"].toInt();

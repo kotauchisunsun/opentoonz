@@ -270,7 +270,8 @@ public:
 //---------------------------------------------------------------------------------------------
 
 DespecklingReader::~DespecklingReader() {
-  std::for_each(m_borders.begin(), m_borders.end(), std::default_delete<Border>());
+  std::for_each(m_borders.begin(), m_borders.end(),
+                std::default_delete<Border>());
 }
 
 //---------------------------------------------------------------------------------------------
@@ -553,8 +554,12 @@ void FillingReader<PixelSelector>::closeContainer() {
 //=============================================================================================
 
 inline TPoint direction(const TPoint &a, const TPoint &b) {
-  return TPoint((b.x > a.x) ? 1 : (b.x < a.x) ? -1 : 0,
-                (b.y > a.y) ? 1 : (b.y < a.y) ? -1 : 0);
+  return TPoint((b.x > a.x)   ? 1
+                : (b.x < a.x) ? -1
+                              : 0,
+                (b.y > a.y)   ? 1
+                : (b.y < a.y) ? -1
+                              : 0);
 }
 
 //---------------------------------------------------------------------------------------------

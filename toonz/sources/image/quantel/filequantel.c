@@ -45,38 +45,38 @@ static IMAGE *img_read_region_quantel_interlaced(T_CHAR *fname, int x1, int y1,
 #define QUANTEL_BUILD_ROW                                                      \
                                                                                \
   for (x = 0; x < region.scanNcol / 2; x++) {                                  \
-    u                   = *lineBuf++ - 128;                                    \
-    j                   = *lineBuf++ - 16;                                     \
-    if (j < 0) j        = 0;                                                   \
-    v                   = *lineBuf++ - 128;                                    \
-    k                   = *lineBuf++ - 16;                                     \
-    r                   = 76310 * j + 104635 * v;                              \
+    u = *lineBuf++ - 128;                                                      \
+    j = *lineBuf++ - 16;                                                       \
+    if (j < 0) j = 0;                                                          \
+    v = *lineBuf++ - 128;                                                      \
+    k = *lineBuf++ - 16;                                                       \
+    r = 76310 * j + 104635 * v;                                                \
     if (r > 0xFFFFFF) r = 0xFFFFFF;                                            \
-    if (r <= 0xFFFF) r  = 0;                                                   \
-    g                   = 76310 * j + -25690 * u + -53294 * v;                 \
+    if (r <= 0xFFFF) r = 0;                                                    \
+    g = 76310 * j + -25690 * u + -53294 * v;                                   \
     if (g > 0xFFFFFF) g = 0xFFFFFF;                                            \
-    if (g <= 0xFFFF) g  = 0;                                                   \
-    b                   = 76310 * j + 132278 * u;                              \
+    if (g <= 0xFFFF) g = 0;                                                    \
+    b = 76310 * j + 132278 * u;                                                \
     if (b > 0xFFFFFF) b = 0xFFFFFF;                                            \
-    if (b <= 0xFFFF) b  = 0;                                                   \
-    bufRGB->r           = (unsigned char)(r >> 16);                            \
-    bufRGB->g           = (unsigned char)(g >> 16);                            \
-    bufRGB->b           = (unsigned char)(b >> 16);                            \
-    bufRGB->m           = 255;                                                 \
+    if (b <= 0xFFFF) b = 0;                                                    \
+    bufRGB->r = (unsigned char)(r >> 16);                                      \
+    bufRGB->g = (unsigned char)(g >> 16);                                      \
+    bufRGB->b = (unsigned char)(b >> 16);                                      \
+    bufRGB->m = 255;                                                           \
     bufRGB++;                                                                  \
-    r                   = 76310 * k + 104635 * v;                              \
+    r = 76310 * k + 104635 * v;                                                \
     if (r > 0xFFFFFF) r = 0xFFFFFF;                                            \
-    if (r <= 0xFFFF) r  = 0;                                                   \
-    g                   = 76310 * k + -25690 * u + -53294 * v;                 \
+    if (r <= 0xFFFF) r = 0;                                                    \
+    g = 76310 * k + -25690 * u + -53294 * v;                                   \
     if (g > 0xFFFFFF) g = 0xFFFFFF;                                            \
-    if (g <= 0xFFFF) g  = 0;                                                   \
-    b                   = 76310 * k + 132278 * u;                              \
+    if (g <= 0xFFFF) g = 0;                                                    \
+    b = 76310 * k + 132278 * u;                                                \
     if (b > 0xFFFFFF) b = 0xFFFFFF;                                            \
-    if (b <= 0xFFFF) b  = 0;                                                   \
-    bufRGB->r           = (unsigned char)(r >> 16);                            \
-    bufRGB->g           = (unsigned char)(g >> 16);                            \
-    bufRGB->b           = (unsigned char)(b >> 16);                            \
-    bufRGB->m           = 255;                                                 \
+    if (b <= 0xFFFF) b = 0;                                                    \
+    bufRGB->r = (unsigned char)(r >> 16);                                      \
+    bufRGB->g = (unsigned char)(g >> 16);                                      \
+    bufRGB->b = (unsigned char)(b >> 16);                                      \
+    bufRGB->m = 255;                                                           \
     bufRGB++;                                                                  \
     lineBuf += ((region.step - 1) * 4);                                        \
   }
@@ -297,9 +297,9 @@ static void quantel_rgb_to_yuv(USHORT *rp, USHORT *gp, USHORT *bp, UCHAR *ap) {
 
     /* limit the chroma */
     if (u1 < -112) u1 = -112;
-    if (u1 > 111) u1  = 111;
+    if (u1 > 111) u1 = 111;
     if (v1 < -112) v1 = -112;
-    if (v1 > 111) v1  = 111;
+    if (v1 > 111) v1 = 111;
 
     /* limit the lum */
     if (y1 > 0x00dbffff) y1 = 0x00dbffff;
@@ -614,38 +614,38 @@ exit(1);
     linebuf += off_row;
     buff = bufout1;
     for (x = 0; x < region.scanNcol / 2; x++) {
-      u                   = *linebuf++ - 128;
-      j                   = *linebuf++ - 16;
-      if (j < 0) j        = 0;
-      v                   = *linebuf++ - 128;
-      k                   = *linebuf++ - 16;
-      r                   = 76310 * j + 104635 * v;
+      u = *linebuf++ - 128;
+      j = *linebuf++ - 16;
+      if (j < 0) j = 0;
+      v = *linebuf++ - 128;
+      k = *linebuf++ - 16;
+      r = 76310 * j + 104635 * v;
       if (r > 0xffffff) r = 0xffffff;
-      if (r <= 0xffff) r  = 0;
-      g                   = 76310 * j + -25690 * u + -53294 * v;
+      if (r <= 0xffff) r = 0;
+      g = 76310 * j + -25690 * u + -53294 * v;
       if (g > 0xffffff) g = 0xffffff;
-      if (g <= 0xffff) g  = 0;
-      b                   = 76310 * j + 132278 * u;
+      if (g <= 0xffff) g = 0;
+      b = 76310 * j + 132278 * u;
       if (b > 0xffffff) b = 0xffffff;
-      if (b <= 0xffff) b  = 0;
-      buff->r             = (unsigned char)(r >> 16);
-      buff->g             = (unsigned char)(g >> 16);
-      buff->b             = (unsigned char)(b >> 16);
-      buff->m             = 255;
+      if (b <= 0xffff) b = 0;
+      buff->r = (unsigned char)(r >> 16);
+      buff->g = (unsigned char)(g >> 16);
+      buff->b = (unsigned char)(b >> 16);
+      buff->m = 255;
       buff++;
-      r                   = 76310 * k + 104635 * v;
+      r = 76310 * k + 104635 * v;
       if (r > 0xffffff) r = 0xffffff;
-      if (r <= 0xffff) r  = 0;
-      g                   = 76310 * k + -25690 * u + -53294 * v;
+      if (r <= 0xffff) r = 0;
+      g = 76310 * k + -25690 * u + -53294 * v;
       if (g > 0xffffff) g = 0xffffff;
-      if (g <= 0xffff) g  = 0;
-      b                   = 76310 * k + 132278 * u;
+      if (g <= 0xffff) g = 0;
+      b = 76310 * k + 132278 * u;
       if (b > 0xffffff) b = 0xffffff;
-      if (b <= 0xffff) b  = 0;
-      buff->r             = (unsigned char)(r >> 16);
-      buff->g             = (unsigned char)(g >> 16);
-      buff->b             = (unsigned char)(b >> 16);
-      buff->m             = 255;
+      if (b <= 0xffff) b = 0;
+      buff->r = (unsigned char)(r >> 16);
+      buff->g = (unsigned char)(g >> 16);
+      buff->b = (unsigned char)(b >> 16);
+      buff->m = 255;
       buff++;
       linebuf += (region.step - 1) * sizeof(TUINT32);
     }
@@ -675,38 +675,38 @@ exit(1);
     linebuf += off_row;
     buff = bufout2;
     for (x = 0; x < region.scanNcol / 2; x++) {
-      u                   = *linebuf++ - 128;
-      j                   = *linebuf++ - 16;
-      if (j < 0) j        = 0;
-      v                   = *linebuf++ - 128;
-      k                   = *linebuf++ - 16;
-      r                   = 76310 * j + 104635 * v;
+      u = *linebuf++ - 128;
+      j = *linebuf++ - 16;
+      if (j < 0) j = 0;
+      v = *linebuf++ - 128;
+      k = *linebuf++ - 16;
+      r = 76310 * j + 104635 * v;
       if (r > 0xffffff) r = 0xffffff;
-      if (r <= 0xffff) r  = 0;
-      g                   = 76310 * j + -25690 * u + -53294 * v;
+      if (r <= 0xffff) r = 0;
+      g = 76310 * j + -25690 * u + -53294 * v;
       if (g > 0xffffff) g = 0xffffff;
-      if (g <= 0xffff) g  = 0;
-      b                   = 76310 * j + 132278 * u;
+      if (g <= 0xffff) g = 0;
+      b = 76310 * j + 132278 * u;
       if (b > 0xffffff) b = 0xffffff;
-      if (b <= 0xffff) b  = 0;
-      buff->r             = (unsigned char)(r >> 16);
-      buff->g             = (unsigned char)(g >> 16);
-      buff->b             = (unsigned char)(b >> 16);
-      buff->m             = 255;
+      if (b <= 0xffff) b = 0;
+      buff->r = (unsigned char)(r >> 16);
+      buff->g = (unsigned char)(g >> 16);
+      buff->b = (unsigned char)(b >> 16);
+      buff->m = 255;
       buff++;
-      r                   = 76310 * k + 104635 * v;
+      r = 76310 * k + 104635 * v;
       if (r > 0xffffff) r = 0xffffff;
-      if (r <= 0xffff) r  = 0;
-      g                   = 76310 * k + -25690 * u + -53294 * v;
+      if (r <= 0xffff) r = 0;
+      g = 76310 * k + -25690 * u + -53294 * v;
       if (g > 0xffffff) g = 0xffffff;
-      if (g <= 0xffff) g  = 0;
-      b                   = 76310 * k + 132278 * u;
+      if (g <= 0xffff) g = 0;
+      b = 76310 * k + 132278 * u;
       if (b > 0xffffff) b = 0xffffff;
-      if (b <= 0xffff) b  = 0;
-      buff->r             = (unsigned char)(r >> 16);
-      buff->g             = (unsigned char)(g >> 16);
-      buff->b             = (unsigned char)(b >> 16);
-      buff->m             = 255;
+      if (b <= 0xffff) b = 0;
+      buff->r = (unsigned char)(r >> 16);
+      buff->g = (unsigned char)(g >> 16);
+      buff->b = (unsigned char)(b >> 16);
+      buff->m = 255;
       buff++;
       linebuf += (region.step - 1) * sizeof(TUINT32);
     }

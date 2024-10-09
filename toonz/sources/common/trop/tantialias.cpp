@@ -137,7 +137,7 @@ inline bool checkNeighbourHood(int x, int y, PIX *pix, int lx, int ly, int dx,
   // and vice versa.
   return count1 > count2;
 }
-}
+}  // namespace
 
 //========================================================================================
 
@@ -193,12 +193,11 @@ inline bool checkLength(int lLine, int y, int ly, int dy, PIX *pixL1,
   // and only when its associated secondary edge is of the same length.
 
   return (lLine > 1) ||
-         (do1Line && ((uniteU && (y > 1 &&
-                                  !(sel.areEqual(*pixL1, *(pixL1 - dy)) &&
-                                    sel.areEqual(*pixL2, *(pixL2 - dy))))) ||
-                      (y < ly - 1 &&
-                       !(sel.areEqual(*pixU1, *(pixU1 + dy)) &&
-                         sel.areEqual(*pixU2, *(pixU2 + dy))))));
+         (do1Line &&
+          ((uniteU && (y > 1 && !(sel.areEqual(*pixL1, *(pixL1 - dy)) &&
+                                  sel.areEqual(*pixL2, *(pixL2 - dy))))) ||
+           (y < ly - 1 && !(sel.areEqual(*pixU1, *(pixU1 + dy)) &&
+                            sel.areEqual(*pixU2, *(pixU2 + dy))))));
 }
 
 //---------------------------------------------------------------------------------------

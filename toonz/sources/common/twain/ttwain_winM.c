@@ -138,8 +138,8 @@ void setupUI(void) {
   provider   = CGDataProviderCreateWithData(0, buffer, (bytesPerRow * h), 0);
   colorSpace = CGColorSpaceCreateDeviceRGB();
   image      = CGImageCreate(w, h, bitsPerPixelChannel, totalBitsPerPixel,
-                        bytesPerRow, colorSpace, kCGImageAlphaFirst, provider,
-                        0, 0, kCGRenderingIntentDefault);
+                             bytesPerRow, colorSpace, kCGImageAlphaFirst, provider,
+                             0, 0, kCGRenderingIntentDefault);
   CGDataProviderRelease(provider);
   CGColorSpaceRelease(colorSpace);
   SetApplicationDockTileImage(image);

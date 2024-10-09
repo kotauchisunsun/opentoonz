@@ -21,8 +21,8 @@
 
 //===============================================================
 /**
-  * This is an example of how to use stopwatch.
-*/
+ * This is an example of how to use stopwatch.
+ */
 /*! The TStopWatch class allows you to recording time (in milliseconds)
     taken by your process or by system to perform various tasks.
     It is possible to record these times:

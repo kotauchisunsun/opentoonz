@@ -13,7 +13,6 @@
 #define IGS_RESOURCE_LOG_EXPORT
 #endif
 
-
 /*------ エラーメッセージ表示 --------------------------------------*/
 namespace igs {
 namespace resource {
@@ -30,7 +29,7 @@ const std::string msg_from_err_(/* 直によんではいけない */
                                 const std::string &date,
                                 const std::string &time);
 }
-}
+}  // namespace igs
 /*--- errno値からエラーメッセージを得る ---*/
 #define igs_resource_msg_from_err(tit, erno)                                   \
   igs::resource::msg_from_err_(                                                \

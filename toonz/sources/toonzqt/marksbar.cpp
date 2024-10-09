@@ -28,7 +28,7 @@ void rollDown(QVector<int> &values, int max, int sortDist) {
   QVector<int>::iterator it, jt, beg = values.begin();
   for (it = values.end(), jt = --it; jt != beg; jt = it) {
     --it;
-    val                = *jt - sortDist;
+    val = *jt - sortDist;
     if (*it > val) *it = val;
   }
 }
@@ -43,11 +43,11 @@ void rollUp(QVector<int> &values, int min, int sortDist) {
 
   QVector<int>::iterator it, jt, end = values.end();
   for (jt = values.begin(), it = jt++; jt != end; it = jt, ++jt) {
-    val                = *it + sortDist;
+    val = *it + sortDist;
     if (val > *jt) *jt = val;
   }
 }
-}
+}  // namespace
 
 //*****************************************************************************
 //    MarksBar implementation
@@ -86,9 +86,8 @@ int MarksBar::valToPos(int val) {
 
 int MarksBar::posToVal(int pos) {
   const QRect contsRect = contentsRect();
-  return m_min +
-         (m_max - m_min) *
-             ((pos - contsRect.left()) / (double)contsRect.width());
+  return m_min + (m_max - m_min) *
+                     ((pos - contsRect.left()) / (double)contsRect.width());
 }
 
 //-----------------------------------------------------------------------------

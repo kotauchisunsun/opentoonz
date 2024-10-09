@@ -49,7 +49,7 @@ DVAPI bool increaseControlPoints(
     TStroke &stroke,                     //!< Stroke to be deformed.
     const TStrokeDeformation &deformer,  //!< Deformer to be applied.
     double pixelSize = 1.0               //!< Resolution modifier.
-    );
+);
 
 //-----------------------------------------------------------------------------
 
@@ -73,7 +73,7 @@ DVAPI void transform_thickness(
     TStroke &stroke,      //!< Stroke whose thickness will be transformed.
     const double poly[],  //!< Polynomial coefficients, by increasing degree.
     int deg               //!< Polynomial degree.
-    );
+);
 
 //-----------------------------------------------------------------------------
 
@@ -134,8 +134,8 @@ DVAPI void polylineToQuadratics(
     double adherenceTol =
         1.0,  //!< Maximum distance from quadratic to polyline corner.
     double angleTol    = 0.0,  //!< Inner product threshold for polyline angles.
-    double relativeTol = 0.25,
-    double relativeDistTol = 0.25, double mergeTol = 1.0);
+    double relativeTol = 0.25, double relativeDistTol = 0.25,
+    double mergeTol = 1.0);
 
 //-----------------------------------------------------------------------------
 
@@ -148,7 +148,7 @@ DVAPI void renderStroke(
         &rd,  //!< Render parameters (clipping rect, affine transform, etc).
     const TRaster32P &output,  //!< Destination raster.
     TStroke *stroke            //!< Stroke to render.
-    );
+);
 
 //-----------------------------------------------------------------------------
 

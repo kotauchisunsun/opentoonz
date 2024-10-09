@@ -641,9 +641,7 @@ public:
 
   inline float getValue(TSound::Channel) const { return value; }
 
-  inline void setValue(TSound::Channel /*chan*/, float v) {
-    value = v;
-  }
+  inline void setValue(TSound::Channel /*chan*/, float v) { value = v; }
 
   inline double getPressure(TSound::Channel chan) const {
     return (getValue(chan));
@@ -659,10 +657,12 @@ public:
     return *this;
   }
 
-  inline TMono32FloatSample operator*(double a) { return TMono32FloatSample(*this) *= a; }
+  inline TMono32FloatSample operator*(double a) {
+    return TMono32FloatSample(*this) *= a;
+  }
 
   static TMono32FloatSample mix(const TMono32FloatSample &s1, double a1,
-                           const TMono32FloatSample &s2, double a2) {
+                                const TMono32FloatSample &s2, double a2) {
     return TMono32FloatSample(s1.value * a1 + s2.value * a2);
   }
 
@@ -679,7 +679,7 @@ public:
 };
 
 inline TMono32FloatSample operator+(const TMono32FloatSample &s1,
-                               const TMono32FloatSample &s2) {
+                                    const TMono32FloatSample &s2) {
   TMono32FloatSample s = s1;
   return s += s2;
 }
@@ -735,9 +735,9 @@ public:
   }
 
   static TStereo32FloatSample mix(const TStereo32FloatSample &s1, double a1,
-                             const TStereo32FloatSample &s2, double a2) {
+                                  const TStereo32FloatSample &s2, double a2) {
     return TStereo32FloatSample(s1.channel[0] * a1 + s2.channel[0] * a2,
-                           s1.channel[1] * a1 + s2.channel[1] * a2);
+                                s1.channel[1] * a1 + s2.channel[1] * a2);
   }
 
   static inline TStereo32FloatSample from(const TMono8UnsignedSample &sample);
@@ -753,7 +753,7 @@ public:
 };
 
 inline TStereo32FloatSample operator+(const TStereo32FloatSample &s1,
-                                 const TStereo32FloatSample &s2) {
+                                      const TStereo32FloatSample &s2) {
   TStereo32FloatSample s = s1;
   return s += s2;
 }
@@ -1235,7 +1235,8 @@ inline TStereo16Sample TStereo16Sample::from(const TMono32FloatSample &sample) {
 
 //------------------------------------------------------------------------------
 
-inline TStereo16Sample TStereo16Sample::from(const TStereo32FloatSample &sample) {
+inline TStereo16Sample TStereo16Sample::from(
+    const TStereo32FloatSample &sample) {
   float fvalL = sample.getValue(TSound::LEFT) * 32768.0;
   float fvalR = sample.getValue(TSound::RIGHT) * 32768.0;
   return TStereo16Sample(tcrop((int)fvalL, -32768, 32767),
@@ -1389,7 +1390,8 @@ inline TStereo24Sample TStereo24Sample::from(const TMono32FloatSample &sample) {
 
 //------------------------------------------------------------------------------
 
-inline TStereo24Sample TStereo24Sample::from(const TStereo32FloatSample &sample) {
+inline TStereo24Sample TStereo24Sample::from(
+    const TStereo32FloatSample &sample) {
   float fvalL = sample.getValue(TSound::LEFT) * 8388608.0;
   float fvalR = sample.getValue(TSound::RIGHT) * 8388608.0;
   return TStereo24Sample(tcrop((int)fvalL, -8388608, 8388607),
@@ -1398,21 +1400,24 @@ inline TStereo24Sample TStereo24Sample::from(const TStereo32FloatSample &sample)
 
 //==============================================================================
 
-inline TMono32FloatSample TMono32FloatSample::from(const TMono8UnsignedSample &sample) {
+inline TMono32FloatSample TMono32FloatSample::from(
+    const TMono8UnsignedSample &sample) {
   float srcval = (sample.getValue(TSound::MONO) - 128) / 128.0;
   return TMono32FloatSample(srcval);
 }
 
 //------------------------------------------------------------------------------
 
-inline TMono32FloatSample TMono32FloatSample::from(const TMono8SignedSample &sample) {
+inline TMono32FloatSample TMono32FloatSample::from(
+    const TMono8SignedSample &sample) {
   float srcval = sample.getValue(TSound::MONO) / 128.0;
   return TMono32FloatSample(srcval);
 }
 
 //------------------------------------------------------------------------------
 
-inline TMono32FloatSample TMono32FloatSample::from(const TStereo8SignedSample &sample) {
+inline TMono32FloatSample TMono32FloatSample::from(
+    const TStereo8SignedSample &sample) {
   float srcval =
       (sample.getValue(TSound::LEFT) + sample.getValue(TSound::RIGHT)) / 256.0;
   return TMono32FloatSample(srcval);
@@ -1420,7 +1425,8 @@ inline TMono32FloatSample TMono32FloatSample::from(const TStereo8SignedSample &s
 
 //------------------------------------------------------------------------------
 
-inline TMono32FloatSample TMono32FloatSample::from(const TStereo8UnsignedSample &sample) {
+inline TMono32FloatSample TMono32FloatSample::from(
+    const TStereo8UnsignedSample &sample) {
   float srcval =
       (sample.getValue(TSound::LEFT) + sample.getValue(TSound::RIGHT) - 256) /
       256.0;
@@ -1429,14 +1435,16 @@ inline TMono32FloatSample TMono32FloatSample::from(const TStereo8UnsignedSample 
 
 //------------------------------------------------------------------------------
 
-inline TMono32FloatSample TMono32FloatSample::from(const TMono16Sample &sample) {
+inline TMono32FloatSample TMono32FloatSample::from(
+    const TMono16Sample &sample) {
   float srcval = sample.getValue(TSound::MONO) / 32768.0;
   return TMono32FloatSample(srcval);
 }
 
 //------------------------------------------------------------------------------
 
-inline TMono32FloatSample TMono32FloatSample::from(const TStereo16Sample &sample) {
+inline TMono32FloatSample TMono32FloatSample::from(
+    const TStereo16Sample &sample) {
   float srcval =
       (sample.getValue(TSound::LEFT) + sample.getValue(TSound::RIGHT)) /
       65536.0;
@@ -1445,14 +1453,16 @@ inline TMono32FloatSample TMono32FloatSample::from(const TStereo16Sample &sample
 
 //------------------------------------------------------------------------------
 
-inline TMono32FloatSample TMono32FloatSample::from(const TMono24Sample &sample) {
+inline TMono32FloatSample TMono32FloatSample::from(
+    const TMono24Sample &sample) {
   float srcval = sample.getValue(TSound::MONO) / 8388608.0;
   return TMono32FloatSample(srcval);
 }
 
 //------------------------------------------------------------------------------
 
-inline TMono32FloatSample TMono32FloatSample::from(const TStereo24Sample &sample) {
+inline TMono32FloatSample TMono32FloatSample::from(
+    const TStereo24Sample &sample) {
   float srcval =
       (sample.getValue(TSound::LEFT) + sample.getValue(TSound::RIGHT)) /
       16777216.0;
@@ -1461,13 +1471,15 @@ inline TMono32FloatSample TMono32FloatSample::from(const TStereo24Sample &sample
 
 //------------------------------------------------------------------------------
 
-inline TMono32FloatSample TMono32FloatSample::from(const TMono32FloatSample &sample) {
+inline TMono32FloatSample TMono32FloatSample::from(
+    const TMono32FloatSample &sample) {
   return sample;
 }
 
 //------------------------------------------------------------------------------
 
-inline TMono32FloatSample TMono32FloatSample::from(const TStereo32FloatSample &sample) {
+inline TMono32FloatSample TMono32FloatSample::from(
+    const TStereo32FloatSample &sample) {
   float srcval =
       (sample.getValue(TSound::LEFT) + sample.getValue(TSound::RIGHT)) / 2.0;
   return TMono32FloatSample(srcval);
@@ -1483,7 +1495,8 @@ inline TStereo32FloatSample TStereo32FloatSample::from(
 
 //------------------------------------------------------------------------------
 
-inline TStereo32FloatSample TStereo32FloatSample::from(const TMono8SignedSample &sample) {
+inline TStereo32FloatSample TStereo32FloatSample::from(
+    const TMono8SignedSample &sample) {
   float srcval = sample.getValue(TSound::MONO) / 128.0;
   return TStereo32FloatSample(srcval, srcval);
 }
@@ -1508,14 +1521,16 @@ inline TStereo32FloatSample TStereo32FloatSample::from(
 
 //------------------------------------------------------------------------------
 
-inline TStereo32FloatSample TStereo32FloatSample::from(const TMono16Sample &sample) {
+inline TStereo32FloatSample TStereo32FloatSample::from(
+    const TMono16Sample &sample) {
   float srcval = sample.getValue(TSound::MONO) / 32768.0;
   return TStereo32FloatSample(srcval, srcval);
 }
 
 //------------------------------------------------------------------------------
 
-inline TStereo32FloatSample TStereo32FloatSample::from(const TStereo16Sample &sample) {
+inline TStereo32FloatSample TStereo32FloatSample::from(
+    const TStereo16Sample &sample) {
   float srcvalL = sample.getValue(TSound::LEFT) / 32768.0;
   float srcvalR = sample.getValue(TSound::RIGHT) / 32768.0;
   return TStereo32FloatSample(srcvalL, srcvalR);
@@ -1523,14 +1538,16 @@ inline TStereo32FloatSample TStereo32FloatSample::from(const TStereo16Sample &sa
 
 //------------------------------------------------------------------------------
 
-inline TStereo32FloatSample TStereo32FloatSample::from(const TMono24Sample &sample) {
+inline TStereo32FloatSample TStereo32FloatSample::from(
+    const TMono24Sample &sample) {
   float srcval = sample.getValue(TSound::MONO) / 8388608.0;
   return TStereo32FloatSample(srcval, srcval);
 }
 
 //------------------------------------------------------------------------------
 
-inline TStereo32FloatSample TStereo32FloatSample::from(const TStereo24Sample &sample) {
+inline TStereo32FloatSample TStereo32FloatSample::from(
+    const TStereo24Sample &sample) {
   float srcvalL = sample.getValue(TSound::LEFT) / 8388608.0;
   float srcvalR = sample.getValue(TSound::RIGHT) / 8388608.0;
   return TStereo32FloatSample(srcvalL, srcvalR);
@@ -1538,14 +1555,16 @@ inline TStereo32FloatSample TStereo32FloatSample::from(const TStereo24Sample &sa
 
 //------------------------------------------------------------------------------
 
-inline TStereo32FloatSample TStereo32FloatSample::from(const TMono32FloatSample &sample) {
+inline TStereo32FloatSample TStereo32FloatSample::from(
+    const TMono32FloatSample &sample) {
   float srcval = sample.getValue(TSound::MONO);
   return TStereo32FloatSample(srcval, srcval);
 }
 
 //------------------------------------------------------------------------------
 
-inline TStereo32FloatSample TStereo32FloatSample::from(const TStereo32FloatSample &sample) {
+inline TStereo32FloatSample TStereo32FloatSample::from(
+    const TStereo32FloatSample &sample) {
   return sample;
 }
 

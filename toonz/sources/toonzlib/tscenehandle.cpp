@@ -24,13 +24,13 @@ ToonzScene *TSceneHandle::getScene() const { return m_scene; }
 void TSceneHandle::setScene(ToonzScene *scene) {
   if (m_scene == scene) return;
   ToonzScene *oldscene = m_scene;
-  m_scene = scene;
+  m_scene              = scene;
   if (m_scene) emit sceneSwitched();
 
   // Prevent memory corruption caused by delayed signals writing into the
   // discarded old scene while that memory was freed.
-  // That made OT had a chance of crashing when project or scene changed rapidly.
-  // Note: This is not the best solution but "it just works"
+  // That made OT had a chance of crashing when project or scene changed
+  // rapidly. Note: This is not the best solution but "it just works"
   if (oldscene) {
     QTimer *delayedTimer = new QTimer(this);
     delayedTimer->setSingleShot(true);

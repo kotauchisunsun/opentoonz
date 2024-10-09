@@ -30,8 +30,10 @@ public:
 public:
   explicit ptr(ptr_type p = ptr_type()) : m_ptr(p) {}
 
-  operator bool() const { return m_ptr; }  // There should be no need to use
-                                           // the Safe Bool idiom
+  operator bool() const {
+    return m_ptr;
+  }  // There should be no need to use
+     // the Safe Bool idiom
   bool operator==(const ptr &other) const { return (m_ptr == other.m_ptr); }
   bool operator!=(const ptr &other) const { return (m_ptr != other.m_ptr); }
 

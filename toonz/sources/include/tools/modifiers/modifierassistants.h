@@ -17,35 +17,29 @@
 #define DVVAR DV_IMPORT_VAR
 #endif
 
-
 //===================================================================
 
 //*****************************************************************************************
 //    TModifierAssistants definition
 //*****************************************************************************************
 
-class DVAPI TModifierAssistants: public TInputModifier {
+class DVAPI TModifierAssistants : public TInputModifier {
 public:
   typedef TSubTrackHandler Handler;
-  class DVAPI Interpolator: public TTrackInterpolator {
+  class DVAPI Interpolator : public TTrackInterpolator {
   public:
     const double magnetism;
     TGuidelineList guidelines;
-    inline Interpolator(TTrack &track, double magnetism):
-      TTrackInterpolator(track),
-      magnetism(magnetism > 0 ? (magnetism < 1 ? magnetism : 1) : 0)
-      { }
+    inline Interpolator(TTrack &track, double magnetism)
+        : TTrackInterpolator(track)
+        , magnetism(magnetism > 0 ? (magnetism < 1 ? magnetism : 1) : 0) {}
     TTrackPoint interpolate(double index) override;
   };
 
 private:
-  bool scanAssistants(
-    const TPointD *positions,
-    int positionsCount,
-    TGuidelineList *outGuidelines,
-    bool draw,
-    bool enabledOnly,
-    bool drawGuidelines ) const;
+  bool scanAssistants(const TPointD *positions, int positionsCount,
+                      TGuidelineList *outGuidelines, bool draw,
+                      bool enabledOnly, bool drawGuidelines) const;
 
 public:
   double magnetism;
@@ -53,15 +47,13 @@ public:
 
   explicit TModifierAssistants(double magnetism = 1);
 
-  void modifyTrack(
-    const TTrack &track,
-    TTrackList &outTracks ) override;
+  void modifyTrack(const TTrack &track, TTrackList &outTracks) override;
 
-  TRectD calcDrawBounds(const TTrackList &tracks, const THoverList &hovers) override;
+  TRectD calcDrawBounds(const TTrackList &tracks,
+                        const THoverList &hovers) override;
 
-   void drawTrack(const TTrack &track) override;
-   void draw(const TTrackList &tracks, const THoverList &hovers) override;
+  void drawTrack(const TTrack &track) override;
+  void draw(const TTrackList &tracks, const THoverList &hovers) override;
 };
-
 
 #endif

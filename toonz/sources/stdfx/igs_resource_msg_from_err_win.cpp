@@ -2,11 +2,10 @@
 #include <locale>
 #include <stdexcept>
 
-
 #if defined UNICODE
 /*------ ワイド文字文字列 --> マルチバイト文字列 ------*/
 static void wcs_to_mbs(const std::wstring &wcs, std::string &mbs,
-                               const UINT code_page) {
+                       const UINT code_page) {
   /* 第４引数で -1 指定により終端文字を含む大きさを返す */
   int length = ::WideCharToMultiByte(code_page, 0, wcs.c_str(), -1, 0, 0, 0, 0);
   if (length <= 1) {

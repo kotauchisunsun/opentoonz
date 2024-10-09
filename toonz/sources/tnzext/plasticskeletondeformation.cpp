@@ -113,7 +113,7 @@ double buildAngle(const PlasticSkeleton &skeleton, int v) {
 
 SkVD::Keyframe SkVD::getKeyframe(double frame) const {
   Keyframe kf;
-  for (int p          = 0; p < PARAMS_COUNT; ++p)
+  for (int p = 0; p < PARAMS_COUNT; ++p)
     kf.m_keyframes[p] = m_params[p]->getKeyframeAt(frame);
 
   return kf;
@@ -150,7 +150,7 @@ bool SkVD::setKeyframe(const SkVD::Keyframe &values, double frame,
       TDoubleKeyframe kf(values.m_keyframes[p]);
       kf.m_frame = frame;
 
-      if (easeIn >= 0.0) kf.m_speedIn   = TPointD(-easeIn, kf.m_speedIn.y);
+      if (easeIn >= 0.0) kf.m_speedIn = TPointD(-easeIn, kf.m_speedIn.y);
       if (easeOut >= 0.0) kf.m_speedOut = TPointD(easeOut, kf.m_speedOut.y);
 
       m_params[p]->setKeyframe(kf);
@@ -225,9 +225,8 @@ public:
   std::set<TParamObserver *>
       m_observers;  //!< Set of the deformation's observers
 
-  TSyntax::Grammar
-      *m_grammar;  //!< The params' grammar. Weird though - it's a VERY
-                   //!< occult requirement to TDoubleParams...
+  TSyntax::Grammar *m_grammar;  //!< The params' grammar. Weird though - it's a
+                                //!< VERY occult requirement to TDoubleParams...
 
   // NOTE: There \a is a deformation even for a skeleton's root node. This is
   // now required due to the

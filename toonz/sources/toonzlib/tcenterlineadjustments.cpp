@@ -19,7 +19,7 @@ VectorizerCoreGlobals *globals;
 std::vector<unsigned int> contourFamilyOfOrganized;
 JointSequenceGraph *currJSGraph;
 ContourFamily *currContourFamily;
-};
+};  // namespace
 
 //==========================================================================
 
@@ -76,7 +76,7 @@ void organizeGraphs(SkeletonList *skeleton, VectorizerCoreGlobals &g) {
           has1DegreePoint = 1;
         } else {
           goto _graph;
-	}
+        }
       }
     }
 
@@ -149,14 +149,14 @@ void organizeGraphs(SkeletonList *skeleton, VectorizerCoreGlobals &g) {
     }
   }
 
-  // NOTE: The following may seem uncommon - you must observe that, *WHEN
-  // maxThickness<INF*,
-  //      more isolated sequence groups may arise in the SAME SkeletonGraph; so,
-  //      an organized
-  //      graph may contain different unconnected basic graph-structures.
-  //      Further, remaining circular sequences may still exist. Therefore:
+    // NOTE: The following may seem uncommon - you must observe that, *WHEN
+    // maxThickness<INF*,
+    //      more isolated sequence groups may arise in the SAME SkeletonGraph;
+    //      so, an organized graph may contain different unconnected basic
+    //      graph-structures. Further, remaining circular sequences may still
+    //      exist. Therefore:
 
-  // Proceed with remaining circulars extraction
+    // Proceed with remaining circulars extraction
 
   _circulars : {
     // Extract all circular sequences
@@ -206,7 +206,7 @@ const double shapeDistMul  = 1;
 const double hDiffMul      = 0.3;
 const double lineDistMul   = 1;
 const double pullBackMul   = 0.2;
-}
+}  // namespace
 
 //--------------------------------------------------------------------------
 
@@ -556,7 +556,7 @@ const std::vector<unsigned int> *heightIndicesPtr;
 std::vector<double> *optHeights;
 double optMeanError;
 double hMax;
-}
+}  // namespace
 
 //--------------------------------------------------------------------------
 
@@ -737,7 +737,8 @@ public:
     // m_direction is normalized, therefore:
     return a.m_direction.y >= 0
                ? b.m_direction.y >= 0 ? a.m_direction.x > b.m_direction.x : 1
-               : b.m_direction.y < 0 ? a.m_direction.x < b.m_direction.x : 0;
+           : b.m_direction.y < 0 ? a.m_direction.x < b.m_direction.x
+                                 : 0;
   }
 };
 

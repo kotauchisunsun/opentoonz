@@ -31,8 +31,8 @@ public:
   class ColorEditor {
   public:
     virtual void connectTo(TColorField *fld, bool openPopup = false) = 0;
-    virtual bool isConnectedTo(TColorField *fld) const = 0;
-    virtual void updateColor(const TPixel32 &color, bool dragging) = 0;
+    virtual bool isConnectedTo(TColorField *fld) const               = 0;
+    virtual void updateColor(const TPixel32 &color, bool dragging)   = 0;
   };
 
 private:

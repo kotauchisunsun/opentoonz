@@ -69,8 +69,8 @@ int getStrokeId(const TStroke *s, const TVectorImageP &vi) {
 //---------------------------------------------------------------------------
 
 /**
-   * Verify if a curve is a "almost" point.
-   */
+ * Verify if a curve is a "almost" point.
+ */
 template <class T>
 bool isImproper(const T *tq) {
   TPointD v1 = tq->getP0() - tq->getP1(), v2 = tq->getP2() - tq->getP1();
@@ -98,8 +98,8 @@ bool areInSameDirection(const TPointD &v1, const TPointD &v2) {
 //---------------------------------------------------------------------------
 
 /**
-   * Verify if a curve is a straight line.
-   */
+ * Verify if a curve is a straight line.
+ */
 template <class T>
 bool curveIsStraight(const T *tq, double &t) {
   t = -1;
@@ -123,8 +123,8 @@ bool curveIsStraight(const T *tq, double &t) {
 //---------------------------------------------------------------------------
 
 /**
-   * Verify if junction between two curves, is smooth.
-   */
+ * Verify if junction between two curves, is smooth.
+ */
 template <class T>
 bool corner(const T *q1, const T *q2, double tolerance) {
   if (!q1 || !q2 || !areAlmostEqual(q1->getP2(), q2->getP0())) return false;
@@ -677,7 +677,7 @@ DVAPI bool ToonzExt::detectStraightIntervals(const TStroke *stroke,
 
   // second step:
   //  add intervals vs stroke
-  std::map<int, ChunkStraights>::iterator it = arrayOfChunkIntervals.begin(),
+  std::map<int, ChunkStraights>::iterator it  = arrayOfChunkIntervals.begin(),
                                           end = arrayOfChunkIntervals.end(),
                                           aux;
 

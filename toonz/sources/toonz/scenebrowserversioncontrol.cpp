@@ -69,7 +69,7 @@ void SceneBrowser::setupVersionControlCommand(QString &file, QString &path) {
 //-----------------------------------------------------------------------------
 
 void SceneBrowser::setupVersionControlCommand(QStringList &files, QString &path,
-                                             int &sceneIconsCount) {
+                                              int &sceneIconsCount) {
   std::vector<TFilePath> filePaths;
   FileSelection *fs =
       dynamic_cast<FileSelection *>(m_itemViewer->getPanel()->getSelection());

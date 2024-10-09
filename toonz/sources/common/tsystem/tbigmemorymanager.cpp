@@ -28,9 +28,8 @@ public:
   // bool m_putInNormalMemory;
   Chunkinfo(TUINT32 size, TRaster *ras)  //, bool putInNormalMemory=false)
       : m_size(size)
-        //, m_locks(0)
-        ,
-        m_rasters()
+      //, m_locks(0)
+      , m_rasters()
   //, m_putInNormalMemory(putInNormalMemory)
   {
     if (ras) m_rasters.push_back(ras);
@@ -60,7 +59,7 @@ namespace {
 int allocationPeakKB               = 0;
 unsigned long long allocationSumKB = 0;
 unsigned long allocationCount      = 0;
-}
+}  // namespace
 
 //------------------------------------------------------------------------------
 
@@ -196,9 +195,9 @@ UCHAR *TBigMemoryManager::getBuffer(UINT size) {
   if (m_theMemory == 0) return (UCHAR *)calloc(size, 1);
 
   std::map<UCHAR *, Chunkinfo>::iterator it = m_chunks.begin();
-  UCHAR *buffer     = m_theMemory;
-  TUINT32 chunkSize = 0;
-  UCHAR *address    = 0;
+  UCHAR *buffer                             = m_theMemory;
+  TUINT32 chunkSize                         = 0;
+  UCHAR *address                            = 0;
   while (it != m_chunks.end()) {
     /*if (it->second.m_putInNormalMemory)
 {it++; continue;}*/
@@ -276,7 +275,7 @@ bool TBigMemoryManager::putRaster(TRaster *ras, bool canPutOnDisk) {
     if (!ras->m_parent && !(ras->m_buffer = (UCHAR *)calloc(size, 1))) {
       // MessageBox( NULL, "Ouch!can't allocate!", "Warning", MB_OK);
       // non c'e' memoria; provo a comprimere
-      /*TImageCache::instance()->doCompress(); 
+      /*TImageCache::instance()->doCompress();
     if (!(ras->m_buffer = (UCHAR *)malloc(size)))*/  // andata male pure cosi';
                                                      // metto tutto su disco
       // TImageCache::instance()->outputMap(size, "C:\\logCacheFailure");
@@ -421,9 +420,10 @@ void TBigMemoryManager::printMap() {
 
   while (it != m_chunks.end()) {
     TSystem::outputDebug(
-        "chunk #" + std::to_string((int)count++) + "dimensione(kb):" +
-        std::to_string((int)(it->second.m_size >> 10)) + "num raster:" +
-        std::to_string((int)(it->second.m_rasters.size())) + "\n");
+        "chunk #" + std::to_string((int)count++) +
+        "dimensione(kb):" + std::to_string((int)(it->second.m_size >> 10)) +
+        "num raster:" + std::to_string((int)(it->second.m_rasters.size())) +
+        "\n");
 
     it++;
   }
@@ -501,7 +501,7 @@ void TBigMemoryManager::checkConsistency() {
   int count = 0;
   // int size = m_chunks.size();
   std::map<UCHAR *, Chunkinfo>::iterator it = m_chunks.begin();
-  UCHAR *endAddress = m_theMemory;
+  UCHAR *endAddress                         = m_theMemory;
   TUINT32 freeMem = 0, allocMem = 0;
 
   while (it != m_chunks.end()) {
@@ -594,7 +594,7 @@ std::map<UCHAR *, Chunkinfo>::iterator TBigMemoryManager::shiftBlock(
 UCHAR *TBigMemoryManager::remap(TUINT32 size)  // size==0 -> remappo tutto
 {
   bool locked = false;
-// QMutexLocker sl(m_mutex); //gia' scopata
+  // QMutexLocker sl(m_mutex); //gia' scopata
 
 #ifdef _DEBUG
   checkConsistency();
@@ -666,8 +666,8 @@ void TBigMemoryManager::printLog(TUINT32 size) {
   os << "memoria libera: " << m_availableMemory / 1024 << " KB\n\n\n";
 
   std::map<UCHAR *, Chunkinfo>::iterator it = m_chunks.begin();
-  UCHAR *buffer  = m_theMemory;
-  UINT chunkSize = 0;
+  UCHAR *buffer                             = m_theMemory;
+  UINT chunkSize                            = 0;
   for (; it != m_chunks.end(); it++) {
     TUINT32 gap = (TUINT32)((it->first) - (buffer + chunkSize));
     if (gap > 0) os << "- gap di " << gap / 1024 << " KB\n";

@@ -257,7 +257,7 @@ double ShadowStyle::getParamValue(TColorStyle::double_tag, int index) const {
 
   switch (index) {
   case 0:
-    degree                              = asin(m_shadowDirection.y);
+    degree = asin(m_shadowDirection.y);
     if (m_shadowDirection.x < 0) degree = M_PI - degree;
     if (degree < 0) degree += M_2PI;
     return degree * M_180_PI;
@@ -372,7 +372,7 @@ void ShadowStyle::drawRegion(const TColorFunction *cf, const bool antiAliasing,
   TStencilControl *stenc = TStencilControl::instance();
 
   TPixel32 backgroundColor = TSolidColorStyle::getMainColor();
-  if (cf) backgroundColor  = (*(cf))(backgroundColor);
+  if (cf) backgroundColor = (*(cf))(backgroundColor);
 
   ////stenc->beginMask();
   /*
@@ -516,7 +516,7 @@ double ShadowStyle2::getParamValue(TColorStyle::double_tag, int index) const {
 
   if (index == 1) return m_shadowLength;
 
-  double degree                       = asin(m_shadowDirection.y);
+  double degree = asin(m_shadowDirection.y);
   if (m_shadowDirection.x < 0) degree = M_PI - degree;
 
   if (degree < 0) degree += M_2PI;
@@ -584,7 +584,7 @@ void drawShadowLine(TPixel32 shadowColor, TPixel32 color, TPointD v1,
 
   glEnd();
 }
-}
+}  // namespace
 
 //------------------------------------------------------------
 
@@ -625,10 +625,10 @@ void ShadowStyle2::drawPolyline(const TColorFunction *cf,
     v1.x = it->x;
     v1.y = it->y;
     if (v1 != v0) {
-      diff               = normalize(rotate90(v1 - v0));
-      len1               = diff * shadowDirection;
+      diff = normalize(rotate90(v1 - v0));
+      len1 = diff * shadowDirection;
       if (len1 < 0) len1 = 0;
-      lens[count++]      = len1;
+      lens[count++] = len1;
     } else
       lens[count++] = 0;
 
@@ -690,7 +690,7 @@ void ShadowStyle2::drawRegion(const TColorFunction *cf, const bool antiAliasing,
                               TRegionOutline &boundary) const {
   TStencilControl *stenc   = TStencilControl::instance();
   TPixel32 backgroundColor = TSolidColorStyle::getMainColor();
-  if (cf) backgroundColor  = (*(cf))(backgroundColor);
+  if (cf) backgroundColor = (*(cf))(backgroundColor);
 
   if (backgroundColor.m == 0) {  // only to create stencil mask
     TSolidColorStyle appStyle(TPixel32::White);
@@ -947,7 +947,7 @@ double TPointShadowFillStyle::getParamValue(TColorStyle::double_tag,
 
   switch (index) {
   case 0:
-    degree                              = asin(m_shadowDirection.y);
+    degree = asin(m_shadowDirection.y);
     if (m_shadowDirection.x < 0) degree = M_PI - degree;
     if (degree < 0) degree += M_2PI;
     return degree * M_180_PI;
@@ -1105,7 +1105,7 @@ void TPointShadowFillStyle::drawRegion(const TColorFunction *cf,
                                        TRegionOutline &boundary) const {
   TStencilControl *stenc   = TStencilControl::instance();
   TPixel32 backgroundColor = TSolidColorStyle::getMainColor();
-  if (cf) backgroundColor  = (*(cf))(backgroundColor);
+  if (cf) backgroundColor = (*(cf))(backgroundColor);
 
   if (backgroundColor.m == 0) {  // only to create stencil mask
     TSolidColorStyle appStyle(TPixel32::White);
@@ -1298,7 +1298,7 @@ void TDottedFillStyle::drawRegion(const TColorFunction *cf,
 
   TStencilControl *stenc   = TStencilControl::instance();
   TPixel32 backgroundColor = TSolidColorStyle::getMainColor();
-  if (cf) backgroundColor  = (*(cf))(backgroundColor);
+  if (cf) backgroundColor = (*(cf))(backgroundColor);
 
   if (backgroundColor.m == 0) {  // only to create stencil mask
     TSolidColorStyle appStyle(TPixel32::White);
@@ -1578,7 +1578,7 @@ void TCheckedFillStyle::drawRegion(const TColorFunction *cf,
                                    TRegionOutline &boundary) const {
   TStencilControl *stenc   = TStencilControl::instance();
   TPixel32 backgroundColor = TSolidColorStyle::getMainColor();
-  if (cf) backgroundColor  = (*(cf))(backgroundColor);
+  if (cf) backgroundColor = (*(cf))(backgroundColor);
 
   if (backgroundColor.m == 0) {  // only to create stencil mask
     TSolidColorStyle appStyle(TPixel32::White);
@@ -1701,7 +1701,7 @@ void ArtisticModifier::modify(TRegionOutline &outline) const {
                           (pIt->y - (pIt - 1)->y) * (pIt->y - (pIt - 1)->y);
         counter += distance;
       }
-      double wave          = 1;
+      double wave = 1;
       if (maxcounter) wave = sin(M_2PI * counter / maxcounter);
 
       pIt->x += m_move.x * wave;
@@ -1939,7 +1939,7 @@ void TChalkFillStyle::loadData(int ids, TInputStreamInterface &is) {
     throw TException("Chalk Fill style: unknown obsolete format");
   TSolidColorStyle::loadData(is);
   is >> m_color0 >> m_density >> m_size;
-  m_density                      = m_density / 1000;
+  m_density = m_density / 1000;
   if (m_density > 100) m_density = 100;
 }
 
@@ -2038,7 +2038,7 @@ void TChalkFillStyle::drawRegion(const TColorFunction *cf,
 
   TStencilControl *stenc   = TStencilControl::instance();
   TPixel32 backgroundColor = TSolidColorStyle::getMainColor();
-  if (cf) backgroundColor  = (*(cf))(backgroundColor);
+  if (cf) backgroundColor = (*(cf))(backgroundColor);
 
   if (backgroundColor.m == 0) {  // only to create stencil mask
     TSolidColorStyle appStyle(TPixel32::White);
@@ -2270,7 +2270,7 @@ void TChessFillStyle::drawRegion(const TColorFunction *cf,
 
   TStencilControl *stenc   = TStencilControl::instance();
   TPixel32 backgroundColor = TSolidColorStyle::getMainColor();
-  if (cf) backgroundColor  = (*(cf))(backgroundColor);
+  if (cf) backgroundColor = (*(cf))(backgroundColor);
 
   if (backgroundColor.m == 0) {  // only to create stencil mask
     TSolidColorStyle appStyle(TPixel32::White);
@@ -2534,7 +2534,7 @@ void TStripeFillStyle::drawRegion(const TColorFunction *cf,
   TStencilControl *stenc = TStencilControl::instance();
 
   TPixel32 backgroundColor = TSolidColorStyle::getMainColor();
-  if (cf) backgroundColor  = (*(cf))(backgroundColor);
+  if (cf) backgroundColor = (*(cf))(backgroundColor);
 
   if (backgroundColor.m == 0) {  // only to create stencil mask
     TSolidColorStyle appStyle(TPixel32::White);
@@ -3423,7 +3423,7 @@ void TCircleStripeFillStyle::drawRegion(const TColorFunction *cf,
 
   TStencilControl *stenc   = TStencilControl::instance();
   TPixel32 backgroundColor = TSolidColorStyle::getMainColor();
-  if (cf) backgroundColor  = (*(cf))(m_pointColor);
+  if (cf) backgroundColor = (*(cf))(m_pointColor);
 
   TPixel32 foregroundColor;
   if (cf)
@@ -3703,7 +3703,7 @@ void TMosaicFillStyle::drawRegion(const TColorFunction *cf,
                                   TRegionOutline &boundary) const {
   TStencilControl *stenc   = TStencilControl::instance();
   TPixel32 backgroundColor = TSolidColorStyle::getMainColor();
-  if (cf) backgroundColor  = (*(cf))(backgroundColor);
+  if (cf) backgroundColor = (*(cf))(backgroundColor);
 
   if (backgroundColor.m == 0) {  // only to create stencil mask
     TSolidColorStyle appStyle(TPixel32::White);
@@ -3932,7 +3932,7 @@ void TPatchFillStyle::preaprePos(const TRectD &box, std::vector<TPointD> &v,
     int nb   = ix % 4;
     double y = (nb == 0 || nb == 1) ? box.y0 - 2 * m : box.y0 - m;
     for (int iy = 0; iy < lY; iy++, y += (2 * m)) v.push_back(TPointD(x, y));
-    x           = (nb == 0 || nb == 2) ? x + r : x + r / 2.0;
+    x = (nb == 0 || nb == 2) ? x + r : x + r / 2.0;
   }
   lX = ix;
 
@@ -3983,7 +3983,7 @@ void TPatchFillStyle::drawRegion(const TColorFunction *cf,
                                  TRegionOutline &boundary) const {
   TStencilControl *stenc   = TStencilControl::instance();
   TPixel32 backgroundColor = TSolidColorStyle::getMainColor();
-  if (cf) backgroundColor  = (*(cf))(backgroundColor);
+  if (cf) backgroundColor = (*(cf))(backgroundColor);
 
   if (backgroundColor.m == 0) {  // only to create stencil mask
     TSolidColorStyle appStyle(TPixel32::White);

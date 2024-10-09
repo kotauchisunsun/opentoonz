@@ -212,7 +212,7 @@ void AntialiasPopup::setCurrentSampleRaster() {
     TXsheet *xsh  = app->getCurrentXsheet()->getXsheet();
     TXshCell cell = xsh->getCell(app->getCurrentFrame()->getFrameIndex(),
                                  app->getCurrentColumn()->getColumnIndex());
-    TImageP aux    = cell.getImage(true);
+    TImageP aux   = cell.getImage(true);
     if (aux) image = aux->cloneImage();
   } else if (filmstripSelection) {
     TApp *app                    = TApp::instance();

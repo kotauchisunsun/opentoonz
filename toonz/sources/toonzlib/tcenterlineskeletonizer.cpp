@@ -108,8 +108,7 @@ class IndexTable {
 public:
   typedef std::list<ContourNode *> IndexColumn;
 
-  std::vector<IndexColumn>
-      m_columns;  //!< Contours set by 'column identifier'.
+  std::vector<IndexColumn> m_columns;  //!< Contours set by 'column identifier'.
   std::vector<int>
       m_identifiers;  //!< Column identifiers by original contour index.
 
@@ -139,14 +138,16 @@ class Event {
 public:
   /*! \remark  Values are sorted by preference at simultaneous events.    */
 
-  enum Type            //! An event's possible types.
-  { special,           //!< A vertex event that is also an edge event (V case).
+  enum Type  //! An event's possible types.
+  {
+    special,           //!< A vertex event that is also an edge event (V case).
     edge,              //!< An edge shrinks to 0 length.
     vertex,            //!< Two contour nodes clash.
     split_regenerate,  //!< Placeholder type for split events that must be
                        //! regenerated.
     split,             //!< An edge is split by a clashing contour node.
-    failure };
+    failure
+  };
 
 public:
   double m_height;
@@ -560,7 +561,7 @@ inline void ContourNode::buildNodeInfos(bool forceConvex) {
   direction = m_edge->m_direction - m_prev->m_edge->m_direction;
   parameter = norm(direction);
   if (parameter > 0.01) {
-    direction                = direction * (1 / parameter);
+    direction = direction * (1 / parameter);
     if (m_concave) direction = -direction;
   } else
     direction = rotate270(m_edge->m_direction);
@@ -633,11 +634,11 @@ void Timeline::build(ContourFamily &polygons, VectorizationContext &context,
 
   // Build casual ordered node-array
   for (i = 0, current = 0; i < polygons.size(); ++i)
-    for (j                        = 0; j < polygons[i].size(); ++j)
+    for (j = 0; j < polygons[i].size(); ++j)
       nodesToBeTreated[current++] = RandomizedNode(&polygons[i][j]);
 
   // Same for linear-added nodes
-  for (i                        = 0; i < context.m_linearNodesHeapCount; ++i)
+  for (i = 0; i < context.m_linearNodesHeapCount; ++i)
     nodesToBeTreated[current++] = RandomizedNode(&context.m_linearNodesHeap[i]);
 
   double maxThickness = context.m_globals->currConfig->m_maxThickness;
@@ -803,8 +804,8 @@ inline void Event::calculateEdgeEvent() {
       m_coGenerator   = m_generator->m_prev;
       minDisplacement = prevDisplacement;
       minHeight       = locals::height(
-          m_coGenerator,
-          firstDisplacement);  // Height is built on the edge's first
+                m_coGenerator,
+                firstDisplacement);  // Height is built on the edge's first
       positiveEdgeDispl =
           (prevDispPositive &&
            firstDisplacement >
@@ -856,9 +857,8 @@ inline void Event::calculateEdgeEvent() {
 
   // Now, if calculated height is coherent, this Event is valid.
   if (positiveEdgeDispl  // Edges shrinking to a point after a FORWARD
-      ||
-      minHeight > m_context->m_currentHeight -
-                      0.01)  // displacement are processable - this dominates
+      || minHeight > m_context->m_currentHeight -
+                         0.01)  // displacement are processable - this dominates
     m_height = minHeight,
     m_displacement =
         minDisplacement;  // height considerations which may be affected by
@@ -950,22 +950,19 @@ inline bool Event::testRayEdgeCollision(ContourNode *opposite,
           -0.01  // Ray's vertex generator is below the roof slab
       //&& roofSlabOrthogonal * m_generator->m_direction > 0
       //// Ray must go 'against' the roof slab
-      &&
-      planeProjection(roofSlabOrthogonal) *
-              planeProjection(m_generator->m_direction) >
-          0  // Ray must go against the opposing edge
-      &&
-      (side1 = m_generator->m_direction *
-                   opposite->m_AuxiliaryMomentum1 +  // Ray must pass inside the
-                                                     // first slab guard
-               firstSlabGuard * m_generator->m_AngularMomentum) > -0.01  //
-      &&
-      (side2 = m_generator->m_direction *
-                   opposite->m_next->m_AuxiliaryMomentum2 +  // Ray must pass
-                                                             // inside the
-                                                             // second slab
-                                                             // guard
-               lastSlabGuard * m_generator->m_AngularMomentum) < 0.01  //
+      && planeProjection(roofSlabOrthogonal) *
+                 planeProjection(m_generator->m_direction) >
+             0  // Ray must go against the opposing edge
+      && (side1 = m_generator->m_direction *
+                      opposite->m_AuxiliaryMomentum1 +  // Ray must pass inside
+                                                        // the first slab guard
+                  firstSlabGuard * m_generator->m_AngularMomentum) > -0.01  //
+      && (side2 = m_generator->m_direction *
+                      opposite->m_next->m_AuxiliaryMomentum2 +  // Ray must pass
+                                                                // inside the
+                                                                // second slab
+                                                                // guard
+                  lastSlabGuard * m_generator->m_AngularMomentum) < 0.01  //
       &&
       (m_generator->m_ancestorContour !=
            opposite->m_ancestorContour  // Helps with immediate splits from
@@ -996,10 +993,9 @@ inline bool Event::testRayEdgeCollision(ContourNode *opposite,
     // Check height/displacement conditions
     if (displacement > -0.01 &&
         displacement < m_displacement + 0.01  // admitting concurrent events
-        &&
-        (height = m_generator->m_position.z +
-                  displacement * m_generator->m_direction.z) >
-            m_context->m_currentHeight - 0.01)
+        && (height = m_generator->m_position.z +
+                     displacement * m_generator->m_direction.z) >
+               m_context->m_currentHeight - 0.01)
       return true;
   }
 
@@ -1180,9 +1176,8 @@ inline bool Event::process() {
               m_generator->m_next
                   ->m_next  // CAN devolve to a special event - which should
           ||
-          m_coGenerator ==
-              m_generator->m_prev
-                  ->m_prev)  // already be present in the timeline
+          m_coGenerator == m_generator->m_prev
+                               ->m_prev)  // already be present in the timeline
         return false;
 
       // then, process it
@@ -1200,14 +1195,14 @@ inline bool Event::process() {
         return false;
       }
 
-    // This may actually happen on current implementation, due to quirky event
-    // generation and preferential events rejection. See function tryRay..()
-    // around the end. Historically resolved to a split event, so we maintain
-    // that.
+      // This may actually happen on current implementation, due to quirky event
+      // generation and preferential events rejection. See function tryRay..()
+      // around the end. Historically resolved to a split event, so we maintain
+      // that.
 
-    // assert(false);
+      // assert(false);
 
-    /* fallthrough */
+      /* fallthrough */
 
     case split:  // No break is intended
       if (m_coGenerator->hasAttribute(ContourNode::ELIMINATED) ||
@@ -1841,10 +1836,9 @@ inline TPointD SSDebugger::updated(ContourNode *node) {
 #ifndef _PREPROCESS
 #ifdef _UPDATE
   if (node->m_direction.z > 1e-4) {
-    return planeProjection(
-        node->m_position +
-        ((m_height - node->m_position.z) / node->m_direction.z) *
-            node->m_direction);
+    return planeProjection(node->m_position + ((m_height - node->m_position.z) /
+                                               node->m_direction.z) *
+                                                  node->m_direction);
   } else
     return planeProjection(node->m_position);
 

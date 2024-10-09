@@ -37,7 +37,7 @@ void TColorValue::getHsv(int &ih, int &is, int &iv) const {
       h = 2 + (b - r) / delta;
     else if (b == max)
       h = 4 + (r - g) / delta;
-    h   = h * 60;
+    h = h * 60;
     if (h < 0) h += 360;
   }
   assert(0 <= h && h <= 360);

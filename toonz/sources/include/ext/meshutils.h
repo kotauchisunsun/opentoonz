@@ -35,7 +35,7 @@ struct PlasticDeformerDataGroup;
 DVAPI void transform(
     const TMeshImageP &image,  //!< Mesh image to be transformed.
     const TAffine &aff  //!< Affine transform to be applied on the input image.
-    );
+);
 
 //---------------------------------------------------------------------------
 
@@ -50,7 +50,7 @@ DVAPI void tglDrawEdges(
     const TMeshImage &image,  //!< Input mesh image whose edges will be drawn.
     const PlasticDeformerDataGroup *deformerDatas =
         0  //!< Optional data about a deformation of the input image.
-    );
+);
 
 //---------------------------------------------------------------------------
 
@@ -65,7 +65,7 @@ DVAPI void tglDrawFaces(
     const TMeshImage &image,  //!< Input mesh image whose faces will be drawn.
     const PlasticDeformerDataGroup *deformerDatas =
         0  //!< Optional data about a deformation of the input image.
-    );
+);
 
 //---------------------------------------------------------------------------
 
@@ -86,7 +86,7 @@ DVAPI void tglDrawSO(
     bool deformedDomain =
         false  //!< Whether the image data must be drawn \a deformed
                //!  by the specified deformerDatas, or not.
-    );
+);
 
 //---------------------------------------------------------------------------
 
@@ -107,7 +107,7 @@ DVAPI void tglDrawRigidity(
     bool deformedDomain =
         false  //!< Whether the image data must be drawn \a deformed
                //!  by the specified deformerDatas, or not.
-    );
+);
 
 //---------------------------------------------------------------------------
 
@@ -126,6 +126,6 @@ DVAPI void tglDraw(
         &meshToTexAffine,  //!< Transform from mesh to texture coordinates.
     const PlasticDeformerDataGroup
         &deformerDatas  //!< Data structure of a deformation of the input image.
-    );
+);
 
 #endif  // MESHUTILS_H

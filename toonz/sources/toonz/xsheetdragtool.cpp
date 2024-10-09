@@ -2061,7 +2061,7 @@ protected:
     int r        = row;
     TXsheet *xsh = getViewer()->getXsheet();
     TRect rect   = m_data->getLevelFrameRect(
-        getViewer()->orientation()->isVerticalTimeline());
+          getViewer()->orientation()->isVerticalTimeline());
     for (c = col; c < rect.getLx() + col; c++) {
       for (r = row; r < rect.getLy() + row; r++)
         if (!xsh->getCell(r, c).isEmpty()) return false;
@@ -2215,13 +2215,13 @@ public:
   NavigationTagDragTool(XsheetViewer *viewer) : DragTool(viewer) {}
 
   void onClick(const CellPosition &pos) override {
-    int row = pos.frame();
+    int row     = pos.frame();
     m_taggedRow = row;
     refreshRowsArea();
   }
 
   void onDrag(const CellPosition &pos) override {
-    int row          = pos.frame();
+    int row = pos.frame();
     if (row < 0) row = 0;
     onRowChange(row);
     refreshRowsArea();

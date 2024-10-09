@@ -37,7 +37,7 @@ void TDoubleKeyframe::saveData(TOStream &os) const {
   };
   std::map<std::string, std::string> attr;
   if (!m_linkedHandles) attr["lnk"] = "no";
-  if (m_step > 1) attr["step"]      = std::to_string(m_step);
+  if (m_step > 1) attr["step"] = std::to_string(m_step);
   os.openChild(typeCodes[m_type], attr);
   switch (m_prevType) {
   case Linear:
@@ -158,5 +158,5 @@ void TDoubleKeyframe::loadData(TIStream &is) {
   }
   if (!is.matchEndTag()) throw TException(tagName + " : missing endtag");
   if (m_unitName == "default") m_unitName = "";
-  m_isKeyframe                            = true;
+  m_isKeyframe = true;
 }

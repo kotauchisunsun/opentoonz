@@ -54,7 +54,7 @@ bool ChildStack::openChild(int row, int col) {
   for (int r = r0; r <= r1; r++) {
     TXshCell cell = m_xsheet->getCell(r, col);
     if (cell.m_level.getPointer() == childLevel) {
-      int d = cell.m_frameId.getNumber() - 1;
+      int d                           = cell.m_frameId.getNumber() - 1;
       std::map<int, int>::iterator it = node->m_rowTable.find(d);
       if (it == node->m_rowTable.end()) node->m_rowTable[d] = r;
     }
@@ -146,7 +146,7 @@ bool ChildStack::getAncestorAffine(TAffine &aff, int row) const {
     std::map<int, int>::const_iterator it = m_stack[i]->m_rowTable.find(row);
     if (it == m_stack[i]->m_rowTable.end()) break;
 
-    row        = it->second;
+    row                = it->second;
     AncestorNode *node = m_stack[i];
     TAffine aff2;
     if (!getColumnPlacement(aff2, node->m_xsheet, row, node->m_col, false))

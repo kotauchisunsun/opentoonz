@@ -990,8 +990,8 @@ void FullColorEraserTool::update(const TRasterImageP &ri, TRectD selArea,
   TUndo *undo;
 
   undo       = new RectFullColorUndo(tileSet, selArea, TStroke(),
-                               m_eraseType.getValue(), level.getPointer(),
-                               m_invertOption.getValue(), frameId);
+                                     m_eraseType.getValue(), level.getPointer(),
+                                     m_invertOption.getValue(), frameId);
   TRect rect = TRasterImageUtils::eraseRect(ri, selArea);
 
   TUndoManager::manager()->add(undo);
@@ -1006,8 +1006,8 @@ void FullColorEraserTool::resetMulti() {
   m_selectingRect.empty();
   TTool::Application *app = TTool::getApplication();
   m_level                 = app->getCurrentLevel()->getLevel()
-                ? app->getCurrentLevel()->getSimpleLevel()
-                : 0;
+                                ? app->getCurrentLevel()->getSimpleLevel()
+                                : 0;
   m_firstFrameId = m_veryFirstFrameId = getCurrentFid();
   if (m_firstStroke) {
     delete m_firstStroke;
@@ -1101,8 +1101,8 @@ void FullColorEraserTool::onEnter() {
 
   TTool::Application *app = TTool::getApplication();
   m_level                 = app->getCurrentLevel()->getLevel()
-                ? app->getCurrentLevel()->getSimpleLevel()
-                : 0;
+                                ? app->getCurrentLevel()->getSimpleLevel()
+                                : 0;
 }
 
 //----------------------------------------------------------------------------------------------------------

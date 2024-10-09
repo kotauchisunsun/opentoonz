@@ -23,10 +23,10 @@ void linkFxs(const QMap<TFx *, TFx *> &clonedFxs,
     TFx *outFx = selectedLinks[i].m_outputFx.getPointer();
 
     TZeraryColumnFx *zerayFx = dynamic_cast<TZeraryColumnFx *>(outFx);
-    if (zerayFx) outFx       = zerayFx->getZeraryFx();
+    if (zerayFx) outFx = zerayFx->getZeraryFx();
 
-    TFx *inFx         = selectedLinks[i].m_inputFx.getPointer();
-    zerayFx           = dynamic_cast<TZeraryColumnFx *>(inFx);
+    TFx *inFx = selectedLinks[i].m_inputFx.getPointer();
+    zerayFx   = dynamic_cast<TZeraryColumnFx *>(inFx);
     if (zerayFx) inFx = zerayFx->getZeraryFx();
 
     if (!clonedFxs.contains(outFx) || !clonedFxs.contains(inFx)) continue;
@@ -88,8 +88,8 @@ void FxsData::setFxs(const QList<TFxP> &selectedFxs,
     TFx *fx = selectedFxs[i].getPointer();
     if (!canCopyFx(fx)) continue;
     TZeraryColumnFx *zerayFx = dynamic_cast<TZeraryColumnFx *>(fx);
-    if (zerayFx) fx          = zerayFx->getZeraryFx();
-    TFx *clonedFx            = fx->clone(false);
+    if (zerayFx) fx = zerayFx->getZeraryFx();
+    TFx *clonedFx = fx->clone(false);
     TPointD pos;
     if (zerayFx)
       pos = zerayFx->getAttributes()->getDagNodePos();
@@ -99,8 +99,8 @@ void FxsData::setFxs(const QList<TFxP> &selectedFxs,
     m_fxs.append(clonedFx);
     if (zerayFx)
       m_zeraryFxColumnSize[clonedFx] = zerayFx->getColumn()->getRowCount();
-    m_visitedFxs[clonedFx]           = false;
-    clonedFxs[fx]                    = clonedFx;
+    m_visitedFxs[clonedFx] = false;
+    clonedFxs[fx]          = clonedFx;
 
     TFx *linkedFx = fx->getLinkedFx();
     if (linkedFx && clonedFxs.contains(linkedFx))

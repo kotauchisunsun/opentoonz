@@ -12,7 +12,7 @@ void prepare_lut(int levels, std::vector<T> &lut) {
   for (j = 0; j < levels; j++)
     for (i = 0; i <= step; i++) lut[i + j * step] = j * valuestep;
 }
-}
+}  // namespace
 
 //===================================================================
 

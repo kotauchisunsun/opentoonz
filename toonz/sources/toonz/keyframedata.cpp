@@ -90,8 +90,8 @@ bool TKeyframeData::getKeyframes(std::set<Position> &positions,
   firstRowCol.insert(std::pair<int, int>(c0, r0));
   lastRowCol.insert(std::pair<int, int>(c0, r0));
   for (++it2; it2 != positions.end(); ++it2) {
-    r0 = std::min(r0, it2->first);
-    c0 = std::min(c0, it2->second);
+    r0                               = std::min(r0, it2->first);
+    c0                               = std::min(c0, it2->second);
     std::map<int, int>::iterator itF = firstRowCol.find(it2->second);
     std::map<int, int>::iterator itL = lastRowCol.find(it2->second);
     if (itF == firstRowCol.end())
@@ -129,7 +129,7 @@ bool TKeyframeData::getKeyframes(std::set<Position> &positions,
 
     std::map<int, int>::iterator itF = firstRowCol.find(col);
     std::map<int, int>::iterator itL = lastRowCol.find(col);
-    TStageObject::Keyframe newKey = pegbar->getKeyframe(row);
+    TStageObject::Keyframe newKey    = pegbar->getKeyframe(row);
     // Process 1st key added in column
     if (itF != firstRowCol.end() && itF->second == row) {
       if (row > kL) {
@@ -154,7 +154,7 @@ bool TKeyframeData::getKeyframes(std::set<Position> &positions,
         for (int i = 0; i < TStageObject::T_ChannelCount; i++) {
           if (newKey.m_channels[i].m_isKeyframe &&
               prevKey.m_channels[i].m_isKeyframe)
-            newKey.m_channels[i].m_prevType = prevKey.m_channels[i].m_type; 
+            newKey.m_channels[i].m_prevType = prevKey.m_channels[i].m_type;
         }
         pegbar->setKeyframeWithoutUndo(row, newKey);
       }

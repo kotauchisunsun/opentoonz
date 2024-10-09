@@ -137,7 +137,7 @@ void CYOMBParam::read(const CInputParam &ip) {
     m_ink.nb = yombIP->m_ink.nb;
     int i;
     for (i = 0; i < m_ink.nb; i++) m_ink.ci[i] = yombIP->m_ink.ci[i];
-    m_paint.nb                                 = yombIP->m_paint.nb;
+    m_paint.nb = yombIP->m_paint.nb;
     for (i = 0; i < m_paint.nb; i++) m_paint.ci[i] = yombIP->m_paint.ci[i];
   } else if (yombIP->m_nbColor > 1) {
     m_color.resize(yombIP->m_nbColor);

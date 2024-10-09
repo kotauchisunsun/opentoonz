@@ -47,8 +47,8 @@ public:
   virtual PaletteController *getPaletteController() const   = 0;
 
   // Current Palette (PaletteController) methods
-  virtual TColorStyle *getCurrentLevelStyle() const = 0;
-  virtual int getCurrentLevelStyleIndex() const     = 0;
+  virtual TColorStyle *getCurrentLevelStyle() const                = 0;
+  virtual int getCurrentLevelStyleIndex() const                    = 0;
   virtual void setCurrentLevelStyleIndex(int index,
                                          bool forceUpdate = false) = 0;
 };

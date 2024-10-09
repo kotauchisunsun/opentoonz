@@ -19,7 +19,7 @@ const double Quad_eps_max =
     infinity;  // As above, for sequence conversion into strokes
 // const double Quad_eps_mul= 0.2;     //NOTE: Substituted by
 // globals->currConfig->m_penalty
-}
+}  // namespace
 
 //--------------------------------------------------------------------------
 
@@ -333,7 +333,7 @@ TStroke *SequenceConverter::operator()(std::vector<unsigned int> *indices) {
   std::vector<TThickPoint> controlPoints(2 * M[n - 1].n + 1);
 
   for (b = n - 1, a = 2 * M[n - 1].n; b > 0; b = P[b]) {
-    for (i             = K[b].CPs.size() - 1; i > 0; --i, --a)
+    for (i = K[b].CPs.size() - 1; i > 0; --i, --a)
       controlPoints[a] = K[b].CPs[i];
   }
   controlPoints[0] = middleAddedSequence[0];
@@ -513,8 +513,8 @@ bool SequenceConverter::calculateCPs(unsigned int i, unsigned int j,
   MxO         = ((e * x) / 15.0) + (ellProd(f, x) / 10.0);
 
   // Infine, ho il termine noto
-  l = TPointD(ellProd(IH, x) - HxL + ellProd(IM, x) - MxO,
-              ellProd(IK, y) - KyL + ellProd(IN_, y) - NyO);
+  l     = TPointD(ellProd(IH, x) - HxL + ellProd(IM, x) - MxO,
+                  ellProd(IK, y) - KyL + ellProd(IN_, y) - NyO);
   M.a13 = -l.x;
   M.a23 = -l.y;
 

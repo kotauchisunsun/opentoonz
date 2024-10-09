@@ -305,8 +305,9 @@ void transparencyCheck(const TRasterCM32P &cmin, const TRaster32P &rasout) {
       if (ink == 4095)
         *outPix = TPixel32::Green;
       else
-        *outPix = (tone == 0) ? TPixel32::Black
-                              : (tone == 255) ? TPixel32::White : TPixel32::Red;
+        *outPix = (tone == 0)     ? TPixel32::Black
+                  : (tone == 255) ? TPixel32::White
+                                  : TPixel32::Red;
     }
   }
 }

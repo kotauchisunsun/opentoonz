@@ -827,8 +827,8 @@ debugStream <<"num angoli 2: "<< angles2.size() << endl;
                 int numAng1 = angleNumber(angles1, sortedAngles[j]);
                 int numAng2 = angleNumber(angles2, sortedAngles[j]);
                 double val  = (numAng1 == numAng2)
-                                 ? 0
-                                 : fabs((float)(numAng1 - numAng2)) /
+                                  ? 0
+                                  : fabs((float)(numAng1 - numAng2)) /
                                        (numAng1 + numAng2);
                 if (val < bestValue) {
                   bestValue = val;
@@ -845,8 +845,8 @@ debugStream <<"num angoli 2: "<< angles2.size() << endl;
                 int numAng1 = angleNumber(angles1, angle);
                 int numAng2 = angleNumber(angles2, angle);
                 double val  = (numAng1 == numAng2)
-                                 ? 0
-                                 : fabs((float)(numAng1 - numAng2)) /
+                                  ? 0
+                                  : fabs((float)(numAng1 - numAng2)) /
                                        (numAng1 + numAng2);
                 if (val < bestValue) {
                   bestValue = val;
@@ -1483,8 +1483,8 @@ TVectorImageP TInbetween::Imp::tween(double t) const {
           }
           point2     = subStroke2->getThickPointAtLength(totalLen2);
           point2     = TThickPoint(m_transformation[i].m_inverse *
-                                   subStroke2->getThickPointAtLength(totalLen2),
-                               point2.thick);
+                                       subStroke2->getThickPointAtLength(totalLen2),
+                                   point2.thick);
           finalPoint = subStroke1->getThickPointAtLength(totalLen1) * (1 - t) +
                        t * point2;
 

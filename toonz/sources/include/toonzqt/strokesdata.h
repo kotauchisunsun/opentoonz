@@ -37,7 +37,7 @@ public:
 
   StrokesData *clone() const override {
     TVectorImage *vi = 0;
-    if (m_image) vi  = dynamic_cast<TVectorImage *>(m_image->cloneImage());
+    if (m_image) vi = dynamic_cast<TVectorImage *>(m_image->cloneImage());
     return new StrokesData(vi);
   }
 

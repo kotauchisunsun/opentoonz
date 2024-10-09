@@ -29,8 +29,8 @@ IGS_MEDIAN_FILTER_EXPORT void convert(
     ,
     const int out_side_type /* =0	0(Spread),1(Flip),2(bk),3(Repeat) */
     /* 2013-11-11現在0(Spread)のみ使用 */
-    );
+);
 }
-}
+}  // namespace igs
 
 #endif /* !igs_median_filter_h */

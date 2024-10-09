@@ -194,8 +194,8 @@ void TRop::brush(TRaster32P ras, const TPoint &aa, const TPoint &bb, int radius,
       int xMin   = std::max(a.x - halfCord.getCord(deltay), 0);  //  clipping x
       int xMax =
           std::min(a.x + halfCord.getCord(deltay), lx - 1);  //  clipping x
-      TPixel32 *p         = ras->pixels(y) + xMin;
-      TPixel32 *q         = p + (xMax - xMin);
+      TPixel32 *p = ras->pixels(y) + xMin;
+      TPixel32 *q = p + (xMax - xMin);
       while (p <= q) *p++ = col;
     }
     ras->unlock();
@@ -213,8 +213,8 @@ void TRop::brush(TRaster32P ras, const TPoint &aa, const TPoint &bb, int radius,
       int xMin = std::max(xLeft - halfCord.getCord(deltay), 0);  //  clipping x
       int xMax =
           std::min(xRight + halfCord.getCord(deltay), lx - 1);  //  clipping x
-      TPixel32 *p         = ras->pixels(y) + xMin;
-      TPixel32 *q         = p + (xMax - xMin);
+      TPixel32 *p = ras->pixels(y) + xMin;
+      TPixel32 *q = p + (xMax - xMin);
       while (p <= q) *p++ = col;
     }
     ras->unlock();
@@ -321,22 +321,22 @@ void TRop::brush(TRaster32P ras, const TPoint &aa, const TPoint &bb, int radius,
   int yMin = std::max(a.y - radius, 0);           //  clipping y
   int yMax = std::min(a.y - cutExt - 1, ly - 1);  //  clipping y
   for (y = yMin; y <= yMax; y++) {
-    int r               = halfCord.getCord(a.y - y);
-    int xMin            = std::max(a.x - r, 0);       //  clipping x
-    int xMax            = std::min(a.x + r, lx - 1);  //  clipping x
-    TPixel32 *p         = ras->pixels(y) + xMin;
-    TPixel32 *q         = p + (xMax - xMin);
+    int r       = halfCord.getCord(a.y - y);
+    int xMin    = std::max(a.x - r, 0);       //  clipping x
+    int xMax    = std::min(a.x + r, lx - 1);  //  clipping x
+    TPixel32 *p = ras->pixels(y) + xMin;
+    TPixel32 *q = p + (xMax - xMin);
     while (p <= q) *p++ = col;
   }
   // -----  riempie "calotta" circolare superiore
   yMin = std::max(b.y + cutExt + 1, 0);   //  clipping y
   yMax = std::min(b.y + radius, ly - 1);  //  clipping y
   for (y = yMin; y <= yMax; y++) {
-    int r               = halfCord.getCord(y - b.y);
-    int xMin            = std::max(b.x - r, 0);       //  clipping x
-    int xMax            = std::min(b.x + r, lx - 1);  //  clipping x
-    TPixel32 *p         = ras->pixels(y) + xMin;
-    TPixel32 *q         = p + (xMax - xMin);
+    int r       = halfCord.getCord(y - b.y);
+    int xMin    = std::max(b.x - r, 0);       //  clipping x
+    int xMax    = std::min(b.x + r, lx - 1);  //  clipping x
+    TPixel32 *p = ras->pixels(y) + xMin;
+    TPixel32 *q = p + (xMax - xMin);
     while (p <= q) *p++ = col;
   }
   // -----  riempie trapezoidi
@@ -394,8 +394,8 @@ void TRop::brush(TRaster32P ras, const TPoint &aa, const TPoint &bb, int radius,
           xMax = std::min(a.x + halfCord.getCord(abs(segmRight.y)),
                           lx - 1);  //   coordinate "di schermo"
         }
-        TPixel32 *p         = ras->pixels(segmRight.y + a.y) + xMin;
-        TPixel32 *q         = p + (xMax - xMin);
+        TPixel32 *p = ras->pixels(segmRight.y + a.y) + xMin;
+        TPixel32 *q = p + (xMax - xMin);
         while (p <= q) *p++ = col;
 
         dSegmRight = dSegmRight + incNE;
@@ -422,8 +422,8 @@ void TRop::brush(TRaster32P ras, const TPoint &aa, const TPoint &bb, int radius,
         xMax = std::min(a.x + halfCord.getCord(abs(segmRight.y)),
                         lx - 1);  //  "di schermo"
       }
-      TPixel32 *p         = ras->pixels(segmRight.y + a.y) + xMin;
-      TPixel32 *q         = p + (xMax - xMin);
+      TPixel32 *p = ras->pixels(segmRight.y + a.y) + xMin;
+      TPixel32 *q = p + (xMax - xMin);
       while (p <= q) *p++ = col;
 
       if (dSegmRight <= 0)  //  NordEst
@@ -535,8 +535,8 @@ void TRop::brush(TRaster32P ras, const TPoint &aa, const TPoint &bb, int radius,
         TPoint(tceil((yMin - 0.5 - leftDown.y) / mParall + leftDown.x), yMin);
     int dSegmRight = tfloor(alpha * (segmRight.x + 1) +
                             beta * (segmRight.y + 0.5) + gammaRight);
-    int dSegmLeft = tfloor(alpha * (segmLeft.x + 1) +
-                           beta * (segmLeft.y + 0.5) + gammaLeft);
+    int dSegmLeft  = tfloor(alpha * (segmLeft.x + 1) +
+                            beta * (segmLeft.y + 0.5) + gammaLeft);
     while (segmRight.y <= yMax) {
       if (dSegmRight < 0)  //  segmRight a Est
       {
@@ -585,8 +585,8 @@ void TRop::brush(TRaster32P ras, const TPoint &aa, const TPoint &bb, int radius,
     TPoint segmLeft(tround((yMin - leftDown.y) / mParall + leftDown.x), yMin);
     int dSegmRight = tfloor(alpha * (segmRight.x + 0.5) +
                             beta * (segmRight.y + 1) + gammaRight);
-    int dSegmLeft = tfloor(alpha * (segmLeft.x + 0.5) +
-                           beta * (segmLeft.y + 1) + gammaLeft);
+    int dSegmLeft  = tfloor(alpha * (segmLeft.x + 0.5) +
+                            beta * (segmLeft.y + 1) + gammaLeft);
     while (segmRight.y <= yMax) {
       int xMin, xMax;
       if (k > 0) {
@@ -641,8 +641,8 @@ void TRop::brush(TRaster32P ras, const TPoint &aa, const TPoint &bb, int radius,
       xMax = std::min(a.x + halfCord.getCord(abs(y - a.y)),
                       lx - 1);  //   coordinate "di schermo"
     }
-    TPixel32 *p         = ras->pixels(y) + xMin;
-    TPixel32 *q         = p + (xMax - xMin);
+    TPixel32 *p = ras->pixels(y) + xMin;
+    TPixel32 *q = p + (xMax - xMin);
     while (p <= q) *p++ = col;
   }
   ras->unlock();

@@ -255,7 +255,7 @@ public:
   }
   QColor getSelectedItemBackground() const { return m_selectedItemBackground; }
 
-  //exposed view parameters
+  // exposed view parameters
   void setIconSize(QSize size) { m_iconSize = size; }
 
 private:

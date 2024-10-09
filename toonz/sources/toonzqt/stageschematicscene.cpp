@@ -297,7 +297,7 @@ void StageSchematicScene::updateScene() {
             StageSchematicGroupNode *groupeNode = m_GroupTable[groupId];
             StageSchematicNodePort *port1       = groupeNode->getChildPort(0);
             StageSchematicNodePort *port2       = node->makeParentPort(
-                QString::fromStdString(pegbar->getHandle()));
+                      QString::fromStdString(pegbar->getHandle()));
             port2->makeLink(port1);
           }
         }

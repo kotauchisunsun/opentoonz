@@ -108,7 +108,9 @@ string buildQTErrorString(int ec) {
   case QTUnableToSetMovieBox:
     return "unable to set movie box";
 
-  default: { return "unknown error ('" + std::to_string(ec) + "')"; }
+  default: {
+    return "unknown error ('" + std::to_string(ec) + "')";
+  }
   }
 }
 
@@ -232,7 +234,7 @@ void copy(TRasterP rin, PixelXRGB *bufout, int lx, int ly,
   }
   rin->unlock();
 }  // end function
-};
+};  // namespace
 //-----------------------------------------------------------
 /*
 TWriterInfo *TWriterInfo3gp::create(const string &)
@@ -346,7 +348,7 @@ void getFSSpecFromPosixPath(const char *filepath, FSSpec *fileSpec,
   OSErr err = FSGetCatalogInfo(&fileRef, kFSCatInfoNone, 0, 0, fileSpec, 0);
   assert(err == noErr);
 }
-}
+}  // namespace
 //-----------------------------------------------------------
 
 void TLevelWriter3gp::save(const TImageP &img, int frameIndex) {
@@ -459,8 +461,8 @@ void TLevelWriter3gp::save(const TImageP &img, int frameIndex) {
 
   buf    = (PixelXRGB*) GetPixBaseAddr(m_pixmap);
 #else
-    m_pixmap          = NULL;
-    buf               = NULL;
+    m_pixmap = NULL;
+    buf      = NULL;
 #endif
     buf_lx = lx;
     buf_ly = ly;

@@ -38,6 +38,6 @@ DVVAR extern const TGuiColor Gray180;
 DVVAR extern const TGuiColor Gray210;
 DVVAR extern const TGuiColor Gray225;
 DVVAR extern const TGuiColor Gray240;
-}
+}  // namespace TwConsts
 
 #endif

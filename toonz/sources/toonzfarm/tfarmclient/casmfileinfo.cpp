@@ -21,7 +21,7 @@ namespace {
   {                                                                            \
     while (*s && *s != ' ' && *s != '\t' && *s != 10 && *s != 13)              \
       *(p++) = *(s++);                                                         \
-    *p       = '\0';                                                           \
+    *p = '\0';                                                                 \
   }
 
 #define SKIP_WORD(s)                                                           \
@@ -104,7 +104,7 @@ int compute_casm_range(const char *filename, int &start, int &end,
 
   return cnt;
 }
-}
+}  // namespace
 
 //==============================================================================
 

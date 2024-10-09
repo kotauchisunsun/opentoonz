@@ -521,19 +521,17 @@ void TAutocloser::Imp::findMeetingPoints(vector<TPoint> &endpoints,
   m_snb = sin(-alfa);
 
   vector<Segment> orientedEndpoints(endpoints.size());
-  for (i                       = 0; i < (int)endpoints.size(); i++)
+  for (i = 0; i < (int)endpoints.size(); i++)
     orientedEndpoints[i].first = endpoints[i];
 
   int size = -1;
 
   while ((int)closingSegments.size() > size && !orientedEndpoints.empty()) {
     size = closingSegments.size();
-    do
-      calculateWeightAndDirection(orientedEndpoints);
+    do calculateWeightAndDirection(orientedEndpoints);
     while (spotResearchTwoPoints(orientedEndpoints, closingSegments));
 
-    do
-      calculateWeightAndDirection(orientedEndpoints);
+    do calculateWeightAndDirection(orientedEndpoints);
     while (spotResearchOnePoint(orientedEndpoints, closingSegments));
   }
 }
@@ -560,7 +558,7 @@ bool TAutocloser::Imp::spotResearchTwoPoints(vector<Segment> &endpoints,
   while (current < (int)endpoints.size() - 1) {
     found = 0;
     for (i = current + 1; i < (int)marks.size(); i++) marks[i] = false;
-    distance                                                   = 0;
+    distance = 0;
 
     while (!found && (distance <= sqrDistance) && !allMarked(marks, current)) {
       closerIndex = closerPoint(endpoints, marks, current);

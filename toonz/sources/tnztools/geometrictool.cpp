@@ -1442,7 +1442,7 @@ void GeometricTool::addRasterMyPaintStroke(const TToonzImageP &ti,
   double modifierSize    = m_param.m_modifierSize.getValue() * log(2.0);
   double modifierOpacity = 0.01 * m_param.m_modifierOpacity.getValue();
   TPixelD color          = PixelConverter<TPixelD>::from(
-      getApplication()->getCurrentLevelStyle()->getMainColor());
+               getApplication()->getCurrentLevelStyle()->getMainColor());
   double colorH = 0.0;
   double colorS = 0.0;
   double colorV = 0.0;
@@ -1509,7 +1509,7 @@ void GeometricTool::addFullColorMyPaintStroke(const TRasterImageP &ri,
   double modifierSize    = m_param.m_modifierSize.getValue() * log(2.0);
   double modifierOpacity = 0.01 * m_param.m_modifierOpacity.getValue();
   TPixelD color          = PixelConverter<TPixelD>::from(
-      getApplication()->getCurrentLevelStyle()->getMainColor());
+               getApplication()->getCurrentLevelStyle()->getMainColor());
   double colorH = 0.0;
   double colorS = 0.0;
   double colorV = 0.0;

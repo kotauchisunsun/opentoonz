@@ -39,7 +39,7 @@ namespace TThread {
 // Forward declarations
 class ExecutorId;
 class ExecutorImpSlots;
-}
+}  // namespace TThread
 
 //=====================================================================
 

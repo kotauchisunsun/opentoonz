@@ -164,17 +164,17 @@ void CameraSettingsPopup::hideEvent(QHideEvent *e) {
 
   bool ret = true;
   ret      = ret && disconnect(sceneHandle, SIGNAL(sceneChanged()), this,
-                          SLOT(updateFields()));
+                               SLOT(updateFields()));
   ret      = ret && disconnect(sceneHandle, SIGNAL(sceneSwitched()), this,
-                          SLOT(updateFields()));
+                               SLOT(updateFields()));
   ret      = ret && disconnect(objectHandle, SIGNAL(objectChanged(bool)), this,
-                          SLOT(updateFields(bool)));
+                               SLOT(updateFields(bool)));
   ret      = ret && disconnect(objectHandle, SIGNAL(objectSwitched()), this,
-                          SLOT(updateFields()));
+                               SLOT(updateFields()));
   ret      = ret && disconnect(xsheetHandle, SIGNAL(xsheetSwitched()), this,
-                          SLOT(updateFields()));
+                               SLOT(updateFields()));
   ret      = ret && disconnect(xsheetHandle, SIGNAL(xsheetChanged()), this,
-                          SLOT(updateFields()));
+                               SLOT(updateFields()));
   ret = ret && disconnect(levelHandle, SIGNAL(xshLevelSwitched(TXshLevel *)),
                           this, SLOT(onLevelSwitched(TXshLevel *)));
   assert(ret);

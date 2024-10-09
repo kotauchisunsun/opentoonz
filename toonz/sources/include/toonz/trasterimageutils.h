@@ -42,6 +42,6 @@ DVAPI void addSceneNumbering(const TRasterImageP &ri, int globalIndex,
                              const std::wstring &sceneName, int sceneIndex);
 DVAPI void addGlobalNumbering(const TRasterImageP &ri,
                               const std::wstring &sceneName, int globalIndex);
-}  // namespace
+}  // namespace TRasterImageUtils
 
 #endif  // TRASTERIMAGE_UTILS_INCLUDED

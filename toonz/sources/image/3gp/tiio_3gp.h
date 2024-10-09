@@ -40,7 +40,7 @@ namespace QuickTime {
 #undef QT_int_fast8_t
 #undef QT_int_fast16_t
 #undef QT_uint_fast16_t
-}
+}  // namespace QuickTime
 
 using namespace QuickTime;
 

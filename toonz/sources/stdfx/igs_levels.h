@@ -62,8 +62,8 @@ IGS_LEVELS_EXPORT void change(
                             合成画 = 下絵 * (1 - alpha) + 上絵 * alpha
                     の場合こちらを使う
             */
-    );
+);
 }
-}
+}  // namespace igs
 
 #endif /* !igs_levels_h */

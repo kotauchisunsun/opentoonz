@@ -73,7 +73,7 @@ namespace {
 // Const names
 enum { white = 0, black = 1 };
 enum { inner = 0, outer = 1, none = 2, invalid = 3 };
-}
+}  // namespace
 
 //=======================================================================================
 
@@ -325,8 +325,8 @@ static RawBorder *extractPath(Signaturemap &ras, int x0, int y0, int pathType,
   path->push_back(RawBorderPoint(x0, y0));
 
   // Check here if (x0, y0) is an ambiguous-direction point
-  nextLeftPixel = ras.getBitmapColor(x0 + (dirY - dirX - 1) / 2,
-                                     y0 + (-dirY - dirX - 1) / 2);
+  nextLeftPixel  = ras.getBitmapColor(x0 + (dirY - dirX - 1) / 2,
+                                      y0 + (-dirY - dirX - 1) / 2);
   nextRightPixel = ras.getBitmapColor(x0 + (-dirX - dirY - 1) / 2,
                                       y0 + (dirX - dirY - 1) / 2);
   if ((nextRightPixel == black) && (nextLeftPixel == white))
@@ -340,8 +340,8 @@ static RawBorder *extractPath(Signaturemap &ras, int x0, int y0, int pathType,
     path->push_back(RawBorderPoint(x, y));
 
     // Calculate next direction
-    nextLeftPixel = ras.getBitmapColor(x + (dirX - dirY - 1) / 2,
-                                       y + (dirY + dirX - 1) / 2);
+    nextLeftPixel  = ras.getBitmapColor(x + (dirX - dirY - 1) / 2,
+                                        y + (dirY + dirX - 1) / 2);
     nextRightPixel = ras.getBitmapColor(x + (dirX + dirY - 1) / 2,
                                         y + (dirY - dirX - 1) / 2);
 
@@ -421,7 +421,7 @@ static BorderList *extractBorders(const TRasterP &ras, int threshold,
               innerBorders.push_back(foundPath);
             } else {
               outerBorders.push_back(foundPath);
-	    }
+            }
           }
         }
 
@@ -519,7 +519,7 @@ inline std::unique_ptr<int[]> findNextCorners(RawBorder &path) {
     if (path[currentCorner].x() != path[i].x() &&
         path[currentCorner].y() != path[i].y())
       currentCorner = i + 1;
-    corners[i]      = currentCorner;
+    corners[i] = currentCorner;
   }
 
   return corners;
@@ -563,11 +563,10 @@ inline std::unique_ptr<int[]> furthestKs(RawBorder &path,
       jNextPoint = path[nextCorners[j]].pos();
 
       // Update directions count
-      directionSignature = jNextPoint.x > jPoint.x
-                               ? right
-                               : jNextPoint.x < jPoint.x
-                                     ? left
-                                     : jNextPoint.y > jPoint.y ? up : down;
+      directionSignature                     = jNextPoint.x > jPoint.x   ? right
+                                               : jNextPoint.x < jPoint.x ? left
+                                               : jNextPoint.y > jPoint.y ? up
+                                                                         : down;
       directionsOccurred[directionSignature] = 1;
 
       // If all 4 axis directions occurred, quit
@@ -628,9 +627,8 @@ inline std::unique_ptr<int[]> furthestKs(RawBorder &path,
     // Then, search for the last k between j and corners[j] not violating them.
 
     direction = convert(normalize(convert(jNextPoint - jPoint)));
-    k         = (j +
-         cross(jPoint - iPoint, violatedConstraint) /
-             cross(violatedConstraint, direction)) %
+    k         = (j + cross(jPoint - iPoint, violatedConstraint) /
+                 cross(violatedConstraint, direction)) %
         n;
 
   foundK:
@@ -816,7 +814,7 @@ inline void reduceBorder(RawBorder &border, Contour &res,
       for (int i = a; i <= longestArcFrom[k]; ++i) {
         double newPenalty = penaltyToEnd[i] + penalty(border, k, i);
         if (newPenalty < penaltyToEnd[k]) penaltyToEnd[k] = newPenalty;
-        minPenaltyNext                                    = i;
+        minPenaltyNext = i;
       }
       minPenaltyNextArray[k] = minPenaltyNext;
     }

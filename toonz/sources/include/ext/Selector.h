@@ -76,5 +76,5 @@ public:
 
   TPointD getUp() const;
 };
-}
+}  // namespace ToonzExt
 #endif /* SELECTOR_H */

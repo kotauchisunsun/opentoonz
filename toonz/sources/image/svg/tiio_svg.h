@@ -43,7 +43,7 @@ public:
   SvgWriterProperties();
   void updateTranslation() override;
 };
-}
+}  // namespace Tiio
 
 class TLevelWriterSvg final : public TLevelWriter {
   //! object to manage a pli

@@ -15,7 +15,7 @@ class QProgressDialog;
 namespace DVGui {
 class IntField;
 class CheckBox;
-}
+}  // namespace DVGui
 
 //=============================================================================
 // BinarizePopup

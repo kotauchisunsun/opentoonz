@@ -320,12 +320,13 @@ bool FullColorBrushTool::askWrite(const TRect &rect) {
 
 void FullColorBrushTool::updateModifiers() {
   m_modifierAssistants->magnetism = m_assistants.getValue() ? 1 : 0;
-  m_inputmanager.drawPreview      = false; //!m_modifierAssistants->drawOnly;
+  m_inputmanager.drawPreview      = false;  //! m_modifierAssistants->drawOnly;
 
   m_modifierReplicate.clear();
   if (m_assistants.getValue())
-    TReplicator::scanReplicators(this, nullptr, &m_modifierReplicate, false, true, false, false, nullptr);
-  
+    TReplicator::scanReplicators(this, nullptr, &m_modifierReplicate, false,
+                                 true, false, false, nullptr);
+
   m_inputmanager.clearModifiers();
   m_inputmanager.addModifier(TInputModifierP(m_modifierTangents.getPointer()));
   m_inputmanager.addModifier(
@@ -388,14 +389,15 @@ void FullColorBrushTool::handleMouseEvent(MouseEventType type,
     THoverList hovers(1, pos);
     m_inputmanager.hoverEvent(hovers);
   } else {
-    bool   isMyPaint   = getApplication()->getCurrentLevelStyle()->getTagId() == 4001;
-    int    deviceId    = e.isTablet() ? 1 : 0;
+    bool isMyPaint =
+        getApplication()->getCurrentLevelStyle()->getTagId() == 4001;
+    int deviceId       = e.isTablet() ? 1 : 0;
     double defPressure = isMyPaint ? 0.5 : 1.0;
-    bool   hasPressure = e.isTablet();
+    bool hasPressure   = e.isTablet();
     double pressure    = hasPressure ? e.m_pressure : defPressure;
-    bool   final       = type == ME_UP;
-    m_inputmanager.trackEvent(
-      deviceId, 0, pos, pressure, TPointD(), hasPressure, false, final, t);
+    bool final         = type == ME_UP;
+    m_inputmanager.trackEvent(deviceId, 0, pos, pressure, TPointD(),
+                              hasPressure, false, final, t);
     m_inputmanager.processTracks();
   }
 }
@@ -535,13 +537,10 @@ void FullColorBrushTool::inputSetBusy(bool busy) {
 
 void FullColorBrushTool::inputPaintTrackPoint(const TTrackPoint &point,
                                               const TTrack &track,
-                                              bool firstTrack,
-                                              bool preview)
-{
+                                              bool firstTrack, bool preview) {
   // get raster
-  if (!m_started || !getViewer() || preview)
-    return;
-  
+  if (!m_started || !getViewer() || preview) return;
+
   TRasterImageP ri = (TRasterImageP)getImage(true);
   if (!ri) return;
   TRasterP ras      = ri->getRaster();
@@ -559,14 +558,13 @@ void FullColorBrushTool::inputPaintTrackPoint(const TTrackPoint &point,
   handler = dynamic_cast<TrackHandler *>(track.handler.getPointer());
   if (!handler) return;
 
-  bool   isMyPaint   = getApplication()->getCurrentLevelStyle()->getTagId() == 4001;
+  bool isMyPaint = getApplication()->getCurrentLevelStyle()->getTagId() == 4001;
   double defPressure = isMyPaint ? 0.5 : 1.0;
   double pressure    = m_enabledPressure ? point.pressure : defPressure;
-  
+
   // paint stroke
   m_strokeSegmentRect.empty();
-  handler->brush.strokeTo(point.position + rasCenter,
-                          pressure, point.tilt,
+  handler->brush.strokeTo(point.position + rasCenter, pressure, point.tilt,
                           point.time - track.previous().time);
   if (track.pointsAdded == 1 && track.finished()) handler->brush.endStroke();
 

@@ -29,6 +29,6 @@ TFilePath addFolder(const TFilePath &parentFolderPath);
 void deleteFolder(const TFilePath &folderPath);
 
 void scanPalettes(const TFilePath &folder, const TFilePath &sourcePath);
-}
+}  // namespace StudioPaletteCmd
 
 #endif

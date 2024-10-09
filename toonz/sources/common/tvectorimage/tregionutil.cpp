@@ -171,9 +171,8 @@ void cleanIntersectionMarks(list<Intersection> &interList) {
        it1 != interList.end(); it1++)
     for (list<IntersectedStroke>::iterator it2 = (*it1).m_strokeList.begin();
          it2 != (*it1).m_strokeList.end(); it2++) {
-      it2->m_visited =
-          false;  // Ogni ramo della lista viene messo nella condizione
-                  // di poter essere visitato
+      it2->m_visited = false;  // Ogni ramo della lista viene messo nella
+                               // condizione di poter essere visitato
 
       if (it2->m_nextIntersection != interList.end()) {
         it2->m_nextIntersection =
@@ -348,7 +347,7 @@ void TVectorImage::Imp::doEraseIntersection(int index,
           removeAutocloses = true;
         else
           deleteIt = is.m_edge.m_s;
-        it2        = eraseBranch(it1, it2);
+        it2 = eraseBranch(it1, it2);
       } else
         ++it2;
       // checkInterList(interList);
@@ -430,8 +429,8 @@ UINT TVectorImage::Imp::getFillData(IntersectionBranch *&v) {
     }
   }
 
-// for (UINT i=0; i<count; i++)
-//  assert(v[i].m_nextBranch != std::numeric_limits<UINT>::max());
+  // for (UINT i=0; i<count; i++)
+  //  assert(v[i].m_nextBranch != std::numeric_limits<UINT>::max());
 
 #ifdef _DEBUG
 /*ofstream of("C:\\temp\\fillDataOut.txt");
@@ -1022,10 +1021,11 @@ bool makeIntersection(IntersectionData &intData, const vector<VIStroke *> &s,
   if (areAlmostEqual(crossVal, 0.0)) {
     bool endpoint1 = (item1.m_edge.m_w0 == 0.0 || item1.m_edge.m_w0 == 1.0);
     bool endpoint2 = (item2.m_edge.m_w0 == 0.0 || item2.m_edge.m_w0 == 1.0);
-    if (endpoint1 && endpoint2 && ((p0.x * p1.x >= 0 && p0.y * p1.y >= 0 &&
-                                    item1.m_edge.m_w0 != item2.m_edge.m_w0) ||
-                                   (p0.x * p1.x <= 0 && p0.y * p1.y <= 0 &&
-                                    item1.m_edge.m_w0 == item2.m_edge.m_w0)))
+    if (endpoint1 && endpoint2 &&
+        ((p0.x * p1.x >= 0 && p0.y * p1.y >= 0 &&
+          item1.m_edge.m_w0 != item2.m_edge.m_w0) ||
+         (p0.x * p1.x <= 0 && p0.y * p1.y <= 0 &&
+          item1.m_edge.m_w0 == item2.m_edge.m_w0)))
     // due endpoint a 180 gradi;metto
     {
       item1.m_gettingOut = (item1.m_edge.m_w0 == 0.0);
@@ -1270,9 +1270,8 @@ for (int i = 0; i < numChunks; i++) {
     lastIsY = true;
 
   } else if ((q->getP0().x < q->getP1().x &&
-              q->getP2().x <
-                  q->getP1()
-                      .x) ||  // la quadratica ha un minimo o massimo relativo
+              q->getP2().x < q->getP1().x) ||  // la quadratica ha un minimo o
+                                               // massimo relativo
              (q->getP0().x > q->getP1().x && q->getP2().x > q->getP1().x)) {
     double w = getWfromChunkAndT(s, isBegin ? i : numChunks - 1 - i,
                                  isBegin ? 1.0 : 0.0);
@@ -1863,7 +1862,7 @@ TRegion *findRegion(list<Intersection> &intList,
         currStyle = it2->m_edge.m_styleId;
       else if (it2->m_edge.m_styleId != currStyle) {
         currStyle = it2->m_edge.m_styleId;
-        for (UINT i                = 0; i < r->getEdgeCount(); i++)
+        for (UINT i = 0; i < r->getEdgeCount(); i++)
           r->getEdge(i)->m_styleId = currStyle;
       }
     } else

@@ -137,9 +137,9 @@ int img_write_plt(char *filename, IMAGE *image) {
   scanline = TIFFScanlineSize(tfp);
 
   /*
-* massima lunghezza di bytes in una strip e' 8k
-* vedi Graphics File Formats pag.48
-*/
+   * massima lunghezza di bytes in una strip e' 8k
+   * vedi Graphics File Formats pag.48
+   */
   rows_per_strip = (8 * 1024) / scanline;
 
   TIFFSetField(tfp, TIFFTAG_ROWSPERSTRIP,
@@ -267,7 +267,7 @@ IMAGE *img_read_plt(char *filename) {
   /* Leggo history */
   if (!TIFFGetField(tfp, TIFFTAG_TOONZHISTORY, &image->history))
     image->history = "";
-  image->history   = strsave(image->history);
+  image->history = strsave(image->history);
 
   plt_type             = palette[0];
   image->cmap.offset   = palette[1];
@@ -332,8 +332,8 @@ IMAGE *img_read_plt(char *filename) {
     if (!with_cmap_buffer) TFREE(image->cmap.buffer)
 
     CASE 2 : __OR 4
-             : if (with_cmap_buffer) for (i = 0, j = 0; i < cmap_file_size;
-                                          i++, j += 4) {
+        : if (with_cmap_buffer) for (i = 0, j = 0; i < cmap_file_size;
+                                     i++, j += 4) {
       image->cmap.buffer[i].r = buffer[j + 0];
       image->cmap.buffer[i].g = buffer[j + 1];
       image->cmap.buffer[i].b = buffer[j + 2];
@@ -505,7 +505,7 @@ IMAGE *img_read_plt_info(char *filename) {
   /* Leggo history */
   if (!TIFFGetField(tfp, TIFFTAG_TOONZHISTORY, &image->history))
     image->history = "";
-  image->history   = strsave(image->history);
+  image->history = strsave(image->history);
 
   /* estendo la palette */
 

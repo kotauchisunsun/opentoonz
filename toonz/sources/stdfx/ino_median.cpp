@@ -115,12 +115,12 @@ void fx_(const TRasterP in_ras  // with margin
 
       ,
       channel, radius, 0 /* 0=Spread:外は淵のピクセル値が続いているとする */
-      );
+  );
 
   ino::arr_to_ras(out_gr8->getRawData(), ino::channels(), out_ras, margin);
   out_gr8->unlock();
 }
-}
+}  // namespace
 //------------------------------------------------------------
 void ino_median::doCompute(TTile &tile, double frame,
                            const TRenderSettings &rend_sets) {

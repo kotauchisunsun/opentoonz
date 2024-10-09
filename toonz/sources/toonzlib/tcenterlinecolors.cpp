@@ -122,8 +122,8 @@ static void sampleColor(const TRasterCM32P &ras, int threshold, Sequence &seq,
   std::vector<double> params;
 
   // Meanwhile, ensure each point belong to ras. Otherwise, typically an error
-  // occurred in the thinning process and it's better avoid sampling procedure. 
-  // Only exception, when a point has 
+  // occurred in the thinning process and it's better avoid sampling procedure.
+  // Only exception, when a point has
   // x==ras->getLx() || y==ras->getLy(); that is accepted.
   {
     const T3DPointD &headPos = *currGraph->getNode(seq.m_head);
@@ -176,7 +176,7 @@ static void sampleColor(const TRasterCM32P &ras, int threshold, Sequence &seq,
   int paramCount = params.size(), paramMax = paramCount - 1;
 
   int sampleMax   = std::max(params.back() / std::max(meanThickness, 1.0),
-                           3.0),  // Number of color samples depends on
+                             3.0),  // Number of color samples depends on
       sampleCount = sampleMax + 1;  // the ratio params.back() / meanThickness
 
   std::vector<double> sampleParams(sampleCount);  // Sampling lengths

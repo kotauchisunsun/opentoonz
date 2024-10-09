@@ -15,34 +15,29 @@ const char auxslash = '\\';
 //=============================================================================
 
 TFrameId::TFrameId(const std::string &str, char s)
-    : m_frame(EMPTY_FRAME), m_letter(), m_zeroPadding(4), m_startSeqInd(s)
-{
+    : m_frame(EMPTY_FRAME), m_letter(), m_zeroPadding(4), m_startSeqInd(s) {
   if (!str.empty()) {
     int i;
     m_frame = 0;
-    for(i = 0; i < (int)str.size() && isdigit(str[i]); ++i)
-      m_frame = m_frame*10 + str[i] - '0';
-    if (i < (int)str.size() && isalpha(str[i]))
-      m_letter = str[i++];
-    if (m_frame == 0 || i < (int)str.size())
-      m_frame = NO_FRAME;
+    for (i = 0; i < (int)str.size() && isdigit(str[i]); ++i)
+      m_frame = m_frame * 10 + str[i] - '0';
+    if (i < (int)str.size() && isalpha(str[i])) m_letter = str[i++];
+    if (m_frame == 0 || i < (int)str.size()) m_frame = NO_FRAME;
   }
 }
 
 //-------------------------------------------------------------------
 
 TFrameId::TFrameId(const std::wstring &str, char s)
-    : m_frame(EMPTY_FRAME), m_letter(), m_zeroPadding(4), m_startSeqInd(s)
-{
+    : m_frame(EMPTY_FRAME), m_letter(), m_zeroPadding(4), m_startSeqInd(s) {
   if (!str.empty()) {
     int i;
     m_frame = 0;
-    for(i = 0; i < (int)str.size() && iswdigit(str[i]); ++i)
-      m_frame = m_frame*10 + str[i] - L'0';
+    for (i = 0; i < (int)str.size() && iswdigit(str[i]); ++i)
+      m_frame = m_frame * 10 + str[i] - L'0';
     if (i < (int)str.size() && iswalpha(str[i]))
       m_letter = str[i++] + ('a' - L'a');
-    if (m_frame == 0 || i < (int)str.size())
-      m_frame = NO_FRAME;
+    if (m_frame == 0 || i < (int)str.size()) m_frame = NO_FRAME;
   }
 }
 
@@ -116,12 +111,12 @@ void TFilePath::setPath(string path) {
   }
 #ifdef WIN32
   else  // se si tratta di un path in formato UNC e' del tipo "\\\\MachineName"
-      if (path.length() >= 3 && path[0] == '\\' && path[1] == '\\' &&
-          isalpha(path[2])) {
-    isUncName = true;
-    m_path.append(path, 0, 3);
-    pos = 3;
-  }
+    if (path.length() >= 3 && path[0] == '\\' && path[1] == '\\' &&
+        isalpha(path[2])) {
+      isUncName = true;
+      m_path.append(path, 0, 3);
+      pos = 3;
+    }
 #endif
   for (; pos < length; pos++)
     if (path[pos] == '.') {
@@ -134,8 +129,7 @@ void TFilePath::setPath(string path) {
         while (pos + 1 < length && isSlash(path[pos + 1])) pos++;
       }
     } else if (isSlash(path[pos])) {
-      do
-        pos++;
+      do pos++;
       while (pos < length && isSlash(path[pos]));
       pos--;
       m_path.append(1, slash);
@@ -152,9 +146,8 @@ void TFilePath::setPath(string path) {
       m_path.length() > 1 && m_path[m_path.length() - 1] == slash)
     m_path.erase(m_path.length() - 1, 1);
 
-  if (isUncName &&
-      m_path.find_last_of('\\') ==
-          1)  // e' indicato solo il nome della macchina...
+  if (isUncName && m_path.find_last_of('\\') ==
+                       1)  // e' indicato solo il nome della macchina...
     m_path.append(1, slash);
 }
 
@@ -328,7 +321,7 @@ string TFilePath::getName() const  // noDot! noSlash!
   string str = m_path.substr(i + 1);
   i          = str.rfind(".");
   if (i == string::npos) return str;
-  int j                    = str.substr(0, i).rfind(".");
+  int j = str.substr(0, i).rfind(".");
   if (j != string::npos) i = j;
   return str.substr(0, i);
 }
@@ -353,8 +346,9 @@ TFilePath TFilePath::getParentDir() const  // noSlash!
 {
   int i = getLastSlash(m_path);  // cerco l'ultimo slash
   if (i < 0) {
-    if (m_path.length() >= 2 && ('a' <= m_path[0] && m_path[0] <= 'z' ||
-                                 'A' <= m_path[0] && m_path[0] <= 'Z') &&
+    if (m_path.length() >= 2 &&
+        ('a' <= m_path[0] && m_path[0] <= 'z' ||
+         'A' <= m_path[0] && m_path[0] <= 'Z') &&
         m_path[1] == ':')
       return TFilePath(m_path.substr(0, 2));
     else
@@ -379,8 +373,8 @@ TFrameId TFilePath::getFrame() const {
 
   int k, number = 0;
   for (k = j + 1; k < i && isdigit(str[k]); k++)
-    number                    = number * 10 + str[k] - '0';
-  char letter                 = '\0';
+    number = number * 10 + str[k] - '0';
+  char letter = '\0';
   if (isalpha(str[k])) letter = str[k++];
   if (number == 0 || k < i) return TFrameId(TFrameId::NO_FRAME);
   return TFrameId(number, letter);
@@ -422,7 +416,7 @@ TFilePath TFilePath::withName(const string &name) const {
   string str = m_path.substr(i + 1);  // str e' il path senza parentdir
   int j      = str.rfind('.');
   if (j == string::npos) return TFilePath(m_path.substr(0, i + 1) + name);
-  int k                    = str.substr(0, j).rfind(".");
+  int k = str.substr(0, j).rfind(".");
   if (k == string::npos) k = j;
   return TFilePath(m_path.substr(0, i + 1) + name + str.substr(k));
 }

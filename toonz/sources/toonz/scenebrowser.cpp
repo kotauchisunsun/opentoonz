@@ -416,9 +416,10 @@ void SceneBrowser::sortByDataModel(DataType dataType, bool isDiscendent) {
         boost::make_counting_iterator(0),
         boost::make_counting_iterator(int(m_items.size())));
 
-    std::stable_sort(
-        new2OldIdx.begin(), new2OldIdx.end(),
-        [this, dataType](int x, int y){ return locals::itemLess(x, y, *this, dataType); });
+    std::stable_sort(new2OldIdx.begin(), new2OldIdx.end(),
+                     [this, dataType](int x, int y) {
+                       return locals::itemLess(x, y, *this, dataType);
+                     });
 
     // Use the renumbering table to permutate elements
     std::vector<Item>(
@@ -436,13 +437,17 @@ void SceneBrowser::sortByDataModel(DataType dataType, bool isDiscendent) {
           boost::make_counting_iterator(int(m_items.size())));
 
       std::sort(old2NewIdx.begin(), old2NewIdx.end(),
-                [&new2OldIdx](int x, int y){ return locals::indexLess(x, y, new2OldIdx); });
+                [&new2OldIdx](int x, int y) {
+                  return locals::indexLess(x, y, new2OldIdx);
+                });
 
       std::vector<int> newSelectedIndices;
-      tcg::substitute(
-          newSelectedIndices,
-          tcg::permuted_range(old2NewIdx, fs->getSelectedIndices() |
-              ba::filtered([&old2NewIdx](int x){ return x < old2NewIdx.size(); })));
+      tcg::substitute(newSelectedIndices,
+                      tcg::permuted_range(
+                          old2NewIdx, fs->getSelectedIndices() |
+                                          ba::filtered([&old2NewIdx](int x) {
+                                            return x < old2NewIdx.size();
+                                          })));
 
       fs->select(!newSelectedIndices.empty() ? &newSelectedIndices.front() : 0,
                  int(newSelectedIndices.size()));
@@ -464,11 +469,12 @@ void SceneBrowser::sortByDataModel(DataType dataType, bool isDiscendent) {
       int iCount = int(m_items.size()), lastIdx = iCount - 1;
 
       std::vector<int> newSelectedIndices;
-      tcg::substitute(
-          newSelectedIndices,
-          fs->getSelectedIndices() |
-              ba::filtered([iCount](int x){ return x < iCount; }) |
-              ba::transformed([lastIdx](int x){ return locals::complement(x, lastIdx); }));
+      tcg::substitute(newSelectedIndices,
+                      fs->getSelectedIndices() | ba::filtered([iCount](int x) {
+                        return x < iCount;
+                      }) | ba::transformed([lastIdx](int x) {
+                        return locals::complement(x, lastIdx);
+                      }));
 
       fs->select(!newSelectedIndices.empty() ? &newSelectedIndices.front() : 0,
                  int(newSelectedIndices.size()));

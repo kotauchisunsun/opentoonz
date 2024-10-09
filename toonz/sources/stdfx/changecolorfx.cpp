@@ -32,7 +32,7 @@ static void OLDRGB2HSV(double r, double g, double b, double *h, double *s,
       *h = 2 + (b - r) / delta;
     else if (b == max)
       *h = 4 + (r - g) / delta;
-    *h   = *h * 60;
+    *h = *h * 60;
     if (*h < 0) *h += 360;
   }
 }
@@ -46,8 +46,8 @@ static void OLDHSV2RGB(double hue, double sat, double value, double *red,
   //    hue=0;
   if (hue > 360) hue -= 360;
   if (hue < 0) hue += 360;
-  if (sat < 0) sat     = 0;
-  if (sat > 1) sat     = 1;
+  if (sat < 0) sat = 0;
+  if (sat > 1) sat = 1;
   if (value < 0) value = 0;
   if (value > 1) value = 1;
   if (sat == 0) {
@@ -216,26 +216,26 @@ to_v =to_hsv[2]/255.;
       b = pix->b / 255.0;
       // int hsv[3];
       OLDRGB2HSV(r, g, b, &h, &s, &v);
-      int hflag            = (h <= hmax && h >= hmin);
+      int hflag = (h <= hmax && h >= hmin);
       if (swaprange) hflag = !hflag;
       if (hflag && s <= smax && s >= smin && v <= vmax && v >= vmin)
         *pix = to_color;
       else {
-        double hcorr            = 0;
-        double scorr            = 0;
-        double vcorr            = 0;
-        int hfallminflag        = (h <= hmin && h >= hfallmin);
+        double hcorr     = 0;
+        double scorr     = 0;
+        double vcorr     = 0;
+        int hfallminflag = (h <= hmin && h >= hfallmin);
         if (hfallminflag) hcorr = h - hmin;
-        int hfallmaxflag        = (h >= hmax && h <= hfallmax);
+        int hfallmaxflag = (h >= hmax && h <= hfallmax);
         if (hfallmaxflag) hcorr = h - hmax;
         if (hcorr) {
           if (s <= smin && s >= sfallmin) scorr = s - smin;
           if (s >= smax && s <= sfallmax) scorr = s - smax;
           if (v <= vmin && v >= vfallmin) vcorr = v - vmin;
           if (v >= vmax && v <= vfallmax) vcorr = v - vmax;
-          if (s < smin && s > sfallmin) scorr   = s - smin;
-          if (s > smax && s < sfallmax) scorr   = s - smax;
-          h                                     = to_h + hcorr;
+          if (s < smin && s > sfallmin) scorr = s - smin;
+          if (s > smax && s < sfallmax) scorr = s - smax;
+          h = to_h + hcorr;
           if (h < 0) h += 360;
           if (h > 360) h -= 360;
           OLDHSV2RGB(h, s, v, &r, &g, &b);

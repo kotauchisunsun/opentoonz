@@ -287,12 +287,12 @@ IntField::IntField(QWidget *parent, bool isMaxRangeLimited, bool isRollerHide,
 
   m_lineEdit = new DVGui::IntLineEdit(field);
   bool ret   = connect(m_lineEdit, SIGNAL(editingFinished()), this,
-                     SLOT(onEditingFinished()));
+                       SLOT(onEditingFinished()));
   vLayout->addWidget(m_lineEdit);
 
   m_roller = new RollerField(field);
   ret      = ret && connect(m_roller, SIGNAL(valueChanged(bool)), this,
-                       SLOT(onRollerValueChanged(bool)));
+                            SLOT(onRollerValueChanged(bool)));
   vLayout->addWidget(m_roller);
 
   if (isRollerHide) enableRoller(false);
@@ -303,25 +303,24 @@ IntField::IntField(QWidget *parent, bool isMaxRangeLimited, bool isRollerHide,
   m_dec = new QPushButton(QString("-"));
   m_inc->setFixedSize(QSize(20, 20));
   m_dec->setFixedSize(QSize(20, 20));
-  ret = ret
-     && connect(m_inc, SIGNAL(clicked()), this, SLOT(onIncClicked()))
-     && connect(m_dec, SIGNAL(clicked()), this, SLOT(onDecClicked()));
-   
+  ret = ret && connect(m_inc, SIGNAL(clicked()), this, SLOT(onIncClicked())) &&
+        connect(m_dec, SIGNAL(clicked()), this, SLOT(onDecClicked()));
+
   if (isSpinnerHide) enableSpinner(false);
-  
+
   // TODO:
   // Commonly in OpenToonz spin-buttons has been placed in that order: [+][-]
   // This seems unusual behavior.
-  // And in this particular case buttons has been placed in another order: [-][+]
-  // We need to know what is better
+  // And in this particular case buttons has been placed in another order:
+  // [-][+] We need to know what is better
   layout->addWidget(m_dec);
   layout->addWidget(m_inc);
-  
+
   m_slider = new QSlider(Qt::Horizontal, this);
   ret      = ret && connect(m_slider, SIGNAL(valueChanged(int)), this,
-                       SLOT(onSliderChanged(int)));
+                            SLOT(onSliderChanged(int)));
   ret      = ret && connect(m_slider, SIGNAL(sliderReleased()), this,
-                       SLOT(onSliderReleased()));
+                            SLOT(onSliderReleased()));
 
   ret = ret && connect(m_lineEdit, SIGNAL(editingFinished()), this,
                        SIGNAL(valueEditedByHand()));

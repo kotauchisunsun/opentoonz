@@ -170,12 +170,12 @@ public:
 
   virtual void setFrameSize(int lx, int ly, int bpp) = 0;
 
-  virtual TRasterP doGetRaster(int frame) = 0;
+  virtual TRasterP doGetRaster(int frame)                    = 0;
   virtual bool doGetRaster(int frame, TRaster32P &ras) const = 0;
 
   virtual bool doPutRaster(int frame, const TRasterP &ras) = 0;
 
-  virtual void onInvalidate() = 0;
+  virtual void onInvalidate()                             = 0;
   virtual void onInvalidate(int startFrame, int endFrame) = 0;
 
   virtual UCHAR *getRawData(int frame, TINT32 &size, int &lx, int &ly) = 0;

@@ -197,14 +197,14 @@ BluredBrush::~BluredBrush() {}
 
 //----------------------------------------------------------------------------------
 
-void BluredBrush::addPoint(const TThickPoint &p, double opacity, bool keepDistance) {
+void BluredBrush::addPoint(const TThickPoint &p, double opacity,
+                           bool keepDistance) {
   if (keepDistance) {
     double dist = norm2(p - m_lastPoint);
-    double d = 0.12 * m_lastPoint.thick;
-    if (dist < d*d)
-      return;
+    double d    = 0.12 * m_lastPoint.thick;
+    if (dist < d * d) return;
   }
-  
+
   double radius      = p.thick * 0.5;
   double brushRadius = m_size * 0.5;
   double scaleFactor = radius / brushRadius;
@@ -328,7 +328,7 @@ void BluredBrush::updateDrawing(const TRasterP ras, const TRasterP rasBackup,
   } else {
     QImage targetImage = rasterToQImage(rasBackup).copy(qTargetRect);
     targetImage        = targetImage.convertToFormat(
-        QImage::Format_ARGB32_Premultiplied, colorTable);
+               QImage::Format_ARGB32_Premultiplied, colorTable);
 
     QPainter p(&targetImage);
     p.setOpacity(m_enableDynamicOpacity ? 1 : opacity);
@@ -366,7 +366,7 @@ void BluredBrush::eraseDrawing(const TRasterP ras, const TRasterP rasBackup,
   } else if (ras->getPixelSize() != 4) {
     QImage targetImage = rasterToQImage(rasBackup).copy(qTargetRect);
     targetImage        = targetImage.convertToFormat(
-        QImage::Format_ARGB32_Premultiplied, colorTable);
+               QImage::Format_ARGB32_Premultiplied, colorTable);
 
     QImage app(qTargetRect.size(), QImage::Format_ARGB32_Premultiplied);
     QPainter p2(&app);

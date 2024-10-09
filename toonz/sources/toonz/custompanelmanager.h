@@ -22,8 +22,8 @@ class MyScroller : public QWidget {
 
   Q_PROPERTY(QColor ScrollerBorderColor READ getScrollerBorderColor WRITE
                  setScrollerBorderColor);
-  Q_PROPERTY(QColor ScrollerBGColor READ getScrollerBGColor WRITE
-                 setScrollerBGColor);
+  Q_PROPERTY(
+      QColor ScrollerBGColor READ getScrollerBGColor WRITE setScrollerBGColor);
 
 public:
   MyScroller(Qt::Orientation orientation, CommandId command1,

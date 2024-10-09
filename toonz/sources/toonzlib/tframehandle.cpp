@@ -357,10 +357,10 @@ bool TFrameHandle::scrub(int r0, int r1, double framePerSecond) {
 void TFrameHandle::stopScrubbing() {
   if (!isScrubbing()) return;
   if (m_timerId > 0) killTimer(m_timerId);
-  m_timerId                        = 0;
-  m_scrubRange                     = std::make_pair(0, -1);
+  m_timerId    = 0;
+  m_scrubRange = std::make_pair(0, -1);
   if (m_audioColumn) m_audioColumn = 0;
-  if (m_xsheet) m_xsheet           = 0;
-  m_fps                            = 0;
+  if (m_xsheet) m_xsheet = 0;
+  m_fps = 0;
   emit scrubStopped();
 }

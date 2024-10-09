@@ -591,7 +591,7 @@ void TThread::Executor::cancel() {
         break;
       else {
         std::map<long, Thread *>::iterator it = m_imp->m_workerThreads.begin();
-        thread = it->second;
+        thread                                = it->second;
         m_imp->m_workerThreads.erase(it);
 
         if (thread) thread->cancel();

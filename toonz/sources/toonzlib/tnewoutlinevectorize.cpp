@@ -508,7 +508,7 @@ void ::BordersReader<Pix>::addElement(const TPoint &pos, const TPoint &dir,
   // Build opposite direction
   bool horizontal = (pos.y == m_pos.y);
   TPoint oppDir   = horizontal ? TPoint((pos.x > m_pos.x) ? -1 : 1, 0)
-                             : TPoint(0, (pos.y > m_pos.y) ? -1 : 1);
+                               : TPoint(0, (pos.y > m_pos.y) ? -1 : 1);
 
   // Update position
   m_pix += horizontal ? (pos.x - m_pos.x) : (pos.y - m_pos.y) * m_wrap;

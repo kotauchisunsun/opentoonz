@@ -392,9 +392,11 @@ void signalHandler(int sig) {
 
 static void printSysInfo(std::string &out) {
   out.append("Build ABI: " + QSysInfo::buildAbi().toStdString() + "\n");
-  out.append("Operating System: " + QSysInfo::prettyProductName().toStdString() + "\n");
+  out.append("Operating System: " +
+             QSysInfo::prettyProductName().toStdString() + "\n");
   out.append("OS Kernel: " + QSysInfo::kernelVersion().toStdString() + "\n");
-  out.append("CPU Threads: " + std::to_string(QThread::idealThreadCount()) + "\n");
+  out.append("CPU Threads: " + std::to_string(QThread::idealThreadCount()) +
+             "\n");
 }
 
 //-----------------------------------------------------------------------------
@@ -407,13 +409,13 @@ static void printGPUInfo(std::string &out) {
     out.append("GPU Vendor: " + std::string(gpuVendorName) + "\n");
   if (gpuModelName)
     out.append("GPU Model: " + std::string(gpuModelName) + "\n");
-  if (gpuVersion)
-    out.append("GPU Version: " + std::string(gpuVersion) + "\n");
+  if (gpuVersion) out.append("GPU Version: " + std::string(gpuVersion) + "\n");
 }
 
 //-----------------------------------------------------------------------------
 
-CrashHandler::CrashHandler(QWidget *parent, TFilePath crashFile, QString crashReport)
+CrashHandler::CrashHandler(QWidget *parent, TFilePath crashFile,
+                           QString crashReport)
     : QDialog(parent), m_crashFile(crashFile), m_crashReport(crashReport) {
   setWindowFlag(Qt::WindowContextHelpButtonHint, false);
 
@@ -427,7 +429,7 @@ CrashHandler::CrashHandler(QWidget *parent, TFilePath crashFile, QString crashRe
   sl.append(tr("Click on the 'New issue' button and fill out the form."));
   sl.append("");
   sl.append(tr("System Configuration and Problem Details:"));
-  
+
   QLabel *headtext = new QLabel(sl.join("<br>"));
   headtext->setTextFormat(Qt::RichText);
 
@@ -467,7 +469,8 @@ CrashHandler::CrashHandler(QWidget *parent, TFilePath crashFile, QString crashRe
 void CrashHandler::reject() {
   QStringList sl;
   sl.append(tr("Application is in unstable state and must be restarted."));
-  sl.append(tr("Resuming is not recommended and may lead to an unrecoverable crash."));
+  sl.append(tr(
+      "Resuming is not recommended and may lead to an unrecoverable crash."));
   sl.append(tr("Ignore advice and try to resume program?"));
 
   QMessageBox::StandardButton reply =
@@ -488,8 +491,9 @@ void CrashHandler::copyClipboard() {
 //-----------------------------------------------------------------------------
 
 void CrashHandler::openWebpage() {
-  QDesktopServices::openUrl(QUrl("https://github.com/opentoonz/opentoonz/issues"));
-}  
+  QDesktopServices::openUrl(
+      QUrl("https://github.com/opentoonz/opentoonz/issues"));
+}
 
 //-----------------------------------------------------------------------------
 
@@ -503,11 +507,11 @@ void CrashHandler::openFolder() {
 void CrashHandler::install() {
 #ifdef _WIN32
   // std library seems to override this
-  //SetUnhandledExceptionFilter(exceptionHandler);
+  // SetUnhandledExceptionFilter(exceptionHandler);
 
   void *handler = AddVectoredExceptionHandler(0, exceptionHandler);
   assert(handler != NULL);
-  //RemoveVectoredExceptionHandler(handler);
+  // RemoveVectoredExceptionHandler(handler);
 #else
   signal(SIGABRT, signalHandler);
   signal(SIGFPE, signalHandler);
@@ -576,11 +580,12 @@ bool CrashHandler::trigger(const QString reason, bool showDialog) {
   }
   try {
     if (s_reportProjInfo) {
-      auto currentProject = TProjectManager::instance()->getCurrentProject();
-      TFilePath projectPath    = currentProject->getProjectPath();
+      auto currentProject   = TProjectManager::instance()->getCurrentProject();
+      TFilePath projectPath = currentProject->getProjectPath();
 
-      ToonzScene *currentScene = TApp::instance()->getCurrentScene()->getScene();
-      std::wstring sceneName   = currentScene->getSceneName();
+      ToonzScene *currentScene =
+          TApp::instance()->getCurrentScene()->getScene();
+      std::wstring sceneName = currentScene->getSceneName();
 
       out.append("\nApplication Dir: ");
       out.append(QCoreApplication::applicationDirPath().toStdString());
@@ -625,7 +630,8 @@ bool CrashHandler::trigger(const QString reason, bool showDialog) {
 
   if (showDialog) {
     // Show crash handler dialog
-    CrashHandler crashdialog(s_parentWindow, fpCrsh, QString::fromStdString(out));
+    CrashHandler crashdialog(s_parentWindow, fpCrsh,
+                             QString::fromStdString(out));
     return crashdialog.exec() != QDialog::Rejected;
   }
 

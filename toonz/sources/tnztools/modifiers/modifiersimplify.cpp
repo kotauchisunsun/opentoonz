@@ -3,38 +3,29 @@
 #include <tools/modifiers/modifiersimplify.h>
 #include <algorithm>
 
-
 //*****************************************************************************************
 //    TModifierSimplify implementation
 //*****************************************************************************************
 
+TModifierSimplify::TModifierSimplify(double step) : step(step) {}
 
-TModifierSimplify::TModifierSimplify(double step):
-  step(step) { }
-
-
-void
-TModifierSimplify::modifyTrack(
-  const TTrack &track,
-  TTrackList &outTracks )
-{
+void TModifierSimplify::modifyTrack(const TTrack &track,
+                                    TTrackList &outTracks) {
   if (!track.handler) {
     Handler *handler = new Handler();
-    track.handler = handler;
-    handler->track = new TTrack(track);
+    track.handler    = handler;
+    handler->track   = new TTrack(track);
     new Interpolator(*handler->track);
   }
 
-  Handler *handler = dynamic_cast<Handler*>(track.handler.getPointer());
-  if (!handler)
-    return;
-  
+  Handler *handler = dynamic_cast<Handler *>(track.handler.getPointer());
+  if (!handler) return;
+
   outTracks.push_back(handler->track);
   TTrack &subTrack = *handler->track;
 
-  if (!track.changed())
-    return;
-  
+  if (!track.changed()) return;
+
   // remove points
   int start = track.size() - track.pointsAdded;
   if (start < 0) start = 0;
@@ -45,16 +36,16 @@ TModifierSimplify::modifyTrack(
   subTrack.truncate(subStart);
 
   // add points
-  double step2 = step*step;
+  double step2   = step * step;
   TTrackPoint p0 = subTrack.back();
-  for(int i = start; i < track.size(); ++i) {
+  for (int i = start; i < track.size(); ++i) {
     const TTrackPoint &p1 = subTrack.pointFromOriginal(i);
     if (!subTrack.empty() && tdistance2(p1.position, p0.position) < step2) {
       if (p0.pressure < p1.pressure) p0.pressure = p1.pressure;
       if (i == track.size() - 1) p0.position = p1.position;
-      p0.tilt          = p1.tilt;
-      p0.time          = p1.time;
-      p0.final         = p1.final;
+      p0.tilt  = p1.tilt;
+      p0.time  = p1.time;
+      p0.final = p1.final;
       subTrack.pop_back();
       subTrack.push_back(p0, false);
     } else {
@@ -66,10 +57,9 @@ TModifierSimplify::modifyTrack(
   // fix points
   if (track.fixedFinished())
     subTrack.fix_all();
-  else
-  if (track.fixedSize())
-    subTrack.fix_to(
-      subTrack.floorIndex( subTrack.indexByOriginalIndex(track.fixedSize()-1) ));
-  
+  else if (track.fixedSize())
+    subTrack.fix_to(subTrack.floorIndex(
+        subTrack.indexByOriginalIndex(track.fixedSize() - 1)));
+
   track.resetChanges();
 }

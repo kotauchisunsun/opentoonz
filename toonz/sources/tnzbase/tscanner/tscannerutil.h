@@ -31,4 +31,4 @@ void copyBWBufferToTRasterGR8(const unsigned char *buffer, int rgbLx, int rgbLy,
 void copy90BWBufferToRasGR8(unsigned char *bwBuffer, int bwLx, int bwLy,
                             int bwWrap, bool isBW, TRasterGR8P &rout,
                             int mirror, int ninety);
-};
+};  // namespace TScannerUtil

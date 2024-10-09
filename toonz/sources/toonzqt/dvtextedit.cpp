@@ -43,7 +43,7 @@ qreal distanceBetweenPointandRect(const QRect &rect, const QPoint &point) {
 
   return std::min(topMax, bottomMax);
 }
-}
+}  // namespace
 
 using namespace DVGui;
 

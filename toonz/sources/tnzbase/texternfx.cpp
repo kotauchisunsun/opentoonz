@@ -16,7 +16,7 @@ namespace {
 TFilePath getExternFxPath() {
   return TSystem::getBinDir() + "plugins" + "externFxs";
 }
-}
+}  // namespace
 
 //=========================================================
 
@@ -253,7 +253,7 @@ void TExternalProgramFx::doCompute(TTile &tile, double frame,
       // e' un parametro
       // se il nome non viene riconosciuto sostituisco la stringa nulla
       TDoubleParamP param = TParamP(getParams()->getParam(name));
-      if (param) value    = std::to_string(param->getValue(frame));
+      if (param) value = std::to_string(param->getValue(frame));
     }
 
     args.replace(i, m + 1, value);
@@ -288,7 +288,7 @@ void TExternalProgramFx::doCompute(TTile &tile, double frame,
       NULL,                                     // current directory name
       &si,                                      // startup information
       &pinfo                                    // process information
-      );
+  );
 
   if (!ret) DWORD err = GetLastError();
 
@@ -473,7 +473,7 @@ void ExternalProgramFx::doCompute(TTile &tile, double frame,
                     NULL,   // current directory name
                     &si,    // startup information
                     &pinfo  // process information
-                    );
+      );
 
   if (!ret) DWORD err = GetLastError();
 

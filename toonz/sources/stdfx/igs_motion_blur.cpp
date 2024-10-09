@@ -163,7 +163,7 @@ void vec_poi_to_len_pos_(
     const double xp, const double yp, /* point */
     double &len,                      /* vectorからpointまでの距離 */
     double &pos /* vector方向でvector原点からpointまでの距離 */
-    ) {
+) {
   /*
    * ベクトルの角度を求める
    */
@@ -226,7 +226,7 @@ void vec_poi_to_len_pos_(
 
   pos = xp_rot;
 }
-}
+}  // namespace
 
 namespace {
 /* ベクトルからの指定範囲でサブピクセルがどのくらい含むかカウントする
@@ -249,7 +249,7 @@ int count_nearly_vector_(
     const double y_tgt, /* 調査(vectorの原点からの)pixel位置 */
     const long x_div, const long y_div, /* 調査pixelを分割する(サブpixel)数 */
     const double valid_len              /* vectorからの有効距離 */
-    ) {
+) {
   int count = 0;
   for (int yy = 0; yy < y_div; ++yy) {
     for (int xx = 0; xx < x_div; ++xx) {
@@ -272,7 +272,7 @@ double liner_decrement_(
     const double y_tgt, /* 調査(vectorの原点からの)pixel位置 */
     const long x_div, const long y_div, /* 調査pixelを分割する(サブpixel)数 */
     const double valid_len              /* vectorからの有効距離 */
-    ) {
+) {
   int count             = 0;
   double accum          = 0.0;
   const double line_len = sqrt(xv * xv + yv * yv) + valid_len;
@@ -347,7 +347,7 @@ double bure_decrement_(
   /* ????????????????? */
   return (double)count_in / (count_in + count_out) * (1.0 - pos / line_len);
 }
-}
+}  // namespace
 
 namespace {
 void set_smooth_(const double x_vector, const double y_vector,
@@ -464,7 +464,7 @@ void set_smooth_(const double x_vector, const double y_vector,
     ratio_array.at(ii) /= d_accum;
   }
 }
-}
+}  // namespace
 
 namespace {
 template <class T>
@@ -591,7 +591,7 @@ void convert_template_(const T *in, T *image_out, const int hh, const int ww,
     }
   }
 }
-}
+}  // namespace
 void igs::motion_blur::convert(const unsigned char *image_in,
                                unsigned char *image_out,
 

@@ -30,8 +30,8 @@ public:
   public:
     const double radius;
     std::vector<double> angles;
-    inline explicit Handler(double radius):
-      radius(std::max(TConsts::epsilon, radius)) { }
+    inline explicit Handler(double radius)
+        : radius(std::max(TConsts::epsilon, radius)) {}
   };
 
   class DVAPI Interpolator : public TTrackInterpolator {
@@ -39,8 +39,12 @@ public:
     const double angle;
     const double radius;
     const double speed;
-    inline Interpolator(TTrack &track, double angle, double radius, double speed):
-      TTrackInterpolator(track), angle(angle), radius(radius), speed(speed) { }
+    inline Interpolator(TTrack &track, double angle, double radius,
+                        double speed)
+        : TTrackInterpolator(track)
+        , angle(angle)
+        , radius(radius)
+        , speed(speed) {}
     TTrackPoint interpolateFromOriginal(double originalIndex);
     TTrackPoint interpolate(double index) override;
   };
@@ -52,8 +56,7 @@ public:
 
   TModifierTest(int count = 3, double radius = 40, double speed = 0.25);
 
-  void modifyTrack(const TTrack &track,
-                   TTrackList &outTracks) override;
+  void modifyTrack(const TTrack &track, TTrackList &outTracks) override;
 };
 
 #endif

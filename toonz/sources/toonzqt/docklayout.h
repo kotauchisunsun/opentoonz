@@ -97,8 +97,8 @@ public:
 
   void update();        // Re-applies partition found
   void redistribute();  // Calculates partition
-  void applyTransform(const QTransform &transform);  // Applies transformation to
-                                                     // known partition - Da
+  void applyTransform(const QTransform &transform);  // Applies transformation
+                                                     // to known partition - Da
                                                      // rimuovere, non serve...
 
   DockWidget *getMaximized() { return m_maximizedDock; }
@@ -172,9 +172,9 @@ public:
   void maximizeDock();
 
   enum {
-      variable = 0,  // default, docked panel may auto resize with window
-      fixed = 1,     // to be used with setFixedWidth()
-      sizeable = 2   // allow panel to be sizeable but doesn't auto resize
+    variable = 0,  // default, docked panel may auto resize with window
+    fixed    = 1,  // to be used with setFixedWidth()
+    sizeable = 2   // allow panel to be sizeable but doesn't auto resize
   };
   int getFixWidthMode() { return m_modeFixWidth; }
   void setFixWidthMode(int fixedmode) { m_modeFixWidth = fixedmode; }
@@ -195,7 +195,7 @@ protected:
   // Maximization
   bool m_maximized;
 
-  // Level Strip and Style Editor use a fixed width on 
+  // Level Strip and Style Editor use a fixed width on
   // window resize to minimize user frustration
   // This variable is only used by Level Strip right now.
   // This is only true if the level strip is vertical.

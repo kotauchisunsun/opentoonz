@@ -174,7 +174,7 @@ void FxDag::updateFxIdTable(TFx *fx) { m_idTable[toLower(fx->getFxId())] = fx; }
 //-------------------------------------------------------------------
 
 int FxDag::getFxTypeCount(TFx *fx) {
-  std::string type = fx->getFxType();
+  std::string type                        = fx->getFxType();
   std::map<std::string, int>::iterator it = m_typeTable.find(type);
   if (it == m_typeTable.end()) return 0;
   return it->second;
@@ -225,7 +225,7 @@ TFx *search(const std::map<TFx *, TFx *> &table, TFx *fx) {
   std::map<TFx *, TFx *>::const_iterator it = table.find(fx);
   return it == table.end() ? 0 : it->second;
 }
-}
+}  // namespace
 
 //-------------------------------------------------------------------
 

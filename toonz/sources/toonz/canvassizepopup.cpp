@@ -600,9 +600,9 @@ void CanvasSizePopup::showEvent(QShowEvent *e) {
   TDimension dim = m_sl->getResolution();
   TPointD dpi    = m_sl->getDpi();
   double dimLx   = getMeasuredLength(dim.lx, m_xMeasure, dpi.x,
-                                   m_unit->currentData().toString());
+                                     m_unit->currentData().toString());
   double dimLy   = getMeasuredLength(dim.ly, m_yMeasure, dpi.y,
-                                   m_unit->currentData().toString());
+                                     m_unit->currentData().toString());
   m_currentXSize->setText(QString::number(dimLx));
   m_currentYSize->setText(QString::number(dimLy));
   m_relative->setChecked(false);

@@ -130,9 +130,9 @@ DuplicatePopup::DuplicatePopup()
   //----signal-slot connections
   bool ret = true;
   ret      = ret && connect(m_countFld, SIGNAL(editingFinished()), this,
-                       SLOT(updateValues()));
-  ret = ret && connect(m_upToFld, SIGNAL(editingFinished()), this,
-                       SLOT(updateValues()));
+                            SLOT(updateValues()));
+  ret      = ret && connect(m_upToFld, SIGNAL(editingFinished()), this,
+                            SLOT(updateValues()));
 
   ret = ret && connect(m_okBtn, SIGNAL(clicked()), this, SLOT(onOKPressed()));
   ret = ret && connect(m_cancelBtn, SIGNAL(clicked()), this, SLOT(close()));
@@ -226,13 +226,13 @@ void DuplicatePopup::updateValues() {
 
   if (count != m_count) {
     if (count < 1) count = 1;
-    upTo                 = r1 + 1 + count * chunkSize;
+    upTo = r1 + 1 + count * chunkSize;
   }
   /*-- upToを編集した場合 --*/
   else {
     if (upTo < r1 + 1 + 1) upTo = r1 + 1 + 1;
-    count                       = (upTo - (r1 + 2) + chunkSize) / chunkSize;
-    if (count < 1) upTo         = 1;
+    count = (upTo - (r1 + 2) + chunkSize) / chunkSize;
+    if (count < 1) upTo = 1;
   }
   m_count = count;
   m_upTo  = upTo;

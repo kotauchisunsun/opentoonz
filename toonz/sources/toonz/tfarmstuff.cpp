@@ -48,7 +48,7 @@ inline bool doTestConnection(const QString &hostname, const QString &ipaddr,
   }
   return false;
 }
-}
+}  // namespace
 
 //------------------------------------------------------------------------------
 

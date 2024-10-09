@@ -81,7 +81,7 @@ double wyvillPotential(double r, double R) {
 }
 
 /*
-  */
+ */
 double derivateOfWyvillPotential(double r, double R) {
   if (0.0 == R) return 0.0;
   if (0 > r || r > R) return 0.0;
@@ -98,11 +98,11 @@ double derivateOfWyvillPotential(double r, double R) {
 const double c_maxLengthOfGaussian = 3.0;
 
 /*
-  */
+ */
 double gaussianPotential(double x) { return exp(-sq(x)); }
 
 /*
-  */
+ */
 double derivateOfGaussianPotential(double x) { return -2 * x * exp(-sq(x)); }
 
 /*
@@ -383,7 +383,7 @@ TStrokeParamDeformation::~TStrokeParamDeformation() { delete m_vect; }
 
 //=============================================================================
 /*
-*/
+ */
 TStrokeBenderDeformation::TStrokeBenderDeformation(const TStroke *ref, double s,
                                                    double l)
     : m_pRef(ref)
@@ -441,10 +441,10 @@ TThickPoint TStrokeBenderDeformation::getDisplacementForControlPoint(
       diff *= (1.0 / m_lengthOfDeformation) * c_maxLengthOfGaussian;
       outVal = gaussianPotential(diff);
     } else if (m_versus == OUTER) {
-      double valForGaussian = -c_maxLengthOfGaussian +
-                              2 * c_maxLengthOfGaussian /
-                                  m_lengthOfDeformation *
-                                  strokeLengthAtParameter;
+      double valForGaussian =
+          -c_maxLengthOfGaussian + 2 * c_maxLengthOfGaussian /
+                                       m_lengthOfDeformation *
+                                       strokeLengthAtParameter;
       outVal = 1.0 - gaussianPotential(valForGaussian);
     }
 
@@ -484,10 +484,10 @@ TThickPoint TStrokeBenderDeformation::getDisplacement(const TStroke &s,
         diff *= (1.0 / m_lengthOfDeformation) * c_maxLengthOfGaussian;
         outVal = gaussianPotential(diff);
       } else if (m_versus == OUTER) {
-        double valForGaussian = -c_maxLengthOfGaussian +
-                                2 * c_maxLengthOfGaussian /
-                                    m_lengthOfDeformation *
-                                    strokeLengthAtParameter;
+        double valForGaussian =
+            -c_maxLengthOfGaussian + 2 * c_maxLengthOfGaussian /
+                                         m_lengthOfDeformation *
+                                         strokeLengthAtParameter;
         outVal = 1.0 - gaussianPotential(valForGaussian);
       }
     }

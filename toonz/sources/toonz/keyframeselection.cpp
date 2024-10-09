@@ -398,27 +398,27 @@ void TKeyframeSelection::shiftKeyframes(int direction) {
   int r0 = positions.begin()->first;
   int c0 = positions.begin()->second;
 
-  TXsheet *xsh = TApp::instance()->getCurrentXsheet()->getXsheet();
+  TXsheet *xsh        = TApp::instance()->getCurrentXsheet()->getXsheet();
   TKeyframeData *data = new TKeyframeData();
   data->setKeyframes(positions, xsh);
 
   TUndoManager::manager()->beginBlock();
 
-  XsheetViewer *viewer = TApp::instance()->getCurrentXsheetViewer();
+  XsheetViewer *viewer          = TApp::instance()->getCurrentXsheetViewer();
   TKeyframeSelection *selection = viewer->getKeyframeSelection();
   selection->selectNone();
 
   std::set<Position>::iterator it = positions.begin(), itEnd = positions.end();
-  for(; it != itEnd; ++it) {
+  for (; it != itEnd; ++it) {
     Position position = *it;
-    int r = position.first;
-    int c = position.second;
+    int r             = position.first;
+    int c             = position.second;
 
-	TXshColumn *column = xsh->getColumn(c);
-	if (!column || column->isLocked()) continue;
+    TXshColumn *column = xsh->getColumn(c);
+    if (!column || column->isLocked()) continue;
 
     shiftKeyframes(r, r + direction, c, c, false);
-	selection->select(r + direction, c);
+    selection->select(r + direction, c);
   }
 
   TUndoManager::manager()->endBlock();

@@ -28,7 +28,7 @@ void OLDRGB2HSV(double r, double g, double b, double *h, double *s, double *v) {
       *h = 2 + (b - r) / delta;
     else if (b == max)
       *h = 4 + (r - g) / delta;
-    *h   = *h * 60;
+    *h = *h * 60;
     if (*h < 0) *h += 360;
   }
 }
@@ -44,8 +44,8 @@ void OLDHSV2RGB(double hue, double sat, double value, double *red,
   // hue-=360;
   if (hue < 0) hue += (1 - (int)hue / 360) * 360;
   // hue+=360;
-  if (sat < 0) sat     = 0;
-  if (sat > 1) sat     = 1;
+  if (sat < 0) sat = 0;
+  if (sat > 1) sat = 1;
   if (value < 0) value = 0;
   if (value > 1) value = 1;
   if (sat == 0) {

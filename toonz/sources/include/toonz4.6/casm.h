@@ -25,7 +25,9 @@ typedef struct {
   int (*routine)(void);
 } KEYWORD;
 
-typedef struct { double x, y, z; } VECTOR;
+typedef struct {
+  double x, y, z;
+} VECTOR;
 
 typedef struct CASM_WINDOW {
   int x1, y1, x2, y2;

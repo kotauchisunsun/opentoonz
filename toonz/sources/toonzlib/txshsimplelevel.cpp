@@ -615,7 +615,7 @@ TImageP TXshSimpleLevel::getFrameIcon(const TFrameId &fid) const {
 
   const std::string &imgId = getImageId(fid);
   TImageP img              = ImageManager::instance()->getImage(
-      imgId, ImageManager::dontPutInCache, &extData);
+                   imgId, ImageManager::dontPutInCache, &extData);
 
   TToonzImageP timg = (TToonzImageP)img;
   if (timg && m_palette) timg->setPalette(m_palette);

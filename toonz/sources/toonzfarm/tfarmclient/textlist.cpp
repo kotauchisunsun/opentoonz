@@ -165,7 +165,7 @@ int TTextList::getSelectedItemCount() const {
 TTextListItem *TTextList::getSelectedItem(int i) const {
   if (i < 0 || (int)m_data->m_selectedItems.size() <= i) return 0;
 
-  string itemId = m_data->m_selectedItems[i];
+  string itemId                                  = m_data->m_selectedItems[i];
   std::map<string, TTextListItem *>::iterator it = m_data->m_items.find(itemId);
   if (it != m_data->m_items.end())
     return it->second;
@@ -322,7 +322,7 @@ void TTextList::leftButtonDoubleClick(const TMouseEvent &e) {
 void TTextList::keyDown(int key, unsigned long mod, const TPoint &pos) {
   if ((key == TK_UpArrow) || (key == TK_DownArrow)) {
     int lastSelected = -1;
-    for (int i                        = 0; i < getItemCount(); ++i)
+    for (int i = 0; i < getItemCount(); ++i)
       if (isSelected(i)) lastSelected = i;
     if (lastSelected == -1) return;
     int newSelected = (key == TK_UpArrow) ? lastSelected - 1 : lastSelected + 1;

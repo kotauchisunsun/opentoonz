@@ -500,7 +500,7 @@ QIcon createQIcon(const QString &iconSVGName, bool useFullOpacity,
   static ThemeManager &themeManager = ThemeManager::getInstance();
   if (iconSVGName.isEmpty() || !themeManager.hasIcon(iconSVGName)) {
     // Use debug to check if something calls for an icon that doesn't exist
-    //qDebug () << "File not found:" << iconSVGName;
+    // qDebug () << "File not found:" << iconSVGName;
     return QIcon();
   }
 
@@ -511,7 +511,7 @@ QIcon createQIcon(const QString &iconSVGName, bool useFullOpacity,
   QImage onImg(generateIconImage(iconSVGName + "_on", qreal(1.0), newSize));
 
   QIcon icon;
-  
+
   // START_BUG_WORKAROUND: #20230627
   // Set an empty pixmap for menu icons when hiding icons from menus is true,
   // search bug ID for more info.

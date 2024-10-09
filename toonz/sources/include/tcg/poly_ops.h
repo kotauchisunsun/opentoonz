@@ -52,7 +52,7 @@ void reduceDegree(
     const Scalar poly[],  //!< Input polynomial to be reduced.
     int &deg,             //!< Input/output polynomial degree.
     Scalar tolerance  //!< Coefficients threshold to reduce the polynomial with.
-    ) {
+) {
   while ((deg > 0) && (std::abs(poly[deg]) < tolerance)) --deg;
 }
 
@@ -265,7 +265,7 @@ unsigned int solve_3(Scalar c[4],     //!< Polynomial coefficients array
 
   return 3;
 }
-}
-}  // namespace tcg::poly_ops
+}  // namespace poly_ops
+}  // namespace tcg
 
 #endif  // TCG_POLY_OPS_H

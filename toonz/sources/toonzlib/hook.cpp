@@ -209,7 +209,7 @@ HookSet::~HookSet() {
 HookSet::HookSet(const HookSet &other)
     : m_hooks(other.m_hooks), m_trackerObjectsSet(new TrackerObjectsSet) {
   int h, hCount = m_hooks.size();
-  for (h                       = 0; h != hCount; ++h)
+  for (h = 0; h != hCount; ++h)
     if (m_hooks[h]) m_hooks[h] = new Hook(*m_hooks[h]);
 }
 
@@ -220,7 +220,7 @@ HookSet &HookSet::operator=(const HookSet &other) {
   m_hooks = other.m_hooks;
 
   int h, hCount = m_hooks.size();
-  for (h                       = 0; h != hCount; ++h)
+  for (h = 0; h != hCount; ++h)
     if (m_hooks[h]) m_hooks[h] = new Hook(*m_hooks[h]);
 
   return *this;
@@ -280,7 +280,7 @@ Hook *HookSet::addHook() {
 //---------------------------------------------------------
 
 void HookSet::clearHook(Hook *hook) {
-  for (int i                           = 0; i < (int)m_hooks.size(); i++)
+  for (int i = 0; i < (int)m_hooks.size(); i++)
     if (m_hooks[i] == hook) m_hooks[i] = 0;
   delete hook;
 }

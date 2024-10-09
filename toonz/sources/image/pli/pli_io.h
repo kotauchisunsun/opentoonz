@@ -248,7 +248,7 @@ public:
 
 private:
   // not implemented
-  const ThickQuadraticChainTag &operator      =(
+  const ThickQuadraticChainTag &operator=(
       const ThickQuadraticChainTag &chainTag) = delete;
 };
 

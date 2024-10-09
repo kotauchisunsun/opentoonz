@@ -69,11 +69,10 @@ public:
   class TypeError {};
   class RangeError {};
 
-  TProperty(std::string name):
-    m_name(name),
-    m_visible(true),
-    m_qstringName(QString::fromStdString(name))
-    { }
+  TProperty(std::string name)
+      : m_name(name)
+      , m_visible(true)
+      , m_qstringName(QString::fromStdString(name)) {}
 
   virtual ~TProperty() {}
 
@@ -155,7 +154,7 @@ public:
   //! has meaning for int properties only
   void setSpinner() { m_isSpinner = true; }
   bool isSpinner() { return m_isSpinner; }
-  
+
 private:
   Range m_range;
   T m_value;
@@ -381,14 +380,16 @@ public:
     return ret;
   }
 
-  void addValueWithUIName(std::wstring value, const QString &name, const QString &iconName = QString()) {
+  void addValueWithUIName(std::wstring value, const QString &name,
+                          const QString &iconName = QString()) {
     if (m_index == -1) m_index = 0;
     m_range.push_back(value);
     m_items.push_back(Item(name, iconName));
   }
 
-  void addValue(std::wstring value, const QString &iconName = QString())
-    { addValueWithUIName(value, QString::fromStdWString(value), iconName); }
+  void addValue(std::wstring value, const QString &iconName = QString()) {
+    addValueWithUIName(value, QString::fromStdWString(value), iconName);
+  }
 
   void setItemUIName(std::wstring value, const QString &name) {
     int index = indexOf(value);
@@ -409,7 +410,7 @@ public:
 
   void setValue(const std::wstring &value) {
     int idx = indexOf(value);
-    //if (idx < 0) throw RangeError();
+    // if (idx < 0) throw RangeError();
     if (idx < 0)
       idx = 0;  // Avoid exception if program's item list doesn't contain
                 //  the selected item in scene file
@@ -466,10 +467,12 @@ public:
 
   //! returns 0 if the property doesn't exist
   TProperty *getProperty(const TStringId &name);
-  TProperty *getProperty(const std::string &name)
-    { return getProperty(TStringId::find(name)); }
-  TProperty *getProperty(int i)
-    { return (i >= (int)m_properties.size()) ? 0 : m_properties[i].first; }
+  TProperty *getProperty(const std::string &name) {
+    return getProperty(TStringId::find(name));
+  }
+  TProperty *getProperty(int i) {
+    return (i >= (int)m_properties.size()) ? 0 : m_properties[i].first;
+  }
 
   void setProperties(TPropertyGroup *g);
 

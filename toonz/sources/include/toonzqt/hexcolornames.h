@@ -54,7 +54,6 @@ class HexColorNames final : public QObject {
   static bool parseHexInternal(QString text, TPixel &outPixel);
 
 public:
-
   //! iterator for accessing user entries
   class iterator {
     QMap<QString, QString>::iterator m_it;
@@ -62,14 +61,15 @@ public:
 
   public:
     inline iterator() : m_it(nullptr), m_mutable(false) {}
-    inline iterator(iterator *it)
-        : m_it(it->m_it), m_mutable(it->m_mutable) {}
+    inline iterator(iterator *it) : m_it(it->m_it), m_mutable(it->m_mutable) {}
     inline iterator(QMap<QString, QString>::iterator it, bool isMutable)
         : m_it(it), m_mutable(isMutable) {}
 
     inline const QString &name() const { return m_it.key(); }
     inline const QString &value() const { return m_it.value(); }
-    inline void setValue(const QString &value) { if (m_mutable) m_it.value() = value; }
+    inline void setValue(const QString &value) {
+      if (m_mutable) m_it.value() = value;
+    }
     inline bool operator==(const iterator &o) const { return m_it == o.m_it; }
     inline bool operator!=(const iterator &o) const { return m_it != o.m_it; }
     inline iterator &operator++() {
@@ -99,7 +99,7 @@ public:
   static bool loadUserFile(bool reload);
 
   //! Load temporary entries from custom file
-  static bool loadTempFile(const TFilePath& fp);
+  static bool loadTempFile(const TFilePath &fp);
 
   //! Verify if there's personal colornames.txt file
   static bool hasUserFile();
@@ -166,7 +166,9 @@ public:
 
   //! Emit that user entries were changed
   inline void emitChanged() { emit colorsChanged(); }
-  inline void emitAutoComplete(bool enable) { emit autoCompleteChanged(enable); }
+  inline void emitAutoComplete(bool enable) {
+    emit autoCompleteChanged(enable);
+  }
 
 signals:
   void autoCompleteChanged(bool);
@@ -216,8 +218,7 @@ public:
   HexColorNamesEditingDelegate(QObject *parent = nullptr)
       : QStyledItemDelegate(parent) {
     connect(this,
-            SIGNAL(closeEditor(QWidget *,
-                               QAbstractItemDelegate::EndEditHint)),
+            SIGNAL(closeEditor(QWidget *, QAbstractItemDelegate::EndEditHint)),
             this,
             SLOT(onCloseEditor(QWidget *, QAbstractItemDelegate::EndEditHint)));
   }
@@ -273,7 +274,7 @@ class HexColorNamesEditor final : public DVGui::Dialog {
   QTreeWidgetItem *addEntry(QTreeWidget *tree, const QString &name,
                             const QString &hex, bool editable);
   bool updateUserHexEntry(QTreeWidgetItem *treeItem, const TPixel32 &color);
-  bool nameValid(const QString& name);
+  bool nameValid(const QString &name);
   bool nameExists(const QString &name, QTreeWidgetItem *self);
   void deselectItem(bool treeFocus);
   void deleteCurrentItem(bool deselect);

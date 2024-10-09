@@ -111,7 +111,7 @@ public:
   void normalize_array(std::vector<std::vector<TPointD>> &myregions,
                        TPointD pos, int lx, int ly, int regioncounter,
                        std::vector<int> &myarray, std::vector<int> &lista,
-                       std::vector<int> &listb, std::vector<int> & final);
+                       std::vector<int> &listb, std::vector<int> &final);
 
   void fill_array(TTile *ctrl1, int &regioncount, std::vector<int> &myarray,
                   std::vector<int> &lista, std::vector<int> &listb, int thres);

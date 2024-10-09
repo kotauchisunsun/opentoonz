@@ -393,7 +393,7 @@ PreferencesPopup::Display30bitChecker::Display30bitChecker(
   GLView* view10bit     = new GLView(this, true);
   QPushButton* closeBtn = new QPushButton(tr("Close"), this);
   QString infoLabel     = tr(
-      "If the lower gradient looks smooth and has no banding compared to the upper gradient,\n\
+          "If the lower gradient looks smooth and has no banding compared to the upper gradient,\n\
 30bit display is available in the current configuration.");
 
   QVBoxLayout* lay = new QVBoxLayout();

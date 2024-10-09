@@ -35,7 +35,7 @@ inline int operator&(const Status &l) { return int(l); }
 //---------------------------------------------------------------------------
 
 Status getFxStatus(const TRasterFxPort &port0, const TRasterFxPort &port1) {
-  Status status                   = NoPortsConnected;
+  Status status = NoPortsConnected;
   if (port0.isConnected()) status = status | Port0Connected;
   if (port1.isConnected()) status = status | Port1Connected;
   return status;
@@ -51,7 +51,7 @@ void makeRectCoherent(TRectD &rect, const TPointD &pos) {
   rect.y1 = tceil(rect.y1);
   rect += pos;
 }
-}
+}  // namespace
 
 //===================================================================
 
@@ -102,7 +102,7 @@ void fade(TRasterPT<T> ras, double fade, T color)  // Why it is not in TRop..??
 
   ras->unlock();
 }
-}
+}  // namespace
 
 //=====================================================================
 

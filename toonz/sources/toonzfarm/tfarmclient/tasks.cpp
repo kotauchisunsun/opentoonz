@@ -295,15 +295,15 @@ void CasmTask2::setCommandLine(const string &cmdLine) {
     else if (word == "-hq")
       m_restype = RES_TYPE_HIGH;
     else if (word == "-step") {
-      s                        = cpy_word(word, s);
+      s = cpy_word(word, s);
       if (is_num(word)) m_step = atoi(word.c_str());
     } else if (word == "-range") {
-      s                         = cpy_word(word, s);
+      s = cpy_word(word, s);
       if (is_num(word)) m_start = atoi(word.c_str());
-      s                         = cpy_word(word, s);
-      if (is_num(word)) m_end   = atoi(word.c_str());
+      s = cpy_word(word, s);
+      if (is_num(word)) m_end = atoi(word.c_str());
     } else if (word == "-shrink") {
-      s                             = cpy_word(word, s);
+      s = cpy_word(word, s);
       if (is_num(word)) m_reduction = atoi(word.c_str());
     } else if (word == "-fracmove") {
       m_moveType = M_FRACMOVE;
@@ -317,29 +317,29 @@ else
 if (STR_EQ(word, "-32bit"))
 task->prec = 32;*/
     else if (word == "-tile") {
-      s                              = cpy_word(word, s);
+      s = cpy_word(word, s);
       if (is_num(word)) m_renderTile = atof(word.c_str());
     } else if (word == "-mem") {
-      s                                 = cpy_word(word, s);
+      s = cpy_word(word, s);
       if (is_num(word)) m_taskChunksize = atoi(word.c_str());
     } else if (word == "-chunk") {
-      s                            = cpy_word(word, s);
+      s = cpy_word(word, s);
       if (is_num(word)) m_memChunk = atof(word.c_str());
     } else if (word == "-mm") {
       m_multimedia = true;
       m_numColumn  = -1;
     } else if (word == "-mmsingle") {
-      m_multimedia                  = true;
-      s                             = cpy_word(word, s);
+      m_multimedia = true;
+      s            = cpy_word(word, s);
       if (is_num(word)) m_numColumn = atoi(word.c_str());
     } else if (word == "-lineart") {
-      s                           = cpy_word(word, s);
+      s = cpy_word(word, s);
       if (is_num(word)) m_lineart = atoi(word.c_str());
     } else if (word == "-edgealiasing") {
-      s                                = cpy_word(word, s);
+      s = cpy_word(word, s);
       if (is_num(word)) m_edgeAliasing = atoi(word.c_str());
     } else if (word == "-gamma") {
-      s                         = cpy_word(word, s);
+      s = cpy_word(word, s);
       if (is_num(word)) m_gamma = atof(word.c_str());
     } else if (word == "-cf") {
       m_cf = true;

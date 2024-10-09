@@ -13,6 +13,6 @@ namespace Tiio {
 Tiio::Reader *makeQntReader();
 Tiio::Writer *makeQntWriter();
 
-}  // namespace
+}  // namespace Tiio
 
 #endif

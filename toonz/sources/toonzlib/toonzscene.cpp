@@ -386,7 +386,7 @@ void ToonzScene::loadNoResources(const TFilePath &fp) {
   clear();
 
   TProjectManager *pm = TProjectManager::instance();
-  auto sceneProject = pm->loadSceneProject(fp);
+  auto sceneProject   = pm->loadSceneProject(fp);
   if (!sceneProject) return;
 
   setProject(sceneProject);
@@ -1241,7 +1241,7 @@ TXshLevel *ToonzScene::loadLevel(const TFilePath &actualPath,
 //-----------------------------------------------------------------------------
 
 TFilePath ToonzScene::decodeFilePath(const TFilePath &path) const {
-  auto project = getProject();
+  auto project        = getProject();
   bool projectIsEmpty = project->getFolderCount() ? false : true;
   TFilePath fp        = path;
 

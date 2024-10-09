@@ -404,16 +404,16 @@ TSoundTrackP TSoundTrackReaderAiff::load() {
         track = new TSoundTrackStereo24(commChunk->m_sampleRate, 2,
                                         (TINT32)commChunk->m_frames);
 
-       if (!TNZ_LITTLE_ENDIAN)
+      if (!TNZ_LITTLE_ENDIAN)
         memcpy((void *)track->getRawData(),
                (void *)(ssndChunk->m_waveData.get() + ssndChunk->m_offset),
                commChunk->m_frames * track->getSampleSize());
       else
-         swapAndCopy24Bits(
-             (void *)(ssndChunk->m_waveData.get() + ssndChunk->m_offset),
-             (void *)track->getRawData(),
-             (TINT32)(commChunk->m_frames * commChunk->m_chans));
-       break;
+        swapAndCopy24Bits(
+            (void *)(ssndChunk->m_waveData.get() + ssndChunk->m_offset),
+            (void *)track->getRawData(),
+            (TINT32)(commChunk->m_frames * commChunk->m_chans));
+      break;
     case 32:
       if (commChunk->m_chans == 1)
         track = new TSoundTrackMono32Float(commChunk->m_sampleRate, 1,
@@ -422,16 +422,16 @@ TSoundTrackP TSoundTrackReaderAiff::load() {
         track = new TSoundTrackStereo32Float(commChunk->m_sampleRate, 2,
                                              (TINT32)commChunk->m_frames);
 
-       if (!TNZ_LITTLE_ENDIAN)
+      if (!TNZ_LITTLE_ENDIAN)
         memcpy((void *)track->getRawData(),
                (void *)(ssndChunk->m_waveData.get() + ssndChunk->m_offset),
                commChunk->m_frames * track->getSampleSize());
       else
-         swapAndCopy32Bits(
-             (TINT32 *)(ssndChunk->m_waveData.get() + ssndChunk->m_offset),
-             (TINT32 *)track->getRawData(),
-             (TINT32)(commChunk->m_frames * commChunk->m_chans));
-       break;
+        swapAndCopy32Bits(
+            (TINT32 *)(ssndChunk->m_waveData.get() + ssndChunk->m_offset),
+            (TINT32 *)track->getRawData(),
+            (TINT32)(commChunk->m_frames * commChunk->m_chans));
+      break;
     }
 
     if (commChunk) delete commChunk;

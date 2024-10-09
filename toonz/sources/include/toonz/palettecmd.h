@@ -115,6 +115,6 @@ Pick color from the img for all styles with "picked position" value.
 DVAPI void pickColorByUsingPickedPosition(TPaletteHandle *paletteHandle,
                                           TImageP img, int frame);
 
-}  // namespace
+}  // namespace PaletteCmd
 
 #endif

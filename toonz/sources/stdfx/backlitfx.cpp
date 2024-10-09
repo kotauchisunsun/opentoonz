@@ -211,7 +211,7 @@ public:
           return ret;
         } else {
           return m_light->doGetBBox(frame, bbox, info);
-	}
+        }
       } else if (m_lighted.isConnected()) {
         return m_lighted->doGetBBox(frame, bbox, info);
       }

@@ -294,4 +294,4 @@ void copy90BWBufferToRasGR8(unsigned char *bwBuffer, int bwLx, int bwLy,
       }
     }
 }
-};
+};  // namespace TScannerUtil

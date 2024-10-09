@@ -42,7 +42,7 @@ public:
 
   static StraightCornerDeformation *instance();
 };
-}
+}  // namespace ToonzExt
 #endif /* STRAIGHTCORNERDEFORMATION_H */
 //-----------------------------------------------------------------------------
 //  End Of File

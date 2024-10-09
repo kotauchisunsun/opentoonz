@@ -72,8 +72,8 @@ void MyInbetweener::stabilizeSegments(TStroke *stroke) {
     double eps     = tdistance(p0, p4) * 0.1;
     if (fabs(u * (p2 - p0)) < eps && fabs(u * (p1 - p0)) < eps &&
         fabs(u * (p3 - p0)) < eps) {
-      double e                  = 0.001;
-      double d2                 = norm2(p4 - p0);
+      double e  = 0.001;
+      double d2 = norm2(p4 - p0);
       if (e * e * 6 * 6 > d2) e = sqrt(d2) / 6;
       TThickPoint q1(p0 + v * e, q0.thick);
       TThickPoint q3(p4 - v * e, q4.thick);

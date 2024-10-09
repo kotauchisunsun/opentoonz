@@ -36,8 +36,8 @@ enum Corner { STRAIGHT, SPIRE, UNKNOWN };
 }
 
 /**
-   * @brief An useful alias for a pair of double.
-   */
+ * @brief An useful alias for a pair of double.
+ */
 typedef std::pair<double, double> Interval;
 
 inline std::ostream &operator<<(std::ostream &os, const Interval &interval) {
@@ -45,17 +45,17 @@ inline std::ostream &operator<<(std::ostream &os, const Interval &interval) {
 }
 
 /**
-   * @brief List of intervals.
-   */
+ * @brief List of intervals.
+ */
 typedef std::vector<Interval> Intervals;
 
 /**
-   * @brief This class is an abstraction to wrap all odd number.
-   *
-   * It is useful if you need to manage parameter of a function,
-   * that are in some sub set of integer.
-   * @sa EvenInt.
-   */
+ * @brief This class is an abstraction to wrap all odd number.
+ *
+ * It is useful if you need to manage parameter of a function,
+ * that are in some sub set of integer.
+ * @sa EvenInt.
+ */
 // -3 -1 1 3
 class DVAPI OddInt {
   int val_;
@@ -63,30 +63,30 @@ class DVAPI OddInt {
 public:
   OddInt(int);
   /**
-*@brief Cast an integer, if is not an even exception is
-*       thrown.
-*/
+   *@brief Cast an integer, if is not an even exception is
+   *       thrown.
+   */
   operator int() const;
 
   /**
-*@copydoc operator int() const
-*/
+   *@copydoc operator int() const
+   */
   operator int();
 
   /**
-*@brief Simple check to verify that a number is odd,
-*       without exception.
-*/
+   *@brief Simple check to verify that a number is odd,
+   *       without exception.
+   */
   bool isOdd() const;
 };
 
 /**
-   * @brief This class is an abstraction to wrap all odd number.
-   *
-   * It is useful if you need to manage parameter of a function,
-   * that are in some sub set of integer.
-   * @sa EvenInt.
-   */
+ * @brief This class is an abstraction to wrap all odd number.
+ *
+ * It is useful if you need to manage parameter of a function,
+ * that are in some sub set of integer.
+ * @sa EvenInt.
+ */
 // -4 -2 0 2 4..
 class DVAPI EvenInt {
   int val_;
@@ -95,23 +95,23 @@ public:
   EvenInt(int);
 
   /**
-*@brief Cast an integer, if is not an even exception is
-*       thrown.
-*/
+   *@brief Cast an integer, if is not an even exception is
+   *       thrown.
+   */
   operator int() const;
 
   /**
-*@copydoc operator int() const
-*/
+   *@copydoc operator int() const
+   */
   operator int();
 
   /**
-*@brief Simple check to verify that a number is even,
-*       without exception.
-*/
+   *@brief Simple check to verify that a number is even,
+   *       without exception.
+   */
   bool isEven() const;
 };
-}
+}  // namespace ToonzExt
 
 #if defined(_MSC_VER) && (_MSC_VER <= 1200)
 #pragma warning(pop)

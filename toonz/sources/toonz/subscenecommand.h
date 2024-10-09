@@ -14,6 +14,6 @@ void collapse(std::set<int> &indices);
 void collapse(const QList<TStageObjectId> &objects);
 void collapse(const QList<TFxP> &fxs);
 void explode(int index);
-}
+}  // namespace SubsceneCmd
 
 #endif

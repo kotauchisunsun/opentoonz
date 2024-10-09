@@ -91,9 +91,9 @@ void PreviewToggleCommand::enable() {
   // Connect signals
   bool ret = true;
   ret      = ret && connect(model, SIGNAL(previewDataChanged()), this,
-                       SLOT(onPreviewDataChanged()));
-  ret = ret && connect(model, SIGNAL(modelChanged(bool)), this,
-                       SLOT(onModelChanged(bool)));
+                            SLOT(onPreviewDataChanged()));
+  ret      = ret && connect(model, SIGNAL(modelChanged(bool)), this,
+                            SLOT(onModelChanged(bool)));
   ret = ret && connect(&m_timer, SIGNAL(timeout()), this, SLOT(postProcess()));
 
   TPaletteHandle *ph =
@@ -119,9 +119,9 @@ void PreviewToggleCommand::disable() {
 
   bool ret = true;
   ret      = ret && disconnect(model, SIGNAL(previewDataChanged()), this,
-                          SLOT(onPreviewDataChanged()));
-  ret = ret && disconnect(model, SIGNAL(modelChanged(bool)), this,
-                          SLOT(onModelChanged(bool)));
+                               SLOT(onPreviewDataChanged()));
+  ret      = ret && disconnect(model, SIGNAL(modelChanged(bool)), this,
+                               SLOT(onModelChanged(bool)));
   ret =
       ret && disconnect(&m_timer, SIGNAL(timeout()), this, SLOT(postProcess()));
 
@@ -284,7 +284,7 @@ void CameraTestToggleCommand::enable() {
   // Connect signals
   bool ret = true;
   ret      = ret && connect(model, SIGNAL(previewDataChanged()), this,
-                       SLOT(onPreviewDataChanged()));
+                            SLOT(onPreviewDataChanged()));
   assert(ret);
 
   onPreviewDataChanged();
@@ -301,7 +301,7 @@ void CameraTestToggleCommand::disable() {
 
   bool ret = true;
   ret      = ret && disconnect(model, SIGNAL(previewDataChanged()), this,
-                          SLOT(onPreviewDataChanged()));
+                               SLOT(onPreviewDataChanged()));
   assert(ret);
 
   clean();
@@ -391,7 +391,7 @@ void CameraTestToggleCommand::clean() {
 
 //=============================================================================
 /*! CameraTestのドラッグ移動のUndo
-*/
+ */
 class UndoCameraTestMove final : public TUndo {
   TPointD m_before, m_after;
   CleanupParameters *m_cp;
@@ -436,7 +436,7 @@ public:
 
 //=============================================================================
 /*! CameraTestのサイズ変更のUndo
-*/
+ */
 class UndoCameraTestScale final : public TUndo {
   TDimension m_resBefore, m_resAfter;
   TDimensionD m_sizeBefore, m_sizeAfter;

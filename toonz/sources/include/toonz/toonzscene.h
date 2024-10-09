@@ -53,8 +53,10 @@ public:
             scene referring to the project. I would expect a
             \a project to own its scenes, not the other way around...         */
 
-  std::shared_ptr<TProject> getProject() const;  //!< Returns a pointer to the project holding a scene instance.
-  void setProject(std::shared_ptr<TProject>);  //!< Associates a scene to a project.
+  std::shared_ptr<TProject> getProject()
+      const;  //!< Returns a pointer to the project holding a scene instance.
+  void setProject(
+      std::shared_ptr<TProject>);  //!< Associates a scene to a project.
 
   void setScenePath(const TFilePath &p);  //!< Sets the scene's file path.
   TFilePath getScenePath() const {

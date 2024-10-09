@@ -73,7 +73,7 @@ TDimensionI TextureManager::getMaxSize(bool isRGBM) {
     if (s)
       s = std::min(s, 64 << (shift - 1));
     else
-      s              = 64 << (shift - 1);
+      s = 64 << (shift - 1);
     m_textureSize.lx = s;
     m_textureSize.ly = s;
 
@@ -118,11 +118,11 @@ void TextureManager::getFmtAndType(bool isRGBM, GLenum &fmt, GLenum &type) {
 }
 
 TDimension TextureManager::selectTexture(TDimension reqSize, bool isRGBM) {
-  int lx                     = 1;
-  int ly                     = 1;
+  int lx = 1;
+  int ly = 1;
   while (lx < reqSize.lx) lx = lx << 1;
   while (ly < reqSize.ly) ly = ly << 1;
-  TDimension textureSize     = instance()->getMaxSize(isRGBM);
+  TDimension textureSize = instance()->getMaxSize(isRGBM);
   assert(lx <= textureSize.lx);
   assert(ly <= textureSize.ly);
   GLenum fmt, type;

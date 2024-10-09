@@ -149,10 +149,10 @@ bool MagicWandFx::pixelProcessor(TPixel32 *testPix, TPixelGR8 *maskPix) {
   } else {
     // GIMP-like: confronto la tolleranza con il massimo tra gli scarti delle
     // componenti
-    diff                       = abs(m_pickedPix->r - testPix->r);
-    double diffNext            = abs(m_pickedPix->g - testPix->g);
+    diff            = abs(m_pickedPix->r - testPix->r);
+    double diffNext = abs(m_pickedPix->g - testPix->g);
     if (diffNext >= diff) diff = diffNext;
-    diffNext                   = abs(m_pickedPix->b - testPix->b);
+    diffNext = abs(m_pickedPix->b - testPix->b);
     if (diffNext >= diff) diff = diffNext;
   }
 
@@ -210,19 +210,21 @@ void MagicWandFx::EnqueueSegment(int num, int dir, int pLx, int pRx, int Lx,
   m_sSStack.push(ShadowSegment(Lx, Rx, pushLx, pushRx, (y + dir), dir));
   shadowEnqueued++;
 
-  if (Rx > pRx) {  // U-turn a destra
-                   //  TSystem::outputDebug("[MWfx("+toString(m_id_invocazione)+":"+toString(num)+")<PUSH
-                   //  2>]\tStack Size:"+toString((int)
-                   //  m_sSStack.size())+"\tLx:"+toString(pRx+1)+"\tRx:"+toString(Rx)+"\tpLx:"+toString(pushLx)+"\tpRx:"+toString(pushRx)+"\ty:"+toString(y-dir)+"\tdir:"+toString(dir)+"\n");
+  if (Rx >
+      pRx) {  // U-turn a destra
+              //  TSystem::outputDebug("[MWfx("+toString(m_id_invocazione)+":"+toString(num)+")<PUSH
+              //  2>]\tStack Size:"+toString((int)
+              //  m_sSStack.size())+"\tLx:"+toString(pRx+1)+"\tRx:"+toString(Rx)+"\tpLx:"+toString(pushLx)+"\tpRx:"+toString(pushRx)+"\ty:"+toString(y-dir)+"\tdir:"+toString(dir)+"\n");
     assert(((pRx + 1) <= (Rx)) && (pushLx <= pushRx) && ((pRx + 1) >= 0));
     m_sSStack.push(
         ShadowSegment((pRx + 1), Rx, pushLx, pushRx, (y - dir), (-dir)));
     shadowEnqueued++;
   }
-  if (Lx < pLx) {  // U-turn a sinistra
-                   //    TSystem::outputDebug("[MWfx("+toString(m_id_invocazione)+":"+toString(num)+")<PUSH
-                   //    3>]\tStack Size:"+toString((int)
-                   //    m_sSStack.size())+"\tLx:"+toString(Lx)+"\tRx:"+toString(pLx-1)+"\tpLx:"+toString(pushLx)+"\tpRx:"+toString(pushRx)+"\ty:"+toString(y-dir)+"\tdir:"+toString(dir)+"\n");
+  if (Lx <
+      pLx) {  // U-turn a sinistra
+              //    TSystem::outputDebug("[MWfx("+toString(m_id_invocazione)+":"+toString(num)+")<PUSH
+              //    3>]\tStack Size:"+toString((int)
+              //    m_sSStack.size())+"\tLx:"+toString(Lx)+"\tRx:"+toString(pLx-1)+"\tpLx:"+toString(pushLx)+"\tpRx:"+toString(pushRx)+"\ty:"+toString(y-dir)+"\tdir:"+toString(dir)+"\n");
     assert(((Lx) <= (pLx - 1)) && (pushLx <= pushRx) && (Lx >= 0));
     m_sSStack.push(
         ShadowSegment(Lx, (pLx - 1), pushLx, pushRx, (y - dir), (-dir)));
@@ -332,8 +334,8 @@ void MagicWandFx::doMagicWand(TTile &tile, double frame,
                          ")<begin>]\nSize:" + toString(m_imageWidth) + "x" +
                          toString(m_imageHeigth) + "\tx:" + toString(x) +
                          "\ty:" + toString(y) + "\tToll:" + toString(m_tol) +
-                         /*      "\tRadius:" + toString(radius) +*/ (
-                             (m_cont) ? "\tContiguous" : "\tNon Contiguous") +
+                         /*      "\tRadius:" + toString(radius) +*/
+                         ((m_cont) ? "\tContiguous" : "\tNon Contiguous") +
                          ((m_antial) ? "\tAnti Aliased" : "\tAliased") +
                          ((m_euclid) ? "\tEuclidean\n" : "\tNon Euclidean\n"));
 
@@ -395,11 +397,12 @@ void MagicWandFx::doMagicWand(TTile &tile, double frame,
       //            TSystem::outputDebug("[MWfx("+toString(m_id_invocazione)+")]\tStack
       //            Size:"+toString((int)
       //            m_sSStack.size())+"\tLx:"+toString(lxAux)+"\tRx:"+toString(rxAux)+"\tpLx:"+toString(lxAux)+"\tpRx:"+toString(rxAux)+"\ty:"+toString(y+1)+"\tdir:"+toString(1)+"\n");
-      m_sSStack.push(ShadowSegment(lxAux, rxAux, lxAux, rxAux, y + 1,
-                                   +1));  // cerca in alto
-                                          //            TSystem::outputDebug("[MWfx("+toString(m_id_invocazione)+")]\tStack
-                                          //            Size:"+toString((int)
-                                          //            m_sSStack.size())+"\tLx:"+toString(lxAux)+"\tRx:"+toString(rxAux)+"\tpLx:"+toString(lxAux)+"\tpRx:"+toString(rxAux)+"\ty:"+toString(y-1)+"\tdir:"+toString(-1)+"\n");
+      m_sSStack.push(ShadowSegment(
+          lxAux, rxAux, lxAux, rxAux, y + 1,
+          +1));  // cerca in alto
+                 //            TSystem::outputDebug("[MWfx("+toString(m_id_invocazione)+")]\tStack
+                 //            Size:"+toString((int)
+                 //            m_sSStack.size())+"\tLx:"+toString(lxAux)+"\tRx:"+toString(rxAux)+"\tpLx:"+toString(lxAux)+"\tpRx:"+toString(rxAux)+"\ty:"+toString(y-1)+"\tdir:"+toString(-1)+"\n");
       m_sSStack.push(ShadowSegment(lxAux, rxAux, lxAux, rxAux, y - 1,
                                    -1));  // cerca in basso
 

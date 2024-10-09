@@ -1734,9 +1734,9 @@ static int Max_Lev;
 
 static void dump_subtree(struct avl_node *root, int lev, int pos) {
   if (root->left) dump_subtree(root->left, lev + 1, pos * 2);
-  Dat[Nod]                   = root->data;
-  Lev[Nod]                   = lev;
-  Pos[Nod]                   = pos;
+  Dat[Nod] = root->data;
+  Lev[Nod] = lev;
+  Pos[Nod] = pos;
   if (lev > Max_Lev) Max_Lev = lev;
   Nod++;
   if (root->right) dump_subtree(root->right, lev + 1, pos * 2 + 1);
@@ -1884,18 +1884,18 @@ TREE *cdb_decode_all(char *names_in_plt_file, TCM_INFO tcm) {
     // else
     //  item->index = TCM_PENCIL_INDEX (tcm, i - tcm.n_colors);
 
-    endcol              = strchr(c1, '|');
+    endcol = strchr(c1, '|');
     if (!endcol) endcol = endstr;
-    c2                  = strchr(c1, '\t');
-    if (!c2) c2         = endcol;
+    c2 = strchr(c1, '\t');
+    if (!c2) c2 = endcol;
     if (*c2 == '\t') {
       if (c2 - c1 == 1 && *c1 == '*')
         item->group = strsave("");
       else
         item->group = strnsave(c1, c2 - c1);
-      c1            = c2 + 1;
-      c2            = strchr(c1, '\t');
-      if (!c2) c2   = endcol;
+      c1 = c2 + 1;
+      c2 = strchr(c1, '\t');
+      if (!c2) c2 = endcol;
     } else {
       item->group = strsave("");
     }
@@ -1953,7 +1953,7 @@ TREE *cdb_decode_all(char *names_in_plt_file, TCM_INFO tcm) {
           ct = effect->param[p].value + strlen(effect->param[p].value) - 1;
           while (ct >= effect->param[p].value && (*ct == ' ' || *ct == '\t'))
             *ct-- = '\0';
-          c1      = c2 + 3;
+          c1 = c2 + 3;
         }
         avl_insert(item->effects, effect);
         item->num_effects++;

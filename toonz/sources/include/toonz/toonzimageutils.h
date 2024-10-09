@@ -104,6 +104,6 @@ DVAPI std::string premultiply(const TFilePath &levelPath);
 DVAPI void eraseImage(const TToonzImageP &ti, const TRaster32P &image,
                       const TPoint &pos, bool invert, bool eraseInk,
                       bool erasePaint, bool selective, int styleId);
-}
+}  // namespace ToonzImageUtils
 
 #endif

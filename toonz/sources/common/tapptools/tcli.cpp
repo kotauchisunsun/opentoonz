@@ -271,7 +271,7 @@ UsageLine TCli::operator+(const UsageLine &a, const Optional &b) {
 Optional::Optional(const UsageLine &ul) : UsageLine(ul.getCount() + 2) {
   m_elements[0]           = &bra;
   m_elements[m_count - 1] = &ket;
-  for (int i = 0; i < ul.getCount(); i++) m_elements[i + 1]= ul[i];
+  for (int i = 0; i < ul.getCount(); i++) m_elements[i + 1] = ul[i];
 }
 
 //=========================================================
@@ -384,8 +384,7 @@ void UsageImp::registerQualifier(Qualifier *q) {
     if (*s != '-') {
       assert(!"Qualifier name must start with '-'");
     }
-    do
-      s++;
+    do s++;
     while (isalnum(*s));
     if (s == s0 + 1) {
       assert(!"Empty qualifier name");

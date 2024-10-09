@@ -27,19 +27,18 @@ public:
   class DVAPI Handler : public TMultiTrackHandler {
   public:
     TTrackP original;
-    inline explicit Handler(const TTrackP &original = TTrackP()):
-      original(original) { }
+    inline explicit Handler(const TTrackP &original = TTrackP())
+        : original(original) {}
   };
 
   class DVAPI Interpolator : public TTrackInterpolator {
   public:
     const TTrackTransform transform;
-    inline Interpolator(TTrack &track, const TTrackTransform &transform):
-      TTrackInterpolator(track), transform(transform) { }
+    inline Interpolator(TTrack &track, const TTrackTransform &transform)
+        : TTrackInterpolator(track), transform(transform) {}
     TTrackPoint interpolateFromOriginal(double originalIndex);
     TTrackPoint interpolate(double index) override;
   };
-
 
 public:
   bool keepOriginals;
@@ -47,18 +46,12 @@ public:
   int skipFirst;
   int skipLast;
 
-  explicit TModifierClone(
-    bool keepOriginals = true,
-    int skipFirst = 0,
-    int skipLast = 0 );
+  explicit TModifierClone(bool keepOriginals = true, int skipFirst = 0,
+                          int skipLast = 0);
 
-  void modifyTrack(
-    const TTrack &track,
-    TTrackList &outTracks ) override;
+  void modifyTrack(const TTrack &track, TTrackList &outTracks) override;
 
-  void modifyTracks(
-    const TTrackList &tracks,
-    TTrackList &outTracks ) override;
+  void modifyTracks(const TTrackList &tracks, TTrackList &outTracks) override;
 };
 
 #endif

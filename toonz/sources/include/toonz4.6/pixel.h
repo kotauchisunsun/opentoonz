@@ -10,8 +10,12 @@
 
 #ifdef TNZ_MACHINE_CHANNEL_ORDER_BGRM
 
-typedef struct _LPIXEL { unsigned char b, g, r, m; } LPIXEL;
-typedef struct _SPIXEL { unsigned short b, g, r, m; } SPIXEL;
+typedef struct _LPIXEL {
+  unsigned char b, g, r, m;
+} LPIXEL;
+typedef struct _SPIXEL {
+  unsigned short b, g, r, m;
+} SPIXEL;
 
 #if TNZ_LITTLE_ENDIAN
 #define LPIXEL_RGBM_MASK 0xffffffff
@@ -39,8 +43,12 @@ typedef struct _SPIXEL { unsigned short b, g, r, m; } SPIXEL;
 
 #elif defined(TNZ_MACHINE_CHANNEL_ORDER_MBGR)
 
-typedef struct { unsigned char m, b, g, r; } LPIXEL;
-typedef struct { unsigned short m, b, g, r; } SPIXEL;
+typedef struct {
+  unsigned char m, b, g, r;
+} LPIXEL;
+typedef struct {
+  unsigned short m, b, g, r;
+} SPIXEL;
 
 #if TNZ_LITTLE_ENDIAN
 #define LPIXEL_RGBM_MASK 0xffffffff
@@ -68,8 +76,12 @@ typedef struct { unsigned short m, b, g, r; } SPIXEL;
 
 #elif defined(TNZ_MACHINE_CHANNEL_ORDER_RGBM)
 
-typedef struct _LPIXEL { unsigned char r, g, b, m; } LPIXEL;
-typedef struct _SPIXEL { unsigned short r, g, b, m; } SPIXEL;
+typedef struct _LPIXEL {
+  unsigned char r, g, b, m;
+} LPIXEL;
+typedef struct _SPIXEL {
+  unsigned short r, g, b, m;
+} SPIXEL;
 
 #if TNZ_LITTLE_ENDIAN
 #define LPIXEL_RGBM_MASK 0xffffffff
@@ -96,8 +108,12 @@ typedef struct _SPIXEL { unsigned short r, g, b, m; } SPIXEL;
 #endif
 #elif defined(TNZ_MACHINE_CHANNEL_ORDER_MRGB)
 
-typedef struct _LPIXEL { unsigned char m, r, g, b; } LPIXEL;
-typedef struct _SPIXEL { unsigned short m, r, g, b; } SPIXEL;
+typedef struct _LPIXEL {
+  unsigned char m, r, g, b;
+} LPIXEL;
+typedef struct _SPIXEL {
+  unsigned short m, r, g, b;
+} SPIXEL;
 
 #if TNZ_LITTLE_ENDIAN
 #define LPIXEL_RGBM_MASK 0xffffffff
@@ -137,7 +153,7 @@ typedef enum {
   PIX_CM16,     /* color-mapped, 16 bits */
   PIX_RGB16,    /* RGB 5+6+5 bits, red most significant */
   PIX_XRGB1555, /* RGB 5+5+5 bits, 1 bit unused most significant(Apple format)
-                   */
+                 */
   PIX_RGB,      /* 1 byte per color channel, red first */
   PIX_RGB_,     /* LPIXEL, matte channel ignored, for display */
   PIX_RGBM,     /* LPIXEL, matte channel considered */

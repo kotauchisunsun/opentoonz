@@ -14,7 +14,9 @@ write_lut_image ??? quando ?
     if ((x) < 0) (x) = -(x);                                                   \
   }
 
-typedef struct big { UINT lo, hi; } BIG;
+typedef struct big {
+  UINT lo, hi;
+} BIG;
 #define CLEAR_BIG(B) ((B).lo = 0, (B).hi = 0, (B))
 #define ADD_BIG(B, X)                                                          \
   ((B).lo += (UINT)(X), (B).hi += (B).lo >> 30, (B).lo &= 0x3fffffff, (B))
@@ -170,7 +172,7 @@ void black_eq_algo(const TRasterImageP &image) {
            (int)south[-1] * 2 - (int)south[0];
       TO_ABS(dd)
       if (dd > d) d = dd;
-      d             = (d + 2) >> 2;
+      d = (d + 2) >> 2;
       d_histo[m][d]++;
     }
   }
@@ -284,9 +286,9 @@ void build_lw(const TRasterImageP &image, float lw[256]) {
 
   for (y = 1; y < ly - 1; y++) {
     for (grey = 0; grey < 256; grey++) x_start[grey] = -MAX_WIDTH - 1;
-    pix                                              = buffer + y * wrap + 1;
-    north                                            = pix + wrap;
-    south                                            = pix - wrap;
+    pix   = buffer + y * wrap + 1;
+    north = pix + wrap;
+    south = pix - wrap;
     for (x = 1; x < lx - 1; x++, pix++, north++, south++) {
       d = (int)north[-1] + (int)north[0] * 2 + (int)north[1] - (int)south[-1] -
           (int)south[0] * 2 - (int)south[1];
@@ -317,7 +319,7 @@ void build_lw(const TRasterImageP &image, float lw[256]) {
         if (x_grad < 0 && x_grad < y_grad && x_grad < -y_grad)
           for (grey = cur_grey; grey < x_prev_grey; grey++) x_start[grey] = x;
         else
-          for (grey       = cur_grey; grey < x_prev_grey; grey++)
+          for (grey = cur_grey; grey < x_prev_grey; grey++)
             x_start[grey] = -MAX_WIDTH - 1;
       } else if (cur_grey > x_prev_grey) {
         if (x_grad > 0 && x_grad > y_grad && x_grad > -y_grad)
@@ -328,10 +330,10 @@ void build_lw(const TRasterImageP &image, float lw[256]) {
       }
       if (cur_grey < y_prev_grey) {
         if (y_grad < 0 && y_grad < x_grad && y_grad < -x_grad)
-          for (grey          = cur_grey; grey < y_prev_grey; grey++)
+          for (grey = cur_grey; grey < y_prev_grey; grey++)
             y_start[grey][x] = y;
         else
-          for (grey          = cur_grey; grey < y_prev_grey; grey++)
+          for (grey = cur_grey; grey < y_prev_grey; grey++)
             y_start[grey][x] = -MAX_WIDTH - 1;
       } else if (cur_grey > y_prev_grey) {
         if (y_grad > 0 && y_grad > x_grad && y_grad > -x_grad)
@@ -919,7 +921,7 @@ void histo_l_algo(const TRasterImageP &image, int reference) {
            (int)south[-1] * 2 - (int)south[0];
       TO_ABS(dd)
       if (dd > d) d = dd;
-      d             = (d + 2) >> 2;
+      d = (d + 2) >> 2;
       d_histo[m][d]++;
       g_histo[*pix]++;
     }
@@ -980,7 +982,7 @@ void histo_l_algo(const TRasterImageP &image, int reference) {
 
   if (reference) {
     for (grey = 0; grey < 256; grey++) Ref_cum[grey] = cum[grey];
-    Ref_edgelen                                      = edgelen;
+    Ref_edgelen = edgelen;
 
     return;
   }
@@ -1050,21 +1052,21 @@ static int build_th_histo(const TRasterImageP &image,
   get_virtual_buffer(image, &lx, &ly, &wrap, &buffer);
 
   if (y_start_alloc < lx) {
-    for (hgrey = 0; hgrey<256>> 1; hgrey++) {
+    for (hgrey = 0; hgrey < 256 >> 1; hgrey++) {
       delete[] y_start[hgrey];
       y_start[hgrey] = new int[lx];
       //    TREALLOC (y_start[hgrey], lx);
     }
     y_start_alloc = lx;
   }
-  for (hgrey = 0; hgrey<256>> 1; hgrey++) {
+  for (hgrey = 0; hgrey < 256 >> 1; hgrey++) {
     for (x = 0; x < lx; x++) y_start[hgrey][x] = -MAX_WIDTH - 1;
     for (width = 0; width <= MAX_WIDTH; width++) histo[hgrey][width] = 0;
-    hgrey_histo[hgrey]                                               = 0;
+    hgrey_histo[hgrey] = 0;
   }
 
   for (y = 1; y < ly - 1; y++) {
-    for (hgrey = 0; hgrey<256>> 1; hgrey++) x_start[hgrey] = -MAX_WIDTH - 1;
+    for (hgrey = 0; hgrey < 256 >> 1; hgrey++) x_start[hgrey] = -MAX_WIDTH - 1;
     cur    = buffer + y * wrap + 1;
     x_prev = cur - 1;
     y_prev = cur - wrap;
@@ -1082,10 +1084,10 @@ static int build_th_histo(const TRasterImageP &image,
       y_grad = (int)y_next_hgrey - (int)y_prev_hgrey;
       if (cur_hgrey < x_prev_hgrey) {
         if (x_grad < 0 && x_grad < y_grad && x_grad < -y_grad)
-          for (hgrey       = cur_hgrey; hgrey < x_prev_hgrey; hgrey++)
+          for (hgrey = cur_hgrey; hgrey < x_prev_hgrey; hgrey++)
             x_start[hgrey] = x;
         else
-          for (hgrey       = cur_hgrey; hgrey < x_prev_hgrey; hgrey++)
+          for (hgrey = cur_hgrey; hgrey < x_prev_hgrey; hgrey++)
             x_start[hgrey] = -MAX_WIDTH - 1;
       } else if (cur_hgrey > x_prev_hgrey) {
         if (x_grad > 0 && x_grad > y_grad && x_grad > -y_grad)
@@ -1096,10 +1098,10 @@ static int build_th_histo(const TRasterImageP &image,
       }
       if (cur_hgrey < y_prev_hgrey) {
         if (y_grad < 0 && y_grad < x_grad && y_grad < -x_grad)
-          for (hgrey          = cur_hgrey; hgrey < y_prev_hgrey; hgrey++)
+          for (hgrey = cur_hgrey; hgrey < y_prev_hgrey; hgrey++)
             y_start[hgrey][x] = y;
         else
-          for (hgrey          = cur_hgrey; hgrey < y_prev_hgrey; hgrey++)
+          for (hgrey = cur_hgrey; hgrey < y_prev_hgrey; hgrey++)
             y_start[hgrey][x] = -MAX_WIDTH - 1;
       } else if (cur_hgrey > y_prev_hgrey) {
         if (y_grad > 0 && y_grad > x_grad && y_grad > -x_grad)
@@ -1150,7 +1152,7 @@ int eval_image_th(const TRasterImageP &image, int *threshold,
     notLessThan(0, min_hgrey);
     notMoreThan<int>(MAX_HGREY, max_hgrey);
   } else {
-    for (hgrey = 0; hgrey<256>> 1; hgrey++)
+    for (hgrey = 0; hgrey < 256 >> 1; hgrey++)
       for (width = 1; width < MAX_WIDTH; width++)
         if (histo[hgrey][width] >= MIN_COUNT) goto endfor;
   endfor:
@@ -1210,7 +1212,7 @@ int eval_image_th(const TRasterImageP &image, int *threshold,
 
   /* scegli la dorsale principale */
   chain = 0;
-  for (c                                   = 1; c < n_chains; c++)
+  for (c = 1; c < n_chains; c++)
     if (chain_n[c] > chain_n[chain]) chain = c;
 
   /* costruisci il vettore dei massimi */
@@ -1260,7 +1262,7 @@ chain_start_found:
   } else {
     min_delta = 123456789.0;
     for (hgrey = min_chain_hgrey; hgrey <= max_chain_hgrey; hgrey++) {
-      delta                = mean_width[hgrey] - *linewidth;
+      delta = mean_width[hgrey] - *linewidth;
       if (delta < 0) delta = -delta;
       if (delta < min_delta) {
         min_delta  = delta;
@@ -1345,9 +1347,9 @@ void thresh_image(const TRasterImageP &image, int threshold,
       ynext  = y == ly - 1 ? cur : cur + wrap;
       xynext = ynext + 1;
       out    = y == 0 ? bigline + outwrap_bytes
-                   : buffer + (y * 2 + 1) * outwrap_bytes;
-      tmp = 0;
-      bit = 7;
+                      : buffer + (y * 2 + 1) * outwrap_bytes;
+      tmp    = 0;
+      bit    = 7;
       for (x = 0; x < lx;
            x++, cur++, xnext += x < lx - 1, ynext++, xynext += x < lx - 1) {
         if (*cur + *ynext <= thresh_2) tmp |= 1 << bit;

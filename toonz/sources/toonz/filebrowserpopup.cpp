@@ -86,11 +86,12 @@ FileBrowserPopup::FileBrowserPopup(const QString &title, Options options,
   setWindowTitle(title);
   setModal(false);
 
-  m_browser        = new FileBrowser(this, Qt::WindowFlags(), false, m_multiSelectionEnabled);
-  m_nameFieldLabel = new QLabel(tr("File name:"));
-  m_nameField      = new DVGui::LineEdit(this);
-  m_okButton       = new QPushButton(tr("OK"), this);
-  m_cancelButton   = new QPushButton(tr("Cancel"), this);
+  m_browser =
+      new FileBrowser(this, Qt::WindowFlags(), false, m_multiSelectionEnabled);
+  m_nameFieldLabel         = new QLabel(tr("File name:"));
+  m_nameField              = new DVGui::LineEdit(this);
+  m_okButton               = new QPushButton(tr("OK"), this);
+  m_cancelButton           = new QPushButton(tr("Cancel"), this);
   QPushButton *applyButton = 0;
   if (options & WITH_APPLY_BUTTON)
     applyButton = new QPushButton(
@@ -539,8 +540,8 @@ bool LoadScenePopup::execute() {
 void LoadScenePopup::initFolder() { setInitialFolderByCurrentRoom(); }
 
 void LoadScenePopup::setInitialFolderByCurrentRoom() {
-  QString roomName  = TApp::instance()->getCurrentRoomName();
-  auto project = TProjectManager::instance()->getCurrentProject();
+  QString roomName = TApp::instance()->getCurrentRoomName();
+  auto project     = TProjectManager::instance()->getCurrentProject();
   TFilePath scenePath;
   if (roomName == "Cleanup" || roomName == "InknPaint")
     scenePath = project->getFolder(TProject::Drawings, true);
@@ -1291,7 +1292,7 @@ bool LoadLevelPopup::execute() {
 void LoadLevelPopup::initFolder() {
   TFilePath fp;
 
-  auto project = TProjectManager::instance()->getCurrentProject();
+  auto project      = TProjectManager::instance()->getCurrentProject();
   ToonzScene *scene = TApp::instance()->getCurrentScene()->getScene();
 
   if (scene) fp = scene->decodeFilePath(project->getProjectFolder());
@@ -1672,8 +1673,7 @@ bool SaveLevelAsPopup::execute() {
 }
 
 void SaveLevelAsPopup::initFolder() {
-  auto project =
-      TProjectManager::instance()->getCurrentProject();
+  auto project      = TProjectManager::instance()->getCurrentProject();
   ToonzScene *scene = TApp::instance()->getCurrentScene()->getScene();
   TFilePath fp;
   if (scene) fp = scene->decodeFilePath(project->getFolder(TProject::Drawings));
@@ -2190,7 +2190,7 @@ bool ImportMagpieFilePopup::execute() {
 }
 
 void ImportMagpieFilePopup::initFolder() {
-  auto project = TProjectManager::instance()->getCurrentProject();
+  auto project      = TProjectManager::instance()->getCurrentProject();
   ToonzScene *scene = TApp::instance()->getCurrentScene()->getScene();
   TFilePath fp;
   if (scene) fp = scene->decodeFilePath(project->getFolder(TProject::Drawings));
@@ -2229,7 +2229,7 @@ bool BrowserPopup::execute() {
 void BrowserPopup::initFolder(TFilePath path) {
   // if the path is empty
   if (path.isEmpty()) {
-    auto project = TProjectManager::instance()->getCurrentProject();
+    auto project      = TProjectManager::instance()->getCurrentProject();
     ToonzScene *scene = TApp::instance()->getCurrentScene()->getScene();
     if (scene)
       setFolder(scene->decodeFilePath(project->getFolder(TProject::Drawings)));

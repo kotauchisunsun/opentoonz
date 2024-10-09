@@ -625,9 +625,7 @@ TLevelWriterMov::TLevelWriterMov(const TFilePath &path, TPropertyGroup *winfo)
 #else
 #define FailWithAction(cond, action, handler)                                  \
   if (cond) {                                                                  \
-    {                                                                          \
-      action;                                                                  \
-    }                                                                          \
+    { action; }                                                                \
     goto handler;                                                              \
   } else                                                                       \
     0
@@ -948,7 +946,7 @@ TLevelReaderMov::TLevelReaderMov(const TFilePath &path)
   // Retrieve the timecode media handler
   {
     Track tcTrack     = GetMovieIndTrackType(m_movie, 1, TimeCodeMediaType,
-                                         movieTrackMediaType);
+                                             movieTrackMediaType);
     Media tcMedia     = GetTrackMedia(tcTrack);
     m_timecodeHandler = GetMediaHandler(tcMedia);
   }

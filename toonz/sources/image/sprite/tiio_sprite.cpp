@@ -64,7 +64,7 @@ TLevelWriterSprite::TLevelWriterSprite(const TFilePath &path,
       m_properties->getProperty("Right Padding")->getValueAsString();
   m_rightPadding = QString::fromStdString(rightPadding).toInt();
   m_format       = QString::fromStdWString(
-      ((TEnumProperty *)(m_properties->getProperty("Format")))->getValue());
+            ((TEnumProperty *)(m_properties->getProperty("Format")))->getValue());
   TBoolProperty *trim =
       (TBoolProperty *)m_properties->getProperty("Trim Empty Space");
   m_trim = trim->getValue();

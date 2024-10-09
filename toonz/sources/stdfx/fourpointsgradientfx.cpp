@@ -149,18 +149,22 @@ void doFourPointsGradient(const TRasterPT<PIXEL> &ras, TPointD tilepos,
         continue;
       }
       double dtotal = 1 / d1 + 1 / d2 + 1 / d3 + 1 / d4;
-      pix->r        = (CHANNEL_TYPE)(
-          ((1 / d1) / dtotal) * col1.r + ((1 / d2) / dtotal) * col2.r +
-          ((1 / d3) / dtotal) * col3.r + ((1 / d4) / dtotal) * col4.r);
-      pix->g = (CHANNEL_TYPE)(
-          ((1 / d1) / dtotal) * col1.g + ((1 / d2) / dtotal) * col2.g +
-          ((1 / d3) / dtotal) * col3.g + ((1 / d4) / dtotal) * col4.g);
-      pix->b = (CHANNEL_TYPE)(
-          ((1 / d1) / dtotal) * col1.b + ((1 / d2) / dtotal) * col2.b +
-          ((1 / d3) / dtotal) * col3.b + ((1 / d4) / dtotal) * col4.b);
-      pix->m = (CHANNEL_TYPE)(
-          ((1 / d1) / dtotal) * col1.m + ((1 / d2) / dtotal) * col2.m +
-          ((1 / d3) / dtotal) * col3.m + ((1 / d4) / dtotal) * col4.m);
+      pix->r        = (CHANNEL_TYPE)(((1 / d1) / dtotal) * col1.r +
+                              ((1 / d2) / dtotal) * col2.r +
+                              ((1 / d3) / dtotal) * col3.r +
+                              ((1 / d4) / dtotal) * col4.r);
+      pix->g        = (CHANNEL_TYPE)(((1 / d1) / dtotal) * col1.g +
+                              ((1 / d2) / dtotal) * col2.g +
+                              ((1 / d3) / dtotal) * col3.g +
+                              ((1 / d4) / dtotal) * col4.g);
+      pix->b        = (CHANNEL_TYPE)(((1 / d1) / dtotal) * col1.b +
+                              ((1 / d2) / dtotal) * col2.b +
+                              ((1 / d3) / dtotal) * col3.b +
+                              ((1 / d4) / dtotal) * col4.b);
+      pix->m        = (CHANNEL_TYPE)(((1 / d1) / dtotal) * col1.m +
+                              ((1 / d2) / dtotal) * col2.m +
+                              ((1 / d3) / dtotal) * col3.m +
+                              ((1 / d4) / dtotal) * col4.m);
       pos.x += 1.0;
       ++pix;
     }

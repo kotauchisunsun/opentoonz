@@ -137,7 +137,8 @@ DVAPI int rootFinding(const std::vector<double> &poly,
     2 if a is not almost zero
     roots may have duplicates, count depends only from type of equation
  */
-DVAPI int solveEquation2(std::complex<double> *roots, double a, double b, double c);
+DVAPI int solveEquation2(std::complex<double> *roots, double a, double b,
+                         double c);
 
 //-----------------------------------------------------------------------------
 
@@ -151,7 +152,8 @@ DVAPI int solveEquation2(std::complex<double> *roots, double a, double b, double
     3 if a is not almost zero
     roots may have duplicates, count depends only from type of equation
  */
-DVAPI int solveEquation3(std::complex<double> *roots, double a, double b, double c, double d);
+DVAPI int solveEquation3(std::complex<double> *roots, double a, double b,
+                         double c, double d);
 
 //-----------------------------------------------------------------------------
 
@@ -166,7 +168,8 @@ DVAPI int solveEquation3(std::complex<double> *roots, double a, double b, double
     4 if a is not almost zero
     roots may have duplicates, count depends only from type of equation
  */
-DVAPI int solveEquation4(std::complex<double> *roots, double a, double b, double c, double d, double e);
+DVAPI int solveEquation4(std::complex<double> *roots, double a, double b,
+                         double c, double d, double e);
 
 //-----------------------------------------------------------------------------
 
@@ -188,10 +191,10 @@ inline bool isAlmostZero(double val, double eps = TConsts::epsilon) {
   \par eps tolerance required
   \ret true if value is nearest to zero
  */
-inline bool isAlmostZero(std::complex<double> val, double eps = TConsts::epsilon) {
-  return val.real()*val.real() + val.imag()*val.imag() < eps*eps;
+inline bool isAlmostZero(std::complex<double> val,
+                         double eps = TConsts::epsilon) {
+  return val.real() * val.real() + val.imag() * val.imag() < eps * eps;
 }
-
 
 //-----------------------------------------------------------------------------
 

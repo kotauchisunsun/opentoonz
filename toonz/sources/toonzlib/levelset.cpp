@@ -15,7 +15,7 @@
 namespace {
 const TFilePath defaultRootFolder("Cast");
 const TFilePath defaultSoundRootFolder("Audio");
-}
+}  // namespace
 
 //=============================================================================
 // TLevelSet
@@ -261,7 +261,7 @@ void TLevelSet::moveLevelToFolder(const TFilePath &fp, TXshLevel *level) {
 
 void TLevelSet::saveFolder(TOStream &os, TFilePath folder) {
   std::map<std::string, std::string> attr;
-  attr["name"]                                   = folder.getName();
+  attr["name"] = folder.getName();
   if (folder == getDefaultFolder()) attr["type"] = "default";
   os.openChild("folder", attr);
   std::vector<TFilePath> folders;

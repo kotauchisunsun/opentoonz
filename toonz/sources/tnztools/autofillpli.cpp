@@ -336,8 +336,7 @@ bool rect_autofill_apply(const TVectorImageP &imgToApply, const TRectD &rect,
        refIt++) {
     int to = 0, from = 0;
     int valore = 0;
-    do
-      valore = match(probVector, from, to);
+    do valore = match(probVector, from, to);
     while ((regionsWork[to].m_match != -1 ||
             regionsReference[from].m_match != -1) &&
            valore > 0);
@@ -466,8 +465,7 @@ bool stroke_autofill_apply(const TVectorImageP &imgToApply, TStroke *stroke,
        refIt++) {
     int to = 0, from = 0;
     int valore = 0;
-    do
-      valore = match(probVector, from, to);
+    do valore = match(probVector, from, to);
     while ((regionsWork[to].m_match != -1 ||
             regionsReference[from].m_match != -1) &&
            valore > 0);

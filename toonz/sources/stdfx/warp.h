@@ -45,7 +45,7 @@ inline TRect convert(const TRectD &r, TPointD &dp) {
   assert(dp.x >= 0 && dp.y >= 0);
   return ri;
 }
-}
+}  // namespace
 
 //---------------------------------------------------------------------------
 

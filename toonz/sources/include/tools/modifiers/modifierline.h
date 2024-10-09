@@ -6,7 +6,6 @@
 // TnzTools includes
 #include <tools/inputmanager.h>
 
-
 #undef DVAPI
 #undef DVVAR
 #ifdef TNZTOOLS_EXPORTS
@@ -17,24 +16,21 @@
 #define DVVAR DV_IMPORT_VAR
 #endif
 
-
 //===================================================================
 
 //*****************************************************************************************
 //    TModifierLine definition
 //*****************************************************************************************
 
-class DVAPI TModifierLine: public TInputModifier {
+class DVAPI TModifierLine : public TInputModifier {
 public:
-  class DVAPI Handler: public TSubTrackHandler {
+  class DVAPI Handler : public TSubTrackHandler {
   public:
     double maxPressure;
-    inline Handler(): maxPressure() { }
+    inline Handler() : maxPressure() {}
   };
 
-  void modifyTrack(
-    const TTrack &track,
-    TTrackList &outTracks ) override;
+  void modifyTrack(const TTrack &track, TTrackList &outTracks) override;
 };
 
 #endif

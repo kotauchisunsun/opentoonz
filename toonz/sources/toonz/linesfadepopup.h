@@ -14,7 +14,7 @@ class TSelection;
 namespace DVGui {
 class ColorField;
 class IntField;
-}
+}  // namespace DVGui
 
 //=============================================================================
 // LinesFadePopup

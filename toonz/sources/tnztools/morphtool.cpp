@@ -65,7 +65,7 @@ public:
   void deform(TVectorImage *dstImage, const TVectorImage *srcImage,
               double t = 1.0) {
     update();
-    int n                                      = srcImage->getStrokeCount();
+    int n = srcImage->getStrokeCount();
     if ((int)dstImage->getStrokeCount() < n) n = dstImage->getStrokeCount();
     std::vector<int> ii(n);
     std::vector<TStroke *> oldStrokes(n);

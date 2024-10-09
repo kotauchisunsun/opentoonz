@@ -445,7 +445,7 @@ PlasticToolOptionsBox::PlasticToolOptionsBox(QWidget *parent, TTool *tool,
 
   bool ret = true;
   ret      = ret && connect(meshifyButton, SIGNAL(clicked()), meshifyAction,
-                       SLOT(trigger()));
+                            SLOT(trigger()));
   assert(ret);
 
   // Add Animation mode fields corresponding to vertex properties
@@ -642,8 +642,9 @@ PlasticTool::PlasticTool()
     , m_showSkeletonOS(true)
     , m_recompileOnMouseRelease(false) {
   // And now, a little trick about tool binding
-  bind(TTool::AllImages | TTool::EmptyTarget);   // Attach the tool to all types :)
-  bind(TTool::MeshLevels);  // But disable it for all but meshes :0
+  bind(TTool::AllImages |
+       TTool::EmptyTarget);  // Attach the tool to all types :)
+  bind(TTool::MeshLevels);   // But disable it for all but meshes :0
 
   // This little trick is needed to associate the tool to common levels (the
   // toolbar must appear), in

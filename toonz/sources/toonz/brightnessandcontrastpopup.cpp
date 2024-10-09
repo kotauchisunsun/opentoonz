@@ -67,7 +67,7 @@ void my_compute_lut(double contrast, double brightness, std::vector<int> &lut) {
       if (value > 0.5)
         nvalue = 1.0 - value;
       else
-        nvalue                 = value;
+        nvalue = value;
       if (nvalue < 0.0) nvalue = 0.0;
       nvalue = 0.5 * pow(nvalue * 2.0, (double)(1.0 + contrast));
       if (value > 0.5)
@@ -78,7 +78,7 @@ void my_compute_lut(double contrast, double brightness, std::vector<int> &lut) {
       if (value > 0.5)
         nvalue = 1.0 - value;
       else
-        nvalue                 = value;
+        nvalue = value;
       if (nvalue < 0.0) nvalue = 0.0;
       power =
           (contrast == 1.0) ? half_maxChannelValueD : 1.0 / (1.0 - contrast);
@@ -130,9 +130,9 @@ void onChange(const TRasterPT<PIX> &in, const TRasterPT<PIX> &out, int contrast,
               int brightness) {
   assert(in->getSize() == out->getSize());
 
-  double b      = brightness / 127.0;
-  double c      = contrast / 127.0;
-  if (c > 1) c  = 1;
+  double b = brightness / 127.0;
+  double c = contrast / 127.0;
+  if (c > 1) c = 1;
   if (c < -1) c = -1;
 
   std::vector<int> lut(PIX::maxChannelValue + 1);

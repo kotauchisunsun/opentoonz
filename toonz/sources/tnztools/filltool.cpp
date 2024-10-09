@@ -1693,9 +1693,9 @@ public:
       double k = dy / dx; /*-- 直線の傾き --*/
       /*--- roundでは負値のときにうまく繋がらない ---*/
       int start      = std::min((int)floor(m_startPosition.x + 0.5),
-                           (int)floor(m_mousePosition.x + 0.5));
+                                (int)floor(m_mousePosition.x + 0.5));
       int end        = std::max((int)floor(m_startPosition.x + 0.5),
-                         (int)floor(m_mousePosition.x + 0.5));
+                                (int)floor(m_mousePosition.x + 0.5));
       double start_x = (m_startPosition.x < m_mousePosition.x)
                            ? m_startPosition.x
                            : m_mousePosition.x;
@@ -1718,9 +1718,9 @@ public:
       double k = dx / dy; /*-- 直線の傾き --*/
       /*--- roundでは負値のときにうまく繋がらない ---*/
       int start      = std::min((int)floor(m_startPosition.y + 0.5),
-                           (int)floor(m_mousePosition.y + 0.5));
+                                (int)floor(m_mousePosition.y + 0.5));
       int end        = std::max((int)floor(m_startPosition.y + 0.5),
-                         (int)floor(m_mousePosition.y + 0.5));
+                                (int)floor(m_mousePosition.y + 0.5));
       double start_x = (m_startPosition.y < m_mousePosition.y)
                            ? m_startPosition.x
                            : m_mousePosition.x;
@@ -2092,8 +2092,7 @@ bool FillTool::onPropertyChanged(std::string propertyName, bool addToUndo) {
     rectPropChangedflag = true;
   }
 
-  else if (!m_frameSwitched &&
-           (propertyName == m_maxGapDistance.getName())) {
+  else if (!m_frameSwitched && (propertyName == m_maxGapDistance.getName())) {
     TXshLevel *xl = TTool::getApplication()->getCurrentLevel()->getLevel();
     m_level       = xl ? xl->getSimpleLevel() : 0;
     if (TVectorImageP vi = getImage(true)) {
@@ -2378,9 +2377,9 @@ void FillTool::onActivate() {
   }
   bool ret = true;
   ret      = ret && connect(TTool::m_application->getCurrentFrame(),
-                       SIGNAL(frameSwitched()), this, SLOT(onFrameSwitched()));
+                            SIGNAL(frameSwitched()), this, SLOT(onFrameSwitched()));
   ret      = ret && connect(TTool::m_application->getCurrentScene(),
-                       SIGNAL(sceneSwitched()), this, SLOT(onFrameSwitched()));
+                            SIGNAL(sceneSwitched()), this, SLOT(onFrameSwitched()));
   ret      = ret &&
         connect(TTool::m_application->getCurrentColumn(),
                 SIGNAL(columnIndexSwitched()), this, SLOT(onFrameSwitched()));

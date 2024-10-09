@@ -13,7 +13,7 @@ void *
   pp->run();
   return 0;
 };
-}
+}  // namespace
 
 void igs::resource::multithread::add(void *thread_execute_instance) {
   this->thre_exec_.push_back(thread_execute_instance);

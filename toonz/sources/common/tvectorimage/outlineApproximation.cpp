@@ -30,7 +30,7 @@ namespace Outline {
 class infinityCurvature {};
 
 class notValidOutline {};
-}
+}  // namespace Outline
 
 namespace {
 
@@ -49,7 +49,7 @@ double localComputeStep(const TQuadratic &quad, double pixelSize) {
   TPointD A = quad.getP0() - 2.0 * quad.getP1() +
               quad.getP2();  // 2*A is the acceleration of the curve
 
-  double A_len        = norm(A);
+  double A_len = norm(A);
   if (A_len > 0) step = sqrt(2 * pixelSize / A_len);
 
   return step;
@@ -256,13 +256,15 @@ void makeOutline(/*std::ofstream& cout,*/
   bool isAlmostAPoint =
       areAlmostEqual(tq->getThickP0(), tq->getThickP1(), 1e-2) &&
       areAlmostEqual(tq->getThickP1(), tq->getThickP2(), 1e-2) /*&&
-      areAlmostEqual( tq.getThickP0(), tq.getThickP2(), 1e-2 )*/;
+      areAlmostEqual( tq.getThickP0(), tq.getThickP2(), 1e-2 )*/
+      ;
 
-  if (isAlmostAPoint ||
-      (q_up && checkPointInOutline(q_up->getPoint(parameterTest), tq,
-                                  parameterTest, error) &&
-          q_down && checkPointInOutline(q_down->getPoint(parameterTest), tq,
-                                        parameterTest, error))) {
+  if (isAlmostAPoint || (q_up &&
+                         checkPointInOutline(q_up->getPoint(parameterTest), tq,
+                                             parameterTest, error) &&
+                         q_down &&
+                         checkPointInOutline(q_down->getPoint(parameterTest),
+                                             tq, parameterTest, error))) {
     /*	if (edge.first)
       cout << "left: "<< *(edge.first);
 else
@@ -644,10 +646,10 @@ void computeOutlines(const TStroke *stroke, int startQuad, int endQuad,
   quadArray.resize(ob.size() * 2);
 
   int i, count = 0;
-  for (i                                = 0; i < (int)ob.size(); i++)
+  for (i = 0; i < (int)ob.size(); i++)
     if (ob[i].first) quadArray[count++] = ob[i].first;
 
-  for (i                                 = (int)ob.size() - 1; i >= 0; i--)
+  for (i = (int)ob.size() - 1; i >= 0; i--)
     if (ob[i].second) quadArray[count++] = ob[i].second;
 
   quadArray.resize(count);

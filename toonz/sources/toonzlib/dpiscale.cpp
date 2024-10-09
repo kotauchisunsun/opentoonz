@@ -39,7 +39,7 @@ TAffine getDpiAffine(TXshSimpleLevel *level, const TFrameId &fid,
 
   int subs = prop->getSubsampling();
   if (level->getType() != PLI_XSHLEVEL) {
-    TPointD dpi                       = level->getDpi(fid);
+    TPointD dpi = level->getDpi(fid);
     if (dpi.x != 0 && dpi.y != 0) aff = TScale(factor / dpi.x, factor / dpi.y);
 
     if (!forceFullSampling)
@@ -76,7 +76,7 @@ TPointD getCurrentDpiScale(TXshSimpleLevel *sl, const TFrameId &fid) {
     if (ti)
       subs = ti->getSubsampling();
     else if (ri)
-      subs   = ri->getSubsampling();
+      subs = ri->getSubsampling();
     double f = 1.0 / subs;
     return aff * TPointD(f, f);
   } else

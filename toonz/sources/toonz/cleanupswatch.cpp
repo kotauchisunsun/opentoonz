@@ -243,7 +243,7 @@ void CleanupSwatch::CleanupSwatchArea::updateCleanupped(bool dragging) {
 
   TRect rectToCompute = convert(aff.inv() * convert(m_r->getBounds()));
   rectToCompute       = rectToCompute.enlarge(
-      TCleanupper::instance()->getParameters()->m_despeckling);
+            TCleanupper::instance()->getParameters()->m_despeckling);
 
   TRect outRect = m_sw->m_resampledRaster->getBounds() * rectToCompute;
   if (outRect.isEmpty()) return;
@@ -265,7 +265,7 @@ void CleanupSwatch::CleanupSwatchArea::updateCleanupped Versione ricalcolo Al
 
   TRect rectToCompute = convert(aff.inv() * convert(m_r->getBounds()));
   rectToCompute       = rectToCompute.enlarge(
-      TCleanupper::instance()->getParameters()->m_despeckling);
+            TCleanupper::instance()->getParameters()->m_despeckling);
 
   TRect outRect = m_sw->m_resampledRaster->getBounds() * rectToCompute;
   if (outRect.isEmpty()) return;

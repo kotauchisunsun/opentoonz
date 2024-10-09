@@ -129,7 +129,7 @@ template <typename Mesh>
 inline int out_degree(int v, const Mesh &mesh) {
   return mesh.vertex(v).edgesCount();
 }
-}
-}  // namespace tcg::bgl
+}  // namespace bgl
+}  // namespace tcg
 
 #endif  // TCG_MESH_BGL_H

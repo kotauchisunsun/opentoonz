@@ -55,13 +55,15 @@ double area(ForIt begin, ForIt end) {
     ForIt jt = begin, it = jt++;
 
     for (; jt != end; it = jt++)
-      result += 0.5 * (tcg::point_traits<point_type>::y(*jt) +
-                       tcg::point_traits<point_type>::y(*it)) *
+      result += 0.5 *
+                (tcg::point_traits<point_type>::y(*jt) +
+                 tcg::point_traits<point_type>::y(*it)) *
                 (tcg::point_traits<point_type>::x(*jt) -
                  tcg::point_traits<point_type>::x(*it));
 
-    result += 0.5 * (tcg::point_traits<point_type>::y(*begin) +
-                     tcg::point_traits<point_type>::y(*it)) *
+    result += 0.5 *
+              (tcg::point_traits<point_type>::y(*begin) +
+               tcg::point_traits<point_type>::y(*it)) *
               (tcg::point_traits<point_type>::x(*begin) -
                tcg::point_traits<point_type>::x(*it));
   }
@@ -159,8 +161,8 @@ public:
   const std::vector<double> &sums2_y() const { return m_sums2_y; }
   const std::vector<double> &sums_xy() const { return m_sums_xy; }
 };
-}
-}  // namespace tcg::polyline_ops
+}  // namespace polyline_ops
+}  // namespace tcg
 
 #ifdef INCLUDE_HPP
 #include "hpp/polyline_ops.hpp"

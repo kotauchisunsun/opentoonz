@@ -55,9 +55,9 @@ TRasterImage::TRasterImage(const TRasterImage &src)
     , m_isScanBW(src.m_isScanBW)
     , m_offset(src.m_offset)
     , m_subsampling(src.m_subsampling) {
-  if (m_mainRaster) m_mainRaster   = m_mainRaster->clone();
+  if (m_mainRaster) m_mainRaster = m_mainRaster->clone();
   if (m_patchRaster) m_patchRaster = m_patchRaster->clone();
-  if (m_iconRaster) m_iconRaster   = m_iconRaster->clone();
+  if (m_iconRaster) m_iconRaster = m_iconRaster->clone();
 }
 //---------------------------------------------------------
 

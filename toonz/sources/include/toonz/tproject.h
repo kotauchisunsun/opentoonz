@@ -96,7 +96,6 @@ private:
   TProject &operator=(const TProject &);
 };
 
-
 //===================================================================
 
 class DVAPI TProjectManager {  // singleton

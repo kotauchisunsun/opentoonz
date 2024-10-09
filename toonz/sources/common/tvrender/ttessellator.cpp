@@ -86,7 +86,7 @@ static void CALLBACK myCombine(GLdouble coords[3], GLdouble *d[4], GLfloat w[4],
 // typedef std::vector<T3DPointD>::iterator Vect3D_iter;
 
 //-------------------------------------------------------------------
-}
+}  // namespace
 
 //-------------------------------------------------------------------
 

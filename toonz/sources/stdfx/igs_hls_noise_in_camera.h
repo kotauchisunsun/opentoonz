@@ -53,8 +53,8 @@ IGS_HLS_NOISE_IN_CAMERA_EXPORT void change(
     ,
     const int alp_type = 0
     // 0(shift_whole),1(shift_term),2(decrease_whole),3(decrease_term)
-    );
+);
 }
-}
+}  // namespace igs
 
 #endif /* !igs_hls_noise_in_camera_h */

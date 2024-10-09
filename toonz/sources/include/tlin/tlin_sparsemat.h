@@ -97,6 +97,6 @@ public:
 //  The Standard matrix data type in tlin is double
 
 typedef tlin::sparse_matrix<double> spmat;
-}
+}  // namespace tlin
 
 #endif  // TLIN_SPARSEMAT_H

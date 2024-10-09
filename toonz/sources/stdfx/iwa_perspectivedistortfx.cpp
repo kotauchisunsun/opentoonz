@@ -277,8 +277,8 @@ void Iwa_PerspectiveDistortFx::doCompute_CPU(
       int index    = (int)tfloor(sampleX);
       double ratio = sampleX - (double)index;
       (*result_p)  = interp_CPU(
-          getSource_CPU(source_host, sourceDim, index, j),
-          getSource_CPU(source_host, sourceDim, index + 1, j), ratio);
+           getSource_CPU(source_host, sourceDim, index, j),
+           getSource_CPU(source_host, sourceDim, index + 1, j), ratio);
     }
   }
 }

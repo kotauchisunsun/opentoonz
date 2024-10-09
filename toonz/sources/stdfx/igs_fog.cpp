@@ -27,7 +27,7 @@ void sl_track_render_dark_(
 
     ,
     const double power = 1.0 /* 0無  0...1散暗  1強暗  1...2最強暗 */
-    ) {
+) {
   for (int xx = 0; xx < width; ++xx) { /* 画像のScanlineループ */
     /* Alphaがないか、Alpha値ゼロより大きいと処理しRGB変化 */
     if ((0 == alpha) || (0.0 < alpha[xx])) {
@@ -79,7 +79,7 @@ void sl_track_render_light_(  // = fog = default
 
     ,
     const double power = 1.0 /* 0無  0...1散光  1強光  1...2最強光 */
-    ) {
+) {
   for (int xx = 0; xx < width; ++xx) { /* 画像のScanlineループ */
     /* Alphaがないか、Alpha値ゼロより大きいと処理しRGB変化 */
     if ((0 == alpha) || (0.0 < alpha[xx])) {
@@ -135,7 +135,7 @@ void sl_track_render_threshold_(
     const double power = 1.0 /* 0無  0...1散光  1強光  1...2最強光 */
     ,
     const double threshold_min = 0.0 /* 0Cut無 0...1部分 1.01全Cut */
-    ) {
+) {
   for (int xx = 0; xx < width; ++xx) { /* 画像のScanlineループ */
     /* Alphaがないか、Alpha値ゼロより大きいと処理しRGB変化 */
     if ((0 == alpha) || (0.0 < alpha[xx])) {
@@ -195,7 +195,7 @@ void sl_track_render_thrminmax_(
     const double threshold_min = 0.0 /* 0Cut無 0...1部分 1.01全Cut */
     ,
     const double threshold_max = 0.0 /* 0Cut無 0...1部分 1.01全Cut */
-    ) {
+) {
   const double thr_range = threshold_max - threshold_min;
   for (int xx = 0; xx < width; ++xx) { /* 画像のScanlineループ */
     /* Alphaがないか、Alpha値ゼロより大きいと処理しRGB変化 */
@@ -210,9 +210,9 @@ void sl_track_render_thrminmax_(
             if (thres[y2][x2] < threshold_max) {
               /* maxよりは小さい値のpixelは比で影響する */
               total += lens[y2][x2] *
-                       (in_out[xx] +
-                        (track[y2][x2] - in_out[xx]) *
-                            (thres[y2][x2] - threshold_min) / thr_range);
+                       (in_out[xx] + (track[y2][x2] - in_out[xx]) *
+                                         (thres[y2][x2] - threshold_min) /
+                                         thr_range);
             } else {
               /* maxより大きい値のpixelは明るさ影響を受ける */
               total += lens[y2][x2] * track[y2][x2];
@@ -243,7 +243,7 @@ void sl_track_render_thrminmax_(
     }
   }
 }
-}
+}  // namespace
 namespace {  //---------------------------------------------------------
 void sl_track_resize_(const int odd_diameter, const int width,
                       std::vector<std::vector<double>> &pixe_tracks,
@@ -387,7 +387,7 @@ void sl_track_clear_(std::vector<std::vector<double>> &pixe_tracks,
     pixe_tracks.clear();
   }
 }
-}
+}  // namespace
 namespace {  //--------------------------------------------------------
 template <class T>
 void rgb_to_lightness_image_(const T *image, const int height, const int width,
@@ -409,7 +409,7 @@ void rgb_to_lightness_image_(const T *image, const int height, const int width,
     }
   }
 }
-}
+}  // namespace
 namespace {  //--------------------------------------------------------
 /*
         画像配列の高さ位置を、実際の範囲内にclampし、scanlineの先頭を返す
@@ -440,7 +440,7 @@ void paint_margin_(const int width, const int margin, std::vector<T> &track) {
         track.at(track.size() - margin - 1); /* 終端側の余白を塗る */
   }
 }
-}
+}  // namespace
 namespace {  //--------------------------------------------------------
 /*
         T is 'unsigned char' or 'unsigned short'
@@ -563,12 +563,12 @@ void put_sl_ch_(std::vector<double> &result, const int hh, const int ww,
     dd[ch * xx] = static_cast<T>(result.at(xx) * (val_max + 0.999999));
   }
 }
-}
+}  // namespace
 namespace {  //--------------------------------------------------------
 template <class T>
 class one_thread_ final
     : public igs::resource::thread_execute_interface { /* thread単位の実行設定
-                                                    */
+                                                        */
 public:
   one_thread_() {}
   void setup(T in_image, T out_image, double *ref_thresh
@@ -577,7 +577,8 @@ public:
              const int height, const int width, const int channels
 
              ,
-             const int y_begin, const int y_end
+             const int y_begin,
+             const int y_end
 
              // , std::vector< std::vector<double> > *lens_matrix_p
              ,
@@ -735,7 +736,7 @@ private:
                zz, this->out_image_);
   }
 };
-}
+}  // namespace
 namespace {  //--------------------------------------------------------
 template <class T>
 class multi_thread_ {
@@ -763,7 +764,7 @@ public:
                 const double threshold_max  // 0.00(0.00 ... 1.01)
                 ,
                 const bool alpha_rendering_sw  // false(true,false)
-                ) {
+  ) {
     /*--------------スレッド数の設定--------------------*/
     int thread_num = number_of_thread;
     if ((thread_num < 1) || (height < thread_num)) {
@@ -802,7 +803,8 @@ public:
           height, width, channels
 
           ,
-          yy, yy + h_sub - 1
+          yy,
+          yy + h_sub - 1
 
           // , &(this->lens_matrix_)
           ,
@@ -834,7 +836,7 @@ private:
   std::vector<one_thread_<T>> threads_;
   igs::resource::multithread mthread_;
 };
-}
+}  // namespace
 //--------------------------------------------------------------------
 /* パラメータの指定を見て、画像に変化の無い場合、
 呼び出し側で、fog処理するか判断する。fog処理しないときの処理も忘れずに */
@@ -843,7 +845,7 @@ bool igs::fog::have_change(const double radius  // 25.0(0 ... 100(DOUBLE_MAX))
                            const double power  // 1.00(-2.00 ... 2.00)
                            ,
                            const double threshold_min  // 0.00(0.00 ... 1.01)
-                           ) {
+) {
   /* 収光(変化)しない
           場合1  直径が1以下
           場合2  powerがゼロ(マイナスは有効としている)
@@ -886,10 +888,10 @@ void igs::fog::convert(void *in  // no margin
                        const double threshold_max  // 0.00(0.00 ... 1.01)
                        ,
                        const bool alpha_rendering_sw  // false(true,false)
-                       ) {
+) {
   if ((igs::image::rgba::siz != channels) &&
       (igs::image::rgb::siz != channels) && (1 != channels) /* grayscale */
-      ) {
+  ) {
     throw std::domain_error("Bad channels,Not rgba/rgb/grayscale");
   }
 

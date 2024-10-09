@@ -51,7 +51,7 @@ int CYOMBInputParam::getRangeEnd(const char *s) const {
 void CYOMBInputParam::strToColorIndex(const char *s, COLOR_INDEX_LIST &cil,
                                       const int maxIndex) {
   /* If s=="-1", all of the indices are put into the ColorIndexList
-*/
+   */
   if (strcmp(s, "-1") == 0) {
     for (int i = 0; i <= maxIndex; i++)
       if (cil.nb < MAXNBCIL) {
@@ -88,7 +88,7 @@ void CYOMBInputParam::strToColorIndex(const char *s, COLOR_INDEX_LIST &cil,
 */
   } else {
     if (cil.nb < MAXNBCIL) {
-      int q                                         = atoi(s);
+      int q = atoi(s);
       if (q >= 0 && q <= maxIndex) cil.ci[cil.nb++] = (unsigned short)q;
     }
   }

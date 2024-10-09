@@ -30,8 +30,9 @@ double integ_gauss(double xmin, double ymin, double xmax, double ymax,
       y1 = ymin + ystep * i;
       x2 = x1 + xstep;
       y2 = y1 + ystep;
-      sum += area * (gauss(x1, y1, x0, y0, s) + gauss(x1, y2, x0, y0, s) +
-                     gauss(x2, y2, x0, y0, s) + gauss(x2, y1, x0, y0, s)) /
+      sum += area *
+             (gauss(x1, y1, x0, y0, s) + gauss(x1, y2, x0, y0, s) +
+              gauss(x2, y2, x0, y0, s) + gauss(x2, y1, x0, y0, s)) /
              4;
     }
   return sum;
@@ -79,7 +80,7 @@ void TRop::fracmove(TRasterP rout, TRasterP rin, double dx, double dy) {
 
   int i, j;
   for (i = 0; i < 2; ++i)
-    for (j                = 0; j < 2; ++j)
+    for (j = 0; j < 2; ++j)
       sum += w[j + 2 * i] = fabs(fracX - j) * fabs(fracY - i);
 
   for (i = 0; i < 4; ++i) w[i] /= sum;
@@ -101,7 +102,7 @@ void TRop::fracmove(TRasterP rout, TRasterCM32P rin, const TPaletteP &palette,
 
   int i, j;
   for (i = 0; i < 2; ++i)
-    for (j                = 0; j < 2; ++j)
+    for (j = 0; j < 2; ++j)
       sum += w[j + 2 * i] = fabs(fracX - j) * fabs(fracY - i);
 
   for (i = 0; i < 4; ++i) w[i] /= sum;

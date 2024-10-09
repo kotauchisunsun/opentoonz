@@ -411,7 +411,7 @@ void CommandManager::enlargeIcon(CommandId id, const QSize dstSize) {
   }
 
   addSpecifiedSizedImageToIcon(icon, iconSVGName, dstSize);
-  
+
   action->setIcon(icon);
 }
 

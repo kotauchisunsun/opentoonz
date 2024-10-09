@@ -11,7 +11,7 @@ TPixel32 unmultiply(const TPixel32 &pix) {
   return TPixel32((UCHAR)(pix.r * depremult), (UCHAR)(pix.g * depremult),
                   (UCHAR)(pix.b * depremult), pix.m);
 }
-}
+}  // namespace
 
 //===================================================================
 

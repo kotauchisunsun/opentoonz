@@ -38,7 +38,7 @@ public:
   void draw(StrokeDeformation *) override;
   void draw(Selector *) override;
 };
-}
+}  // namespace ToonzExt
 #endif /* OVERALLDESIGNER_H */
 //-----------------------------------------------------------------------------
 //  End Of File

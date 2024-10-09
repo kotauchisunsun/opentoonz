@@ -38,7 +38,7 @@ bool lineIntersection(const TPointD &P, const TPointD &R, const TPointD &Q,
 }
 
 //----------------------------------------------------------------------------
-};
+};  // namespace
 
 #ifndef checkErrorsByGL
 #define checkErrorsByGL                                                        \
@@ -237,12 +237,12 @@ void subCompute(TRasterFxPort &m_input, TTile &tile, double frame,
   glTranslated(-translate.x, -translate.y, 0.0);
 
   // disegno il poligono
-  double dist_p00_p01                 = tdistance2(p00, p01);
-  double dist_p10_p11                 = tdistance2(p10, p11);
-  double dist_p01_p11                 = tdistance2(p01, p11);
-  double dist_p00_p10                 = tdistance2(p00, p10);
-  bool vertical                       = (dist_p00_p01 == dist_p10_p11);
-  bool horizontal                     = (dist_p00_p10 == dist_p01_p11);
+  double dist_p00_p01 = tdistance2(p00, p01);
+  double dist_p10_p11 = tdistance2(p10, p11);
+  double dist_p01_p11 = tdistance2(p01, p11);
+  double dist_p00_p10 = tdistance2(p00, p10);
+  bool vertical       = (dist_p00_p01 == dist_p10_p11);
+  bool horizontal     = (dist_p00_p10 == dist_p01_p11);
   if (vertical && horizontal) details = 1;
   glPolygonMode(GL_FRONT_AND_BACK, polygonStyle);
   subdivision(p00, p10, p11, p01, tex00, tex10, tex11, tex01, clippingRect,
@@ -327,23 +327,23 @@ void subdivision(const TPointD &p00, const TPointD &p10, const TPointD &p11,
     TPointD D = p01;
 
     /*
-*     D                L2               C
-*     +----------------+----------------+
-*     |                |                |
-*     |                |                |
-*     |                |                |
-*     |                |                |
-*     |                |                |
-*  H1 +----------------+----------------+ H2
-*     |                | M              |
-*     |                |                |
-*     |                |                |
-*     |                |                |
-*     |                |                |
-*     +----------------+----------------+
-*     A                L1               B
-*
-*/
+     *     D                L2               C
+     *     +----------------+----------------+
+     *     |                |                |
+     *     |                |                |
+     *     |                |                |
+     *     |                |                |
+     *     |                |                |
+     *  H1 +----------------+----------------+ H2
+     *     |                | M              |
+     *     |                |                |
+     *     |                |                |
+     *     |                |                |
+     *     |                |                |
+     *     +----------------+----------------+
+     *     A                L1               B
+     *
+     */
 
     TPointD M, L1, L2, H1, H2, P1, P2;
     bool intersection;
@@ -445,13 +445,13 @@ static int splitMatrix(double **a, int n, int *index) {
   for (j = 0; j < n; j++) {
     for (i = 0; i < j; i++) {
       sum = a[i][j];
-      for (k  = 0; k < i; k++) sum -= a[i][k] * a[k][j];
+      for (k = 0; k < i; k++) sum -= a[i][k] * a[k][j];
       a[i][j] = sum;
     }
     big = 0.0;
     for (i = j; i < n; i++) {
       sum = a[i][j];
-      for (k  = 0; k < j; k++) sum -= a[i][k] * a[k][j];
+      for (k = 0; k < j; k++) sum -= a[i][k] * a[k][j];
       a[i][j] = sum;
       if ((dum = vv[i] * fabs(sum)) >= big) {
         big  = dum;
@@ -527,7 +527,7 @@ static void computeSolutions(double **a, int *index, double *b) {
   for (i = 7; i >= 0; i--) {
     sum = b[i];
     for (j = i + 1; j < 8; j++) sum -= a[i][j] * b[j];
-    b[i]   = sum / a[i][i];
+    b[i] = sum / a[i][i];
   }
 }
 
@@ -570,7 +570,7 @@ static void computeTransformation(const FourPoints &s, const FourPoints &d,
   int i;
   a = new double *[8];
   for (i = 0; i < 8; i++) a[i] = new double[8];
-  b                            = new double[8];
+  b = new double[8];
 
   buildMatrixes(s, d, a, b);
 

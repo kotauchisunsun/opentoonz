@@ -285,10 +285,9 @@ int ChennelCurveEditor::getClosestPointIndex(const QPointF &pos,
     if (m_isLinear && !isCentralControlPoint(i)) continue;
     QPointF visiblePoint = getVisibleHandlePos(i);
 
-    pointType type =
-        (isCentralControlPoint(i))
-            ? ControlPoint
-            : (visiblePoint == m_points.at(i)) ? Handle : PseudoHandle;
+    pointType type = (isCentralControlPoint(i))         ? ControlPoint
+                     : (visiblePoint == m_points.at(i)) ? Handle
+                                                        : PseudoHandle;
 
     double distance2 = qtDistance2(pos, visiblePoint);
     if (closestPointIndex < 0 || distance2 < minDistance2 ||
@@ -693,9 +692,9 @@ void ChennelCurveEditor::paintEvent(QPaintEvent *e) {
       handlePos = getVisibleHandlePos(i);
     }
 
-    painter.setBrush((m_currentControlPointIndex != i)
-                         ? Qt::white
-                         : (p == handlePos) ? Qt::black : Qt::blue);
+    painter.setBrush((m_currentControlPointIndex != i) ? Qt::white
+                     : (p == handlePos)                ? Qt::black
+                                                       : Qt::blue);
     painter.setPen((p == handlePos) ? blackPen : bluePen);
 
     QRectF pointRect(handlePos.x() - rad, handlePos.y() - rad, 2 * rad,

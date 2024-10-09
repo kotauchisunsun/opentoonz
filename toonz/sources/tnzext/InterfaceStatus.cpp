@@ -57,4 +57,4 @@ void InterfaceStatus::init() {
   cornerSize_          = 120;
 }
 //---------------------------------------------------------------------------
-}
+}  // namespace ToonzExt

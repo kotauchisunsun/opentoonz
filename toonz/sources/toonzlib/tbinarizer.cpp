@@ -186,7 +186,7 @@ void TBinarizer::process(const TRaster32P &ras) {
   // background
   // un quadrato che abbia meno di 20 (v.s sopra c<20) sotto
   // thrBuffer[k1]-thrDelta e' considerato sfondo
-  int thrDelta                  = 0;
+  int thrDelta = 0;
   if (!goodBackground) thrDelta = 20;
 
   // inizializzo la cornice dell'immagine (mi serve per non sconfinare quando

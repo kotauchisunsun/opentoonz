@@ -37,7 +37,7 @@ const void reshape_lens_matrix(const double radius  // 0<=
                                std::vector<int> &lens_offsets,
                                std::vector<int> &lens_sizes,
                                std::vector<std::vector<double>> &lens_ratio);
-}
-}
+}  // namespace maxmin
+}  // namespace igs
 
 #endif /* !igs_maxmin_lens_matrix_h */

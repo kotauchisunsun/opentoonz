@@ -35,8 +35,8 @@ void PropertyComboBox::onCurrentIndexChanged(const QString &text) {
 void PropertyComboBox::onPropertyChanged() {
   TEnumProperty *prop = dynamic_cast<TEnumProperty *>(m_property);
   if (prop) {
-    QString str  = QString::fromStdWString(prop->getValue());
-    int i        = findData(str);
+    QString str = QString::fromStdWString(prop->getValue());
+    int i       = findData(str);
     if (i < 0) i = findText(str);
     if (i >= 0 && i < count()) setCurrentIndex(i);
   }

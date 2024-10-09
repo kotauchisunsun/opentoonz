@@ -290,7 +290,6 @@ Tiio::GifWriterProperties::GifWriterProperties()
     , m_palette("Generate Palette", true)
     , m_mode("Mode")
     , m_maxcolors("Max Colors", 2, 256, 256) {
-
   // Set values for mode
   m_mode.addValue(L"GLOBAL0");
   m_mode.addValue(L"GLOBAL1");

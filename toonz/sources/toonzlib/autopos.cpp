@@ -34,8 +34,8 @@ static bool Debug_flag = false;
 #define AUTOAL_THRESHOLD 160
 
 static bool autoalign_gr8(UCHAR *buffer_gr8, int wrap, int lx, int ly,
-                         int pix_origin, int dpix_dx, int dpix_dy,
-                         int strip_width) {
+                          int pix_origin, int dpix_dx, int dpix_dy,
+                          int strip_width) {
   int first_x[2], dx_dcol[2], target[2];
   int i, x, y, cols;
   int col_value, threshold;
@@ -128,8 +128,8 @@ found:
 /*---------------------------------------------------------------------------*/
 
 static bool autoalign_rgb(TPixel32 *buffer_rgb, int wrap, int lx, int ly,
-                         int pix_origin, int dpix_dx, int dpix_dy,
-                         int strip_width) {
+                          int pix_origin, int dpix_dx, int dpix_dy,
+                          int strip_width) {
   int first_x[2], dx_dcol[2], target[2];
   int i, x, y, cols;
   int col_value, threshold;
@@ -340,7 +340,9 @@ static int Done_colsize = 0;
 
 static int Pix_ystep = 0;
 
-typedef struct big { unsigned lo, hi; } BIG;
+typedef struct big {
+  unsigned lo, hi;
+} BIG;
 #define CLEARBIG(B) ((B).lo = 0, (B).hi = 0, (B))
 #define ADDBIG(B, X)                                                           \
   ((B).lo += (unsigned)(X), (B).hi += (B).lo >> 30, (B).lo &= 0x3fffffff, (B))
@@ -397,7 +399,7 @@ visit_bw(int i, int j, int x, int y, int bit, UCHAR *byte),
 //! fits the reference in
 //! reference. The three best matching dots are returned in parameters i, j, k.
 static bool compare_dots(DOT const dots[], int ndots, DOT reference[],
-                        int ref_dot, int &i, int &j, int &k);
+                         int ref_dot, int &i, int &j, int &k);
 
 #define REVERSE(byte, bit)                                                     \
   {                                                                            \
@@ -544,7 +546,7 @@ static int find_dots_bw(const TRasterP &img, int strip_width,
        << '\0';
     throw TCleanupException(os.str().c_str());
     x0 = y0 = xsize = ysize = 0;
-    vertical = false;
+    vertical                = false;
   }
   }
   xlast        = x0 + xsize - 1;
@@ -607,7 +609,7 @@ static int find_dots_bw(const TRasterP &img, int strip_width,
             for (ins = 0; ins < n_dots; ins++)
               if (dotarray[ins].x > dot_x) break;
           }
-          for (shift            = n_dots - 1; shift >= ins; shift--)
+          for (shift = n_dots - 1; shift >= ins; shift--)
             dotarray[shift + 1] = dotarray[shift];
           n_dots++;
           dotarray[ins].x1   = Xmin;
@@ -673,7 +675,7 @@ static int find_dots_gr8(const TRasterGR8P &img, int strip_width,
        << '\0';
     throw TCleanupException(os.str().c_str());
     x0 = y0 = xsize = ysize = 0;
-    vertical = false;
+    vertical                = false;
   }
   }
 
@@ -737,7 +739,7 @@ static int find_dots_gr8(const TRasterGR8P &img, int strip_width,
             for (ins = 0; ins < n_dots; ins++)
               if (dotarray[ins].x > dot_x) break;
           }
-          for (shift            = n_dots - 1; shift >= ins; shift--)
+          for (shift = n_dots - 1; shift >= ins; shift--)
             dotarray[shift + 1] = dotarray[shift];
           n_dots++;
           dotarray[ins].x1   = Xmin;
@@ -800,7 +802,7 @@ static int find_dots_rgb(const TRaster32P &img, int strip_width,
        << '\0';
     throw TCleanupException(os.str().c_str());
     x0 = y0 = xsize = ysize = 0;
-    vertical = false;
+    vertical                = false;
     break;
   }
   }
@@ -861,7 +863,7 @@ static int find_dots_rgb(const TRaster32P &img, int strip_width,
             for (ins = 0; ins < n_dots; ins++)
               if (dotarray[ins].x > dot_x) break;
           }
-          for (shift            = n_dots - 1; shift >= ins; shift--)
+          for (shift = n_dots - 1; shift >= ins; shift--)
             dotarray[shift + 1] = dotarray[shift];
           n_dots++;
           dotarray[ins].x1   = Xmin;
@@ -1029,10 +1031,10 @@ start:
   ADDBIG(Ysum, y * weight);
   ADDBIG(Weightsum, weight);
   if (IS_VERY_BLACK_GR8(pix)) Very_black_found = true;
-  if (x < Xmin) Xmin                           = x;
-  if (x > Xmax) Xmax                           = x;
-  if (y < Ymin) Ymin                           = y;
-  if (y > Ymax) Ymax                           = y;
+  if (x < Xmin) Xmin = x;
+  if (x > Xmax) Xmax = x;
+  if (y < Ymin) Ymin = y;
+  if (y > Ymax) Ymax = y;
   Npix++;
   SET_DONE(i, j);
 
@@ -1102,10 +1104,10 @@ static void visit_gr8(int i, int j, int x, int y, UCHAR *pix) {
   ADDBIG(Ysum, y * weight);
   ADDBIG(Weightsum, weight);
   if (IS_VERY_BLACK_GR8(pix)) Very_black_found = true;
-  if (x < Xmin) Xmin                           = x;
-  if (x > Xmax) Xmax                           = x;
-  if (y < Ymin) Ymin                           = y;
-  if (y > Ymax) Ymax                           = y;
+  if (x < Xmin) Xmin = x;
+  if (x > Xmax) Xmax = x;
+  if (y < Ymin) Ymin = y;
+  if (y > Ymax) Ymax = y;
   Npix++;
   SET_DONE(i, j);
 
@@ -1134,10 +1136,10 @@ start:
   ADDBIG(Ysum, y * weight);
   ADDBIG(Weightsum, weight);
   if (IS_VERY_BLACK_RGB(pix)) Very_black_found = true;
-  if (x < Xmin) Xmin                           = x;
-  if (x > Xmax) Xmax                           = x;
-  if (y < Ymin) Ymin                           = y;
-  if (y > Ymax) Ymax                           = y;
+  if (x < Xmin) Xmin = x;
+  if (x > Xmax) Xmax = x;
+  if (y < Ymin) Ymin = y;
+  if (y > Ymax) Ymax = y;
   Npix++;
   SET_DONE(i, j);
 
@@ -1207,10 +1209,10 @@ static void visit_rgb(int i, int j, int x, int y, TPixel32 *pix) {
   ADDBIG(Ysum, y * weight);
   ADDBIG(Weightsum, weight);
   if (IS_VERY_BLACK_RGB(pix)) Very_black_found = true;
-  if (x < Xmin) Xmin                           = x;
-  if (x > Xmax) Xmax                           = x;
-  if (y < Ymin) Ymin                           = y;
-  if (y > Ymax) Ymax                           = y;
+  if (x < Xmin) Xmin = x;
+  if (x > Xmax) Xmax = x;
+  if (y < Ymin) Ymin = y;
+  if (y > Ymax) Ymax = y;
   Npix++;
   SET_DONE(i, j);
 
@@ -1237,9 +1239,9 @@ static void visit_rgb(int i, int j, int x, int y, TPixel32 *pix) {
  * Inoltre: la pegs_side si riferisce alle coordinate di raster.
  */
 bool get_image_rotation_and_center(const TRasterP &img, int strip_width,
-                                  PEGS_SIDE pegs_side, double *p_ang,
-                                  double *cx, double *cy, DOT ref[],
-                                  int ref_dot) {
+                                   PEGS_SIDE pegs_side, double *p_ang,
+                                   double *cx, double *cy, DOT ref[],
+                                   int ref_dot) {
   double angle;
   int i;
   bool found;
@@ -1291,7 +1293,7 @@ bool get_image_rotation_and_center(const TRasterP &img, int strip_width,
 
   int indexArray[3] = {0, 1, 2};
   found             = compare_dots(dotarray, ndot, ref, ref_dot, indexArray[0],
-                       indexArray[1], indexArray[2]);
+                                   indexArray[1], indexArray[2]);
 
   if (Debug_flag)
     for (i = 0; i < ndot; i++) {
@@ -1346,7 +1348,7 @@ bool get_image_rotation_and_center(const TRasterP &img, int strip_width,
 #define MIN_V 100.0
 
 static bool compare_dots(DOT const dots[], int ndots, DOT reference[],
-                        int ref_dot, int &i_ok, int &j_ok, int &k_ok) {
+                         int ref_dot, int &i_ok, int &j_ok, int &k_ok) {
   int found;
   int toll;
   float tolld;
@@ -1390,12 +1392,12 @@ static bool compare_dots(DOT const dots[], int ndots, DOT reference[],
 
   /* calcolo le distanze di riferimento e la tolleranza stessa */
 
-  tolld                              = (float)reference[0].lx;
+  tolld = (float)reference[0].lx;
   if (tolld < reference[0].ly) tolld = (float)reference[0].ly;
   for (i = 1; i < ref_dot; i++) {
-    dx                                 = reference[0].x - reference[i].x;
-    dy                                 = reference[0].y - reference[i].y;
-    ref_dis[i - 1]                     = sqrtf((dx * dx) + (dy * dy));
+    dx             = reference[0].x - reference[i].x;
+    dy             = reference[0].y - reference[i].y;
+    ref_dis[i - 1] = sqrtf((dx * dx) + (dy * dy));
     if (tolld < reference[i].lx) tolld = (float)reference[i].lx;
     if (tolld < reference[i].ly) tolld = (float)reference[i].ly;
   }

@@ -50,7 +50,7 @@ void LocatorPopup::onChangeViewAff(const TPointD &pos) {
 void LocatorPopup::showEvent(QShowEvent *) {
   // zoom the locator for the first time
   if (m_initialZoom) {
-    for (int z    = 0; z < 4; z++) m_viewer->zoomQt(true, false);
+    for (int z = 0; z < 4; z++) m_viewer->zoomQt(true, false);
     m_initialZoom = false;
   }
 
@@ -60,7 +60,7 @@ void LocatorPopup::showEvent(QShowEvent *) {
 
   bool ret = true;
   ret      = ret && connect(frameHandle, SIGNAL(frameSwitched()), this,
-                       SLOT(changeWindowTitle()));
+                            SLOT(changeWindowTitle()));
   ret = ret && connect(levelHandle, SIGNAL(xshLevelSwitched(TXshLevel *)), this,
                        SLOT(changeWindowTitle()));
   assert(ret);
@@ -96,14 +96,13 @@ void LocatorPopup::changeWindowTitle() {
              app->getCurrentLevel()->getSimpleLevel() &&
              !CleanupPreviewCheck::instance()
                   ->isEnabled()  // cleanup preview must be OFF
-             &&
-             !CameraTestCheck::instance()
-                  ->isEnabled())  // camera test mode must be OFF neither
+             && !CameraTestCheck::instance()
+                     ->isEnabled())  // camera test mode must be OFF neither
       showZoomFactor = true;
   }
   // if the frame type is "level editing"
   else {
-    TXshLevel *level          = app->getCurrentLevel()->getLevel();
+    TXshLevel *level = app->getCurrentLevel()->getLevel();
     if (level) showZoomFactor = true;
   }
 

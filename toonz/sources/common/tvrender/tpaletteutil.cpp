@@ -31,7 +31,7 @@ void mergePalette(const TPaletteP &targetPalette,
       else
         page = targetPalette->addPage(pageName);
     } else
-      page         = targetPalette->getPage(0);
+      page = targetPalette->getPage(0);
     int tarStyleId = 0;
     int i          = 0;
     for (i = 0; i < targetPalette->getStyleCount(); i++)

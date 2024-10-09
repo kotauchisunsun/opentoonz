@@ -1425,7 +1425,7 @@ void CellArea::drawSelectionBackground(QPainter &p) const {
     int newSelCol0 = std::max(selCol0, selCol1);
     int newSelCol1 = std::min(selCol0, selCol1);
     selectionRect  = m_viewer->rangeToXYRect(
-        CellRange(CellPosition(selRow0, newSelCol0),
+         CellRange(CellPosition(selRow0, newSelCol0),
                    CellPosition(selRow1 + 1, newSelCol1 - 1)));
   }
 

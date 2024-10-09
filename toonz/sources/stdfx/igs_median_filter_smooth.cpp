@@ -144,7 +144,7 @@ T get_pixel_value_(pixel_geometry_ &pixg, const T *image_top, const int hh,
   }
   return *(image_top + (ww * ch * yy + ch * xx + zz));
 }
-}
+}  // namespace
 //------------------------------------------------------------
 // #include <algorithm> // std::sort()
 #include <stdexcept> /* std::domain_error(-) */
@@ -218,7 +218,7 @@ double median_filter_smooth_(pixel_geometry_ &pixg, const T *image_top,
   }
   return before_value;
 }
-}
+}  // namespace
 //------------------------------------------------------------
 namespace {
 double refchk_(const double src, const double tgt, const double refv) {
@@ -288,7 +288,7 @@ void convert_each_to_each_channel_template_(
   }
   pixg.clear();
 }
-}
+}  // namespace
 //------------------------------------------------------------
 #include "igs_median_filter_smooth.h"
 #include "igs_ifx_common.h" /* igs::image::rgba */
@@ -311,7 +311,7 @@ void igs::median_filter_smooth::convert(
     const double radius  // 0...
     ,
     const int out_side_type  // 0(Spread),1(Flip),2(bk),3(Repeat)
-    ) {
+) {
   /*--- 指定(zz)から、実際に処理すべき色チャンネル(z2)を得る ---*/
   int z2 = zz;
   if (igs::image::rgba::siz == channels) {

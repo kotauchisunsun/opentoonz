@@ -80,7 +80,7 @@ public:
     return noise_buf[index];
   }
 };
-}
+}  // namespace
 
 template <typename PIXEL, typename PIXELGRAY, typename CHANNEL_TYPE>
 void doNoise(TRasterPT<PIXEL> &ras, double sigma, bool bw, bool red, bool green,

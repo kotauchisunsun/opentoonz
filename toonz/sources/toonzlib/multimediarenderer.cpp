@@ -33,7 +33,7 @@ std::wstring removeSpaces(const std::wstring &str) {
   result += str.substr(a, std::wstring::npos);
   return result;
 }
-}
+}  // namespace
 
 //=========================================================
 //

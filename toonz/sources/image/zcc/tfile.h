@@ -35,7 +35,7 @@ enum eFlags {
 
   kAllFileFlags = 0xFFFFFFFF
 };
-};
+};  // namespace TFileConsts
 
 typedef __int32 uint32;
 

@@ -362,7 +362,7 @@ regions. only ending parts are removed.
 If the entire stroke is not bounding any region, it is kept entitely.
 it returns the original stroke (for undo)*/
 
-  TStroke *removeEndpoints(int strokeIndex, double *offset=NULL);
+  TStroke *removeEndpoints(int strokeIndex, double *offset = NULL);
 
   /*! this method replaces  the stroke at index with oldstroke. Oldstroke is
   supposed to contain

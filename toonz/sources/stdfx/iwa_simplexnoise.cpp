@@ -5,21 +5,21 @@
 --------------------------------------------------------------------*/
 /*-- start of the original header --*/
 /*
-* A speed-improved simplex noise algorithm for 2D, 3D and 4D in Java.
-*
-* Based on example code by Stefan Gustavson (stegu@itn.liu.se).
-* Optimisations by Peter Eastman (peastman@drizzle.stanford.edu).
-* Better rank ordering method by Stefan Gustavson in 2012.
-*
-* This could be speeded up even further, but it's useful as it is.
-*
-* Version 2012-03-09
-*
-* This code was placed in the public domain by its original author,
-* Stefan Gustavson. You may use it as you see fit, but
-* attribution is appreciated.
-*
-*/
+ * A speed-improved simplex noise algorithm for 2D, 3D and 4D in Java.
+ *
+ * Based on example code by Stefan Gustavson (stegu@itn.liu.se).
+ * Optimisations by Peter Eastman (peastman@drizzle.stanford.edu).
+ * Better rank ordering method by Stefan Gustavson in 2012.
+ *
+ * This could be speeded up even further, but it's useful as it is.
+ *
+ * Version 2012-03-09
+ *
+ * This code was placed in the public domain by its original author,
+ * Stefan Gustavson. You may use it as you see fit, but
+ * attribution is appreciated.
+ *
+ */
 /*-- end of the original header --*/
 
 #include "iwa_simplexnoise.h"
@@ -115,7 +115,7 @@ static short permMod12[512] = {
     3,  1,  7,  9, 2, 11, 11, 1,  0,  10, 7,  1, 7, 10, 1,  4,  0,  0,  8,
     7,  1,  2,  9, 7, 4,  6,  2,  6,  8,  1,  9, 6, 6,  7,  5,  0,  0,  3,
     9,  8,  3,  6, 6, 11, 1,  0,  0};
-};
+};  // namespace
 
 //----------------------------------------
 // 2D simplex noise

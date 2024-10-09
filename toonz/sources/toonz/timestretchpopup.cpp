@@ -249,9 +249,9 @@ void TimeStretchPopup::showEvent(QShowEvent *) {
   TSelectionHandle *selectionHandle = TApp::instance()->getCurrentSelection();
   bool ret = connect(selectionHandle, SIGNAL(selectionChanged(TSelection *)),
                      this, SLOT(updateValues(TSelection *)));
-  ret = ret && connect(selectionHandle,
-                       SIGNAL(selectionSwitched(TSelection *, TSelection *)),
-                       this, SLOT(updateValues(TSelection *, TSelection *)));
+  ret      = ret && connect(selectionHandle,
+                            SIGNAL(selectionSwitched(TSelection *, TSelection *)),
+                            this, SLOT(updateValues(TSelection *, TSelection *)));
   TXsheetHandle *xsheetHandle = TApp::instance()->getCurrentXsheet();
   ret = ret && connect(xsheetHandle, SIGNAL(xsheetChanged()), this,
                        SLOT(updateValues()));
@@ -265,9 +265,9 @@ void TimeStretchPopup::hideEvent(QHideEvent *e) {
   TSelectionHandle *selectionHandle = TApp::instance()->getCurrentSelection();
   bool ret = disconnect(selectionHandle, SIGNAL(selectionChanged(TSelection *)),
                         this, SLOT(updateValues(TSelection *)));
-  ret = ret && connect(selectionHandle,
-                       SIGNAL(selectionSwitched(TSelection *, TSelection *)),
-                       this, SLOT(updateValues(TSelection *, TSelection *)));
+  ret      = ret && connect(selectionHandle,
+                            SIGNAL(selectionSwitched(TSelection *, TSelection *)),
+                            this, SLOT(updateValues(TSelection *, TSelection *)));
   TXsheetHandle *xsheetHandle = TApp::instance()->getCurrentXsheet();
   ret = ret && disconnect(xsheetHandle, SIGNAL(xsheetChanged()), this,
                           SLOT(updateValues()));

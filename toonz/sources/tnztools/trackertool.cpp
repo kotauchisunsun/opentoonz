@@ -285,8 +285,8 @@ void TrackerTool::draw() {
         hookSet->getHook(m_hookSelectedIndex)->getTrackerObjectId();
   else
     selectedObjectId = -1;
-  int i              = 0;
-  double pixelSize   = getPixelSize();
+  int i            = 0;
+  double pixelSize = getPixelSize();
 
   std::vector<TRectD> balloons;  // this is used to avoid balloons overlapping
   // draw hooks
@@ -391,8 +391,8 @@ bool TrackerTool::pick(int &hookIndex, const TPointD &pos) {
       TPointD localPos  = pos - centerPos;
       TRectD rect       = hook->getTrackerRegion(fid);
       TRectD overArea   = TRectD(
-          rect.getP00().x - 4 * pixelSize, rect.getP00().y - 4 * pixelSize,
-          rect.getP11().x + 4 * pixelSize, rect.getP11().y + 4 * pixelSize);
+            rect.getP00().x - 4 * pixelSize, rect.getP00().y - 4 * pixelSize,
+            rect.getP11().x + 4 * pixelSize, rect.getP11().y + 4 * pixelSize);
       // se pos è all'interno del'area sensibile del rettangolo
       if (overArea.contains(pos)) {
         if (distance < minDistance || minDistance == -1) {
@@ -410,7 +410,7 @@ bool TrackerTool::pick(int &hookIndex, const TPointD &pos) {
                      my.x + 4 * pixelSize, my.y + 4 * pixelSize);
           if (scaleYArea.contains(pos)) m_what = PM1;
           // scale X Area
-          double y = 0.5 * (rect.getP11().y +
+          double y   = 0.5 * (rect.getP11().y +
                             rect.getP10().y);  // ordinata punto medio
           TPointD mx = TPointD(rect.getP10().x, y);
           TRectD scaleXArea =
@@ -580,10 +580,10 @@ void TrackerTool::leftButtonDrag(const TPointD &pp, const TMouseEvent &e) {
     }
     case P10:  // Scalatura X e Y
     {
-      TPointD pos                = hook->getPos(fid);
-      TPointD diffPos            = pp - pos;
-      int signumx                = 1;
-      int signumy                = 1;
+      TPointD pos     = hook->getPos(fid);
+      TPointD diffPos = pp - pos;
+      int signumx     = 1;
+      int signumy     = 1;
       if (diffPos.x < 0) signumx = -1;
       if (diffPos.y < 0) signumy = -1;
       newWidth = fabs(hook->getTrackerRegionWidth() + 2 * signumx * deltaPos.x);

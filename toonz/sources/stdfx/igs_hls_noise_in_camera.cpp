@@ -218,8 +218,8 @@ private:
   /* 代入演算子を無効化 */
   noise_reference &operator=(const noise_reference &);
 };
-}
-}
+}  // namespace hls_noise_in_camera
+}  // namespace igs
 namespace igs {
 namespace hls_noise_in_camera {
 /* 端値を適度に調整する */
@@ -330,8 +330,8 @@ private:
   /* 代入演算子を無効化 */
   control_term_within_limits &operator=(const control_term_within_limits &);
 };
-}
-}
+}  // namespace hls_noise_in_camera
+}  // namespace igs
 namespace igs {
 namespace hls_noise_in_camera {
 /* RGB値にノイズをのせる */
@@ -344,8 +344,8 @@ void pixel_rgb(const double red_in, const double gre_in, const double blu_in,
 /* Alpha値にノイズをのせる */
 void pixel_a(const double alp_in, const double alp_noise,
              control_term_within_limits &alp_term, double &alp_out);
-}
-}
+}  // namespace hls_noise_in_camera
+}  // namespace igs
 void igs::hls_noise_in_camera::pixel_rgb(
     const double red_in, const double gre_in, const double blu_in,
     const double alp_in, const double hue_noise, const double lig_noise,
@@ -438,7 +438,7 @@ void change_template_(T *image_array, const int ww, const int hh, const int ch,
         if (((0.0 != hue_range) || (0.0 != lig_term.noise_range()) ||
              (0.0 !=
               sat_term.noise_range())) /* ノイズがhlsのどれか一つはある */
-            ) {
+        ) {
           pixel_rgb(static_cast<double>(image_array[red]) / div_val,
                     static_cast<double>(image_array[gre]) / div_val,
                     static_cast<double>(image_array[blu]) / div_val,
@@ -461,7 +461,7 @@ void change_template_(T *image_array, const int ww, const int hh, const int ch,
     using namespace igs::image::rgb;
     if (((0.0 != hue_range) || (0.0 != lig_term.noise_range()) ||
          (0.0 != sat_term.noise_range())) /* ノイズがhlsのどれか一つはある */
-        ) {
+    ) {
       for (int yy = 0; yy < hh; ++yy) {
         for (int xx = 0; xx < ww; ++xx, image_array += ch) {
           pixel_rgb(static_cast<double>(image_array[red]) / div_val,
@@ -496,8 +496,8 @@ void change_template_(T *image_array, const int ww, const int hh, const int ch,
     }
   }
 }
-}
-}
+}  // namespace hls_noise_in_camera
+}  // namespace igs
 
 void igs::hls_noise_in_camera::change(
     void *image_array
@@ -525,7 +525,7 @@ void igs::hls_noise_in_camera::change(
 
   if ((igs::image::rgba::siz != channels) &&
       (igs::image::rgb::siz != channels) && (1 != channels) /* grayscale */
-      ) {
+  ) {
     throw std::domain_error("Bad channels,Not rgba/rgb/grayscale");
   }
 

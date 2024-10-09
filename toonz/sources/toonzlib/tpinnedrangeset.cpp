@@ -61,7 +61,7 @@ void TPinnedRangeSet::setRange(int first, int second) {
       if (it2->first > second + 1)
         break;
       else
-        it->second                      = it2->second;
+        it->second = it2->second;
     if (second > it->second) it->second = second;
     ++it;
     if (it != it2) m_ranges.erase(it, it2);

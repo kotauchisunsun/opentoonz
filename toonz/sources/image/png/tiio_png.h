@@ -29,6 +29,6 @@ public:
 Tiio::Reader *makePngReader();
 Tiio::Writer *makePngWriter();
 
-}  // namespace
+}  // namespace Tiio
 
 #endif

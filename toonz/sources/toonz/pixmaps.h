@@ -14,6 +14,6 @@ extern TRaster32P arrow, edit_s, skeleton, skeleton_s, bender, cutter, eraser,
     pinch_point, zoom, pan, rotate, warp, magnet_s, fill, fill_s, autoclose,
     autoclose_s, brushpaint, paintbrush_s, inkbrushchange, inkchange, hook;
 
-}  // namespace
+}  // namespace Pixmaps
 
 #endif

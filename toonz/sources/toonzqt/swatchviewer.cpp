@@ -533,7 +533,7 @@ void SwatchViewer::updateRaster() {
     TPoint transP0 = convert(m_aff * p0 + center);
     TPoint transP1 = convert(m_aff * p1 + center);
     TPoint p       = convert(
-        (TPointD(transP1.x, transP1.y) - TPointD(transP0.x, transP0.y)) * 0.5);
+              (TPointD(transP1.x, transP1.y) - TPointD(transP0.x, transP0.y)) * 0.5);
     TRect rect(transP0 - p, transP1 - p);
     m_content->fillOutside(rect, TPixel32(255, 0, 0, 255));
     m_content->fillOutside(rect.enlarge(TDimension(1, 1)),

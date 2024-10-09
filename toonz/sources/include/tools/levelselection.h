@@ -41,16 +41,18 @@ class TVectorImage;
 
 class DVAPI LevelSelection : public TSelection {
 public:
-  enum FramesMode     //!  Possible frames selection modes.
-  { FRAMES_NONE,      //!< No frame is selected.
+  enum FramesMode  //!  Possible frames selection modes.
+  {
+    FRAMES_NONE,      //!< No frame is selected.
     FRAMES_CURRENT,   //!< Selects the (context-defined) current frame.
     FRAMES_SELECTED,  //!< Selects the frames specified in \p
                       //! TTool::getSelectedFrames().
     FRAMES_ALL,       //!< Selects the whole level.
   };
 
-  enum Filter          //!  Possible selection filters.
-  { EMPTY,             //!< Selection is empty - everything is filtered out.
+  enum Filter  //!  Possible selection filters.
+  {
+    EMPTY,             //!< Selection is empty - everything is filtered out.
     WHOLE,             //!< Selects everything - nothing is filtered out.
     SELECTED_STYLES,   //!< Acts only entities with selected palette styles.
     BOUNDARY_STROKES,  //!< Acts only on boundary strokes (applies only to
@@ -129,6 +131,6 @@ DVAPI std::vector<int> getSelectedStrokes(
     TVectorImage &vi,  //!< Vector image whose strokes will be selected.
     const LevelSelection
         &levelSelection  //!< Selection filter for the specified image.
-    );
+);
 
 #endif  // LEVELSELECTION_H

@@ -65,16 +65,16 @@ bool inside_polygon_(double radius, int odd_diameter, double xp, double yp,
 (xa - x1)=(yp - y1)*(x2 - x1)/(y2 - y1); */
       xa = (yp - y1) * (x2 - x1) / (y2 - y1) + x1;
     } else
-        /* 2番目の交差位置(xb) */
-        if (xb == odd_diameter) {
-      xb = (yp - y1) * (x2 - x1) / (y2 - y1) + x1;
-      if (((xa <= xp) && (xp <= xb)) || ((xb <= xp) && (xp <= xa))) {
-        return true;
-      } /* 水平範囲内 */
-      else {
-        return false;
-      } /* 水平範囲外 */
-    }
+      /* 2番目の交差位置(xb) */
+      if (xb == odd_diameter) {
+        xb = (yp - y1) * (x2 - x1) / (y2 - y1) + x1;
+        if (((xa <= xp) && (xp <= xb)) || ((xb <= xp) && (xp <= xa))) {
+          return true;
+        } /* 水平範囲内 */
+        else {
+          return false;
+        } /* 水平範囲外 */
+      }
   }
   return false;
 }
@@ -158,7 +158,7 @@ void free_lens_matrix_(std::vector<int> &lens_offsets,
   lens_sizes.clear();
   lens_offsets.clear();
 }
-}
+}  // namespace
 const int igs::maxmin::diameter_from_outer_radius(const double outer_radius) {
   /* -------- 半径(radius)を含むピクセル直径 --------
   中心pixelが必要、奇数(1,3,5...)となる
@@ -238,7 +238,7 @@ const void igs::maxmin::reshape_lens_matrix(
     std::vector<int> &lens_sizes /* 最大直径分の配列 */
     ,
     std::vector<std::vector<double>> &lens_ratio /* 最大直径分の配列 */
-    ) {
+) {
   /***std::cout
 << "ra=" << radius
 << " outr=" << outer_radius

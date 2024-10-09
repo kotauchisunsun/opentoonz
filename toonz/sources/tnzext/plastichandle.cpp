@@ -68,7 +68,7 @@ public:
     for (et = vx1.edgesBegin(); et != eEnd; ++et) {
       v = g.edge(*et).otherVertex(v1);
       if (m_colormap[v] != boost::white_color) {
-        d                = tcg::point_ops::dist(g.vertex(v).P(), vx1.P());
+        d = tcg::point_ops::dist(g.vertex(v).P(), vx1.P());
         if (d < dMin) v0 = v, dMin = d;
       }
     }

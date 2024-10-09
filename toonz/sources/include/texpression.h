@@ -29,7 +29,7 @@ namespace TSyntax {
 class Grammar;
 class CalculatorNodeVisitor;
 class Calculator;
-}
+}  // namespace TSyntax
 
 //========================================================
 

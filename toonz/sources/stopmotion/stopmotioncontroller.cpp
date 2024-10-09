@@ -681,10 +681,10 @@ StopMotionController::StopMotionController(QWidget *parent) : QWidget(parent) {
     m_cameraSettingsPage->setLayout(innerSettingsLayout);
 
     // Make Options Page
-    QGroupBox *webcamBox  = new QGroupBox(tr("Webcam Options"), this);
-    QGroupBox *dslrBox    = new QGroupBox(tr("DSLR Options"), this);
-    m_timerCB             = new QGroupBox(tr("Use Time Lapse"), this);
-    m_timerIntervalFld    = new DVGui::DoubleField(this, true, 1);
+    QGroupBox *webcamBox = new QGroupBox(tr("Webcam Options"), this);
+    QGroupBox *dslrBox   = new QGroupBox(tr("DSLR Options"), this);
+    m_timerCB            = new QGroupBox(tr("Use Time Lapse"), this);
+    m_timerIntervalFld   = new DVGui::DoubleField(this, true, 1);
     m_timerCB->setCheckable(true);
     m_timerCB->setObjectName("CleanupSettingsFrame");
     m_timerCB->setChecked(false);

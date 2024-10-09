@@ -39,7 +39,7 @@ class DVAPI StrokeGenerator {
 
   //! Ultimo punto del frammento visualizzato
   TPointD m_p0, /*! Ultimo punto del frammento visualizzato*/ m_p1;
-  
+
   //! mark that stroke must be looped
   bool m_loop;
 
@@ -69,19 +69,20 @@ public:
     di 4*pixelSize2
 
     \param point      TThickPoint da aggiungere al vettore
-    \param pixelSize2 Size of pixel, use 0 to guarantee that new point will be added
-    \returns          true if point was actually added
+    \param pixelSize2 Size of pixel, use 0 to guarantee that new point will be
+    added \returns          true if point was actually added
   */
   bool add(const TThickPoint &point, double pixelSize2);
-  
-  //! Remove last point (keep in mind that not each 'add' call produces new point)
+
+  //! Remove last point (keep in mind that not each 'add' call produces new
+  //! point)
   void pop();
-  
+
   //! Mark/unmark track as looped
   void setLoop(bool loop = true);
-  
+
   inline bool getLoop() const { return m_loop; }
-  
+
   TPointD getFirstPoint();  // returns the first point
 
   //! Filtra i punti di m_points
@@ -119,7 +120,8 @@ onlyLastPoint elementi di m_points
           \param onlyLastPoints Numero elementi sulla base dei quali creare la
 stroke
   */
-  TStroke *makeStroke(double error, UINT onlyLastPoints = 0, bool useLoop = false) const;
+  TStroke *makeStroke(double error, UINT onlyLastPoints = 0,
+                      bool useLoop = false) const;
 };
 
 //===============================================================

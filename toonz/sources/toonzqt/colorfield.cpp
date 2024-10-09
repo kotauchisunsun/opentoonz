@@ -318,11 +318,11 @@ ChannelField::ChannelField(QWidget *parent, const QString &string, int value,
   bool ret = connect(m_channelEdit, SIGNAL(textChanged(const QString &)),
                      SLOT(onEditChanged(const QString &)));
   ret      = ret && connect(m_channelEdit, SIGNAL(editingFinished()),
-                       SLOT(onEditFinished()));
+                            SLOT(onEditFinished()));
   ret      = ret && connect(m_channelSlider, SIGNAL(valueChanged(int)),
-                       SLOT(onSliderChanged(int)));
+                            SLOT(onSliderChanged(int)));
   ret      = ret && connect(m_channelSlider, SIGNAL(sliderReleased()),
-                       SLOT(onSliderReleased()));
+                            SLOT(onSliderReleased()));
   assert(ret);
 }
 

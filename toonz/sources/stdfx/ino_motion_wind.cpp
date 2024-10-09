@@ -278,7 +278,7 @@ ino::vec_to_ras( in_vec, ino::channels(), out_ras, margin );***/
   }
   in_gr8->unlock();
 }
-}
+}  // namespace
 //------------------------------------------------------------
 void ino_motion_wind::doCompute(TTile &tile, double frame,
                                 const TRenderSettings &rend_sets) {

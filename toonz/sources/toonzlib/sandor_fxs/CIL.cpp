@@ -51,9 +51,9 @@ int CCIL::getRangeEnd(const char *s) const {
 
 void CCIL::strToColorIndex(const char *s, CCIL &cil, const int maxIndex) {
   /* If s=="-1", all of the indices are put into the ColorIndexList
-*/
+   */
   if (strcmp(s, "-1") == 0) {
-    for (int i             = 0; i <= maxIndex && cil.m_nb < MAXNBCI; i++)
+    for (int i = 0; i <= maxIndex && cil.m_nb < MAXNBCI; i++)
       cil.m_ci[cil.m_nb++] = i;
     return;
   }
@@ -70,7 +70,7 @@ void CCIL::strToColorIndex(const char *s, CCIL &cil, const int maxIndex) {
     }
   } else {
     if (cil.m_nb < MAXNBCI) {
-      int q                                             = atoi(s);
+      int q = atoi(s);
       if (q >= 0 && q <= maxIndex) cil.m_ci[cil.m_nb++] = q;
     }
   }

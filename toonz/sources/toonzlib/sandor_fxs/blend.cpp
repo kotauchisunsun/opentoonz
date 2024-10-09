@@ -573,7 +573,7 @@ void blend(TToonzImageP ti, TRasterPT<PIXEL> rasOut,
     for (j = 0; j < params[i].colorsIndexes.size(); ++j)
       if (params[i].colorsIndexes[j] == 0)
         enlargement = std::max(enlargement, tceil(params[i].intensity));
-  saveBox           = saveBox.enlarge(enlargement);
+  saveBox = saveBox.enlarge(enlargement);
 
   TRasterCM32P cmIn(ti->getRaster()->extract(saveBox));
   TRasterPT<PIXEL> rasOutExtract = rasOut->extract(saveBox);
@@ -604,7 +604,7 @@ void blend(TToonzImageP ti, TRasterPT<PIXEL> rasOut,
   TPalette *palette = ti->getPalette();
   std::vector<TPixel32> paletteColors;
   paletteColors.resize(palette->getStyleCount());
-  for (i             = 0; i < paletteColors.size(); ++i)
+  for (i = 0; i < paletteColors.size(); ++i)
     paletteColors[i] = premultiply(palette->getStyle(i)->getAverageColor());
 
   // Build the 4 auxiliary rasters for the blending procedure: they are ink /

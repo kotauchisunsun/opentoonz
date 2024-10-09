@@ -208,7 +208,7 @@ void Iwa_Particles_Engine::roll_particles(
     std::vector<int> lastframe, /*-テクスチャ素材のそれぞれのカラム長-*/
     int &totalparticles, QList<ParticleOrigin> &particleOrigins,
     int genPartNum /*- 実際に生成したい粒子数 -*/
-    ) {
+) {
   particles_ranges ranges;
   int i;
   float xgravity, ygravity, windx, windy;
@@ -328,7 +328,7 @@ void Iwa_Particles_Engine::roll_particles(
             po.pos[1],               /*- 座標を指定して発生 -*/
             po.isUpward,             /*- orientation を追加 -*/
             (int)po.initSourceFrame) /*- 素材内の初期フレーム位置 -*/
-                              );
+        );
       }
       totalparticles++;
     }
@@ -374,7 +374,7 @@ void Iwa_Particles_Engine::roll_particles(
               (int)po.level, lastframe[po.level], po.pos[0], po.pos[1],
               po.isUpward,
               (int)po.initSourceFrame) /*- 素材内の初期フレーム位置 -*/
-                                 );
+          );
         }
         totalparticles++;
       }
@@ -390,7 +390,7 @@ void Iwa_Particles_Engine::roll_particles(
           /*- 出発する粒子 -*/
           ParticleOrigin po = particleOrigins.at(leavingPartIndex.at(i));
 
-          int seed = (int)((std::numeric_limits<int>::max)() *
+          int seed     = (int)((std::numeric_limits<int>::max)() *
                            values.random_val->getFloat());
           int lifetime = 0;
 
@@ -409,7 +409,7 @@ void Iwa_Particles_Engine::roll_particles(
                     0, (int)po.level, lastframe[po.level], po.pos[0], po.pos[1],
                     po.isUpward,
                     (int)po.initSourceFrame) /*- 素材内の初期フレーム位置 -*/
-                );
+            );
           }
           totalparticles++;
         }
@@ -421,7 +421,7 @@ void Iwa_Particles_Engine::roll_particles(
         /*- 出発する粒子 -*/
         ParticleOrigin po = particleOrigins.at(leavingPartIndex.at(i));
 
-        int seed = (int)((std::numeric_limits<int>::max)() *
+        int seed     = (int)((std::numeric_limits<int>::max)() *
                          values.random_val->getFloat());
         int lifetime = 0;
 
@@ -437,7 +437,7 @@ void Iwa_Particles_Engine::roll_particles(
               (int)po.level, lastframe[po.level], po.pos[0], po.pos[1],
               po.isUpward,
               (int)po.initSourceFrame) /*-  素材内の初期フレーム位置  -*/
-                                );
+          );
         }
         totalparticles++;
       }
@@ -487,10 +487,10 @@ void Iwa_Particles_Engine::normalize_values(struct particles_values &values,
   (values.speeda_val.first)        = (values.speeda_val.first) * M_PI_180;
   (values.speeda_val.second)       = (values.speeda_val.second) * M_PI_180;
   if (values.step_val < 1) values.step_val = 1;
-  values.genfadecol_val                    = (values.genfadecol_val) * 0.01;
-  values.finfadecol_val                    = (values.finfadecol_val) * 0.01;
-  values.foutfadecol_val                   = (values.foutfadecol_val) * 0.01;
-  (values.curl_val)                        = (values.curl_val) * dpicorr * 0.1;
+  values.genfadecol_val  = (values.genfadecol_val) * 0.01;
+  values.finfadecol_val  = (values.finfadecol_val) * 0.01;
+  values.foutfadecol_val = (values.foutfadecol_val) * 0.01;
+  (values.curl_val)      = (values.curl_val) * dpicorr * 0.1;
   /*- ひらひら粒子に照明を当てる normalize_values()内で Degree → Radian 化する
    * -*/
   (values.iw_light_theta_val) = (values.iw_light_theta_val) * M_PI_180;
@@ -506,20 +506,18 @@ void Iwa_Particles_Engine::render_particles(
     std::vector<TRasterFxPort *> part_ports, /*- テクスチャ素材画像のポート -*/
     const TRenderSettings &ri,
     TDimension
-        &p_size,       /*- テクスチャ素材のバウンディングボックスの足し合わさったもの
-                          -*/
+        &p_size, /*- テクスチャ素材のバウンディングボックスの足し合わさったもの
+                    -*/
     TPointD &p_offset, /*- バウンディングボックス左下の座標 -*/
     std::map<int, TRasterFxPort *>
         ctrl_ports, /*- コントロール画像のポート番号／ポート -*/
-    std::vector<TLevelP>
-        partLevel, /*- テクスチャ素材のリスト -*/
-    float dpi,     /*- 1 が入ってくる -*/
-    int curr_frame,
-    int shrink,                  /*- 1 が入ってくる -*/
-    double startx,               /*- 0 が入ってくる -*/
-    double starty,               /*- 0 が入ってくる -*/
-    double endx,                 /*- 0 が入ってくる -*/
-    double endy,                 /*- 0 が入ってくる -*/
+    std::vector<TLevelP> partLevel, /*- テクスチャ素材のリスト -*/
+    float dpi,                      /*- 1 が入ってくる -*/
+    int curr_frame, int shrink,     /*- 1 が入ってくる -*/
+    double startx,                  /*- 0 が入ってくる -*/
+    double starty,                  /*- 0 が入ってくる -*/
+    double endx,                    /*- 0 が入ってくる -*/
+    double endy,                    /*- 0 が入ってくる -*/
     std::vector<int> last_frame, /*- テクスチャ素材のそれぞれのカラム長 -*/
     unsigned long fxId) {
   /*- 各種パーティクルのパラメータ -*/
@@ -737,7 +735,7 @@ void Iwa_Particles_Engine::render_particles(
                    curr_frame, level_n, &random_level, 1, last_frame,
                    totalparticles, particleOrigins,
                    intpart /*- 実際に生成したい粒子数 -*/
-                   );
+    );
 
     // Store the rolled data in the particles manager
     if (!particlesData->m_calculated ||
@@ -916,10 +914,10 @@ void Iwa_Particles_Engine::do_render(
 
     /*- ここで、照明モードのとき、その明るさを計算する -*/
     if (values.iw_rendermode_val == Iwa_TiledParticlesFx::REND_ILLUMINATED) {
-      float liTheta  = values.iw_light_theta_val;
-      float liPhi    = values.iw_light_phi_val;
-      float3 normVec = {sinf(theta) * sinf(phi), cosf(theta) * sinf(phi),
-                        cosf(phi)};
+      float liTheta   = values.iw_light_theta_val;
+      float liPhi     = values.iw_light_phi_val;
+      float3 normVec  = {sinf(theta) * sinf(phi), cosf(theta) * sinf(phi),
+                         cosf(phi)};
       float3 lightVec = {sinf(liTheta) * sinf(liPhi),
                          cosf(liTheta) * sinf(liPhi), cosf(liPhi)};
       /*- 法線ベクトルと光源ベクトルの内積の絶対値 -*/
@@ -1078,8 +1076,7 @@ void Iwa_Particles_Engine::fill_array(
     int &regioncount, /*- 領域数を返す -*/
     std::vector<int>
         &myarray, /*- インデックスを返すと思われる。サイズはソースTileの縦横 -*/
-    std::vector<int> &lista,
-    std::vector<int> &listb, int threshold) {
+    std::vector<int> &lista, std::vector<int> &listb, int threshold) {
   int pr = 0;
   int i, j;
   int lx, ly;
@@ -1115,7 +1112,7 @@ void Iwa_Particles_Engine::fill_array(
           mask[1] = myarray[i - 1 + lx * (j - 1)];
         }
         if (i != lx - 1) mask[3] = myarray[i + 1 + lx * (j - 1)];
-        mask[2]                  = myarray[i + lx * (j - 1)];
+        mask[2] = myarray[i + lx * (j - 1)];
         if (!mask[0] && !mask[1] && !mask[2] && !mask[3]) {
           (regioncount)++;
           myarray[i + lx * j] = (regioncount);
@@ -1149,7 +1146,7 @@ void Iwa_Particles_Engine::fill_array(
 void Iwa_Particles_Engine::normalize_array(
     std::vector<std::vector<TPointD>> &myregions, TPointD pos, int lx, int ly,
     int regioncounter, std::vector<int> &myarray, std::vector<int> &lista,
-    std::vector<int> &listb, std::vector<int> & final) {
+    std::vector<int> &listb, std::vector<int> &final) {
   int i, j, k, l;
 
   std::vector<int> tmp;
@@ -1162,13 +1159,13 @@ void Iwa_Particles_Engine::normalize_array(
     j = lista[l];
     /*TMSG_INFO("j vale %d\n", j);*/
     while (final[j] != j) j = final[j];
-    k                       = listb[l];
+    k = listb[l];
     /*TMSG_INFO("k vale %d\n", k);*/
     while (final[k] != k) k = final[k];
-    if (j != k) final[j]    = k;
+    if (j != k) final[j] = k;
   }
   // TMSG_INFO("esco dal for\n");
-  for (j                                         = 1; j <= regioncounter; j++)
+  for (j = 1; j <= regioncounter; j++)
     while (final[j] != final[final[j]]) final[j] = final[final[j]];
 
   /*conto quante cavolo di regioni sono*/

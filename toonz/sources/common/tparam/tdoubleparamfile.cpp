@@ -108,7 +108,7 @@ void TDoubleParamFileData::read() {
     QString line(buffer);
     if (line.size() == 0 || line.startsWith("#")) continue;
     split(fields, buffer);
-    double value                      = 0;
+    double value = 0;
     if (k < (int)fields.size()) value = fields[k];
     m_values.push_back(value);
   }

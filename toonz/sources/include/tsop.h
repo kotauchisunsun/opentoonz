@@ -137,6 +137,6 @@ DVAPI TSoundTrackP crossFade(const TSoundTrackP src1, const TSoundTrackP src2,
   */
 DVAPI TSoundTrackP crossFade(double crossFactor, const TSoundTrackP src1,
                              const TSoundTrackP src2);
-}
+}  // namespace TSop
 
 #endif

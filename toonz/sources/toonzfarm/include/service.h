@@ -63,7 +63,7 @@ public:
   void run(int argc, char *argv[], bool console = false);
 
   virtual void onStart(int argc, char *argv[]) = 0;
-  virtual void onStop() = 0;
+  virtual void onStop()                        = 0;
 
   bool isRunningAsConsoleApp() const;
 

@@ -40,7 +40,7 @@ public:
 
   static SmoothDeformation *instance();
 };
-}
+}  // namespace ToonzExt
 #endif /* SMOOTH_DEFORMATION_H */
 //-----------------------------------------------------------------------------
 //  End Of File

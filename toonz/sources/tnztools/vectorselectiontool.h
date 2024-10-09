@@ -29,8 +29,9 @@ class VectorSelectionTool;
 // Constants / Defines
 //-----------------------------------------------------------------------------
 
-enum SelectionTarget         //! Possible selection targets in a SelectionTool.
-{ NORMAL_TYPE_IDX,           //!< Normal selection (strokes at current frame).
+enum SelectionTarget  //! Possible selection targets in a SelectionTool.
+{
+  NORMAL_TYPE_IDX,           //!< Normal selection (strokes at current frame).
   SELECTED_FRAMES_TYPE_IDX,  //!< Selection of whole frames.
   ALL_LEVEL_TYPE_IDX,        //!< Selection of an entire level.
   SAME_STYLE_TYPE_IDX,       //!< Selected styles at current frame.

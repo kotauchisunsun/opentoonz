@@ -68,16 +68,18 @@ public:
   struct SelectionData  //!  Selection-related data used as processing input.
   {
     enum ContentType  //!  Type of content in the selection.
-    { NONE,           //!< Empty / invalid selection.
-      IMAGE,          //!< Selection of entire images, each frame.
+    {
+      NONE,        //!< Empty / invalid selection.
+      IMAGE,       //!< Selection of entire images, each frame.
       STYLES,      //!< Selection of strokes with specific styles, each frame.
       BOUNDARIES,  //!< Selection of boundary strokes.
       STROKES,     //!< Selection of a specific set of strokes, on a
                    //!  <I>single image</I>.
     };
 
-    enum FramesType     //!  Selection type for frames in the level.
-    { ALL_FRAMES,       //!< All frames in the level.
+    enum FramesType  //!  Selection type for frames in the level.
+    {
+      ALL_FRAMES,       //!< All frames in the level.
       SELECTED_FRAMES,  //!< Frames selected in SelectionData::m_frameIdxs.
     };
 

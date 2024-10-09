@@ -31,10 +31,10 @@ public:
 
   void leftButtonDown(const TPointD &pos, const TMouseEvent &e) override {
     if (!m_viewer) return;
-    m_dragging              = true;
-    int v                   = 1;
+    m_dragging = true;
+    int v      = 1;
     if (e.isAltPressed()) v = -1;
-    m_oldY                  = e.m_pos.y;
+    m_oldY = e.m_pos.y;
     // m_center = getViewer()->winToWorld(e.m_pos);
     m_center = TPointD(e.m_pos.x, e.m_pos.y);
     m_factor = 1;
@@ -190,11 +190,11 @@ void RotateTool::draw() {
   if (m_cameraCentered.getValue())
     m_center = TPointD(0, 0);
   else {
-    TAffine aff                        = m_viewer->getViewMatrix().inv();
+    TAffine aff = m_viewer->getViewMatrix().inv();
     if (m_viewer->getIsFlippedX()) aff = aff * TScale(-1, 1);
     if (m_viewer->getIsFlippedY()) aff = aff * TScale(1, -1);
-    u                                  = u * sqrt(aff.det());
-    m_center                           = aff * TPointD(0, 0);
+    u        = u * sqrt(aff.det());
+    m_center = aff * TPointD(0, 0);
   }
   tglDrawSegment(TPointD(-u + m_center.x, m_center.y),
                  TPointD(u + m_center.x, m_center.y));

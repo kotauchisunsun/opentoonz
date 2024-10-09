@@ -66,7 +66,7 @@ public:
       m_ink.nb = bp.m_ink.nb;
       int i    = 0;
       for (i = 0; i < m_ink.nb; i++) m_ink.ci[i] = bp.m_ink.ci[i];
-      m_paint.nb                                 = bp.m_paint.nb;
+      m_paint.nb = bp.m_paint.nb;
       for (i = 0; i < m_paint.nb; i++) m_paint.ci[i] = bp.m_paint.ci[i];
     }
   };
@@ -176,7 +176,7 @@ public:
             addPixel(p, pic, xxyy, xy);
             nb++;
           }
-	}
+        }
       }
     }
 

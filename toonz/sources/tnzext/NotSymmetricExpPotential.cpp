@@ -54,7 +54,7 @@ struct blender_2 {
     return a * sq(one_t) + middle * t * one_t + b * sq(t);
   }
 };
-}
+}  // namespace
 
 //-----------------------------------------------------------------------------
 
@@ -98,10 +98,10 @@ double ToonzExt::NotSymmetricExpPotential::value_(double value2test) const {
 // normalization of parameter in range interval
 double ToonzExt::NotSymmetricExpPotential::compute_shape(
     double value2test) const {
-  double x                       = ref_->getLength(value2test);
-  double shape                   = this->actionLength_ * 0.5;
+  double x     = ref_->getLength(value2test);
+  double shape = this->actionLength_ * 0.5;
   if (isAlmostZero(shape)) shape = 1.0;
-  x                              = ((x - lengthAtParam_) * range_) / shape;
+  x = ((x - lengthAtParam_) * range_) / shape;
   return x;
 }
 

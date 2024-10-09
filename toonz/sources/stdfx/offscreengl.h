@@ -41,17 +41,26 @@ public:
         PFD_TYPE_RGBA,           // RGBA type
         bpp,                     // 32-bit color depth
         0,
-        0, 0, 0, 0, 0,   // color bits ignored
-        bpp >> 2,        // alpha buffer
-        0,               // shift bit ignored
-        0,               // no accumulation buffer
-        0, 0, 0, 0,      // accum bits ignored
+        0,
+        0,
+        0,
+        0,
+        0,         // color bits ignored
+        bpp >> 2,  // alpha buffer
+        0,         // shift bit ignored
+        0,         // no accumulation buffer
+        0,
+        0,
+        0,
+        0,               // accum bits ignored
         0,               // 32-bit z-buffer
         stencilBpp,      // no stencil buffer
         0,               // no auxiliary buffer
         PFD_MAIN_PLANE,  // main layer
         0,               // reserved
-        0, 0, 0          // layer masks ignored
+        0,
+        0,
+        0  // layer masks ignored
     };
     // std::cout << "bit depth = " << v << std::endl;
     // get the best available match of pixel format for the device context

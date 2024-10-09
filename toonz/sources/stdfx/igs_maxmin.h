@@ -11,11 +11,13 @@ namespace igs {
 namespace maxmin {
 IGS_MAXMIN_EXPORT void convert(
     /* 入出力画像 */
-    const unsigned char *inn, unsigned char *out
+    const unsigned char *inn,
+    unsigned char *out
 
     /* inn,out,ref(bits以外)の形状(geometry) */
     ,
-    const int height, const int width, const int channels, const int bits
+    const int height, const int width, const int channels,
+    const int bits
 
     /* Pixel毎に効果の強弱(pixel reference) */
     ,
@@ -44,7 +46,7 @@ IGS_MAXMIN_EXPORT void convert(
     ,
     const double roll_degree /* =0.0  0...360...DOUBLE_MAX */
     /*	roll_degreeがプラスで時計回り方向に回転する
-*/
+     */
 
     /* 処理の方法、動作スイッチ(action type/sw) */
     ,
@@ -67,8 +69,8 @@ alphaのマスクによってエッジが残ってしまう。
     /* 高速化のためのスレッド指定(thread count for speed up) */
     ,
     const int number_of_thread /* =1    1...24...INT_MAX */
-    );
+);
 }
-}
+}  // namespace igs
 
 #endif /* !igs_maxmin_h */

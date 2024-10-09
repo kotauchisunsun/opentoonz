@@ -65,8 +65,8 @@ void blur(const Img &imgIn, Img &imgOut, int radius, Scalar = 0);
 template <typename Img, typename SelectorFunc, typename Scalar>
 void blur(const Img &imgIn, Img &imgOut, int radius, SelectorFunc func,
           Scalar = 0);
-}
-}  // namespace tcg::image_ops
+}  // namespace image_ops
+}  // namespace tcg
 
 #endif  // TCG_IMAGE_OPS_H
 

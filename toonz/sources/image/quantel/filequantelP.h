@@ -50,17 +50,17 @@
                                                                                \
       if (y2 < 0) y2 = 0;                                                      \
                                                                                \
-      r                   = 76310 * y1 + 104635 * v;                           \
+      r = 76310 * y1 + 104635 * v;                                             \
       if (r > 0xFFFFFF) r = 0xFFFFFF;                                          \
-      if (r <= 0xFFFF) r  = 0;                                                 \
+      if (r <= 0xFFFF) r = 0;                                                  \
                                                                                \
-      g                   = 76310 * y1 + -25690 * u + -53294 * v;              \
+      g = 76310 * y1 + -25690 * u + -53294 * v;                                \
       if (g > 0xFFFFFF) g = 0xFFFFFF;                                          \
-      if (g <= 0xFFFF) g  = 0;                                                 \
+      if (g <= 0xFFFF) g = 0;                                                  \
                                                                                \
-      b                   = 76310 * y1 + 132278 * u;                           \
+      b = 76310 * y1 + 132278 * u;                                             \
       if (b > 0xFFFFFF) b = 0xFFFFFF;                                          \
-      if (b <= 0xFFFF) b  = 0;                                                 \
+      if (b <= 0xFFFF) b = 0;                                                  \
                                                                                \
       buf->r = (UCHAR)(r >> 16);                                               \
       buf->g = (UCHAR)(g >> 16);                                               \
@@ -68,17 +68,17 @@
       buf->m = (UCHAR)255;                                                     \
       buf++;                                                                   \
                                                                                \
-      r                   = 76310 * y2 + 104635 * v;                           \
+      r = 76310 * y2 + 104635 * v;                                             \
       if (r > 0xFFFFFF) r = 0xFFFFFF;                                          \
-      if (r <= 0xFFFF) r  = 0;                                                 \
+      if (r <= 0xFFFF) r = 0;                                                  \
                                                                                \
-      g                   = 76310 * y2 + -25690 * u + -53294 * v;              \
+      g = 76310 * y2 + -25690 * u + -53294 * v;                                \
       if (g > 0xFFFFFF) g = 0xFFFFFF;                                          \
-      if (g <= 0xFFFF) g  = 0;                                                 \
+      if (g <= 0xFFFF) g = 0;                                                  \
                                                                                \
-      b                   = 76310 * y2 + 132278 * u;                           \
+      b = 76310 * y2 + 132278 * u;                                             \
       if (b > 0xFFFFFF) b = 0xFFFFFF;                                          \
-      if (b <= 0xFFFF) b  = 0;                                                 \
+      if (b <= 0xFFFF) b = 0;                                                  \
                                                                                \
       buf->r = (UCHAR)(r >> 16);                                               \
       buf->g = (UCHAR)(g >> 16);                                               \
@@ -123,8 +123,8 @@
 
 #define QUANTEL_LIMIT(r, x)                                                    \
   {                                                                            \
-    r                      = x;                                                \
-    if (r > 0x00ffffff) r  = 0x00ffffff;                                       \
+    r = x;                                                                     \
+    if (r > 0x00ffffff) r = 0x00ffffff;                                        \
     if (r <= 0x00000000) r = 0;                                                \
   }
 

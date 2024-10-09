@@ -33,7 +33,7 @@ DVAPI double getArea(const TQuadratic &curve);
 
 /*! Returns true if the min distance between \b point an \b segment is less o
  * equal to \b distance
-*/
+ */
 DVAPI bool isCloseToSegment(const TPointD &point, const TSegment &segment,
                             double distance);
 

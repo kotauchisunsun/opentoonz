@@ -12,11 +12,11 @@ using namespace std;
 TNZ_LITTLE_ENDIAN undefined !!
 #endif
 
-//==============================================================================
+    //==============================================================================
 
-// TWAVChunk: classe base per i vari chunk WAV
+    // TWAVChunk: classe base per i vari chunk WAV
 
-class TWAVChunk {
+    class TWAVChunk {
 public:
   static TINT32 HDR_LENGTH;
 
@@ -243,7 +243,7 @@ TSoundTrackP TSoundTrackReaderWav::load() {
 
   if (fmtChunk && dataChunk) {
     TINT32 sampleCount = dataChunk->m_length / fmtChunk->m_bytesPerSample;
-    int sampleType = 0;
+    int sampleType     = 0;
 
     if (fmtChunk->m_encodingType == 1)  // WAVE_FORMAT_PCM
       sampleType = (fmtChunk->m_bitPerSample == 8) ? TSound::UINT : TSound::INT;

@@ -131,9 +131,9 @@ void ColumnFan::deactivate(int col) {
 //-----------------------------------------------------------------------------
 
 bool ColumnFan::isActive(int col) const {
-  return 0 <= col && col < (int)m_columns.size()
-             ? m_columns[col].m_active
-             : col < 0 ? m_cameraActive : true;
+  return 0 <= col && col < (int)m_columns.size() ? m_columns[col].m_active
+         : col < 0                               ? m_cameraActive
+                                                 : true;
 }
 
 //-----------------------------------------------------------------------------

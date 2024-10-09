@@ -20,8 +20,8 @@ IGS_LEVEL_AUTO_EXPORT void change(unsigned char *image_array,
                                   const double *out_min,       // 0(0...1)
                                   const double *out_max,       // 1(0...1)
                                   const double *gamma          // 1(0.01...100)
-                                  );
+);
 }
-}
+}  // namespace igs
 
 #endif /* !igs_level_auto_h */

@@ -87,43 +87,38 @@ bool checkForSeqNum(QString type) {
     return false;
 }
 
-bool parseFrame(const std::wstring &str, int &frame, QString &letter, int &padding) {
-  if (str.empty())
-    return false;
+bool parseFrame(const std::wstring &str, int &frame, QString &letter,
+                int &padding) {
+  if (str.empty()) return false;
 
   int i = 0, number = 0;
-  while(i < (int)str.size() && str[i] >= L'0' && str[i] <= L'9')
+  while (i < (int)str.size() && str[i] >= L'0' && str[i] <= L'9')
     number = number * 10 + str[i++] - L'0';
   int digits = i;
-  wchar_t l = str[i] >= L'a' && str[i] <= L'z' ? str[i++]
-            : str[i] >= L'A' && str[i] <= L'Z' ? str[i++]
-            : L'\0';
-  if (digits <= 0 || i < (int)str.size())
-    return false;
+  wchar_t l  = str[i] >= L'a' && str[i] <= L'z'   ? str[i++]
+               : str[i] >= L'A' && str[i] <= L'Z' ? str[i++]
+                                                  : L'\0';
+  if (digits <= 0 || i < (int)str.size()) return false;
 
-  frame = number;
-  letter = l ? QString(1, QChar(l)) : QString();
+  frame   = number;
+  letter  = l ? QString(1, QChar(l)) : QString();
   padding = str[0] == L'0' ? digits : 0;
   return true;
 }
 
 };  // namespace
 
-
 TFrameId::TFrameId(const std::string &str, char s)
-    : m_frame(EMPTY_FRAME), m_letter(), m_zeroPadding(4), m_startSeqInd(s)
-{
+    : m_frame(EMPTY_FRAME), m_letter(), m_zeroPadding(4), m_startSeqInd(s) {
   if (str.empty()) return;
   if (!parseFrame(to_wstring(str), m_frame, m_letter, m_zeroPadding))
     m_frame = NO_FRAME;
 }
 
 TFrameId::TFrameId(const std::wstring &str, char s)
-    : m_frame(EMPTY_FRAME), m_letter(), m_zeroPadding(4), m_startSeqInd(s)
-{
+    : m_frame(EMPTY_FRAME), m_letter(), m_zeroPadding(4), m_startSeqInd(s) {
   if (str.empty()) return;
-  if (!parseFrame(str, m_frame, m_letter, m_zeroPadding))
-    m_frame = NO_FRAME;
+  if (!parseFrame(str, m_frame, m_letter, m_zeroPadding)) m_frame = NO_FRAME;
 }
 
 // TFrameId::operator string() const
@@ -808,7 +803,7 @@ TFrameId TFilePath::getFrame() const {
   if (!checkForSeqNum(type) || !isNumbers(str, j, i))
     return TFrameId(TFrameId::NO_FRAME);
 
-  return TFrameId(str.substr(j+1, i-j-1), str[j]);
+  return TFrameId(str.substr(j + 1, i - j - 1), str[j]);
 }
 
 //-----------------------------------------------------------------------------

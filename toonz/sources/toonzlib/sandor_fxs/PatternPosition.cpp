@@ -121,7 +121,7 @@ void CPatternPosition::eraseCurrentArea(const int lX, const int lY, UCHAR *lSel,
     int x = xx + pDdc->x;
     int y = yy + pDdc->y;
     if (x >= 0 && y >= 0 && x < lX && y < lY) {
-      UCHAR *pSel                      = lSel + y * lX + x;
+      UCHAR *pSel = lSel + y * lX + x;
       if (*(pSel) == (UCHAR)1) *(pSel) = (UCHAR)2;
     }
   }

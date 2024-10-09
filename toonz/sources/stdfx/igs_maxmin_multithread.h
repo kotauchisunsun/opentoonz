@@ -12,12 +12,13 @@ namespace maxmin {
 template <class IT, class RT>
 class thread final
     : public igs::resource::thread_execute_interface { /* thread単位の実行設定
-                                                    */
+                                                        */
 public:
   thread() {}
   void setup(
       /* 入出力画像 */
-      const IT *inn, IT *out, int height, int width, int channels
+      const IT *inn, IT *out, int height, int width,
+      int channels
 
       /* Pixel毎に効果の強弱 */
       ,
@@ -180,8 +181,8 @@ private:
                              this->channels_, yy, zz, this->out_);
   }
 };
-}
-}
+}  // namespace maxmin
+}  // namespace igs
 
 //------------------------------------------------------------
 
@@ -224,7 +225,7 @@ public:
       /* Speed up */
       ,
       const int number_of_thread /* =1    1...24...INT_MAX */
-      ) {
+  ) {
     /*--------------メモリ確保--------------------------*/
     igs::maxmin::alloc_and_shape_lens_matrix(
         radius, radius + smooth_outer_range, polygon_number, roll_degree,
@@ -281,7 +282,7 @@ private:
   std::vector<igs::maxmin::thread<IT, RT>> threads_;
   igs::resource::multithread mthread_;
 };
-}
-}
+}  // namespace maxmin
+}  // namespace igs
 
 #endif /* !igs_maxmin_multithread_h */

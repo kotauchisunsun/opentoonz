@@ -291,7 +291,7 @@ int tzr_encode_cm16_1_1_1 (USHORT *buf_in, int buf_in_len,
   GET_INVAL
 
 check_colpen_on_out0:
-  incol__              = inval & colmask;
+  incol__ = inval & colmask;
   if (incol__) incol__ = 0x10;
   if (incol__ == lastcol__) goto check_tone_on_out0;
   lastcol__ = incol__;
@@ -305,8 +305,7 @@ check_tone_on_out0:
   if (tone == maxtone) {
     lastval    = inval;
     prevremain = remain;
-    do
-      GET_INVAL
+    do GET_INVAL
     while (inval == lastval);
     count = prevremain - remain - 1;
     if (count <= 0xF)
@@ -382,7 +381,7 @@ check_tone_on_out0:
   }
 
 check_colpen_on_out1:
-  incol__              = inval & colmask;
+  incol__ = inval & colmask;
   if (incol__) incol__ = 0x10;
   if (incol__ == lastcol__) goto check_tone_on_out1;
   lastcol__ = incol__;
@@ -397,8 +396,7 @@ check_tone_on_out1:
   if (tone == maxtone) {
     lastval    = inval;
     prevremain = remain;
-    do
-      GET_INVAL
+    do GET_INVAL
     while (inval == lastval);
     count = prevremain - remain - 1;
     outval |= 0xF;
@@ -548,7 +546,7 @@ int tzr_encode_cm24_2_1_1 (ULONG *buf_in, int buf_in_len,
   GET_INVAL
 
 check_colpen_on_out0:
-  incol__              = inval & colmask;
+  incol__ = inval & colmask;
   if (incol__) incol__ = 0x100;
   if (incol__ == lastcol__) goto check_tone_on_out0;
   lastcol__ = incol__;
@@ -564,8 +562,7 @@ check_tone_on_out0:
   if (tone == maxtone) {
     lastval    = inval;
     prevremain = remain;
-    do
-      GET_INVAL
+    do GET_INVAL
     while (inval == lastval);
     count = prevremain - remain - 1;
     if (count <= 0xF)
@@ -651,7 +648,7 @@ check_tone_on_out0:
   }
 
 check_colpen_on_out1:
-  incol__              = inval & colmask;
+  incol__ = inval & colmask;
   if (incol__) incol__ = 0x100;
   if (incol__ == lastcol__) goto check_tone_on_out1;
   lastcol__ = incol__;
@@ -668,8 +665,7 @@ check_tone_on_out1:
   if (tone == maxtone) {
     lastval    = inval;
     prevremain = remain;
-    do
-      GET_INVAL
+    do GET_INVAL
     while (inval == lastval);
     count = prevremain - remain - 1;
     outval |= 0xF;
@@ -994,8 +990,8 @@ int tzr_decode_1_1_1_cm16 (UCHAR  *buf_in, int *buf_in_len,
   goto start_from_in0;
 
 count_out_and_start_from_in0:
-  outval_maxtone         = outval | maxtone;
-  *out++                 = outval_maxtone;
+  outval_maxtone = outval | maxtone;
+  *out++         = outval_maxtone;
   while (count--) *out++ = outval_maxtone;
 
 start_from_in0:
@@ -1053,8 +1049,8 @@ start_from_in0:
   }
 
 count_out_and_start_from_in1:
-  outval_maxtone         = outval | maxtone;
-  *out++                 = outval_maxtone;
+  outval_maxtone = outval | maxtone;
+  *out++         = outval_maxtone;
   while (count--) *out++ = outval_maxtone;
 
 start_from_in1:
@@ -1147,8 +1143,8 @@ int tzr_decode_2_1_1_cm24 (UCHAR  *buf_in, int *buf_in_len,
   goto start_from_in0;
 
 count_out_and_start_from_in0:
-  outval_maxtone         = outval | maxtone;
-  *out++                 = outval_maxtone;
+  outval_maxtone = outval | maxtone;
+  *out++         = outval_maxtone;
   while (count--) *out++ = outval_maxtone;
 start_from_in0:
   GET_IN0;
@@ -1211,8 +1207,8 @@ start_from_in0:
   }
 
 count_out_and_start_from_in1:
-  outval_maxtone         = outval | maxtone;
-  *out++                 = outval_maxtone;
+  outval_maxtone = outval | maxtone;
+  *out++         = outval_maxtone;
   while (count--) *out++ = outval_maxtone;
 
 start_from_in1:
@@ -1811,12 +1807,12 @@ IMAGE *img_read_region_tzr (char *filename, int x0, int y0,
   if (!read_tzr_header(filename, file, image, &tzr_type, &img_offs,
                        Read_cmapped, TRUE))
     goto error;
-  full_lx          = image->pixmap.xsize;
-  full_ly          = image->pixmap.ysize;
+  full_lx = image->pixmap.xsize;
+  full_ly = image->pixmap.ysize;
   if (x0 == -1) x0 = full_lx - 1;
   if (y0 == -1) y0 = full_ly - 1;
-  reg_lx           = (x1 - x0) / step + 1;
-  reg_ly           = (y1 - y0) / step + 1;
+  reg_lx = (x1 - x0) / step + 1;
+  reg_ly = (y1 - y0) / step + 1;
   if (!allocate_pixmap(image, reg_lx, reg_ly)) goto error;
 
   /* per adesso si fa un clear brutale */
@@ -1825,7 +1821,7 @@ IMAGE *img_read_region_tzr (char *filename, int x0, int y0,
     CASE RGB
         : for (i = 0; i < pixels; i++)((ULONG *)(image->pixmap.buffer))[i] = 0;
     CASE CMAPPED : for (i = 0; i < pixels;
-                        i++)((USHORT *)(image->pixmap.buffer))[i] = 0xF;
+                        i++)((USHORT *)(image->pixmap.buffer))[i]  = 0xF;
     CASE CMAPPED24 : for (i = 0; i < pixels;
                           i++)((ULONG *)(image->pixmap.buffer))[i] = 0xFF;
   DEFAULT:

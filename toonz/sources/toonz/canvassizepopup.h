@@ -15,7 +15,7 @@ class TMeasure;
 namespace DVGui {
 class DoubleLineEdit;
 class CheckBox;
-}
+}  // namespace DVGui
 
 //=============================================================================
 

@@ -1892,7 +1892,7 @@ bool IoCmd::loadScene(const TFilePath &path, bool updateRecentFile,
   }
 
   TProjectManager *pm = TProjectManager::instance();
-  auto sceneProject = pm->loadSceneProject(scenePath);
+  auto sceneProject   = pm->loadSceneProject(scenePath);
   if (!sceneProject) {
     QString msg;
     msg = QObject::tr(

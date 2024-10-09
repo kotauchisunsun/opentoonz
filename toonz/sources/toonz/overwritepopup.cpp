@@ -209,11 +209,10 @@ OverwriteDialog::Resolution OverwriteDialog::execute(TFilePath &filePath,
     // Execute dialog
     int retCode = exec();
 
-    m_choice = (retCode == QDialog::Rejected)
-                   ? CANCELED
-                   : m_overwrite->isChecked()
-                         ? OVERWRITE
-                         : m_rename->isChecked() ? RENAME : KEEP_OLD;
+    m_choice = (retCode == QDialog::Rejected) ? CANCELED
+               : m_overwrite->isChecked()     ? OVERWRITE
+               : m_rename->isChecked()        ? RENAME
+                                              : KEEP_OLD;
 
     if (m_choice == RENAME) {
       if (exists(writePath = addSuffix(filePath))) continue;

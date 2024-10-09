@@ -56,6 +56,7 @@ public:
   TLevelP loadInfo() override;
   TImageP load(int frameIndex);
   TDimension getSize();
+
 private:
   Ffmpeg *ffmpegReader;
   bool ffmpegFramesCreated = false;
