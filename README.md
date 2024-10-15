@@ -6,6 +6,7 @@
 [![](https://travis-ci.org/opentoonz/opentoonz.svg?branch=master)](https://travis-ci.org/opentoonz/opentoonz)
 [![](https://github.com/opentoonz/opentoonz/workflows/Build/badge.svg?branch=master)](https://github.com/opentoonz/opentoonz/actions)
 [![Translation status](https://hosted.weblate.org/widgets/opentoonz/-/svg-badge.svg)](https://hosted.weblate.org/engage/opentoonz/)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fkotauchisunsun%2Fopentoonz.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fkotauchisunsun%2Fopentoonz?ref=badge_shield)
 ## What is OpenToonz?
 
 OpenToonz is a 2D animation software published by 
@@ -49,6 +50,9 @@ Can't develop but still want to help? Help us test individual Pull Requests befo
   - Please consult with the licenses in the appropriate READMEs or source codes.
 - For files in the `stuff/library/mypaint brushes` directory:
   - Please see the licenses in `stuff/library/mypaint brushes/Licenses.txt`.
+
+
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fkotauchisunsun%2Fopentoonz.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fkotauchisunsun%2Fopentoonz?ref=badge_large)
 
 ### Special Thanks
 
